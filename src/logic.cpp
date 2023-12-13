@@ -65,6 +65,10 @@ void initLookupTable()
         {
             delayTime = MAX_TRIGGER_DELAY;
         }
+        else if (delayTime < MIN_TRIGGER_DELAY)
+        {
+            delayTime = MIN_TRIGGER_DELAY;
+        }
         g_triggerDelayLookupTable_us[i] = delayTime;
     }
 }

@@ -4,6 +4,7 @@
 #include "math.h"
 
 #define MAX_TRIGGER_DELAY (9900U)
+#define MIN_TRIGGER_DELAY   (45U)
 
 typedef struct
 {

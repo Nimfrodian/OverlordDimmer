@@ -45,20 +45,27 @@ void IRAM_ATTR gpio_isr_handler(void* arg)
 
 void timer_DELAY_isr_handler(void* arg)
 {
-    esp_timer_stop(singleShot_timerOn);
-
-    // swap tables used
-    triggerTableType* temp = g_activeTable;
-    g_activeTable = g_preparingTable;
-    g_preparingTable = temp;
-
-    uint64_t deltaTime_us = g_activeTable[0].delta_delay_us;
-    if (deltaTime_us < (MAX_TRIGGER_DELAY))
+    static uint64_t lastTriggerTime = 0;
+    uint64_t currTriggerTime = esp_timer_get_time();
+    if ((currTriggerTime - lastTriggerTime) > 6000)
     {
-        ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerOn, deltaTime_us));
-    }
+        esp_timer_stop(singleShot_timerOn);
 
-    g_updateTable_flg = true;   // flag that a new table will be needed
+        // swap tables used
+        triggerTableType* temp = g_activeTable;
+        g_activeTable = g_preparingTable;
+        g_preparingTable = temp;
+
+        uint64_t deltaTime_us = g_activeTable[0].delta_delay_us;
+        if (deltaTime_us < (MAX_TRIGGER_DELAY))
+        {
+            ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerOn, deltaTime_us));
+        }
+
+        g_updateTable_flg = true;   // flag that a new table will be needed
+
+        lastTriggerTime = currTriggerTime;
+    }
 }
 
 void timer_ON_isr_handler(void* arg)

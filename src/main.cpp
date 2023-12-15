@@ -13,6 +13,7 @@
 #define NUM_OF_TRIGGERS 10
 
 esp_timer_handle_t singleShot_timerOn;
+esp_timer_handle_t singleShot_timerDelay;
 triggerTableType g_triggerTable[2][10] = {0}; // two trigger tables - one active, one in preparation
 triggerTableType* g_activeTable = &g_triggerTable[1][0];    // active table currently being applied
 triggerTableType* g_preparingTable = &g_triggerTable[0][0]; // table being prepared and will be used in the next cycle
@@ -37,6 +38,12 @@ volatile uint32_t g_triggerCounter = 0;
 
 
 void IRAM_ATTR gpio_isr_handler(void* arg)
+{
+    // start countdown timer as the zero-cross trigger occurs some time before actual zero-cross
+    ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerDelay, 440));
+}
+
+void timer_DELAY_isr_handler(void* arg)
 {
     esp_timer_stop(singleShot_timerOn);
 
@@ -137,6 +144,14 @@ extern "C" void app_main()
             .name = "On",
         };
         ESP_ERROR_CHECK(esp_timer_create(&on_timer_args, &singleShot_timerOn));
+
+        const esp_timer_create_args_t delay_timer_args = {
+            .callback = &timer_DELAY_isr_handler,
+            .arg = NULL,
+            .dispatch_method = ESP_TIMER_TASK,
+            .name = "Delay",
+        };
+        ESP_ERROR_CHECK(esp_timer_create(&delay_timer_args, &singleShot_timerDelay));
     }
 
     {

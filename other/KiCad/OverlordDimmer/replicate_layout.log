@@ -1,0 +1,113 @@
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 392:Plugin executed on: 'win32'
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 393:Plugin executed with python version: '3.9.16 (main, Oct 13 2023, 05:50:11) [MSC v.1936 64 bit (AMD64)]'
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 394:KiCad build version: 7.0.10
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 395:Plugin version: 2.1.3
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 396:Frame repr: <wx._core.Frame object at 0x0000016718B42D30>
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 420:Preparing replicator with Q13 as a reference
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.replicate_layout 117:getting a list of all footprints on board
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 468:source anchor footprint is 'Q13'
+Located on: ['triggerCircuit1']
+With filenames: ['triggerCircuit.kicad_sch']
+With sheet_id:['triggerCircuit1']
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 475:Corresponding footprints are 
+[('Q45', ['triggerCircuit9']), ('Q41', ['triggerCircuit8']), ('Q37', ['triggerCircuit5']), ('Q33', ['triggerCircuit6']), ('Q29', ['triggerCircuit7']), ('Q25', ['triggerCircuit4']), ('Q21', ['triggerCircuit3']), ('Q17', ['triggerCircuit2']), ('Q9', ['triggerCircuit10']), ('Q13', ['triggerCircuit1'])]
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 487:Showing dialog
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.replicate_layout 424:constructing a list of sheets suitable for replication on level:'triggerCircuit1', file:'triggerCircuit.kicad_sch'
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.replicate_layout 461:suitable sheets are:[['triggerCircuit10'], ['triggerCircuit2'], ['triggerCircuit3'], ['triggerCircuit4'], ['triggerCircuit5'], ['triggerCircuit6'], ['triggerCircuit7'], ['triggerCircuit8'], ['triggerCircuit9']]
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1464:Level selected: ['triggerCircuit1']
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1299:Filtering list of tracks
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 493:Toolbar position: wx.Point(922, 88)
+06-29 13:47:51 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 498:Dialog position: wx.Point(483, 88)
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 424:constructing a list of sheets suitable for replication on level:'triggerCircuit1', file:'triggerCircuit.kicad_sch'
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 461:suitable sheets are:[['triggerCircuit10'], ['triggerCircuit2'], ['triggerCircuit3'], ['triggerCircuit4'], ['triggerCircuit5'], ['triggerCircuit6'], ['triggerCircuit7'], ['triggerCircuit8'], ['triggerCircuit9']]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 240:Replicating layout
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 240:Starting replication of sheets: [['triggerCircuit10'], ['triggerCircuit2'], ['triggerCircuit3'], ['triggerCircuit4'], ['triggerCircuit5'], ['triggerCircuit6'], ['triggerCircuit7'], ['triggerCircuit8'], ['triggerCircuit9']]
+on level: ['triggerCircuit1']
+with tracks=True, zone=True, text=True, text=True, intersecting=False, remove=False, locked footprints=False, group_only=False
+06-29 13:47:54 root 332:updating GUI message: 'Preparing for replication'
+06-29 13:47:54 root 337:updating GUI with: 0
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 310:Getting the list of source footprints
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 320:Getting the list of all the remaining footprints
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 327:Getting source tracks
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1299:Filtering list of tracks
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 331:Getting source zones
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 335:Getting source text items
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 339:Getting source drawing items
+06-29 13:47:54 root 332:updating GUI message: 'Replicating footprints'
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 806:Replicating footprints
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 813:Replicating footprints on sheet ['triggerCircuit10']
+06-29 13:47:54 root 337:updating GUI with: 7
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 813:Replicating footprints on sheet ['triggerCircuit2']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 813:Replicating footprints on sheet ['triggerCircuit3']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 813:Replicating footprints on sheet ['triggerCircuit4']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 813:Replicating footprints on sheet ['triggerCircuit5']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 813:Replicating footprints on sheet ['triggerCircuit6']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 813:Replicating footprints on sheet ['triggerCircuit7']
+06-29 13:47:54 root 337:updating GUI with: 72
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 813:Replicating footprints on sheet ['triggerCircuit8']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 813:Replicating footprints on sheet ['triggerCircuit9']
+06-29 13:47:54 root 332:updating GUI message: 'Replicating tracks'
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 977:Replicating tracks
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 983:Replicating tracks on sheet ['triggerCircuit10']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit10'] :[('TRGR1', 'TRGR10'), ('Net-(R24-Pad1)', 'Net-(R19-Pad1)'), ('/triggerCircuit1/Load', '/triggerCircuit10/Load'), ('unconnected-(U4-Pad6)', 'unconnected-(U3-Pad6)'), ('Net-(Q11-E)', 'Net-(Q7-E)'), ('Net-(R22-Pad2)', 'Net-(R17-Pad2)'), ('L', 'L'), ('VCC', 'VCC'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U3-NC-Pad3)'), ('Net-(Q10-E)', 'Net-(Q6-E)'), ('GND', 'GND'), ('Net-(Q10-B)', 'Net-(Q6-B)'), ('Net-(D9-K)', 'Net-(D8-K)')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 983:Replicating tracks on sheet ['triggerCircuit2']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit2'] :[('Net-(Q10-E)', 'Net-(Q14-E)'), ('Net-(R22-Pad2)', 'Net-(R27-Pad2)'), ('Net-(D9-K)', 'Net-(D10-K)'), ('Net-(R24-Pad1)', 'Net-(R29-Pad1)'), ('/triggerCircuit1/Load', '/triggerCircuit2/Load'), ('unconnected-(U4-Pad6)', 'unconnected-(U5-Pad6)'), ('L', 'L'), ('VCC', 'VCC'), ('Net-(Q10-B)', 'Net-(Q14-B)'), ('Net-(Q11-E)', 'Net-(Q15-E)'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U5-NC-Pad3)'), ('GND', 'GND'), ('TRGR1', 'TRGR2')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 983:Replicating tracks on sheet ['triggerCircuit3']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit3'] :[('Net-(Q10-B)', 'Net-(Q18-B)'), ('Net-(R24-Pad1)', 'Net-(R34-Pad1)'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U6-NC-Pad3)'), ('Net-(Q10-E)', 'Net-(Q18-E)'), ('Net-(D9-K)', 'Net-(D11-K)'), ('/triggerCircuit1/Load', '/triggerCircuit3/Load'), ('L', 'L'), ('Net-(R22-Pad2)', 'Net-(R32-Pad2)'), ('Net-(Q11-E)', 'Net-(Q19-E)'), ('VCC', 'VCC'), ('unconnected-(U4-Pad6)', 'unconnected-(U6-Pad6)'), ('TRGR1', 'TRGR3'), ('GND', 'GND')]
+06-29 13:47:54 root 337:updating GUI with: 27
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 983:Replicating tracks on sheet ['triggerCircuit4']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit4'] :[('Net-(Q10-E)', 'Net-(Q22-E)'), ('Net-(R24-Pad1)', 'Net-(R39-Pad1)'), ('TRGR1', 'TRGR4'), ('Net-(Q11-E)', 'Net-(Q23-E)'), ('Net-(Q10-B)', 'Net-(Q22-B)'), ('unconnected-(U4-Pad6)', 'unconnected-(U7-Pad6)'), ('/triggerCircuit1/Load', '/triggerCircuit4/Load'), ('Net-(R22-Pad2)', 'Net-(R37-Pad2)'), ('L', 'L'), ('VCC', 'VCC'), ('Net-(D9-K)', 'Net-(D12-K)'), ('GND', 'GND'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U7-NC-Pad3)')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 983:Replicating tracks on sheet ['triggerCircuit5']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit5'] :[('/triggerCircuit1/Load', '/triggerCircuit5/Load'), ('Net-(R24-Pad1)', 'Net-(R54-Pad1)'), ('Net-(Q11-E)', 'Net-(Q35-E)'), ('Net-(R22-Pad2)', 'Net-(R52-Pad2)'), ('Net-(Q10-B)', 'Net-(Q34-B)'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U10-NC-Pad3)'), ('TRGR1', 'TRGR5'), ('unconnected-(U4-Pad6)', 'unconnected-(U10-Pad6)'), ('Net-(Q10-E)', 'Net-(Q34-E)'), ('L', 'L'), ('VCC', 'VCC'), ('GND', 'GND'), ('Net-(D9-K)', 'Net-(D15-K)')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 983:Replicating tracks on sheet ['triggerCircuit6']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit6'] :[('Net-(R22-Pad2)', 'Net-(R47-Pad2)'), ('TRGR1', 'TRGR6'), ('Net-(D9-K)', 'Net-(D14-K)'), ('Net-(Q11-E)', 'Net-(Q31-E)'), ('Net-(Q10-E)', 'Net-(Q30-E)'), ('Net-(Q10-B)', 'Net-(Q30-B)'), ('L', 'L'), ('/triggerCircuit1/Load', '/triggerCircuit6/Load'), ('Net-(R24-Pad1)', 'Net-(R49-Pad1)'), ('unconnected-(U4-Pad6)', 'unconnected-(U9-Pad6)'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U9-NC-Pad3)'), ('VCC', 'VCC'), ('GND', 'GND')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 983:Replicating tracks on sheet ['triggerCircuit7']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit7'] :[('Net-(R22-Pad2)', 'Net-(R42-Pad2)'), ('TRGR1', 'TRGR7'), ('Net-(D9-K)', 'Net-(D13-K)'), ('Net-(Q11-E)', 'Net-(Q27-E)'), ('Net-(R24-Pad1)', 'Net-(R44-Pad1)'), ('/triggerCircuit1/Load', '/triggerCircuit7/Load'), ('L', 'L'), ('Net-(Q10-B)', 'Net-(Q26-B)'), ('Net-(Q10-E)', 'Net-(Q26-E)'), ('VCC', 'VCC'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U8-NC-Pad3)'), ('GND', 'GND'), ('unconnected-(U4-Pad6)', 'unconnected-(U8-Pad6)')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 983:Replicating tracks on sheet ['triggerCircuit8']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit8'] :[('/triggerCircuit1/Load', '/triggerCircuit8/Load'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U11-NC-Pad3)'), ('Net-(Q10-B)', 'Net-(Q38-B)'), ('Net-(R22-Pad2)', 'Net-(R57-Pad2)'), ('TRGR1', 'TRGR8'), ('Net-(R24-Pad1)', 'Net-(R59-Pad1)'), ('L', 'L'), ('unconnected-(U4-Pad6)', 'unconnected-(U11-Pad6)'), ('VCC', 'VCC'), ('Net-(Q10-E)', 'Net-(Q38-E)'), ('GND', 'GND'), ('Net-(Q11-E)', 'Net-(Q39-E)'), ('Net-(D9-K)', 'Net-(D16-K)')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 983:Replicating tracks on sheet ['triggerCircuit9']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit9'] :[('unconnected-(U4-Pad6)', 'unconnected-(U12-Pad6)'), ('Net-(Q10-E)', 'Net-(Q42-E)'), ('Net-(D9-K)', 'Net-(D17-K)'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U12-NC-Pad3)'), ('Net-(Q11-E)', 'Net-(Q43-E)'), ('Net-(R24-Pad1)', 'Net-(R64-Pad1)'), ('Net-(R22-Pad2)', 'Net-(R62-Pad2)'), ('/triggerCircuit1/Load', '/triggerCircuit9/Load'), ('TRGR1', 'TRGR9'), ('L', 'L'), ('VCC', 'VCC'), ('GND', 'GND'), ('Net-(Q10-B)', 'Net-(Q42-B)')]
+06-29 13:47:54 root 332:updating GUI message: 'Replicating zones'
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1047:Replicating zones
+06-29 13:47:54 root 337:updating GUI with: 0
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1054:Replicating zones on sheet ['triggerCircuit10']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit10'] :[('TRGR1', 'TRGR10'), ('Net-(R24-Pad1)', 'Net-(R19-Pad1)'), ('/triggerCircuit1/Load', '/triggerCircuit10/Load'), ('unconnected-(U4-Pad6)', 'unconnected-(U3-Pad6)'), ('Net-(Q11-E)', 'Net-(Q7-E)'), ('Net-(R22-Pad2)', 'Net-(R17-Pad2)'), ('L', 'L'), ('VCC', 'VCC'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U3-NC-Pad3)'), ('Net-(Q10-E)', 'Net-(Q6-E)'), ('GND', 'GND'), ('Net-(Q10-B)', 'Net-(Q6-B)'), ('Net-(D9-K)', 'Net-(D8-K)')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1054:Replicating zones on sheet ['triggerCircuit2']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit2'] :[('Net-(Q10-E)', 'Net-(Q14-E)'), ('Net-(R22-Pad2)', 'Net-(R27-Pad2)'), ('Net-(D9-K)', 'Net-(D10-K)'), ('Net-(R24-Pad1)', 'Net-(R29-Pad1)'), ('/triggerCircuit1/Load', '/triggerCircuit2/Load'), ('unconnected-(U4-Pad6)', 'unconnected-(U5-Pad6)'), ('L', 'L'), ('VCC', 'VCC'), ('Net-(Q10-B)', 'Net-(Q14-B)'), ('Net-(Q11-E)', 'Net-(Q15-E)'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U5-NC-Pad3)'), ('GND', 'GND'), ('TRGR1', 'TRGR2')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1054:Replicating zones on sheet ['triggerCircuit3']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit3'] :[('Net-(Q10-B)', 'Net-(Q18-B)'), ('Net-(R24-Pad1)', 'Net-(R34-Pad1)'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U6-NC-Pad3)'), ('Net-(Q10-E)', 'Net-(Q18-E)'), ('Net-(D9-K)', 'Net-(D11-K)'), ('/triggerCircuit1/Load', '/triggerCircuit3/Load'), ('L', 'L'), ('Net-(R22-Pad2)', 'Net-(R32-Pad2)'), ('Net-(Q11-E)', 'Net-(Q19-E)'), ('VCC', 'VCC'), ('unconnected-(U4-Pad6)', 'unconnected-(U6-Pad6)'), ('TRGR1', 'TRGR3'), ('GND', 'GND')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1054:Replicating zones on sheet ['triggerCircuit4']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit4'] :[('Net-(Q10-E)', 'Net-(Q22-E)'), ('Net-(R24-Pad1)', 'Net-(R39-Pad1)'), ('TRGR1', 'TRGR4'), ('Net-(Q11-E)', 'Net-(Q23-E)'), ('Net-(Q10-B)', 'Net-(Q22-B)'), ('unconnected-(U4-Pad6)', 'unconnected-(U7-Pad6)'), ('/triggerCircuit1/Load', '/triggerCircuit4/Load'), ('Net-(R22-Pad2)', 'Net-(R37-Pad2)'), ('L', 'L'), ('VCC', 'VCC'), ('Net-(D9-K)', 'Net-(D12-K)'), ('GND', 'GND'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U7-NC-Pad3)')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1054:Replicating zones on sheet ['triggerCircuit5']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit5'] :[('/triggerCircuit1/Load', '/triggerCircuit5/Load'), ('Net-(R24-Pad1)', 'Net-(R54-Pad1)'), ('Net-(Q11-E)', 'Net-(Q35-E)'), ('Net-(R22-Pad2)', 'Net-(R52-Pad2)'), ('Net-(Q10-B)', 'Net-(Q34-B)'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U10-NC-Pad3)'), ('TRGR1', 'TRGR5'), ('unconnected-(U4-Pad6)', 'unconnected-(U10-Pad6)'), ('Net-(Q10-E)', 'Net-(Q34-E)'), ('L', 'L'), ('VCC', 'VCC'), ('GND', 'GND'), ('Net-(D9-K)', 'Net-(D15-K)')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1054:Replicating zones on sheet ['triggerCircuit6']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit6'] :[('Net-(R22-Pad2)', 'Net-(R47-Pad2)'), ('TRGR1', 'TRGR6'), ('Net-(D9-K)', 'Net-(D14-K)'), ('Net-(Q11-E)', 'Net-(Q31-E)'), ('Net-(Q10-E)', 'Net-(Q30-E)'), ('Net-(Q10-B)', 'Net-(Q30-B)'), ('L', 'L'), ('/triggerCircuit1/Load', '/triggerCircuit6/Load'), ('Net-(R24-Pad1)', 'Net-(R49-Pad1)'), ('unconnected-(U4-Pad6)', 'unconnected-(U9-Pad6)'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U9-NC-Pad3)'), ('VCC', 'VCC'), ('GND', 'GND')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1054:Replicating zones on sheet ['triggerCircuit7']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit7'] :[('Net-(R22-Pad2)', 'Net-(R42-Pad2)'), ('TRGR1', 'TRGR7'), ('Net-(D9-K)', 'Net-(D13-K)'), ('Net-(Q11-E)', 'Net-(Q27-E)'), ('Net-(R24-Pad1)', 'Net-(R44-Pad1)'), ('/triggerCircuit1/Load', '/triggerCircuit7/Load'), ('L', 'L'), ('Net-(Q10-B)', 'Net-(Q26-B)'), ('Net-(Q10-E)', 'Net-(Q26-E)'), ('VCC', 'VCC'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U8-NC-Pad3)'), ('GND', 'GND'), ('unconnected-(U4-Pad6)', 'unconnected-(U8-Pad6)')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1054:Replicating zones on sheet ['triggerCircuit8']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit8'] :[('/triggerCircuit1/Load', '/triggerCircuit8/Load'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U11-NC-Pad3)'), ('Net-(Q10-B)', 'Net-(Q38-B)'), ('Net-(R22-Pad2)', 'Net-(R57-Pad2)'), ('TRGR1', 'TRGR8'), ('Net-(R24-Pad1)', 'Net-(R59-Pad1)'), ('L', 'L'), ('unconnected-(U4-Pad6)', 'unconnected-(U11-Pad6)'), ('VCC', 'VCC'), ('Net-(Q10-E)', 'Net-(Q38-E)'), ('GND', 'GND'), ('Net-(Q11-E)', 'Net-(Q39-E)'), ('Net-(D9-K)', 'Net-(D16-K)')]
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1054:Replicating zones on sheet ['triggerCircuit9']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 766:Net pairs for sheet ['triggerCircuit9'] :[('unconnected-(U4-Pad6)', 'unconnected-(U12-Pad6)'), ('Net-(Q10-E)', 'Net-(Q42-E)'), ('Net-(D9-K)', 'Net-(D17-K)'), ('unconnected-(U4-NC-Pad3)', 'unconnected-(U12-NC-Pad3)'), ('Net-(Q11-E)', 'Net-(Q43-E)'), ('Net-(R24-Pad1)', 'Net-(R64-Pad1)'), ('Net-(R22-Pad2)', 'Net-(R62-Pad2)'), ('/triggerCircuit1/Load', '/triggerCircuit9/Load'), ('TRGR1', 'TRGR9'), ('L', 'L'), ('VCC', 'VCC'), ('GND', 'GND'), ('Net-(Q10-B)', 'Net-(Q42-B)')]
+06-29 13:47:54 root 332:updating GUI message: 'Replicating text'
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1136:Replicating text
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1143:Replicating text on sheet ['triggerCircuit10']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1143:Replicating text on sheet ['triggerCircuit2']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1143:Replicating text on sheet ['triggerCircuit3']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1143:Replicating text on sheet ['triggerCircuit4']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1143:Replicating text on sheet ['triggerCircuit5']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1143:Replicating text on sheet ['triggerCircuit6']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1143:Replicating text on sheet ['triggerCircuit7']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1143:Replicating text on sheet ['triggerCircuit8']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1143:Replicating text on sheet ['triggerCircuit9']
+06-29 13:47:54 root 332:updating GUI message: 'Replicating drawings'
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1187:Replicating drawings
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1193:Replicating drawings on sheet ['triggerCircuit10']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1193:Replicating drawings on sheet ['triggerCircuit2']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1193:Replicating drawings on sheet ['triggerCircuit3']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1193:Replicating drawings on sheet ['triggerCircuit4']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1193:Replicating drawings on sheet ['triggerCircuit5']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1193:Replicating drawings on sheet ['triggerCircuit6']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1193:Replicating drawings on sheet ['triggerCircuit7']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1193:Replicating drawings on sheet ['triggerCircuit8']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.replicate_layout 1193:Replicating drawings on sheet ['triggerCircuit9']
+06-29 13:47:54 com_github_MitjaNemec_ReplicateLayout.action_replicate_layout 256:Replication complete

@@ -22,9 +22,6 @@ bool g_updateTable_flg = false;
 
 gpio_num_t g_triggerPins[NUM_OF_TRIGGERS] =
 {
-    GPIO_NUM_25,
-    GPIO_NUM_26,
-    GPIO_NUM_27,
     GPIO_NUM_16,
     GPIO_NUM_17,
     GPIO_NUM_18,
@@ -32,6 +29,9 @@ gpio_num_t g_triggerPins[NUM_OF_TRIGGERS] =
     GPIO_NUM_21,
     GPIO_NUM_22,
     GPIO_NUM_23,
+    GPIO_NUM_25,
+    GPIO_NUM_26,
+    GPIO_NUM_27,
 };
 
 volatile uint32_t g_triggerCounter = 0;

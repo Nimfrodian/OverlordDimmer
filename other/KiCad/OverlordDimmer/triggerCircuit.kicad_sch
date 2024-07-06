@@ -1403,7 +1403,7 @@
     (property "Footprint" "Capacitor_SMD:C_0402_1005Metric_Pad0.74x0.62mm_HandSolder" (at 69.5452 83.82 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Datasheet" "https://si.farnell.com/murata/zrb15xr60j475me01d/cap-4-7-f-6-3v-20-x5r-0402/dp/2469393" (at 68.58 80.01 0)
+    (property "Datasheet" "https://si.farnell.com/yageo/cc0402mrx5r7bb475/cap-4-7f-16v-mlcc-0402/dp/3873408" (at 68.58 80.01 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid 44a2ec2a-b13c-418c-b244-963361e92f7e))

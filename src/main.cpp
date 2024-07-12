@@ -14,7 +14,7 @@
 
 esp_timer_handle_t singleShot_timerOn;
 esp_timer_handle_t singleShot_timerDelay;
-triggerTableType g_triggerTable[2][10] = {0}; // two trigger tables - one active, one in preparation
+triggerTableType g_triggerTable[2][NUM_OF_TRIGGERS + 1] = {0}; // two trigger tables - one active, one in preparation. 1 initial state and 1 state for each output
 triggerTableType* g_activeTable = &g_triggerTable[1][0];    // active table currently being applied
 triggerTableType* g_preparingTable = &g_triggerTable[0][0]; // table being prepared and will be used in the next cycle
 bool g_updateTable_flg = false;
@@ -56,7 +56,7 @@ void timer_DELAY_isr_handler(void* arg)
         g_activeTable = g_preparingTable;
         g_preparingTable = temp;
 
-        uint64_t deltaTime_us = g_activeTable[0].delta_delay_us;
+        uint64_t deltaTime_us = g_activeTable[0].deltaDelay_us;
         if (deltaTime_us < (MAX_TRIGGER_DELAY))
         {
             ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerOn, deltaTime_us));
@@ -70,8 +70,8 @@ void timer_DELAY_isr_handler(void* arg)
 
 void timer_ON_isr_handler(void* arg)
 {
-    // sets the outputs to specified values
     uint32_t mask = g_activeTable[g_triggerCounter].mask;
+
     gpio_set_level(g_triggerPins[0], (mask >> 0) & 0x01);
     gpio_set_level(g_triggerPins[1], (mask >> 1) & 0x01);
     gpio_set_level(g_triggerPins[2], (mask >> 2) & 0x01);
@@ -83,25 +83,14 @@ void timer_ON_isr_handler(void* arg)
     gpio_set_level(g_triggerPins[8], (mask >> 8) & 0x01);
     gpio_set_level(g_triggerPins[9], (mask >> 9) & 0x01);
 
-    // sets the outputs to off values
-    gpio_set_level(g_triggerPins[0], 0);
-    gpio_set_level(g_triggerPins[1], 0);
-    gpio_set_level(g_triggerPins[2], 0);
-    gpio_set_level(g_triggerPins[3], 0);
-    gpio_set_level(g_triggerPins[4], 0);
-    gpio_set_level(g_triggerPins[5], 0);
-    gpio_set_level(g_triggerPins[6], 0);
-    gpio_set_level(g_triggerPins[7], 0);
-    gpio_set_level(g_triggerPins[8], 0);
-    gpio_set_level(g_triggerPins[9], 0);
 
     g_triggerCounter++;
     // reloads timer_ON_isr_handler if another triggering needs to happen before the next cycle
     if ((MAX_TRIGGER_DELAY > g_activeTable[g_triggerCounter].delay_us) &&
-        (0 < g_activeTable[g_triggerCounter].delta_delay_us) &&
-        (g_triggerCounter < NUM_OF_TRIGGERS))
+        (0 < g_activeTable[g_triggerCounter].deltaDelay_us) &&
+        (g_triggerCounter < (NUM_OF_TRIGGERS + 1)))
     {
-        uint64_t deltaTime_us = g_activeTable[g_triggerCounter].delta_delay_us;
+        uint64_t deltaTime_us = g_activeTable[g_triggerCounter].deltaDelay_us;
         ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerOn, deltaTime_us));
     }
     else

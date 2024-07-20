@@ -4,7 +4,6 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "ComCfg.h"
-#include <ESP32CAN.h>
 
 typedef struct
 {

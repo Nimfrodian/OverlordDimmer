@@ -1,9 +1,14 @@
 #include "unity.h"
 #include "logic.h"
-#include "logic.c"
 
-void setUp(void) {
-  // set stuff up here
+#define NUM_OF_TRIGGERS 10
+
+
+void setUp(void)
+{
+    logicConfigType logicCfg;
+    logicCfg.numOfTriggers = NUM_OF_TRIGGERS + 1; // 1 starting state + 10, 1 for each trigger
+    init_logic(&logicCfg);
 }
 
 void tearDown(void) {
@@ -12,7 +17,6 @@ void tearDown(void) {
 
 void test_function_delayTiming(void) {
   // test stuff
-  calc_duty_cycle();
 
   TEST_ASSERT(1);
 }

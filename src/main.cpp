@@ -11,10 +11,11 @@
 #include "logic.h"
 
 #define NUM_OF_TRIGGERS 10
+#define POST_ZERO_CROSS_DETECT_DELAY (500u)
 
 esp_timer_handle_t singleShot_timerOn;
 esp_timer_handle_t singleShot_timerDelay;
-triggerTableType g_triggerTable[2][NUM_OF_TRIGGERS + 1] = {0}; // two trigger tables - one active, one in preparation. 1 initial state and 1 state for each output
+triggerTableType g_triggerTable[2][NUM_OF_TRIGGERS + 1]; // two trigger tables - one active, one in preparation. 1 initial state and 1 state for each output
 triggerTableType* g_activeTable = &g_triggerTable[1][0];    // active table currently being applied
 triggerTableType* g_preparingTable = &g_triggerTable[0][0]; // table being prepared and will be used in the next cycle
 bool g_updateTable_flg = false;
@@ -56,10 +57,9 @@ void timer_DELAY_isr_handler(void* arg)
         g_activeTable = g_preparingTable;
         g_preparingTable = temp;
 
-        uint64_t deltaTime_us = g_activeTable[0].deltaDelay_us;
-        if (deltaTime_us < (MAX_TRIGGER_DELAY))
+        if (g_activeTable[0].mask != 0x000)  // if any output should be triggered start the timer
         {
-            ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerOn, deltaTime_us));
+            ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerOn, POST_ZERO_CROSS_DETECT_DELAY));
         }
 
         g_updateTable_flg = true;   // flag that a new table will be needed
@@ -86,11 +86,9 @@ void timer_ON_isr_handler(void* arg)
 
     g_triggerCounter++;
     // reloads timer_ON_isr_handler if another triggering needs to happen before the next cycle
-    if ((MAX_TRIGGER_DELAY > g_activeTable[g_triggerCounter].delay_us) &&
-        (0 < g_activeTable[g_triggerCounter].deltaDelay_us) &&
-        (g_triggerCounter < (NUM_OF_TRIGGERS + 1)))
+    if ((g_activeTable[g_triggerCounter-1].deltaTimeToNext_us != 0) && (g_triggerCounter < 11))
     {
-        uint64_t deltaTime_us = g_activeTable[g_triggerCounter].deltaDelay_us;
+        uint64_t deltaTime_us = g_activeTable[g_triggerCounter-1].deltaTimeToNext_us;
         ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerOn, deltaTime_us));
     }
     else
@@ -115,7 +113,7 @@ extern "C" void app_main()
 
     {
         logicConfigType logicCfg;
-        logicCfg.numOfTriggers = NUM_OF_TRIGGERS;
+        logicCfg.numOfTriggers = NUM_OF_TRIGGERS + 1; // 1 starting state + 10, 1 for each trigger
         init_logic(&logicCfg);
     }
 
@@ -182,12 +180,105 @@ extern "C" void app_main()
 
     ComCan_init();
 
+    // clear data
+    {
+        triggerTableType emptyData =
+        {
+            .deltaTimeToNext_us = 0,
+            .triggerTime_us = 0,
+            .mask = 0
+        };
+        for (uint8_t i = 0; i < (NUM_OF_TRIGGERS + 1); i++)
+        {
+            g_triggerTable[0][i] = emptyData;
+            g_triggerTable[1][i] = emptyData;
+        }
+
+        // TODO: REMOVE
+        //g_activeTable[0] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x3ff};
+        //g_preparingTable[0] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x3ff};
+//
+        //g_activeTable[1] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x1ff};
+        //g_preparingTable[1] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x1ff};
+//
+        //g_activeTable[2] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0xff};
+        //g_preparingTable[2] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0xff};
+//
+        //g_activeTable[3] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x7f};
+        //g_preparingTable[3] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x7f};
+        //g_activeTable[4] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x3f};
+        //g_preparingTable[4] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x3f};
+//
+        //g_activeTable[5] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x1f};
+        //g_preparingTable[5] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x1f};
+//
+        //g_activeTable[6] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0xf};
+        //g_preparingTable[6] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0xf};
+//
+        //g_activeTable[7] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x7};
+        //g_preparingTable[7] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x7};
+//
+        //g_activeTable[8] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x3};
+        //g_preparingTable[8] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x3};
+//
+        //g_activeTable[9] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x1};
+        //g_preparingTable[9] = {.deltaTimeToNext_us = (uint16_t) (100),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x1};
+//
+        //g_activeTable[10] = {.deltaTimeToNext_us = (uint16_t) (0),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x000};
+        //g_preparingTable[10] = {.deltaTimeToNext_us = (uint16_t) (0),
+        //                .triggerTime_us = 0,
+        //                .mask = 0x000};
+    }
+
     while(true)
     {
         if (true == g_updateTable_flg)
         {
             calc_duty_cycle();
             calc_new_table(g_preparingTable);
+            g_updateTable_flg = false;
         }
 
         ComCan_receive();

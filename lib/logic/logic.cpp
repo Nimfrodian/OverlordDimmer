@@ -1,4 +1,5 @@
 #include "logic.h"
+#include <algorithm>
 
 #define TRIGGER_DELAY_TABLE_SIZE 1001
 
@@ -17,7 +18,7 @@ void init_logic(logicConfigType const* logicCfgPtr)
 
 void calc_duty_cycle(void)
 {
-    for (uint32_t i = 0; i < g_numOfTriggers; i++)
+    for (uint32_t i = 0; i < (g_numOfTriggers - 1); i++)
     {
         int64_t diff = (g_dutyCycleConfig[i].delta + g_dutyCycleConfig[i].outVal);
         if (g_dutyCycleConfig[i].delta > 0)
@@ -71,99 +72,76 @@ void initLookupTable()
 
 void config_duty_cycle(uint32_t OutIndx, float EndPrcnt, uint64_t TimeToEndPrcnt_ms)
 {
-    if (TimeToEndPrcnt_ms < 10) TimeToEndPrcnt_ms = 10;
+    if (TimeToEndPrcnt_ms < 10) {TimeToEndPrcnt_ms = 10;}
     uint64_t timeToEndPrcnt_10ms = TimeToEndPrcnt_ms / 10;
-    if (EndPrcnt > 1.0f) EndPrcnt = 1.0f;
-    if (EndPrcnt < 0.0f) EndPrcnt = 0.0f;
-    if (timeToEndPrcnt_10ms > 8640000) timeToEndPrcnt_10ms = 8640000;
-    g_dutyCycleConfig[OutIndx].endVal = (uint64_t) (EndPrcnt * 1000000000.0f);
+    if (EndPrcnt > 1.0f) {EndPrcnt = 1.0f;}
+    if (EndPrcnt < 0.0f) {EndPrcnt = 0.0f;}
+    if (timeToEndPrcnt_10ms > 8640000) {timeToEndPrcnt_10ms = 8640000;}
+    g_dutyCycleConfig[OutIndx].endVal = (int64_t) (EndPrcnt * 1000000000.0f);
     g_dutyCycleConfig[OutIndx].delta = (((int64_t)g_dutyCycleConfig[OutIndx].endVal - (int64_t)g_dutyCycleConfig[OutIndx].outVal) / (int64_t)timeToEndPrcnt_10ms);   // 10^9 bigger
 }
 
 void calc_new_table(triggerTableType* preparingTable)
 {
-    triggerTableType internalTable[11];   // internal triggering table to be copied at the end of the algorithm
-
     triggerTableType emptyData =
     {
-        .deltaDelay_us = 0,
-        .delay_us = 0,
+        .deltaTimeToNext_us = 0,
+        .triggerTime_us = 0,
         .mask = 0
     };
     // clear data
     {
         for (uint8_t i = 0; i < 11; i++)
         {
-            internalTable[i] = emptyData;
             preparingTable[i] = emptyData;
         }
     }
 
 
-
     // create masks for each output
     {
-        uint32_t runningMask = 0;
-        for (uint32_t i = 0; i < g_numOfTriggers; i++)
-        { // subsequent states
-            internalTable[i+1].mask = (~0x0); // 0xFFF....
-            int dutyCycleIndx = (1000.0 * g_dutyCycles[i]);
-            internalTable[i+1].delay_us = g_triggerDelayLookupTable_us[dutyCycleIndx];
-            if (internalTable[i+1].delay_us != 0)
+        for (uint8_t i = 1; i < g_numOfTriggers; i++)
+        {
+            uint16_t dutyCyclIndx = (uint16_t) (1000.0 * g_dutyCycles[i-1]);
+            uint16_t triggerTime_us = g_triggerDelayLookupTable_us[dutyCyclIndx];
+            if (triggerTime_us > 0)
             {
-                runningMask |= 0x01 << (i);
-                internalTable[i+1].mask &= ~((0x1) << (i));
+                if (triggerTime_us < MAX_TRIGGER_DELAY) // turn off only if trigger time is before next interval
+                {
+                    preparingTable[i].mask = 0x01 << (i-1);
+                }
+                preparingTable[0].mask |= 0x01 << (i-1);
             }
+            preparingTable[i].triggerTime_us = triggerTime_us;
         }
-        // starting outputs
-        internalTable[0].mask = runningMask;
     }
 
     // sort the table
     {
-        for (uint32_t i = 0; i < (g_numOfTriggers); i++)
-        {
-            for (uint32_t j = 0; j < (g_numOfTriggers - i); j++)
-            {
-                if (internalTable[j].delay_us > internalTable[j+1].delay_us)
-                {
-                    triggerTableType temp = internalTable[j];
-                    internalTable[j] = internalTable[j + 1];
-                    internalTable[j + 1] = temp;
-                }
-            }
-        }
+        std::sort(&preparingTable[0], &preparingTable[10], [](triggerTableType &a, triggerTableType &b){return a.triggerTime_us < b.triggerTime_us;});
     }
 
     // compress the table
-    {
-        uint8_t outputIndx = 0;
-        uint32_t outputMask = ~0; // all 1s
-        for (int i = 0; i < 10; i++)
-        {
-            outputMask &= internalTable[i].mask;
-            if (internalTable[i].delay_us != internalTable[i+1].delay_us)
-            {
-                preparingTable[outputIndx].delay_us = internalTable[i].delay_us;
-                preparingTable[outputIndx].mask = outputMask;
-                outputIndx++;
-            }
+     {
+        uint8_t compressed = 0; // this one is being compressed into
+        uint8_t observed;   // this one is being observed if it is to be compressed or if it is unique
 
-            // Not all triggers were active and it needs to turn it off "manually"
-            if (outputIndx < 10)
-            {
-                preparingTable[outputIndx].delay_us = internalTable[10].delay_us;
-            }
-        }
-    }
-
-    // calculate delta times
-    preparingTable[0].deltaDelay_us = preparingTable[0].delay_us;
-    for (int k = g_numOfTriggers-1; k > 0; k--)
-    {
-        if (preparingTable[k].delay_us != 0)
+        for (observed = 1; observed < g_numOfTriggers; observed++)
         {
-            preparingTable[k].deltaDelay_us = preparingTable[k].delay_us - preparingTable[k-1].delay_us;
+            if (preparingTable[observed].triggerTime_us > 0)
+            {
+                if (preparingTable[compressed].triggerTime_us == preparingTable[observed].triggerTime_us)
+                {
+                    preparingTable[compressed].mask &= (~preparingTable[observed].mask);
+                }
+                else
+                {
+                    compressed++;
+                    preparingTable[compressed].triggerTime_us = preparingTable[observed].triggerTime_us;
+                    preparingTable[compressed].mask = preparingTable[compressed - 1].mask & (~preparingTable[observed].mask);
+                    preparingTable[compressed - 1].deltaTimeToNext_us = preparingTable[compressed].triggerTime_us - preparingTable[compressed - 1].triggerTime_us;
+                }
+            }
         }
     }
 }

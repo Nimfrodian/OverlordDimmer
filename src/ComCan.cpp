@@ -18,7 +18,8 @@ void ComCan_init()
 static void ComCan_parseMsg(CAN_frame_t* sourceMsgPtr)
 {
     g_rxData.timeRequest_10ms = ((sourceMsgPtr->data.u8[2]& 0xFF) << 16) | ((sourceMsgPtr->data.u8[1] & 0xFF) << 8) | ((sourceMsgPtr->data.u8[0] & 0xFF) << 0);
-    g_rxData.dutyCycleReq = ((sourceMsgPtr->data.u8[4] & 0x03) << 8)| ((sourceMsgPtr->data.u8[3] & 0xFF) << 0);
+    uint32_t dutyReq = ((sourceMsgPtr->data.u8[4] & 0x03) << 8) | ((sourceMsgPtr->data.u8[3] & 0xFF) << 0);
+    g_rxData.dutyCycleReq = (dutyReq > 1000) ? 1000 : dutyReq;
     g_rxData.triggerIndexMask = ((sourceMsgPtr->data.u8[7] & 0xFF) << 16) | ((sourceMsgPtr->data.u8[6] & 0xFF) << 8) | ((sourceMsgPtr->data.u8[5] & 0xFF) << 0);
     g_rxData.dataReceived = 1;
 }

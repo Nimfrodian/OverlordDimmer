@@ -1,11 +1,8 @@
 {
     "files.associations": {
-        "logic.h": "c",
-        "stdint.h": "c",
-        "timer.h": "c",
-        "freertos.h": "c",
-        "esp_intr_alloc.h": "c",
-        "main.h": "c",
-        "comcfg.h": "c"
+        "system_error": "cpp",
+        "string_view": "cpp",
+        "array": "cpp",
+        "initializer_list": "cpp"
     }
 }

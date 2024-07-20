@@ -3,7 +3,7 @@
 #include "stdint.h"
 #include "math.h"
 
-#define MAX_TRIGGER_DELAY (9900U)
+#define MAX_TRIGGER_DELAY (9900U - 500u) // TODO: change it to config instead of define so that the "500u" can be defined in main
 #define MIN_TRIGGER_DELAY   (0U)
 
 typedef struct
@@ -21,8 +21,8 @@ typedef struct
 
 typedef struct
 {
-    uint16_t deltaDelay_us;     ///< delay relative to previous triggering
-    uint16_t delay_us;          ///< delay time in microseconds to trigger mask
+    uint16_t deltaTimeToNext_us;     ///< delay relative to previous triggering
+    uint16_t triggerTime_us;          ///< delay time in microseconds to trigger mask
     uint32_t mask;              ///< true for outputs that are to be turned off
 } triggerTableType;
 

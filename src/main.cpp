@@ -9,17 +9,18 @@
 #include "main.h"
 #include "ComCan.h"
 #include "logic.h"
+#include "esp_log.h"
 
 #define NUM_OF_TRIGGERS 10
-#define POST_ZERO_CROSS_DETECT_DELAY (500u)
+#define POST_ZERO_CROSS_DETECT_DELAY_us (70u)
 
-esp_timer_handle_t singleShot_timerOn;
-esp_timer_handle_t singleShot_timerDelay;
-triggerTableType g_triggerTable[2][NUM_OF_TRIGGERS + 1]; // two trigger tables - one active, one in preparation. 1 initial state and 1 state for each output
-triggerTableType* g_activeTable = &g_triggerTable[1][0];    // active table currently being applied
-triggerTableType* g_preparingTable = &g_triggerTable[0][0]; // table being prepared and will be used in the next cycle
-bool g_updateTable_flg = false;
-
+static esp_timer_handle_t singleShot_timerOn;
+static esp_timer_handle_t singleShot_timerDelay;
+static triggerTableType g_triggerTable[2][NUM_OF_TRIGGERS + 1]; // two trigger tables - one active, one in preparation. 1 initial state and 1 state for each output
+static triggerTableType* g_activeTable = &g_triggerTable[1][0];    // active table currently being applied
+static triggerTableType* g_preparingTable = &g_triggerTable[0][0]; // table being prepared and will be used in the next cycle
+static bool g_updateTable_flg = false;
+static int64_t g_periodTime_us = 0;  // time of the last period, ideally 10000us
 
 gpio_num_t g_triggerPins[NUM_OF_TRIGGERS] =
 {
@@ -41,37 +42,15 @@ volatile uint32_t g_triggerCounter = 0;
 void IRAM_ATTR gpio_isr_handler(void* arg)
 {
     // start countdown timer as the zero-cross trigger occurs some time before actual zero-cross
-    ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerDelay, 440));
+    ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerDelay, POST_ZERO_CROSS_DETECT_DELAY_us));
 }
 
-void timer_DELAY_isr_handler(void* arg)
-{
-    static uint64_t lastTriggerTime = 0;
-    uint64_t currTriggerTime = esp_timer_get_time();
-    if ((currTriggerTime - lastTriggerTime) > 6000)
-    {
-        esp_timer_stop(singleShot_timerOn);
+void timer_DELAY_isr_handler(void* arg);
+void timer_ON_isr_handler(void* arg);
 
-        // swap tables used
-        triggerTableType* temp = g_activeTable;
-        g_activeTable = g_preparingTable;
-        g_preparingTable = temp;
-
-        if (g_activeTable[0].mask != 0x000)  // if any output should be triggered start the timer
-        {
-            ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerOn, POST_ZERO_CROSS_DETECT_DELAY));
-        }
-
-        g_updateTable_flg = true;   // flag that a new table will be needed
-
-        lastTriggerTime = currTriggerTime;
-    }
-}
-
-void timer_ON_isr_handler(void* arg)
+void IRAM_ATTR apply_output(void)
 {
     uint32_t mask = g_activeTable[g_triggerCounter].mask;
-
     gpio_set_level(g_triggerPins[0], (mask >> 0) & 0x01);
     gpio_set_level(g_triggerPins[1], (mask >> 1) & 0x01);
     gpio_set_level(g_triggerPins[2], (mask >> 2) & 0x01);
@@ -82,20 +61,62 @@ void timer_ON_isr_handler(void* arg)
     gpio_set_level(g_triggerPins[7], (mask >> 7) & 0x01);
     gpio_set_level(g_triggerPins[8], (mask >> 8) & 0x01);
     gpio_set_level(g_triggerPins[9], (mask >> 9) & 0x01);
-
-
     g_triggerCounter++;
+
+    esp_err_t err = ESP_FAIL;
     // reloads timer_ON_isr_handler if another triggering needs to happen before the next cycle
     if ((g_activeTable[g_triggerCounter-1].deltaTimeToNext_us != 0) && (g_triggerCounter < 11))
     {
         uint64_t deltaTime_us = g_activeTable[g_triggerCounter-1].deltaTimeToNext_us;
-        ESP_ERROR_CHECK(esp_timer_start_once(singleShot_timerOn, deltaTime_us));
+        err = esp_timer_start_once(singleShot_timerOn, deltaTime_us);
+        if (ESP_OK != err)
+        {
+            ESP_LOGI("Main", "Failed to start singleShot_timerOn with error code %u", err);
+        }
     }
     else
     {
         // reset the timer when the last operation was completed
         g_triggerCounter = 0;
     }
+}
+
+void timer_DELAY_isr_handler(void* arg)
+{
+    static int64_t lastTriggerTime = 0;
+    int64_t currTriggerTime = esp_timer_get_time();
+    int64_t l_periodTime_us = (currTriggerTime - lastTriggerTime);
+
+    if (l_periodTime_us > 6000)
+    {
+        g_periodTime_us = (l_periodTime_us < 13000) ? l_periodTime_us : 10000;  // update period time (with limitations; default to 10ms if out of bounds)
+
+        // swap tables used
+        triggerTableType* temp = g_activeTable;
+        g_activeTable = g_preparingTable;
+        g_preparingTable = temp;
+
+        if (esp_timer_is_active(singleShot_timerOn))
+        {
+            esp_err_t err = esp_timer_stop(singleShot_timerOn);
+            if (ESP_OK != err)
+            {
+                ESP_LOGI("Main", "Failed to stop singleShot_timerOn with error code %u", err);
+            }
+        }
+
+        g_triggerCounter = 0;   // reset triggering to start from 0
+        apply_output();
+
+        // flag that a new table will be needed and note time
+        g_updateTable_flg = true;
+        lastTriggerTime = currTriggerTime;
+    }
+}
+
+void timer_ON_isr_handler(void* arg)
+{
+    apply_output();
 }
 
 extern "C" void app_main()
@@ -106,7 +127,9 @@ extern "C" void app_main()
         .data_bits = UART_DATA_8_BITS,
         .parity = UART_PARITY_DISABLE,
         .stop_bits = UART_STOP_BITS_1,
-        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+        .rx_flow_ctrl_thresh = 0,
+        .source_clk = UART_SCLK_APB,
     };
     uart_param_config(UART_NUM_0, &uart_config);
     uart_driver_install(UART_NUM_0, 1024 * 2, 0, 0, NULL, 0);
@@ -114,6 +137,7 @@ extern "C" void app_main()
     {
         logicConfigType logicCfg;
         logicCfg.numOfTriggers = NUM_OF_TRIGGERS + 1; // 1 starting state + 10, 1 for each trigger
+        logicCfg.zeroCrossDelay_us = POST_ZERO_CROSS_DETECT_DELAY_us;
         init_logic(&logicCfg);
     }
 
@@ -131,21 +155,35 @@ extern "C" void app_main()
     }
 
     {
+        ESP_LOGI("Main", "Starting timer initialization");
+        ESP_LOGI("Main", "Timer early init finished with code %u", esp_timer_early_init());
+        ESP_LOGI("Main", "Timer init finished with code %u", esp_timer_init());
+
         const esp_timer_create_args_t on_timer_args = {
             .callback = &timer_ON_isr_handler,
             .arg = NULL,
             .dispatch_method = ESP_TIMER_TASK,
             .name = "On",
+            .skip_unhandled_events = true,
         };
-        ESP_ERROR_CHECK(esp_timer_create(&on_timer_args, &singleShot_timerOn));
+        if (ESP_OK != (esp_timer_create(&on_timer_args, &singleShot_timerOn)))
+        {
+            ESP_LOGI("Main", "Failed to create singleShot_timerOn!");
+        }
 
         const esp_timer_create_args_t delay_timer_args = {
             .callback = &timer_DELAY_isr_handler,
             .arg = NULL,
             .dispatch_method = ESP_TIMER_TASK,
             .name = "Delay",
+            .skip_unhandled_events = true,
         };
-        ESP_ERROR_CHECK(esp_timer_create(&delay_timer_args, &singleShot_timerDelay));
+        if (ESP_OK != (esp_timer_create(&delay_timer_args, &singleShot_timerDelay)))
+        {
+            ESP_LOGI("Main", "Failed to create singleShot_timerDelay!");
+        }
+
+        ESP_LOGI("Main", "Finished initialization");
     }
 
     {
@@ -193,83 +231,6 @@ extern "C" void app_main()
             g_triggerTable[0][i] = emptyData;
             g_triggerTable[1][i] = emptyData;
         }
-
-        // TODO: REMOVE
-        //g_activeTable[0] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x3ff};
-        //g_preparingTable[0] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x3ff};
-//
-        //g_activeTable[1] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x1ff};
-        //g_preparingTable[1] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x1ff};
-//
-        //g_activeTable[2] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0xff};
-        //g_preparingTable[2] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0xff};
-//
-        //g_activeTable[3] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x7f};
-        //g_preparingTable[3] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x7f};
-        //g_activeTable[4] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x3f};
-        //g_preparingTable[4] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x3f};
-//
-        //g_activeTable[5] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x1f};
-        //g_preparingTable[5] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x1f};
-//
-        //g_activeTable[6] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0xf};
-        //g_preparingTable[6] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0xf};
-//
-        //g_activeTable[7] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x7};
-        //g_preparingTable[7] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x7};
-//
-        //g_activeTable[8] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x3};
-        //g_preparingTable[8] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x3};
-//
-        //g_activeTable[9] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x1};
-        //g_preparingTable[9] = {.deltaTimeToNext_us = (uint16_t) (100),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x1};
-//
-        //g_activeTable[10] = {.deltaTimeToNext_us = (uint16_t) (0),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x000};
-        //g_preparingTable[10] = {.deltaTimeToNext_us = (uint16_t) (0),
-        //                .triggerTime_us = 0,
-        //                .mask = 0x000};
     }
 
     while(true)
@@ -277,7 +238,8 @@ extern "C" void app_main()
         if (true == g_updateTable_flg)
         {
             calc_duty_cycle();
-            calc_new_table(g_preparingTable);
+            float periodRatio = ((float) g_periodTime_us) / 10000.0f;
+            calc_new_table(g_preparingTable, periodRatio);
             g_updateTable_flg = false;
         }
 

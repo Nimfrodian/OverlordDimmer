@@ -3,12 +3,13 @@
 #include "stdint.h"
 #include "math.h"
 
-#define MAX_TRIGGER_DELAY (9900U - 500u) // TODO: change it to config instead of define so that the "500u" can be defined in main
+#define MAX_TRIGGER_DELAY (1000U - 500u) // TODO: change it to config instead of define so that the "500u" can be defined in main
 #define MIN_TRIGGER_DELAY   (0U)
 
 typedef struct
 {
-    uint32_t numOfTriggers;
+    uint32_t numOfTriggers;     // number of triggering outputs
+    uint32_t zeroCrossDelay_us; // time in us from when interrupt is triggered to when zero cross actually happens
 } logicConfigType;
 
 typedef struct
@@ -30,7 +31,7 @@ extern void init_logic(logicConfigType const* logicCfgPtr);
 extern void calc_duty_cycle(void);
 extern void initLookupTable();
 extern void config_duty_cycle(uint32_t OutIndx, float EndPrcnt, uint64_t TimeToEndPrcnt_ms);
-extern void calc_new_table(triggerTableType* preparingTable);
+extern void calc_new_table(triggerTableType* PreparingTablePtr, float PeriodRatio);
 
 extern float* logic_get_duty_cycles(void);
 extern uint32_t logic_get_logicActiveMask(void);

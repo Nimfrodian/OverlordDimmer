@@ -4,6 +4,7 @@
 #define TRIGGER_DELAY_TABLE_SIZE 1001
 
 uint32_t g_numOfTriggers = 0;
+float g_zeroCrossDelay_us = 0.0f;
 dutyCycleConfigType g_dutyCycleConfig[32];
 float g_dutyCycles[32] = {0};  // holds duty cycles as calculated by calc_duty_cycle
 
@@ -11,7 +12,8 @@ uint16_t g_triggerDelayLookupTable_us[TRIGGER_DELAY_TABLE_SIZE];
 
 void init_logic(logicConfigType const* logicCfgPtr)
 {
-    g_numOfTriggers = logicCfgPtr->numOfTriggers;
+    g_numOfTriggers = (uint32_t) logicCfgPtr->numOfTriggers;
+    g_zeroCrossDelay_us = (float) logicCfgPtr->zeroCrossDelay_us;
 
     initLookupTable();
 }
@@ -62,9 +64,9 @@ void initLookupTable()
     {
         float prcntReq = ((float) i) / ((float)(TRIGGER_DELAY_TABLE_SIZE - 1));
         uint16_t delayTime = 10000 * (acosf(-2.0 * prcntReq + 1) / M_PI);
-        if (delayTime > MAX_TRIGGER_DELAY)
+        if (delayTime > 9900)
         {
-            delayTime = MAX_TRIGGER_DELAY;
+            delayTime = 9900;
         }
         g_triggerDelayLookupTable_us[i] = delayTime;
     }
@@ -81,7 +83,7 @@ void config_duty_cycle(uint32_t OutIndx, float EndPrcnt, uint64_t TimeToEndPrcnt
     g_dutyCycleConfig[OutIndx].delta = (((int64_t)g_dutyCycleConfig[OutIndx].endVal - (int64_t)g_dutyCycleConfig[OutIndx].outVal) / (int64_t)timeToEndPrcnt_10ms);   // 10^9 bigger
 }
 
-void calc_new_table(triggerTableType* preparingTable)
+void calc_new_table(triggerTableType* PreparingTablePtr, float PeriodRatio)
 {
     triggerTableType emptyData =
     {
@@ -93,32 +95,34 @@ void calc_new_table(triggerTableType* preparingTable)
     {
         for (uint8_t i = 0; i < 11; i++)
         {
-            preparingTable[i] = emptyData;
+            PreparingTablePtr[i] = emptyData;
         }
     }
 
 
     // create masks for each output
     {
+        PeriodRatio = (PeriodRatio >= 1.1f) ? 1.1 : (((PeriodRatio <= 0.9f)) ? 0.9f : PeriodRatio);
+
         for (uint8_t i = 1; i < g_numOfTriggers; i++)
         {
             uint16_t dutyCyclIndx = (uint16_t) (1000.0 * g_dutyCycles[i-1]);
-            uint16_t triggerTime_us = g_triggerDelayLookupTable_us[dutyCyclIndx];
-            if (triggerTime_us > 0)
+            uint16_t triggerTime_us = ((float) g_triggerDelayLookupTable_us[dutyCyclIndx]) * PeriodRatio;
+            if (triggerTime_us > 200)
             {
-                if (triggerTime_us < MAX_TRIGGER_DELAY) // turn off only if trigger time is before next interval
+                if (triggerTime_us < (10000.0f - g_zeroCrossDelay_us) * PeriodRatio) // turn off only if trigger time is before next interval
                 {
-                    preparingTable[i].mask = 0x01 << (i-1);
+                    PreparingTablePtr[i].mask = 0x01 << (i-1);
                 }
-                preparingTable[0].mask |= 0x01 << (i-1);
+                PreparingTablePtr[0].mask |= 0x01 << (i-1);
             }
-            preparingTable[i].triggerTime_us = triggerTime_us;
+            PreparingTablePtr[i].triggerTime_us = triggerTime_us;
         }
     }
 
     // sort the table
     {
-        std::sort(&preparingTable[0], &preparingTable[10], [](triggerTableType &a, triggerTableType &b){return a.triggerTime_us < b.triggerTime_us;});
+        std::sort(&PreparingTablePtr[0], &PreparingTablePtr[10], [](triggerTableType &a, triggerTableType &b){return a.triggerTime_us < b.triggerTime_us;});
     }
 
     // compress the table
@@ -128,18 +132,18 @@ void calc_new_table(triggerTableType* preparingTable)
 
         for (observed = 1; observed < g_numOfTriggers; observed++)
         {
-            if (preparingTable[observed].triggerTime_us > 0)
+            if (PreparingTablePtr[observed].triggerTime_us > 0)
             {
-                if (preparingTable[compressed].triggerTime_us == preparingTable[observed].triggerTime_us)
+                if (PreparingTablePtr[compressed].triggerTime_us == PreparingTablePtr[observed].triggerTime_us)
                 {
-                    preparingTable[compressed].mask &= (~preparingTable[observed].mask);
+                    PreparingTablePtr[compressed].mask &= (~PreparingTablePtr[observed].mask);
                 }
                 else
                 {
                     compressed++;
-                    preparingTable[compressed].triggerTime_us = preparingTable[observed].triggerTime_us;
-                    preparingTable[compressed].mask = preparingTable[compressed - 1].mask & (~preparingTable[observed].mask);
-                    preparingTable[compressed - 1].deltaTimeToNext_us = preparingTable[compressed].triggerTime_us - preparingTable[compressed - 1].triggerTime_us;
+                    PreparingTablePtr[compressed].triggerTime_us = PreparingTablePtr[observed].triggerTime_us;
+                    PreparingTablePtr[compressed].mask = PreparingTablePtr[compressed - 1].mask & (~PreparingTablePtr[observed].mask);
+                    PreparingTablePtr[compressed - 1].deltaTimeToNext_us = PreparingTablePtr[compressed].triggerTime_us - PreparingTablePtr[compressed - 1].triggerTime_us;
                 }
             }
         }

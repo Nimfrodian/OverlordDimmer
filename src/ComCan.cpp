@@ -2,7 +2,13 @@
 #include "logic.h"
 
 CAN_device_t CAN_cfg;
-static canRxDataType g_rxData = {0};
+static canRxDataType g_rxData =
+{
+    .timeRequest_10ms = 0,
+    .dutyCycleReq = 0,
+    .triggerIndexMask = 0,
+    .dataReceived = 0,
+};
 
 void ComCan_init()
 {

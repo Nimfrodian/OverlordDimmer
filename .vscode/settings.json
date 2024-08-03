@@ -3,6 +3,8 @@
         "system_error": "cpp",
         "string_view": "cpp",
         "array": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "*.cpp2": "c",
+        "logic.h": "c"
     }
 }

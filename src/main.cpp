@@ -47,6 +47,11 @@ extern "C" void app_main()
     {
         // logic init
         main_c_numOfTriggeringPins_U32 = sizeof(g_triggerPins) / sizeof(g_triggerPins[0]);
+        logicInitType logicCfg
+        {
+            .numOfPhyOut = main_c_numOfTriggeringPins_U32,
+        };
+        logic_init(&logicCfg);
     }
 
     {
@@ -98,7 +103,7 @@ extern "C" void app_main()
                 {
                     float endPrcnt = ((float) rxDataPtr->dutyCycleReq) / 1000.0f;
                     endPrcnt = (endPrcnt > 1.0f)? 1.0f : (endPrcnt < 0.0f) ? 0.0f : endPrcnt;
-                    // TODO: update duty cycle from CAN message
+                    config_duty_cycle(i, endPrcnt, rxDataPtr->timeRequest_10ms);
                 }
             }
             rxDataPtr->dataReceived = 0;

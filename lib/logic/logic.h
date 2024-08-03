@@ -37,6 +37,12 @@ void logic_init(logicInitType* logicCfg);
  */
 void config_duty_cycle(uint32_t OutIndx, float EndPrcnt, uint64_t TimeToEndPrcnt_ms);
 
+/**
+ * @brief Function updates duty cycles and should be called periodically
+ * @param void
+ * @return (void)
+ */
+void calc_duty_cycle(void);
 
 /**
  * @brief Function prepares information for CAN message.

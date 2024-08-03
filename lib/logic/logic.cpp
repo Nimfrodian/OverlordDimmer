@@ -54,6 +54,46 @@ void config_duty_cycle(uint32_t OutIndx, float EndPrcnt, uint64_t TimeToEndPrcnt
     }
 }
 
+void calc_duty_cycle(void)
+{
+    for (uint32_t i = 0; i < (lgic_c_numOfTriggeringPins_U32); i++)
+    {
+        int64_t diff = (lgic_s_dutyCycleConfig_S[i].delta + lgic_s_dutyCycleConfig_S[i].outVal);
+        if (lgic_s_dutyCycleConfig_S[i].delta > 0)
+        {
+            if (diff > lgic_s_dutyCycleConfig_S[i].endVal)
+            {
+                lgic_s_dutyCycleConfig_S[i].outVal = lgic_s_dutyCycleConfig_S[i].endVal;
+            }
+            else
+            {
+                lgic_s_dutyCycleConfig_S[i].outVal += lgic_s_dutyCycleConfig_S[i].delta;
+            }
+        }
+        else
+        {
+            if (diff < lgic_s_dutyCycleConfig_S[i].endVal)
+            {
+                lgic_s_dutyCycleConfig_S[i].outVal = lgic_s_dutyCycleConfig_S[i].endVal;
+            }
+            else
+            {
+                lgic_s_dutyCycleConfig_S[i].outVal += lgic_s_dutyCycleConfig_S[i].delta;
+            }
+        }
+        float dutCycle = ((float) lgic_s_dutyCycleConfig_S[i].outVal) / 1000000000.0f;
+        if (dutCycle > 1.0f)
+        {
+            dutCycle = 1.0f;
+        }
+        else if (dutCycle < 0.0f)
+        {
+            dutCycle = 0.0f;
+        }
+        lgic_s_dutyCycleConfig_S[i].currDutCycl = dutCycle;
+    }
+}
+
 void logic_compose(uint8_t* DataPtr, uint32_t* MsgIdPtr)
 {
     if (!lgic_f_moduleInit_B)

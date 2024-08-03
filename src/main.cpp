@@ -13,6 +13,12 @@
 
 static uint32_t main_c_numOfTriggeringPins_U32 = 0;
 static bool main_f_updateTable_B = true;
+static int64_t main_ti_prevPeriodStart_S64 = 0;     /// Time when previous period started in us
+static int64_t main_ti_currPeriodStart_S64 = 10000; /// Time when period started in us. Used to calculate period ratio (time deviation)
+
+static triggerTableType  main_s_triggerTable_S [2][32]; // two trigger tables - one active, one in preparation. 1 initial state and 1 state for each output
+static triggerTableType* main_s_activeTable_S     = &main_s_triggerTable_S[1][0];    // active table currently being applied
+static triggerTableType* main_s_preparingTable_S  = &main_s_triggerTable_S[0][0]; // table being prepared and will be used in the next cycle
 
 gpio_num_t g_triggerPins[] =
 {
@@ -52,6 +58,23 @@ extern "C" void app_main()
             .numOfPhyOut = main_c_numOfTriggeringPins_U32,
         };
         logic_init(&logicCfg);
+
+        // prepare triggering table
+        triggerTableType tableEmptyData =
+        {
+            .deltaTimeToNext_us = 0,
+            .triggerTime_us = 0,
+            .mask = LAST_MASK_FLAG,
+        };
+        uint8_t numOfTables = sizeof(main_s_triggerTable_S) / sizeof(main_s_triggerTable_S[0]);
+        uint8_t numOfTablesIndxs = sizeof(main_s_triggerTable_S[0]) / sizeof(main_s_triggerTable_S[0][0]);
+        for (uint8_t table = 0; table < numOfTables; table++)
+        {
+            for (uint8_t tableIndx = 0; tableIndx < numOfTablesIndxs; tableIndx++)
+            {
+                main_s_triggerTable_S[table][tableIndx] = tableEmptyData;
+            }
+        }
     }
 
     {
@@ -90,7 +113,8 @@ extern "C" void app_main()
     {
         if (true == main_f_updateTable_B)
         {
-            // calc new timings and masks given the current period ratio
+            float periodRatio = ((float) (main_ti_currPeriodStart_S64 - main_ti_prevPeriodStart_S64)) / 10000.0f;
+            calc_new_table(main_s_preparingTable_S, periodRatio);
         }
 
         ComCan_receive();

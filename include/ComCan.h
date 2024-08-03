@@ -15,7 +15,7 @@ typedef struct
 
 void ComCan_init(void);
 void ComCan_receive(void);
-void ComCan_transmit(float*, uint8_t);
+void ComCan_transmit(CAN_frame_t* CanMsgPtr, uint8_t count);
 canRxDataType* ComCan_get_rxData(void);
 
 #endif

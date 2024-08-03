@@ -48,58 +48,11 @@ void ComCan_receive(void)
     }
 }
 
-void ComCan_transmit(float* CurrentStatesArr, uint8_t NumOfTriggers)
+void ComCan_transmit(CAN_frame_t* CanMsgPtr, uint8_t Count)
 {
-    uint16_t validatedValues[32] = {0};
-    for (int i = 0; i < NumOfTriggers; i++)
+    for (uint8_t msgArrIndx = 0; msgArrIndx < Count; msgArrIndx++)
     {
-        validatedValues[i] = uint16_t (CurrentStatesArr[i] * 1000.0f);
-    }
-
-    static uint8_t msgIndx = CAN_REPLY_MESSAGE0;
-    if (CAN_REPLY_MESSAGE0 == msgIndx)
-    {
-        CAN_frame_t canMsg0x96 = {0};
-
-        canMsg0x96.MsgID = 0x96;
-        canMsg0x96.FIR.B.DLC = 8;
-        canMsg0x96.FIR.B.FF = CAN_frame_std;
-        canMsg0x96.FIR.B.RTR = CAN_no_RTR;
-
-        // pack CurrentStatesArr into canMsg0x96.data.u8
-        canMsg0x96.data.u8[0] = (validatedValues[0] & 0xFF);
-        canMsg0x96.data.u8[1] = ((validatedValues[1] & 0x3F) << 2) | ((validatedValues[0] >> 8) & 0x03);
-        canMsg0x96.data.u8[2] = ((validatedValues[2] & 0x0F) << 4) | ((validatedValues[1] >> 6) & 0x0F);
-        canMsg0x96.data.u8[3] = ((validatedValues[3] & 0x03) << 6) | ((validatedValues[2] >> 4) & 0x3F);
-        canMsg0x96.data.u8[4] = ((validatedValues[3] >> 2) & 0xFF);
-        canMsg0x96.data.u8[5] = (validatedValues[4] & 0xFF);
-        canMsg0x96.data.u8[6] = ((validatedValues[4] >> 8) & 0x03);
-        canMsg0x96.data.u8[7] = 0;
-
-        ESP32Can.CANWriteFrame(&canMsg0x96);
-        msgIndx = CAN_REPLY_MESSAGE1;
-    }
-    else if (CAN_REPLY_MESSAGE1 == msgIndx)
-    {
-        CAN_frame_t canMsg0x97 = {0};
-
-        canMsg0x97.MsgID = 0x97;
-        canMsg0x97.FIR.B.DLC = 8;
-        canMsg0x97.FIR.B.FF = CAN_frame_std;
-        canMsg0x97.FIR.B.RTR = CAN_no_RTR;
-
-        // pack CurrentStatesArr into canMsg0x97.data.u8
-        canMsg0x97.data.u8[0] = (validatedValues[5] & 0xFF);
-        canMsg0x97.data.u8[1] = ((validatedValues[6] & 0x3F) << 2) | ((validatedValues[5] >> 8) & 0x03);
-        canMsg0x97.data.u8[2] = ((validatedValues[7] & 0x0F) << 4) | ((validatedValues[6] >> 6) & 0x0F);
-        canMsg0x97.data.u8[3] = ((validatedValues[8] & 0x03) << 6) | ((validatedValues[7] >> 4) & 0x3F);
-        canMsg0x97.data.u8[4] = ((validatedValues[8] >> 2) & 0xFF);
-        canMsg0x97.data.u8[5] = (validatedValues[9] & 0xFF);
-        canMsg0x97.data.u8[6] = ((validatedValues[9] >> 8) & 0x03);
-        canMsg0x97.data.u8[7] = 0;
-
-        ESP32Can.CANWriteFrame(&canMsg0x97);
-        msgIndx = CAN_REPLY_MESSAGE0;
+        ESP32Can.CANWriteFrame(&CanMsgPtr[msgArrIndx]);
     }
 }
 

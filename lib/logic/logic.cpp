@@ -3,10 +3,11 @@
 
 #define TRIGGER_DELAY_TABLE_SIZE 1001
 
-uint32_t g_numOfTriggers = 0;
-float g_zeroCrossDelay_us = 0.0f;
-dutyCycleConfigType g_dutyCycleConfig[32];
-float g_dutyCycles[32] = {0};  // holds duty cycles as calculated by calc_duty_cycle
+static uint32_t g_numOfTriggers = 0;
+static float g_zeroCrossDelay_us = 0.0f;
+static dutyCycleConfigType g_dutyCycleConfig[32];
+static float g_dutyCycles[32] = {0};  // holds duty cycles as calculated by calc_duty_cycle
+static uint32_t g_lastTriggerTime_us = 0;
 
 uint16_t g_triggerDelayLookupTable_us[TRIGGER_DELAY_TABLE_SIZE];
 
@@ -102,6 +103,7 @@ void calc_new_table(triggerTableType* PreparingTablePtr, float PeriodRatio)
 
     // create masks for each output
     {
+        g_lastTriggerTime_us = 0;
         PeriodRatio = (PeriodRatio >= 1.1f) ? 1.1 : (((PeriodRatio <= 0.9f)) ? 0.9f : PeriodRatio);
 
         for (uint8_t i = 1; i < g_numOfTriggers; i++)
@@ -110,13 +112,14 @@ void calc_new_table(triggerTableType* PreparingTablePtr, float PeriodRatio)
             uint16_t triggerTime_us = ((float) g_triggerDelayLookupTable_us[dutyCyclIndx]) * PeriodRatio;
             if (triggerTime_us > 200)
             {
-                if (triggerTime_us < (10000.0f - g_zeroCrossDelay_us) * PeriodRatio) // turn off only if trigger time is before next interval
+                if (0.98f > g_dutyCycles[i-1]) // turn off only if duty cycle is under
                 {
                     PreparingTablePtr[i].mask = 0x01 << (i-1);
                 }
                 PreparingTablePtr[0].mask |= 0x01 << (i-1);
             }
             PreparingTablePtr[i].triggerTime_us = triggerTime_us;
+            g_lastTriggerTime_us = (triggerTime_us > g_lastTriggerTime_us) ? triggerTime_us : g_lastTriggerTime_us;
         }
     }
 
@@ -126,7 +129,7 @@ void calc_new_table(triggerTableType* PreparingTablePtr, float PeriodRatio)
     }
 
     // compress the table
-     {
+    {
         uint8_t compressed = 0; // this one is being compressed into
         uint8_t observed;   // this one is being observed if it is to be compressed or if it is unique
 
@@ -147,6 +150,7 @@ void calc_new_table(triggerTableType* PreparingTablePtr, float PeriodRatio)
                 }
             }
         }
+        PreparingTablePtr[compressed].mask |= 0x8000;   // add flag that this is the final one
     }
 }
 

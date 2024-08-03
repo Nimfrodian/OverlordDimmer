@@ -61,20 +61,20 @@ void IRAM_ATTR apply_output(void)
     gpio_set_level(g_triggerPins[7], (mask >> 7) & 0x01);
     gpio_set_level(g_triggerPins[8], (mask >> 8) & 0x01);
     gpio_set_level(g_triggerPins[9], (mask >> 9) & 0x01);
-    g_triggerCounter++;
 
     esp_err_t err = ESP_FAIL;
     // reloads timer_ON_isr_handler if another triggering needs to happen before the next cycle
-    if ((g_activeTable[g_triggerCounter-1].deltaTimeToNext_us != 0) && (g_triggerCounter < 11))
+    if (!(g_activeTable[g_triggerCounter].mask & 0x8000))   // MSB signals that this is the last triggering
     {
-        uint64_t deltaTime_us = g_activeTable[g_triggerCounter-1].deltaTimeToNext_us;
+        uint64_t deltaTime_us = g_activeTable[g_triggerCounter].deltaTimeToNext_us;
         err = esp_timer_start_once(singleShot_timerOn, deltaTime_us);
+        g_triggerCounter++;
         if (ESP_OK != err)
         {
             ESP_LOGI("Main", "Failed to start singleShot_timerOn with error code %u", err);
         }
     }
-    else
+    else // MSB was true and that was the last triggering
     {
         // reset the timer when the last operation was completed
         g_triggerCounter = 0;
@@ -224,7 +224,7 @@ extern "C" void app_main()
         {
             .deltaTimeToNext_us = 0,
             .triggerTime_us = 0,
-            .mask = 0
+            .mask = 0x8000
         };
         for (uint8_t i = 0; i < (NUM_OF_TRIGGERS + 1); i++)
         {

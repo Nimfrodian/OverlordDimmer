@@ -24,7 +24,7 @@ typedef struct
 {
     uint16_t deltaTimeToNext_us;     ///< delay relative to previous triggering
     uint16_t triggerTime_us;          ///< delay time in microseconds to trigger mask
-    uint32_t mask;              ///< true for outputs that are to be turned off
+    uint32_t mask;              ///< true for outputs that are to be turned off. MSB signals last mask
 } triggerTableType;
 
 extern void init_logic(logicConfigType const* logicCfgPtr);

@@ -28,13 +28,5 @@
             "group": "test",
             "label": "PlatformIO: Test (extra_unity_options)"
         },
-        {
-            "type": "PlatformIO",
-            "task": "Pre-Debug (extra_unity_options)",
-            "problemMatcher": [
-                "$platformio"
-            ],
-            "label": "PlatformIO: Pre-Debug (extra_unity_options)"
-        }
     ]
 }

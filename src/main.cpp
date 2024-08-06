@@ -1,245 +1,196 @@
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "freertos/queue.h"
-#include "freertos/semphr.h"
-#include "driver/gpio.h"
-#include "driver/timer.h"
-#include "driver/uart.h"
-#include "string.h"
+#include "espa.h"
 #include "main.h"
-#include "ComCan.h"
-#include "logic.h"
-#include "esp_log.h"
 
-#define POST_ZERO_CROSS_DETECT_DELAY_us (70u)   // delay after GPIO is triggered. The GPIO is triggered before zero-crossing actually happens
+static bool main_fl_updateTable_tB = true;                  ///< flags if a new duty cycle table needs to be calculated. Should occur about once very 10ms
+static int64_t main_ti_us_prevPeriodStart_S64 = 0;          ///< Time when previous period started in us
+static int64_t main_ti_us_currPeriodStart_S64 = 10000;      ///< Time when period started in us. Used to calculate period ratio (time deviation)
+static uint32_t main_nr_numOfTriggeringPins_U32 = 0;        ///< number of physical triggering pins
+static uint32_t main_ti_us_zeroCrossTriggerDelay_U32 = 70;  ///< time delay after zero-cross is detected before activating mask
 
-static uint32_t main_c_numOfTriggeringPins_U32 = 0;
-static bool main_f_updateTable_B = true;
-static int64_t main_ti_prevPeriodStart_S64 = 0;     /// Time when previous period started in us
-static int64_t main_ti_currPeriodStart_S64 = 10000; /// Time when period started in us. Used to calculate period ratio (time deviation)
+static uint32_t                     main_x_triggerCounter_U32 = 0;    ///< variable counts which index of the active table should be applied
+static tLGIC_TRIGGERTABLEDATA_STR   main_x_triggerTable_astr [2][32]; ///< two trigger tables - one active, one in preparation. 1 initial state and 1 state for each output
+static tLGIC_TRIGGERTABLEDATA_STR*  main_x_activeTable_pstr    = &main_x_triggerTable_astr[1][0]; ///< active table currently being applied
+static tLGIC_TRIGGERTABLEDATA_STR*  main_x_preparingTable_pstr = &main_x_triggerTable_astr[0][0]; ///< table being prepared and will be used in the next cycle
 
-static uint32_t          main_c_triggerCounter_U32 = 0; // variable counts which index of the active table should be applied
-static triggerTableType  main_s_triggerTable_S [2][32]; // two trigger tables - one active, one in preparation. 1 initial state and 1 state for each output
-static triggerTableType* main_s_activeTable_S     = &main_s_triggerTable_S[1][0];    // active table currently being applied
-static triggerTableType* main_s_preparingTable_S  = &main_s_triggerTable_S[0][0]; // table being prepared and will be used in the next cycle
+static tTMRA_TIMERHANDLE_STR tmra_h_initialInterrupt_pstr;   ///< initial interrupt triggered by GPIO
+static tTMRA_TIMERHANDLE_STR tmra_h_subsequentInterrupt_pstr;   ///< subsequent interrupts triggered by timer. Sets the actual output values
 
-static esp_timer_handle_t singleShot_initial;   ///< initial interrupt triggered by GPIO
-static esp_timer_handle_t singleShot_subsqnt;   ///< subsequent interrupts triggered by timer. Sets the actual output values
-
-gpio_num_t g_triggerPins[] =
+static PINA_nr_GPIO_NUM_E main_x_triggerPins_aE[] =
 {
-    GPIO_NUM_16,
-    GPIO_NUM_17,
-    GPIO_NUM_18,
-    GPIO_NUM_19,
-    GPIO_NUM_21,
-    GPIO_NUM_22,
-    GPIO_NUM_23,
-    GPIO_NUM_25,
-    GPIO_NUM_26,
-    GPIO_NUM_27,
+    PINA_OUT_NUM_0,
+    PINA_OUT_NUM_1,
+    PINA_OUT_NUM_2,
+    PINA_OUT_NUM_3,
+    PINA_OUT_NUM_4,
+    PINA_OUT_NUM_5,
+    PINA_OUT_NUM_6,
+    PINA_OUT_NUM_7,
+    PINA_OUT_NUM_8,
+    PINA_OUT_NUM_9,
 };
 
-void IRAM_ATTR apply_output(void);
+/**
+ * @brief Helper function applies currently relevant mask to physical outputs
+ * @param void
+ * @return (void)
+ */
+static void IRAM_ATTR main_applyOutput_ev(void);
 
-void IRAM_ATTR gpio_isr_handler(void* arg)
+void IRAM_ATTR main_gpioInterruptHandler_isr(void* arg)
 {
-    // start countdown timer as the zero-cross trigger occurs some time before actual zero-cross
-    ESP_ERROR_CHECK(esp_timer_start_once(singleShot_initial, POST_ZERO_CROSS_DETECT_DELAY_us));
+    ///< start countdown timer as the zero-cross trigger occurs some time before actual zero-cross
+    tmra_startTimer(&tmra_h_initialInterrupt_pstr, main_ti_us_zeroCrossTriggerDelay_U32);
 }
 
-void timer_isr_handler_subsequent(void* arg)
+void main_subsequentTimerInterruptHandler_isr(void* arg)
 {
-    apply_output();
+    main_applyOutput_ev();
 }
 
-void timer_isr_handler_initial(void* arg)
+void main_initialTimerInterruptHandler_isr(void* arg)
 {
-    main_ti_prevPeriodStart_S64 = main_ti_currPeriodStart_S64;
-    main_ti_currPeriodStart_S64 = esp_timer_get_time();
+    main_ti_us_prevPeriodStart_S64 = main_ti_us_currPeriodStart_S64;
+    main_ti_us_currPeriodStart_S64 = tmra_ti_us_getCurrentTime();
 
-    // swap tables used
-    triggerTableType* temp = main_s_activeTable_S;
-    main_s_activeTable_S = main_s_preparingTable_S;
-    main_s_preparingTable_S = temp;
+    ///< swap tables used
+    tLGIC_TRIGGERTABLEDATA_STR* temp_pstr = main_x_activeTable_pstr;
+    main_x_activeTable_pstr = main_x_preparingTable_pstr;
+    main_x_preparingTable_pstr = temp_pstr;
 
-    // stop active timer if it is still active
-    if (esp_timer_is_active(singleShot_subsqnt))
+    ///< stop active timer if it is still active
+    if (tmra_isTimerActive(&tmra_h_subsequentInterrupt_pstr))
     {
-        esp_err_t err = esp_timer_stop(singleShot_subsqnt);
-        if (ESP_OK != err)
+        uint32_t err = tmra_stopTimer(&tmra_h_subsequentInterrupt_pstr);
+        if (0 != err)
         {
-            ESP_LOGI("Main", "Failed to stop singleShot_subsqnt with error code %u", err);
+            // TODO: Report error
         }
     }
 
-    main_c_triggerCounter_U32 = 0;   // reset triggering to start from 0
-    apply_output();
+    main_x_triggerCounter_U32 = 0;   ///< reset triggering to start from 0
+    main_applyOutput_ev();
 
-    // flag that a new table will be needed
-    main_f_updateTable_B = true;
+    ///< flag that a new table will be needed
+    main_fl_updateTable_tB = true;
 }
 
-void IRAM_ATTR apply_output(void)
+void IRAM_ATTR main_applyOutput_ev(void)
 {
-    uint32_t mask = main_s_activeTable_S[main_c_triggerCounter_U32].mask;
-    gpio_set_level(g_triggerPins[0], (mask >> 0) & 0x01);
-    gpio_set_level(g_triggerPins[1], (mask >> 1) & 0x01);
-    gpio_set_level(g_triggerPins[2], (mask >> 2) & 0x01);
-    gpio_set_level(g_triggerPins[3], (mask >> 3) & 0x01);
-    gpio_set_level(g_triggerPins[4], (mask >> 4) & 0x01);
-    gpio_set_level(g_triggerPins[5], (mask >> 5) & 0x01);
-    gpio_set_level(g_triggerPins[6], (mask >> 6) & 0x01);
-    gpio_set_level(g_triggerPins[7], (mask >> 7) & 0x01);
-    gpio_set_level(g_triggerPins[8], (mask >> 8) & 0x01);
-    gpio_set_level(g_triggerPins[9], (mask >> 9) & 0x01);
+    uint32_t mask_U32 = main_x_activeTable_pstr[main_x_triggerCounter_U32].ma_triggerMask_U32;
+    pina_setGpioLevel(main_x_triggerPins_aE[0], (mask_U32 >> 0) & 0x01);
+    pina_setGpioLevel(main_x_triggerPins_aE[1], (mask_U32 >> 1) & 0x01);
+    pina_setGpioLevel(main_x_triggerPins_aE[2], (mask_U32 >> 2) & 0x01);
+    pina_setGpioLevel(main_x_triggerPins_aE[3], (mask_U32 >> 3) & 0x01);
+    pina_setGpioLevel(main_x_triggerPins_aE[4], (mask_U32 >> 4) & 0x01);
+    pina_setGpioLevel(main_x_triggerPins_aE[5], (mask_U32 >> 5) & 0x01);
+    pina_setGpioLevel(main_x_triggerPins_aE[6], (mask_U32 >> 6) & 0x01);
+    pina_setGpioLevel(main_x_triggerPins_aE[7], (mask_U32 >> 7) & 0x01);
+    pina_setGpioLevel(main_x_triggerPins_aE[8], (mask_U32 >> 8) & 0x01);
+    pina_setGpioLevel(main_x_triggerPins_aE[9], (mask_U32 >> 9) & 0x01);
 
-    // reloads timer if this isn't the last triggering
-    if (main_s_activeTable_S[main_c_triggerCounter_U32].mask & 0x8000)   // MSB signals that this is the last triggering
+    ///< reloads timer if this isn't the last triggering
+    if (main_x_activeTable_pstr[main_x_triggerCounter_U32].ma_triggerMask_U32 & LGIC_MA_LAST_MASK_TO_BE_USED_FLAG_U32)   ///< MSB signals that this is the last triggering
     {
-        // reset the timer when the last operation was completed
-        main_c_triggerCounter_U32 = 0;
+        ///< reset the timer when the last operation was completed
+        main_x_triggerCounter_U32 = 0;
     }
     else
     {
-        uint64_t deltaTime_us = main_s_activeTable_S[main_c_triggerCounter_U32].deltaTimeToNext_us;
-        esp_err_t err = esp_timer_start_once(singleShot_subsqnt, deltaTime_us);
-        main_c_triggerCounter_U32++;
-        if (ESP_OK != err)
+        uint32_t ti_us_delta_U32 = main_x_activeTable_pstr[main_x_triggerCounter_U32].ti_us_deltaToNext_U16;
+        uint32_t err = tmra_startTimer(&tmra_h_subsequentInterrupt_pstr, ti_us_delta_U32);
+        if (0 != err)
         {
-            ESP_LOGI("Main", "Failed to start singleShot_subsqnt with error code %u", err);
+            //TODO: Log error ("Main", "Failed to start tmra_h_subsequentInterrupt_pstr with error code %u", err);
         }
+        main_x_triggerCounter_U32++;
     }
 }
 
 extern "C" void app_main()
 {
-    // Initialize UART0
-    uart_config_t uart_config = {
-        .baud_rate = 115200,
-        .data_bits = UART_DATA_8_BITS,
-        .parity = UART_PARITY_DISABLE,
-        .stop_bits = UART_STOP_BITS_1,
-        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
-        .rx_flow_ctrl_thresh = 0,
-        .source_clk = UART_SCLK_APB,
-    };
-    uart_param_config(UART_NUM_0, &uart_config);
-    uart_driver_install(UART_NUM_0, 1024 * 2, 0, 0, NULL, 0);
+    // initialize serial communication
+    {
+        sera_init();
+    }
 
     {
-        // logic init
-        main_c_numOfTriggeringPins_U32 = sizeof(g_triggerPins) / sizeof(g_triggerPins[0]);
-        logicInitType logicCfg
+        ///< logic init
+        main_nr_numOfTriggeringPins_U32 = sizeof(main_x_triggerPins_aE) / sizeof(main_x_triggerPins_aE[0]);
+        tLGIC_INITDATA_STR logicCfg
         {
-            .numOfPhyOut = main_c_numOfTriggeringPins_U32,
+            .nr_numOfPhysicalOutputs = main_nr_numOfTriggeringPins_U32,
         };
-        logic_init(&logicCfg);
+        lgic_init(&logicCfg);
 
-        // prepare triggering table
-        triggerTableType tableEmptyData =
+        ///< prepare triggering table
+        tLGIC_TRIGGERTABLEDATA_STR lgic_emptyTriggerData_str =
         {
-            .deltaTimeToNext_us = 0,
-            .triggerTime_us = 0,
-            .mask = LAST_MASK_FLAG,
+            .ti_us_deltaToNext_U16 = 0,
+            .ti_us_triggerDelay_U16 = 0,
+            .ma_triggerMask_U32 = LGIC_MA_LAST_MASK_TO_BE_USED_FLAG_U32,
         };
-        uint8_t numOfTables = sizeof(main_s_triggerTable_S) / sizeof(main_s_triggerTable_S[0]);
-        uint8_t numOfTablesIndxs = sizeof(main_s_triggerTable_S[0]) / sizeof(main_s_triggerTable_S[0][0]);
-        for (uint8_t table = 0; table < numOfTables; table++)
+        uint8_t numOfTables_U08 = sizeof(main_x_triggerTable_astr) / sizeof(main_x_triggerTable_astr[0]);
+        uint8_t numOfTableIndxs_U08 = sizeof(main_x_triggerTable_astr[0]) / sizeof(main_x_triggerTable_astr[0][0]);
+        for (uint8_t table = 0; table < numOfTables_U08; table++)
         {
-            for (uint8_t tableIndx = 0; tableIndx < numOfTablesIndxs; tableIndx++)
+            for (uint8_t tableIndx = 0; tableIndx < numOfTableIndxs_U08; tableIndx++)
             {
-                main_s_triggerTable_S[table][tableIndx] = tableEmptyData;
+                main_x_triggerTable_astr[table][tableIndx] = lgic_emptyTriggerData_str;
             }
         }
     }
 
-    // initialize interrupts
+    ///< initialize interrupts
     {
-        ESP_LOGI("Main", "Starting timer initialization");
-        ESP_LOGI("Main", "Timer early init finished with code %u", esp_timer_early_init());
-        ESP_LOGI("Main", "Timer init finished with code %u", esp_timer_init());
-
-        const esp_timer_create_args_t on_timer_args = {
-            .callback = &timer_isr_handler_subsequent,
-            .arg = NULL,
-            .dispatch_method = ESP_TIMER_TASK,
-            .name = "timer_isr_handler_subsequent",
-            .skip_unhandled_events = true,
-        };
-        if (ESP_OK != (esp_timer_create(&on_timer_args, &singleShot_subsqnt)))
-        {
-            ESP_LOGI("Main", "Failed to create singleShot_subsqnt!");
-        }
-
-        const esp_timer_create_args_t delay_timer_args = {
-            .callback = &timer_isr_handler_initial,
-            .arg = NULL,
-            .dispatch_method = ESP_TIMER_TASK,
-            .name = "timer_isr_handler_initial",
-            .skip_unhandled_events = true,
-        };
-        if (ESP_OK != (esp_timer_create(&delay_timer_args, &singleShot_initial)))
-        {
-            ESP_LOGI("Main", "Failed to create singleShot_initial!");
-        }
-
-        ESP_LOGI("Main", "Finished interrupt initialization");
+        tmra_createTimer(&tmra_h_subsequentInterrupt_pstr, main_subsequentTimerInterruptHandler_isr);
+        tmra_createTimer(&tmra_h_initialInterrupt_pstr, main_initialTimerInterruptHandler_isr);
     }
 
     {
-        gpio_set_level(g_triggerPins[0], 0);
-        gpio_set_level(g_triggerPins[1], 0);
-        gpio_set_level(g_triggerPins[2], 0);
-        gpio_set_level(g_triggerPins[3], 0);
-        gpio_set_level(g_triggerPins[4], 0);
-        gpio_set_level(g_triggerPins[5], 0);
-        gpio_set_level(g_triggerPins[6], 0);
-        gpio_set_level(g_triggerPins[7], 0);
-        gpio_set_level(g_triggerPins[8], 0);
-        gpio_set_level(g_triggerPins[9], 0);
+        pina_setGpioLevel(main_x_triggerPins_aE[0], 0);
+        pina_setGpioLevel(main_x_triggerPins_aE[1], 0);
+        pina_setGpioLevel(main_x_triggerPins_aE[2], 0);
+        pina_setGpioLevel(main_x_triggerPins_aE[3], 0);
+        pina_setGpioLevel(main_x_triggerPins_aE[4], 0);
+        pina_setGpioLevel(main_x_triggerPins_aE[5], 0);
+        pina_setGpioLevel(main_x_triggerPins_aE[6], 0);
+        pina_setGpioLevel(main_x_triggerPins_aE[7], 0);
+        pina_setGpioLevel(main_x_triggerPins_aE[8], 0);
+        pina_setGpioLevel(main_x_triggerPins_aE[9], 0);
 
-        for (int i = 0; i < main_c_numOfTriggeringPins_U32; i++)
+        for (int i = 0; i < main_nr_numOfTriggeringPins_U32; i++)
         {
-            gpio_reset_pin(g_triggerPins[i]);
-            gpio_intr_disable(g_triggerPins[i]);
-            gpio_pulldown_dis(g_triggerPins[i]);
-            gpio_pullup_dis(g_triggerPins[i]);
-            gpio_set_direction(g_triggerPins[i], GPIO_MODE_OUTPUT);
+            pina_setGpioAsOutput(main_x_triggerPins_aE[i]);
         }
 
-        gpio_pulldown_en(GPIO_NUM_34);
-        gpio_set_direction(GPIO_NUM_34, GPIO_MODE_INPUT);
-        gpio_set_intr_type(GPIO_NUM_34, GPIO_INTR_POSEDGE);
-        gpio_intr_enable(GPIO_NUM_34);
+        pina_setGpioAsInput(PINA_IN_NUM_0);
 
-        gpio_install_isr_service(0); // install the ISR service with default configuration
-        gpio_isr_handler_add(GPIO_NUM_34, gpio_isr_handler, (void*) GPIO_NUM_34); // add the custom ISR handler
+        pina_setInterruptService(PINA_IN_NUM_0, main_gpioInterruptHandler_isr);
     }
 
     ComCan_init();
 
     while(true)
     {
-        if (true == main_f_updateTable_B)
+        if (true == main_fl_updateTable_tB)
         {
-            calc_duty_cycle();
-            float periodRatio = ((float) (main_ti_currPeriodStart_S64 - main_ti_prevPeriodStart_S64)) / 10000.0f;
-            calc_new_table(main_s_preparingTable_S, periodRatio);
-            main_f_updateTable_B = false;
+            lgic_calcDutyCycle_10ms();
+            float periodRatio_F32 = ((float) (main_ti_us_currPeriodStart_S64 - main_ti_us_prevPeriodStart_S64)) / 10000.0f;
+            lgic_calcNewTable_ev(main_x_preparingTable_pstr, periodRatio_F32);
+            main_fl_updateTable_tB = false;
         }
 
         ComCan_receive();
         canRxDataType* rxDataPtr = ComCan_get_rxData();
         if (1 == rxDataPtr->dataReceived)
         {
-            for (int i = 0; i < main_c_numOfTriggeringPins_U32; i++)
+            for (uint32_t i_U32 = 0; i_U32 < main_nr_numOfTriggeringPins_U32; i_U32++)
             {
-                if ((rxDataPtr->triggerIndexMask >> i) & 0x01)
+                if ((rxDataPtr->triggerIndexMask >> i_U32) & 0x01)
                 {
-                    float endPrcnt = ((float) rxDataPtr->dutyCycleReq) / 1000.0f;
-                    endPrcnt = (endPrcnt > 1.0f)? 1.0f : (endPrcnt < 0.0f) ? 0.0f : endPrcnt;
-                    config_duty_cycle(i, endPrcnt, rxDataPtr->timeRequest_10ms);
+                    float pr_endVal_F32 = ((float) rxDataPtr->dutyCycleReq) / 1000.0f;
+                    pr_endVal_F32 = (pr_endVal_F32 > 1.0f)? 1.0f : (pr_endVal_F32 < 0.0f) ? 0.0f : pr_endVal_F32;
+                    lgic_setDutyCycle_ev(i_U32, pr_endVal_F32, rxDataPtr->timeRequest_10ms);
                 }
             }
             rxDataPtr->dataReceived = 0;
@@ -265,7 +216,7 @@ extern "C" void app_main()
                 .data = {.u8 = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
             };
 
-            logic_compose(&canMsg.data.u8[0], &canMsg.MsgID);
+            lgic_canMsgCompose_100ms(&canMsg.data.u8[0], &canMsg.MsgID);
             ComCan_transmit(&canMsg, 1);
             counter = 0;
         }

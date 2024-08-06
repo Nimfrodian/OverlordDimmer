@@ -1,5 +1,5 @@
 #include "ComCan.h"
-#include "logic.h"
+#include "lgic.h"
 
 CAN_device_t CAN_cfg;
 static canRxDataType g_rxData =

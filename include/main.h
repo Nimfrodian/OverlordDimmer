@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include "stdint.h"
-#include "logic.h"
+#include "string.h"
+#include "ComCan.h"
+#include "lgic.h"
 
 #endif

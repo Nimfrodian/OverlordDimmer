@@ -1,5 +1,5 @@
 #include "unity.h"
-#include "logic.h"
+#include "lgic.h"
 
 #define NUM_OF_TRIGGERS 10
 

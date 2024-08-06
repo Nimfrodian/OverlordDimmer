@@ -1,0 +1,144 @@
+module; each module has at least a source file and a related h file. all files related to this module are prefixed with mmmm, where mmmm is a 4 letter module name, e.g. "csum.c"
+a module can also have an RTDB (real time database) file with variables that are to be used in RTDB
+
+group; a group can consist of several modules. each module in a group is to be prefixed with gggg, e.g. "util_csum.c"
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Variables;
+- no variables can be accessed from outside of module. variables that are accessible outside of the module should do so via RTDB or through specialized access functions
+global variables shall have format [module]_[unit type]_[unit]_[description]_[memory type], e.g. c1rx_ti_ms_sysTime_U32 for CAN 1 RX (c1rx) signal called sysTime (systime) of type unsigned int 32 (U32) which represents time (ti) in milliseconds (ms)
+
+local variables shall have name format [function, optional]_[unit type]_[unit]_[decription]_[memory type]
+tU08 func_ti_10ms_sampleCounter_U08;
+very simple local variables can also have name format as [description]_[memory type], temporary variables can also be named tmp_[memory type]
+
+defines shall have all* upper case letters and name format of [module]_[unit type]_[unit]_[description]_[memory type]. Defines shall also have explicit memory unit casting.
+description of a define can use underscores as camelCase is not used
+e.g., #define MODU_T_degC_MAX_TEMP_SENS_VAL_S08 ((tS08) 127)
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+unit types;
+a   acceleration
+ar  area
+cs  component status
+d   distance
+dc  duty cycle
+f   frequency
+fo  force
+fl  flag
+h   handle/handler
+i   electric current
+ix  index
+j   moment of intertia
+l   length (e.g., of an array)
+m   mass
+ma  bitwise mask
+n   rotational speed (RPM)
+nr  number of
+p   pressure
+pr  percent [0.0f - 1.0f]
+po  power
+r   ratio
+re  resistance
+s   status/state variable
+ss  signal status
+t   temperature
+ti  time/timer
+tq  torque
+u   voltage
+v   velocity
+vo  volume
+x   no unit
+
+To use a time derivative, prefix the unit with "d" for each derivative. e.g., pressure change can be denoted with _dp_, unit Papms (Pascal per millisecond)
+when specifying unit prefixing with number means multiplying, suffixing means dividing
+e.g., 10ms is 10ms, ms10 is (1/10)ms
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Variable types;
+description         type            RTDB signal type    suffix(var,DEFINE)          suffix(parameter)
+Boolean             tB              tBS                 _tB                         _Bc
+8 bit unsigned      tU08            tU08S               _U08                        _U08c
+8 bit signed        tS08            tS08S               _S08                        _S08c
+16 bit unsigned     tU16            tU16S               _U16                        _U16c
+16 bit signed       tS16            tS16S               _S16                        _S16c
+32 bit unsigned     tU32            tU32S               _U32                        _U32c
+32 bit signed       tS32            tS32S               _S32                        _S32c
+64 bit unsigned     tU64            tU64S               _U64                        _U64c
+64 bit signed       tS64            tS64S               _S64                        _S64c
+32 bit float        tF32            tF32S               _F32                        _F32c
+64 bit float        tF64            tF64S               _F64                        _F64c
+struct              t[name]STR      t[name]_STRS        _str                        _strc
+enum                t[name]E        t[name]_ES          _E                          _Ec
+union               t[name]UNI      t[name]_UNIS        _uni                        _unic
+
+
+prefixes;
+pointer                                 -> p        e.g., tU32* modu_x_someVar_pU32;
+pointer to function returning the type  -> pf       e.g., static tU32 (*someFunc_pfU32)(void);
+array of the type                       -> a        e.g., tU16 modu_x_someVar_aU16[];
+x-axis of the type                      -> x        e.g., tU32 modu_x_someVar_xU32;
+y-axis of the type                      -> y        e.g., tU32 modu_x_someVar_yU32;
+z-axis of the type                      -> z        e.g., tU32 modu_x_someVar_zU32;
+vector (1 dimensional)                  -> v        e.g., tU32 modu_x_someVar_vU32[];
+matrix (2 dimensional)                  -> M        e.g., tU32 modu_x_someVar_MU32[][];
+matrix (3 dimensional)                  -> c        e.g., tU32 modu_x_someVar_cU32[][][];
+
+
+
+User defined types shall have a prefix of t, followed by module name in upper case, followed by description in upper case, ending with STR
+e.g.
+typedef struct
+{
+    // variables using local variable naming convention
+} tMODU_X_CANMSGDATA_STR;
+tMODU_X_CANMSGDATA_STR modu_x_canMsg_str;
+
+bitfields and unions (should only be used when no other option is available, as it limits portability)
+e.g.,
+
+typedef union {
+    struct {
+        tU16 stop_1:        1;  // STOP bit
+        tU16 reserved1_6:   6;  // reserved
+        tU16 frz1_1:        1;  // freeze bit
+    }b;
+    tU8 r_U08;                  // access as 8 bits
+} tMODU_X_ABCDEF_UNI;
+tMODU_X_ABCDEF_UNI modu_x_abcdef_uni;
+
+ENUMS
+shall contain module name, if they can be accessed from outside the module.
+
+e.g.,
+typedef enum
+{
+    XXXX_S_MACHINE_UNDEF_E  = 0,
+    XXXX_S_MACHINEOFF_E     = 1,
+    XXXX_S_MACHINEON_E      = 2,
+    XXXX_S_MACHINEIDLE_E    = 3,
+    XXXX_S_MACHINE_NUMOFSTATES,
+} tXXXX_S_MACHINE_E;
+tXXXX_S_MACHINE_E xxxx_s_machine_E = XXXX_S_MACHINEOFF_E;
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Functions;
+
+[module]_[return type]_[return unit]_[description]_[exec. time - optional]
+e.g.,
+void modu_calcDutyCycle_void_10ms( void Param1, void Param2 );
+
+parameters start with capital letter
+time can be specified as _#ms (10ms, 100ms,...) or as _bg (background) with no specified timebase. functions that don't run periodically don't need this suffix
+
+_isr    -> interrupt service routine functions should end with _isr
+_ev     -> event based routines should end with _ev
+_#msev  -> time based on external time source event, e.g., every zero-crossing on 50hz power grid (10ms)
+_init   -> initialization routines should enf with _init
+_deinit -> de-initialization routines should enf with _deinit

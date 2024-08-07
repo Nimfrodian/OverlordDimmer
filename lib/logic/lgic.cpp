@@ -2,6 +2,7 @@
 #include <algorithm>
 
 #define LGIC_NR_TRIGGER_DELAY_TABLE_SIZE_U16 ((uint16_t) 1001)  ///< size of the triggering delay lookup table
+#define LGIC_TI_us_MIN_TRIGGER_DELAY_U16 ((uint16_t) 100)      ///< maximum trigger delay to avoid delaying it into the next half-period
 #define LGIC_TI_us_MAX_TRIGGER_DELAY_U16 ((uint16_t) 9900)      ///< maximum trigger delay to avoid delaying it into the next half-period
 #define LGIC_TI_us_HALF_PERIOD_TIME_U16 ((uint16_t) 10000)      ///< for 50Hz system the period is 20ms, half is 10ms or 10000us
 
@@ -193,6 +194,12 @@ void lgic_calcNewTable_ev(tLGIC_TRIGGERTABLEDATA_STR* PreparingTablePtr, float P
                     {
                         uint16_t dutyCyclIndx = (uint16_t) (1000.0 * lgic_dc_config_astr[i].dc_pr_currVal_F32);
                         float ti_us_triggerTime_F32 = ((float) lgic_ti_us_triggerDelayLookupTable_U16[dutyCyclIndx]);
+
+                        // limit minimum triggering time
+                        if (ti_us_triggerTime_F32 < LGIC_TI_us_MIN_TRIGGER_DELAY_U16)
+                        {
+                            ti_us_triggerTime_F32 = LGIC_TI_us_MIN_TRIGGER_DELAY_U16;
+                        }
 
                         PreparingTablePtr[i+1].ti_us_triggerDelay_U16 = ((float) ti_us_triggerTime_F32) * PeriodRatio;
 

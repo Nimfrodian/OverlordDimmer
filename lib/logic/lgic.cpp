@@ -114,11 +114,8 @@ void lgic_canMsgCompose_100ms(uint8_t* DataPtr, uint32_t* MsgIdPtr)
             dc_1000pr_currDutyCycles_U16[i] = uint16_t (lgic_dc_config_astr[i].dc_pr_currVal_F32 * 1000.0f);
         }
 
-        static uint8_t msgIndx = 0;
-        if (0 == msgIndx)
+        if (0x96 == (*MsgIdPtr))
         {
-            *MsgIdPtr = 0x96;
-
             // pack lgic_d_currentDutyCycles_F32 into CanMsgPtr->data.u8
             DataPtr[0] = (dc_1000pr_currDutyCycles_U16[0] & 0xFF);
             DataPtr[1] = ((dc_1000pr_currDutyCycles_U16[1] & 0x3F) << 2) | ((dc_1000pr_currDutyCycles_U16[0] >> 8) & 0x03);
@@ -128,13 +125,9 @@ void lgic_canMsgCompose_100ms(uint8_t* DataPtr, uint32_t* MsgIdPtr)
             DataPtr[5] = (dc_1000pr_currDutyCycles_U16[4] & 0xFF);
             DataPtr[6] = ((dc_1000pr_currDutyCycles_U16[4] >> 8) & 0x03);
             DataPtr[7] = 0;
-
-            msgIndx = 1;
         }
-        else if (1 == msgIndx)
+        else if (0x97 == (*MsgIdPtr))
         {
-            *MsgIdPtr = 0x97;
-
             // pack lgic_d_currentDutyCycles_F32 into canMsg0x97.data.u8
             DataPtr[0] = (dc_1000pr_currDutyCycles_U16[5] & 0xFF);
             DataPtr[1] = ((dc_1000pr_currDutyCycles_U16[6] & 0x3F) << 2) | ((dc_1000pr_currDutyCycles_U16[5] >> 8) & 0x03);
@@ -144,9 +137,47 @@ void lgic_canMsgCompose_100ms(uint8_t* DataPtr, uint32_t* MsgIdPtr)
             DataPtr[5] = (dc_1000pr_currDutyCycles_U16[9] & 0xFF);
             DataPtr[6] = ((dc_1000pr_currDutyCycles_U16[9] >> 8) & 0x03);
             DataPtr[7] = 0;
-
-            msgIndx = 0;
         }
+        else
+        {
+            // TODO: report ERROR
+        }
+    }
+}
+
+void lgic_canMsgParse_ev(uint8_t* DataPtr, uint32_t* MsgIdPtr)
+{
+    if (!lgic_s_moduleInit_tB)
+    {
+        // TODO: report ERROR
+    }
+    else
+    {
+        switch (*MsgIdPtr)
+        {
+            case (0x95):
+            {
+                uint32_t timeRequest_10ms_U32 = ((DataPtr[2]& 0xFF) << 16) | ((DataPtr[1] & 0xFF) << 8) | ((DataPtr[0] & 0xFF) << 0);
+                uint32_t dutyReq_U32 = ((DataPtr[4] & 0x03) << 8) | ((DataPtr[3] & 0xFF) << 0);
+                uint32_t dutyCycleReq_U32 = (dutyReq_U32 > 1000) ? 1000 : dutyReq_U32;
+                uint32_t triggerIndexMask_U32 = ((DataPtr[7] & 0xFF) << 16) | ((DataPtr[6] & 0xFF) << 8) | ((DataPtr[5] & 0xFF) << 0);
+
+                for (uint32_t i_U32 = 0; i_U32 < lgic_nr_numOfTriggeringPins_U32; i_U32++)
+                {
+                    if ((triggerIndexMask_U32 >> i_U32) & 0x01)
+                    {
+                        float pr_endVal_F32 = ((float) dutyCycleReq_U32) / 1000.0f;
+                        pr_endVal_F32 = (pr_endVal_F32 > 1.0f)? 1.0f : (pr_endVal_F32 < 0.0f) ? 0.0f : pr_endVal_F32;
+                        lgic_setDutyCycle_ev(i_U32, pr_endVal_F32, timeRequest_10ms_U32);
+                    }
+                }
+            }
+            default:
+            {
+                // TODO: report error
+            }
+        }
+
     }
 }
 

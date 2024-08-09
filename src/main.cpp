@@ -1,4 +1,3 @@
-#include "espa.h"
 #include "main.h"
 
 static bool main_fl_updateTable_tB = true;                  ///< flags if a new duty cycle table needs to be calculated. Should occur about once very 10ms
@@ -168,7 +167,7 @@ extern "C" void app_main()
         pina_setInterruptService(PINA_IN_NUM_0, main_gpioInterruptHandler_isr);
     }
 
-    ComCan_init();
+    canm_init();
 
     while(true)
     {
@@ -180,44 +179,25 @@ extern "C" void app_main()
             main_fl_updateTable_tB = false;
         }
 
-        ComCan_receive();
-        canRxDataType* rxDataPtr = ComCan_get_rxData();
-        if (1 == rxDataPtr->dataReceived)
+        tCANM_X_CANMSGDATA_STR* rxDataPtr = canm_pstr_readCanMsgData(CAN_COMMAND_MESSAGE);
+        if (1 == rxDataPtr->canRdyForParse_tB)
         {
-            for (uint32_t i_U32 = 0; i_U32 < main_nr_numOfTriggeringPins_U32; i_U32++)
-            {
-                if ((rxDataPtr->triggerIndexMask >> i_U32) & 0x01)
-                {
-                    float pr_endVal_F32 = ((float) rxDataPtr->dutyCycleReq) / 1000.0f;
-                    pr_endVal_F32 = (pr_endVal_F32 > 1.0f)? 1.0f : (pr_endVal_F32 < 0.0f) ? 0.0f : pr_endVal_F32;
-                    lgic_setDutyCycle_ev(i_U32, pr_endVal_F32, rxDataPtr->timeRequest_10ms);
-                }
-            }
-            rxDataPtr->dataReceived = 0;
+            lgic_canMsgParse_ev( rxDataPtr->canMsg_str.data, &rxDataPtr->canMsg_str.identifier);
         }
 
         static uint32_t counter = 0;
         if (counter > 100)
         {
-            CAN_frame_t canMsg
-            {
-                .FIR =
-                {
-                    .B =
-                    {
-                        .DLC = 8,
-                        .unknown_2 = 0,
-                        .RTR = CAN_no_RTR,
-                        .FF = CAN_frame_std,
-                        .reserved_24 = 0,
-                    }
-                },
-                .MsgID = 0x7FF,
-                .data = {.u8 = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}}
-            };
+            tCANM_X_CANMSGDATA_STR* msgPtr0_pstr = canm_pstr_readCanMsgData(CAN_REPLY_MESSAGE0);
+            tCANM_X_CANMSGDATA_STR* msgPtr1_pstr = canm_pstr_readCanMsgData(CAN_REPLY_MESSAGE1);
+            msgPtr0_pstr->canMsg_str.identifier = 0x96;
+            msgPtr1_pstr->canMsg_str.identifier = 0x97;
 
-            lgic_canMsgCompose_100ms(&canMsg.data.u8[0], &canMsg.MsgID);
-            ComCan_transmit(&canMsg, 1);
+            lgic_canMsgCompose_100ms(msgPtr0_pstr->canMsg_str.data, &msgPtr0_pstr->canMsg_str.identifier);
+            lgic_canMsgCompose_100ms(msgPtr1_pstr->canMsg_str.data, &msgPtr1_pstr->canMsg_str.identifier);
+
+            canm_x_flagCanMsgForTx(CAN_REPLY_MESSAGE0);
+            canm_x_flagCanMsgForTx(CAN_REPLY_MESSAGE1);
             counter = 0;
         }
         counter += 5;

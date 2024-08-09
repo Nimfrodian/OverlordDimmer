@@ -51,6 +51,13 @@ void lgic_calcDutyCycle_10ms(void);
  */
 void lgic_canMsgCompose_100ms(uint8_t* DataPtr, uint32_t* MsgIdPtr);
 
+/**
+ * @brief Function parses CAN message
+ * @param DataPtr pointer to 8 bytes of CAN data
+ * @param MsgIdPtr pointer to CAN message ID
+ * @return (void)
+ */
+void lgic_canMsgParse_ev(uint8_t* DataPtr, uint32_t* MsgIdPtr);
 
 /**
  * @brief Function calculates and updates triggering table

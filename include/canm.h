@@ -1,9 +1,16 @@
-#pragma once
+/*
+*
+*   Can module
+*
+*/
+#ifndef CANM_H
+#define CANM_H
+
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include <driver/twai.h>    // CAN protocol library, a.k.a. twin wire automotive interface
 
-#define CANM_TI_us_TASK_DELAY_U32 ((uint32_t) 2)
+#define CANM_TI_ms_TASK_DELAY_U32 ((uint32_t) 2)
 
 typedef struct
 {
@@ -54,4 +61,6 @@ void canm_x_clearFlagForCanMsgParse(tCANM_CANMSGINDX_E MsgIndx);
  * @param param
  * @return (void)
  */
-void canm_transceive_run(void* param);
+void canm_transceive_run(void);
+
+#endif

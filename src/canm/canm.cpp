@@ -59,16 +59,6 @@ void canm_init()
 
         twai_start();
 
-        // create transceive task
-        xTaskCreatePinnedToCore(
-        canm_transceive_run,      // Function that should be called
-        "canm_transceive_run",    // Name of the task (for debugging)
-        8192 * 2,               // Stack size (bytes)
-        NULL,                   // Parameter to pass
-        1,                      // Task priority
-        NULL,            // Task handle
-        1);              // run on core 1
-
         canm_f_moduleInit_tB = true;    // only init once
     }
 }
@@ -91,56 +81,49 @@ static void canm_saveMsg(tCANM_CANMSGINDX_E MsgIndx_E, twai_message_t* SourceMsg
     destMsg_pstr->canRdyForParse_tB = 1;
 }
 
-void canm_transceive_run(void* param)
+void canm_transceive_run(void)
 {
-    while (1)
+    // transmit
     {
-        // transmit
+        // check if any messages are waiting to be sent
+        for (uint16_t msgIndx_U16 = 0; msgIndx_U16 < NUM_OF_CAN_MSG; msgIndx_U16++)
         {
-            // check if any messages are waiting to be sent
-            for (uint16_t msgIndx_U16 = 0; msgIndx_U16 < NUM_OF_CAN_MSG; msgIndx_U16++)
+            // get message data pointer
+            tCANM_X_CANMSGDATA_STR* canMsgPtr = canm_pstr_readCanMsgData((tCANM_CANMSGINDX_E) msgIndx_U16);
+
+            // check if message needs to be sent
+            if (1 == canMsgPtr->canRdyForTx_tB)
             {
-                // get message data pointer
-                tCANM_X_CANMSGDATA_STR* canMsgPtr = canm_pstr_readCanMsgData((tCANM_CANMSGINDX_E) msgIndx_U16);
-
-                // check if message needs to be sent
-                if (1 == canMsgPtr->canRdyForTx_tB)
+                // try to copy the message into hardware transmit buffer
+                if (ESP_OK == twai_transmit(&canMsgPtr->canMsg_str, 0))
                 {
-                    // try to copy the message into hardware transmit buffer
-                    if (ESP_OK == twai_transmit(&canMsgPtr->canMsg_str, 0))
-                    {
-                        // clear "send" flag if copy was successful
-                        canMsgPtr->canRdyForTx_tB = false;
-                        break;
-                    }
-                }
-            }
-        }
-
-        // receive
-        {
-            twai_message_t rxMessage;
-            if (ESP_OK == twai_receive(&rxMessage, 0))  // TODO(Nimfrodian): Check if 0 for time is valid
-            {
-                uint32_t rxId = rxMessage.identifier;
-                switch (rxId)
-                {
-                    case 0x95:  // message CAN_COMMAND_MESSAGE
-                    {
-                        canm_saveMsg(CAN_COMMAND_MESSAGE, &rxMessage);
-                    }
-                    break;
-
-                    default:
+                    // clear "send" flag if copy was successful
+                    canMsgPtr->canRdyForTx_tB = false;
                     break;
                 }
             }
         }
-        vTaskDelay(pdMS_TO_TICKS(CANM_TI_us_TASK_DELAY_U32));
     }
 
-    // delete task if illegal state was reached
-    vTaskDelete(NULL);
+    // receive
+    {
+        twai_message_t rxMessage;
+        if (ESP_OK == twai_receive(&rxMessage, 0))  // TODO(Nimfrodian): Check if 0 for time is valid
+        {
+            uint32_t rxId = rxMessage.identifier;
+            switch (rxId)
+            {
+                case 0x95:  // message CAN_COMMAND_MESSAGE
+                {
+                    canm_saveMsg(CAN_COMMAND_MESSAGE, &rxMessage);
+                }
+                break;
+
+                default:
+                break;
+            }
+        }
+    }
 }
 
 tCANM_X_CANMSGDATA_STR* canm_pstr_readCanMsgData(tCANM_CANMSGINDX_E MsgIndx)

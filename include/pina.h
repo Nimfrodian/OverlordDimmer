@@ -4,9 +4,10 @@
 *
 */
 
-#pragma once
-#include "driver/gpio.h"
+#ifndef PINA_H
+#define PINA_H
 
+#include "driver/gpio.h"
 
 typedef enum
 {
@@ -26,31 +27,34 @@ typedef enum
     PINA_IN_NUM_0 = GPIO_NUM_34,
 } PINA_nr_GPIO_NUM_E;
 
-void pina_setGpioLevel(PINA_nr_GPIO_NUM_E GpioNum, bool Value)
-{
-    gpio_set_level((gpio_num_t) GpioNum, Value);
-}
+/**
+ * @brief Function sets GPIO output to desired value
+ * @param GpioNum GPIO pin to set value to
+ * @param Value value to apply
+ * @return (void)
+ */
+void pina_setGpioLevel(PINA_nr_GPIO_NUM_E GpioNum, bool Value);
 
-void pina_setGpioAsOutput(PINA_nr_GPIO_NUM_E GpioNum)
-{
-    gpio_reset_pin((gpio_num_t) GpioNum);
-    gpio_intr_disable((gpio_num_t) GpioNum);
-    gpio_pulldown_dis((gpio_num_t) GpioNum);
-    gpio_pullup_dis((gpio_num_t) GpioNum);
-    gpio_set_direction((gpio_num_t) GpioNum, GPIO_MODE_OUTPUT);
-}
+/**
+ * @brief Function sets GPIO pin as output
+ * @param GpioNum GPIO number
+ * @return (void)
+ */
+void pina_setGpioAsOutput(PINA_nr_GPIO_NUM_E GpioNum);
 
-void pina_setGpioAsInput(PINA_nr_GPIO_NUM_E GpioNum)
-{
-    gpio_pulldown_en((gpio_num_t) GpioNum);
-    gpio_set_direction((gpio_num_t) GpioNum, GPIO_MODE_INPUT);
-    gpio_set_intr_type((gpio_num_t) GpioNum, GPIO_INTR_POSEDGE);
-    gpio_intr_enable((gpio_num_t) GpioNum);
-}
+/**
+ * @brief Function sets GPIO pin as input
+ * @param GpioNum GPIO number
+ * @return (void)
+ */
+void pina_setGpioAsInput(PINA_nr_GPIO_NUM_E GpioNum);
 
-void pina_setInterruptService(PINA_nr_GPIO_NUM_E GpioNum, void (*func)(void*arg))
-{
-    gpio_install_isr_service(0); ///< install the ISR service with default configuration
-    gpio_isr_handler_add((gpio_num_t) GpioNum, func, (void*) GpioNum); ///< add the custom ISR handler
+/**
+ * @brief Function sets GPIO pin for interrupt service
+ * @param GpioNum GPIO number
+ * @param func pointer to a function to be executed on GPIO interrupt
+ * @return (void)
+ */
+void pina_setInterruptService(PINA_nr_GPIO_NUM_E GpioNum, void (*func)(void*arg));
 
-}
+#endif

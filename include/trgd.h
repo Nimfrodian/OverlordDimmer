@@ -3,9 +3,7 @@
 *   Trigger driver for AC mosfet triggering
 *
 */
-
-#ifndef TRGD_H
-#define TRGD_H
+#pragma once
 
 #include "espa.h"
 #include "tmra.h"
@@ -13,5 +11,3 @@
 
 void trgd_init(void);
 void trgd_run(void);
-
-#endif

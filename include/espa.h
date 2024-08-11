@@ -3,8 +3,7 @@
 *   used to abstract away ESP related names
 *
 */
-#ifndef ESPA_H
-#define ESPA_H
+#pragma once
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -18,5 +17,3 @@
 #include "tmra.h"
 #include "pina.h"
 #include "sera.h"
-
-#endif

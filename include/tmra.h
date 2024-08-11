@@ -3,9 +3,7 @@
 *   timer abstraction file
 *
 */
-
-#ifndef TMRA_H
-#define TMRA_H
+#pragma once
 
 #include "driver/uart.h"
 #include "driver/timer.h"
@@ -48,4 +46,3 @@ uint32_t tmra_stopTimer(tTMRA_TIMERHANDLE_STR* TimerHandlePtr);
  * @return error code
  */
 uint32_t tmra_createTimer(tTMRA_TIMERHANDLE_STR* TimerHandlePtr, void (*timerFunc)(void* arg));
-#endif

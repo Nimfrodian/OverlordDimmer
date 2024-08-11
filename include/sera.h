@@ -3,9 +3,7 @@
 *   used to abstract away UART related names
 *
 */
-
-#ifndef SERA_H
-#define SERA_H
+#pragma once
 
 #include "driver/uart.h"
 
@@ -15,5 +13,3 @@
  * @return (void)
  */
 void sera_init(void);
-
-#endif

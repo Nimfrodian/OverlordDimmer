@@ -3,8 +3,7 @@
 *   Logic module for hadware triggering
 *
 */
-#ifndef LGIC_H
-#define LGIC_H
+#pragma once
 
 #include "stdint.h"
 #include "math.h"
@@ -72,5 +71,3 @@ void lgic_canMsgParse_ev(uint8_t* DataPtr, uint32_t* MsgIdPtr);
  * @return (void)
  */
 void lgic_calcNewTable_ev(tLGIC_TRIGGERTABLEDATA_STR* PreparingTablePtr, float PeriodRatio);
-
-#endif

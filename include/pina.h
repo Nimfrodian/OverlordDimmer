@@ -3,9 +3,7 @@
 *
 *
 */
-
-#ifndef PINA_H
-#define PINA_H
+#pragma once
 
 #include "driver/gpio.h"
 
@@ -56,5 +54,3 @@ void pina_setGpioAsInput(PINA_nr_GPIO_NUM_E GpioNum);
  * @return (void)
  */
 void pina_setInterruptService(PINA_nr_GPIO_NUM_E GpioNum, void (*func)(void*arg));
-
-#endif

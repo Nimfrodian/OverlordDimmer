@@ -6,9 +6,9 @@
 
 void setUp(void)
 {
-    logicConfigType logicCfg;
-    logicCfg.numOfTriggers = NUM_OF_TRIGGERS + 1; // 1 starting state + 10, 1 for each trigger
-    init_logic(&logicCfg);
+    tLGIC_INITDATA_STR lgicCfg;
+    lgicCfg.nr_numOfPhysicalOutputs = NUM_OF_TRIGGERS;
+    lgic_init(&lgicCfg);
 }
 
 void tearDown(void) {

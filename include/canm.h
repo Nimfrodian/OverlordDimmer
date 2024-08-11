@@ -3,8 +3,7 @@
 *   Can module
 *
 */
-#ifndef CANM_H
-#define CANM_H
+#pragma once
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -62,5 +61,3 @@ void canm_x_clearFlagForCanMsgParse(tCANM_CANMSGINDX_E MsgIndx);
  * @return (void)
  */
 void canm_transceive_run(void);
-
-#endif

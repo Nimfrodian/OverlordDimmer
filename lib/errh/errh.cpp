@@ -19,7 +19,7 @@ void errh_init(tERRH_INITDATA_STR* ErrhCfg)
         errh_x_errors_vstr[0].apiId = -1;
         errh_x_errors_vstr[0].errorId = -1;
         errh_x_errors_vstr[0].errorLvl = ERRH_ERROR_CRITICAL;
-        errh_x_errors_vstr[0].count_U8 = (255 == errh_x_errors_vstr[0].count_U8) ? 255 : errh_x_errors_vstr[0].count_U8++;
+        errh_x_errors_vstr[0].count_U8 = (255 == errh_x_errors_vstr[0].count_U8) ? 255 : (errh_x_errors_vstr[0].count_U8 + 1);
         errh_nr_activeErrorCount_U32 = 1;
     }
     else
@@ -105,4 +105,12 @@ void errh_clearErrorCount(void)
 void errh_deinit(void)
 {
     errh_s_moduleInit_tB = false;
+
+    tERRH_ERRORDATA_STR emptyData_str = {0};
+    for (uint32_t i_U32 = 0; i_U32 < ERRH_NR_ERROR_BUFFER_SIZE_U32; i_U32++)
+    {
+        errh_x_errors_vstr[i_U32] = emptyData_str;
+    }
+
+    errh_clearErrorCount();
 }

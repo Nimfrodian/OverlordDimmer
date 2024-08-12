@@ -12,9 +12,9 @@ const twai_general_config_t canm_x_genConfig_str =
     .bus_off_io = (gpio_num_t) -1,
     .tx_queue_len = 16,
     .rx_queue_len = 16,
-    .alerts_enabled = 0,    // TODO(Nimfrodian) check documentation for alerts
+    .alerts_enabled = 0,
     .clkout_divider = 0,
-    .intr_flags = 0,    // TODO(Nimfrodian) check if this is needed
+    .intr_flags = 0,
 };
 
 const twai_timing_config_t canm_x_timingConfig_str = TWAI_TIMING_CONFIG_250KBITS();
@@ -32,11 +32,11 @@ void canm_init(tCANM_INITDATA_STR* CanmCfg)
 {
     if (true == canm_s_moduleInit_tB)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_NOTIF, canm_nr_moduleId_U32, 0, CANM_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == CanmCfg)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_ERROR_CRITICAL, canm_nr_moduleId_U32, 0, CANM_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {
@@ -115,7 +115,7 @@ void canm_transceive_run(void)
     // receive
     {
         twai_message_t rxMessage;
-        if (ESP_OK == twai_receive(&rxMessage, 0))  // TODO(Nimfrodian): Check if 0 for time is valid
+        if (ESP_OK == twai_receive(&rxMessage, 0))
         {
             uint32_t rxId = rxMessage.identifier;
             switch (rxId)
@@ -123,8 +123,8 @@ void canm_transceive_run(void)
                 case 0x95:  // message CAN_COMMAND_MESSAGE
                 {
                     canm_saveMsg(CAN_COMMAND_MESSAGE, &rxMessage);
+                    break;
                 }
-                break;
 
                 default:
                 break;

@@ -7,6 +7,14 @@
 
 #include "driver/uart.h"
 #include "driver/timer.h"
+#include "errh.h"
+
+#define TMRA_API_INIT_U32                  ((uint32_t) 1)
+#define TMRA_API_CREATE_TIMER_U32          ((uint32_t) 2)
+
+#define TMRA_ERR_MALLOC_RETURNED_NULL_U32  ((uint32_t) 1)
+#define TMRA_ERR_CANNOT_CREATE_TIMER_U32   ((uint32_t) 2)
+
 
 typedef struct
 {

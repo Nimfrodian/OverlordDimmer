@@ -1,4 +1,5 @@
 #include "timh.h"
+#include "errh.h"
 
 static bool timh_s_moduleInit_tB = false;
 static uint32_t timh_nr_moduleId_U32 = 0;
@@ -12,11 +13,11 @@ void timh_init(tTIMH_INITDATA_STR* TimhCfg)
 {
     if (true == timh_s_moduleInit_tB)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_NOTIF, timh_nr_moduleId_U32, 0, TIMH_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == TimhCfg)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_ERROR_CRITICAL, timh_nr_moduleId_U32, 0, TIMH_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {
@@ -46,10 +47,11 @@ void timh_canMsgParse_ev(uint8_t* DataPtr, uint32_t* MsgIdPtr)
                 timh_ti_timeData_str.hour_U8 = hour_U8;
                 timh_ti_timeData_str.minute_U8 = minute_U8;
                 timh_ti_timeData_str.second_U8 = second_U8;
+                break;
             }
             default:
             {
-                // TODO: report error
+                errh_reportError(ERRH_ERROR_CRITICAL, timh_nr_moduleId_U32, 0, TIMH_API_CAN_PARSE_U32, TIMH_ERR_WRONG_CAN_ID_U32);
             }
         }
 }
@@ -64,7 +66,7 @@ int64_t timh_ti_us_readSystemTime(void)
     int64_t ti_us_sysTime = -1;
     if (!timh_s_moduleInit_tB)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_ERROR_CRITICAL, timh_nr_moduleId_U32, 0, TIMH_API_READ_SYS_TI_U32, ERRH_MODULE_NOT_INIT);
     }
     else
     {

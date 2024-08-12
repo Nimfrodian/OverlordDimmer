@@ -13,7 +13,6 @@ int64_t sysTimerFuncMock(void)
 void reset(void)
 {
     ti_us_currTimeMock_S64 = 0;
-    errh_clearErrorCount();
     errh_deinit();
 }
 

@@ -7,11 +7,11 @@ void pina_init(tPINA_INITDATA_STR* PinaCfg)
 {
     if (true == pina_s_moduleInit_tB)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_NOTIF, pina_nr_moduleId_U32, 0, PINA_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == PinaCfg)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_ERROR_CRITICAL, pina_nr_moduleId_U32, 0, PINA_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {

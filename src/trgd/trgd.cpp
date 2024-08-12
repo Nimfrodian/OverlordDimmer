@@ -63,7 +63,7 @@ void trgd_initialTimerInterruptHandler_isr(void* arg)
     uint32_t err = tmra_stopTimer(&tmra_h_subsequentInterrupt_pstr);
     if (err)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_WARNING, trgd_nr_moduleId_U32, 0, TRGD_API_INITIAL_INTRPT_HANDLER_U32, TRGD_ERR_CANNOT_STOP_TIMER_U32);
     }
 
     trgd_x_triggerCounter_U32 = 0;   ///< reset triggering to start from 0
@@ -99,7 +99,7 @@ void IRAM_ATTR trgd_applyOutput_ev(void)
         uint32_t err = tmra_startTimer(&tmra_h_subsequentInterrupt_pstr, ti_us_delta_U32);
         if (0 != err)
         {
-            //TODO: Log error ("trgd", "Failed to start tmra_h_subsequentInterrupt_pstr with error code %u", err);
+            errh_reportError(ERRH_WARNING, trgd_nr_moduleId_U32, err, TRGD_API_APPLY_OUTPUT_U32, TRGD_ERR_CANNOT_START_TIMER);
         }
         trgd_x_triggerCounter_U32++;
     }
@@ -110,11 +110,11 @@ void trgd_init(tTRGD_INITDATA_STR* TrgdCfg)
 {
     if (true == trgd_s_moduleInit_tB)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_NOTIF, trgd_nr_moduleId_U32, 0, TRGD_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == TrgdCfg)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_ERROR_CRITICAL, trgd_nr_moduleId_U32, 0, TRGD_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {

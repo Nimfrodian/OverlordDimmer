@@ -6,6 +6,9 @@
 #pragma once
 
 #include "driver/gpio.h"
+#include "errh.h"
+
+#define PINA_API_INIT_U32                  ((uint32_t) 1)
 
 typedef struct
 {

@@ -7,6 +7,15 @@
 
 #include "stdint.h"
 #include "math.h"
+#include <algorithm>
+
+#define LGIC_API_INIT_U32                  ((uint32_t) 1)
+#define LGIC_API_SET_DUTY_CYCLE_U32        ((uint32_t) 2)
+#define LGIC_API_CAN_COMPOSE_U32           ((uint32_t) 3)
+#define LGIC_API_CAN_PARSE_U32             ((uint32_t) 4)
+
+#define LGIC_ERR_WRONG_CAN_ID_U32          ((uint32_t) 1)
+
 
 #define LGIC_MA_LAST_MASK_TO_BE_USED_FLAG_U32 ((uint32_t) 0x8000)
 

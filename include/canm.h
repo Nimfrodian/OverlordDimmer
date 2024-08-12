@@ -8,6 +8,9 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include <driver/twai.h>    // CAN protocol library, a.k.a. twin wire automotive interface
+#include "errh.h"
+
+#define CANM_API_INIT_U32                  ((uint32_t) 1)
 
 #define CANM_TI_ms_TASK_DELAY_U32 ((uint32_t) 2)
 

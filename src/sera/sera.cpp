@@ -7,11 +7,11 @@ void sera_init(tSERA_INITDATA_STR* SeraCfg)
 {
     if (true == sera_s_moduleInit_tB)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_NOTIF, sera_nr_moduleId_U32, 0, SERA_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == SeraCfg)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_ERROR_CRITICAL, sera_nr_moduleId_U32, 0, SERA_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {

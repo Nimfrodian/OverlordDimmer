@@ -6,6 +6,9 @@
 #pragma once
 
 #include "driver/uart.h"
+#include "errh.h"
+
+#define SERA_API_INIT_U32                  ((uint32_t) 1)
 
 typedef struct
 {

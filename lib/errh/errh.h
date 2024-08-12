@@ -9,12 +9,14 @@
 #include "timh.h"
 #include <vector>
 
-#define ERRH_NR_ERROR_BUFFER_SIZE_U32 ((uint32_t) 64)   ///< number of spots for errors. First come first served. Should be large enough for all errors
-
-#define ERRH_API_INIT_U32                  ((uint32_t) 1)
-#define ERRH_API_READ_ERROR_U32            ((uint32_t) 2)
+#define ERRH_API_INIT_U32                       ((uint32_t) 1)
+#define ERRH_API_READ_ERROR_U32                 ((uint32_t) 2)
 
 #define ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32   ((uint32_t) 1)
+
+
+#define ERRH_NR_ERROR_BUFFER_SIZE_U32 ((uint32_t) 64)   ///< number of spots for errors. First come first served. Should be large enough for all errors
+
 
 typedef struct
 {
@@ -39,8 +41,6 @@ typedef enum
     ERRH_MODULE_NOT_INIT,
     ERRH_MODULE_ALREADY_INIT,
     ERRH_POINTER_IS_NULL,
-
-
 } tERRH_COMMONERROR_E;
 
 typedef struct

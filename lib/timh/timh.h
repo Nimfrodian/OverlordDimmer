@@ -7,6 +7,12 @@
 
 #include "stdint.h"
 
+#define TIMH_API_INIT_U32                  ((uint32_t) 1)
+#define TIMH_API_CAN_PARSE_U32             ((uint32_t) 2)
+#define TIMH_API_READ_SYS_TI_U32           ((uint32_t) 3)
+
+#define TIMH_ERR_WRONG_CAN_ID_U32          ((uint32_t) 1)
+
 typedef struct
 {
     uint32_t nr_moduleId_U32;       ///< ID of the module

@@ -1,5 +1,5 @@
 #include "lgic.h"
-#include <algorithm>
+#include "errh.h"
 
 #define LGIC_NR_TRIGGER_DELAY_TABLE_SIZE_U16 ((uint16_t) 1001)  ///< size of the triggering delay lookup table
 #define LGIC_TI_us_MIN_TRIGGER_DELAY_U16 ((uint16_t) 100)      ///< maximum trigger delay to avoid delaying it into the next half-period
@@ -21,11 +21,11 @@ void lgic_init(tLGIC_INITDATA_STR* LgicCfg)
 {
     if (true == lgic_s_moduleInit_tB)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_NOTIF, lgic_nr_moduleId_U32, 0, LGIC_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
     else if (NULL == LgicCfg)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_ERROR_CRITICAL, lgic_nr_moduleId_U32, 0, LGIC_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }
     else
     {
@@ -53,7 +53,7 @@ void lgic_setDutyCycle_ev(uint32_t OutIndx, float EndPrcnt, uint64_t TimeToEndPr
 {
     if (!lgic_s_moduleInit_tB)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_ERROR_CRITICAL, lgic_nr_moduleId_U32, 0, LGIC_API_SET_DUTY_CYCLE_U32, ERRH_MODULE_NOT_INIT);
     }
     else
     {
@@ -111,7 +111,7 @@ void lgic_canMsgCompose_100ms(uint8_t* DataPtr, uint32_t* MsgIdPtr)
 {
     if (!lgic_s_moduleInit_tB)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_ERROR_CRITICAL, lgic_nr_moduleId_U32, 0, LGIC_API_CAN_COMPOSE_U32, ERRH_MODULE_NOT_INIT);
     }
     else
     {
@@ -147,7 +147,7 @@ void lgic_canMsgCompose_100ms(uint8_t* DataPtr, uint32_t* MsgIdPtr)
         }
         else
         {
-            // TODO: report ERROR
+            errh_reportError(ERRH_ERROR_CRITICAL, lgic_nr_moduleId_U32, 0, LGIC_API_CAN_COMPOSE_U32, LGIC_ERR_WRONG_CAN_ID_U32);
         }
     }
 }
@@ -156,7 +156,7 @@ void lgic_canMsgParse_ev(uint8_t* DataPtr, uint32_t* MsgIdPtr)
 {
     if (!lgic_s_moduleInit_tB)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_ERROR_CRITICAL, lgic_nr_moduleId_U32, 0, LGIC_API_CAN_PARSE_U32, ERRH_MODULE_NOT_INIT);
     }
     else
     {
@@ -178,10 +178,11 @@ void lgic_canMsgParse_ev(uint8_t* DataPtr, uint32_t* MsgIdPtr)
                         lgic_setDutyCycle_ev(i_U32, pr_endVal_F32, timeRequest_10ms_U32);
                     }
                 }
+                break;
             }
             default:
             {
-                // TODO: report error
+                errh_reportError(ERRH_ERROR_CRITICAL, lgic_nr_moduleId_U32, 0, LGIC_API_CAN_PARSE_U32, LGIC_ERR_WRONG_CAN_ID_U32);
             }
         }
 

@@ -7,6 +7,11 @@
 
 #include "driver/uart.h"
 
+typedef struct
+{
+    uint32_t nr_moduleId_U32;       ///< ID of the module
+} tSERA_INITDATA_STR;
+
 /**
  * @brief Function initializes Serial Communication
  * @param void

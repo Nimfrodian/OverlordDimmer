@@ -2,6 +2,7 @@
 #include "errh.h"
 
 // function mocks system time function
+static const uint32_t nr_mockModuleId_U32 = 0x123;
 static int64_t ti_us_currTimeMock_S64 = 0;
 int64_t sysTimerFuncMock(void)
 {
@@ -9,10 +10,18 @@ int64_t sysTimerFuncMock(void)
     return ti_us_currTimeMock_S64;
 }
 
+void reset(void)
+{
+    ti_us_currTimeMock_S64 = 0;
+    errh_clearErrorCount();
+    errh_deinit();
+}
+
 void setUp(void)
 {
     tTIMH_INITDATA_STR timh_cfgData_str = {0};
-    timh_cfgData_str.sysTimeFunc = sysTimerFuncMock;
+    timh_cfgData_str.nr_moduleId_U32 = nr_mockModuleId_U32;
+    timh_cfgData_str.timh_ti_us_sysTimeFunc_pfS64 = sysTimerFuncMock;
     timh_init(&timh_cfgData_str);
 }
 
@@ -22,6 +31,8 @@ void tearDown(void)
 
 void test_function_triggerOneTypeOfError(void)
 {
+    reset();
+
     // check no pre-existing errors exist
     TEST_ASSERT_EQUAL_UINT32_MESSAGE(0, errh_readReportedErrorCount(), "number of reported errors is not 0");
 
@@ -52,6 +63,8 @@ void test_function_triggerOneTypeOfError(void)
 
 void test_function_triggerSeveralTypesOfErrors(void)
 {
+    reset();
+
     // check no pre-existing errors exist
     TEST_ASSERT_EQUAL_UINT32_MESSAGE(0, errh_readReportedErrorCount(), "number of reported errors is not 0");
 
@@ -93,10 +106,72 @@ void test_function_triggerSeveralTypesOfErrors(void)
     TEST_ASSERT_EQUAL_UINT32_MESSAGE(0, errh_readReportedErrorCount(), "number of reported errors is not cleared");
 }
 
+void test_function_reinit(void)
+{
+    reset();
+
+    tERRH_INITDATA_STR cfgData_str =
+    {
+        .nr_moduleId_U32 = nr_mockModuleId_U32,
+    };
+    errh_init(&cfgData_str);
+    errh_init(&cfgData_str);
+
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(1, errh_readReportedErrorCount(), "number of reported errors is not 1");
+
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(ERRH_NOTIF, errh_readError(0).errorLvl, "Wrong re-init error level");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(nr_mockModuleId_U32, errh_readError(0).moduleId, "Wrong re-init module Id");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(0, errh_readError(0).instanceId, "Wrong re-init instanceId");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(ERRH_API_INIT_U32, errh_readError(0).apiId, "Wrong re-init apiId");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(ERRH_MODULE_ALREADY_INIT, errh_readError(0).errorId, "Wrong re-init errorId");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(1, errh_readError(0).count_U8, "Wrong re-init count_U8");
+}
+
+void test_function_null_ptr(void)
+{
+    reset();
+
+    errh_init(NULL);
+
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(1, errh_readReportedErrorCount(), "number of reported errors is not 1");
+
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE((uint32_t) -1, errh_readError(0).moduleId, "Wrong null_ptr moduleId");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE((uint32_t) -1, errh_readError(0).instanceId, "Wrong null_ptr instanceId");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE((uint32_t) -1, errh_readError(0).apiId, "Wrong null_ptr apiId");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE((uint32_t) -1, errh_readError(0).errorId, "Wrong null_ptr errorId");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(ERRH_ERROR_CRITICAL, errh_readError(0).errorLvl, "Wrong null_ptr errorLvl");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(1, errh_readError(0).count_U8, "Wrong null_ptr count_U8");
+}
+
+void test_function_error_out_of_bounds_read(void)
+{
+    reset();
+
+    tERRH_INITDATA_STR cfgData_str =
+    {
+        .nr_moduleId_U32 = nr_mockModuleId_U32,
+    };
+    errh_init(&cfgData_str);
+
+    errh_readError(-1);
+
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(1, errh_readReportedErrorCount(), "number of reported errors is not 1");
+
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(nr_mockModuleId_U32, errh_readError(0).moduleId, "Wrong out_of_bounds_read moduleId");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(0, errh_readError(0).instanceId, "Wrong out_of_bounds_read instanceId");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(ERRH_API_READ_ERROR_U32, errh_readError(0).apiId, "Wrong out_of_bounds_read apiId");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32, errh_readError(0).errorId, "Wrong out_of_bounds_read errorId");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(ERRH_WARNING, errh_readError(0).errorLvl, "Wrong out_of_bounds_read errorLvl");
+    TEST_ASSERT_EQUAL_UINT32_MESSAGE(1, errh_readError(0).count_U8, "Wrong out_of_bounds_read count_U8");
+}
+
 int runUnityTests(void) {
   UNITY_BEGIN();
   RUN_TEST(test_function_triggerOneTypeOfError);
   RUN_TEST(test_function_triggerSeveralTypesOfErrors);
+  RUN_TEST(test_function_reinit);
+  RUN_TEST(test_function_null_ptr);
+  RUN_TEST(test_function_error_out_of_bounds_read);
   return UNITY_END();
 }
 

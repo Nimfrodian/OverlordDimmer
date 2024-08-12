@@ -8,6 +8,11 @@
 #include "driver/uart.h"
 #include "driver/timer.h"
 
+typedef struct
+{
+    uint32_t nr_moduleId_U32;       ///< ID of the module
+} tTMRA_INITDATA_STR;
+
 typedef esp_timer_handle_t tTMRA_TIMERHANDLE_STR;
 
 /**

@@ -9,12 +9,13 @@
 
 typedef struct
 {
-    int64_t (*sysTimeFunc)(void);   // pointer to system time function
+    uint32_t nr_moduleId_U32;       ///< ID of the module
+    int64_t (*timh_ti_us_sysTimeFunc_pfS64)(void);   ///< pointer to system time function
 } tTIMH_INITDATA_STR;
 
 typedef struct
 {
-    uint16_t year_U16;              ///< year
+    uint16_t year_U16;             ///< year
     uint8_t month_U8;              ///< month
     uint8_t day_U8;                ///< day
     uint8_t hour_U8;               ///< hour

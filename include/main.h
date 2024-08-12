@@ -8,4 +8,6 @@
 #include "lgic.h"
 #include "trgd.h"
 
+#include "mdll.h"
+
 #define MAIN_TI_ms_TASK_DELAY_U32 ((uint32_t) 5)

@@ -13,6 +13,11 @@
 
 typedef struct
 {
+    uint32_t nr_moduleId_U32;       ///< ID of the module
+} tCANM_INITDATA_STR;
+
+typedef struct
+{
     twai_message_t canMsg_str;     // CAN message structure
     bool canRdyForTx_tB;       // message ready for transmission flag
     bool canRdyForParse_tB;    // message ready to be parsed. Only applicable for RX messages
@@ -32,7 +37,7 @@ typedef enum
  * @param void
  * @return (void)
  */
-void canm_init(void);
+void canm_init(tCANM_INITDATA_STR* CanmCfg);
 
 /**
  * @brief Function returns pointer to CAN message data

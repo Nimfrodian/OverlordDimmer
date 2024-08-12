@@ -9,22 +9,28 @@
 // GLOBAL VARIABLES //////////////////////////////////////////
 
 static bool lgic_s_moduleInit_tB = false;
+static uint32_t lgic_nr_moduleId_U32 = 0;
+
 static uint32_t lgic_nr_numOfTriggeringPins_U32 = 0; ///< number of physical triggering pins
 static tLGIC_DC_CONFIGDATA_STR lgic_dc_config_astr[32];
 static uint16_t lgic_ti_us_triggerDelayLookupTable_U16[LGIC_NR_TRIGGER_DELAY_TABLE_SIZE_U16]; ///< given a duty cycle in 0.1% resolution (i.e., 100 is 10%) returns time it takes to turn off output to reach desired duty cycle
 
 //////////////////////////////////////////////////////////////
 // FUNCTIONS /////////////////////////////////////////////////
-void lgic_init(tLGIC_INITDATA_STR* LogicCfg)
+void lgic_init(tLGIC_INITDATA_STR* LgicCfg)
 {
-    if (NULL == LogicCfg)
+    if (true == lgic_s_moduleInit_tB)
+    {
+        // TODO: report ERROR
+    }
+    else if (NULL == LgicCfg)
     {
         // TODO: report ERROR
     }
     else
     {
         // calculate the delay lookup table
-        lgic_nr_numOfTriggeringPins_U32 = LogicCfg->nr_numOfPhysicalOutputs;
+        lgic_nr_numOfTriggeringPins_U32 = LgicCfg->nr_numOfPhysicalOutputs_32;
         for (uint32_t i_U32 = 0; i_U32 < LGIC_NR_TRIGGER_DELAY_TABLE_SIZE_U16; i_U32++)
         {
             float lgic_pr_request_F32 = ((float) i_U32) / ((float)(LGIC_NR_TRIGGER_DELAY_TABLE_SIZE_U16 - 1));
@@ -38,6 +44,7 @@ void lgic_init(tLGIC_INITDATA_STR* LogicCfg)
         }
 
         // mark module as initialized
+        lgic_nr_moduleId_U32 = LgicCfg->nr_moduleId_U32;
         lgic_s_moduleInit_tB = true;
     }
 }

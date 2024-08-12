@@ -1,5 +1,25 @@
 #include "pina.h"
 
+static bool pina_s_moduleInit_tB = false;
+static uint32_t pina_nr_moduleId_U32 = 0;
+
+void pina_init(tPINA_INITDATA_STR* PinaCfg)
+{
+    if (true == pina_s_moduleInit_tB)
+    {
+        // TODO: report ERROR
+    }
+    else if (NULL == PinaCfg)
+    {
+        // TODO: report ERROR
+    }
+    else
+    {
+        pina_nr_moduleId_U32 = PinaCfg->nr_moduleId_U32;
+        pina_s_moduleInit_tB = true;
+    }
+}
+
 void pina_setGpioLevel(PINA_nr_GPIO_NUM_E GpioNum, bool Value)
 {
     gpio_set_level((gpio_num_t) GpioNum, Value);

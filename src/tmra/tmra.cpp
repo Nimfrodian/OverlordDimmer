@@ -1,5 +1,26 @@
 #include "tmra.h"
 
+static bool tmra_s_moduleInit_tB = false;
+static uint32_t tmra_nr_moduleId_U32 = 0;
+
+void tmra_init(tTMRA_INITDATA_STR* TmraCfg)
+{
+    if (true == tmra_s_moduleInit_tB)
+    {
+        // TODO: report ERROR
+    }
+    else if (NULL == TmraCfg)
+    {
+        // TODO: report ERROR
+    }
+    else
+    {
+
+        tmra_nr_moduleId_U32 = TmraCfg->nr_moduleId_U32;
+        tmra_s_moduleInit_tB = true;
+    }
+}
+
 int64_t tmra_ti_us_getCurrentTime_S64(void)
 {
     return (int64_t) esp_timer_get_time();

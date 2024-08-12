@@ -1,19 +1,28 @@
 #include "timh.h"
 
 static bool timh_s_moduleInit_tB = false;
+static uint32_t timh_nr_moduleId_U32 = 0;
+
 static tTIMH_INITDATA_STR timh_x_initData_str = {0};
 static tTIMH_TIMEDATA_STR timh_ti_timeData_str = {0};
 
-void timh_init(tTIMH_INITDATA_STR* InitData_pstr)
+int64_t (*timh_ti_us_sysTimeFunc_pfS64)(void);
+
+void timh_init(tTIMH_INITDATA_STR* TimhCfg)
 {
     if (true == timh_s_moduleInit_tB)
     {
         // TODO: report ERROR
     }
+    else if (NULL == TimhCfg)
+    {
+        // TODO: report ERROR
+    }
     else
     {
-        timh_x_initData_str = *InitData_pstr;
+        timh_ti_us_sysTimeFunc_pfS64 = TimhCfg->timh_ti_us_sysTimeFunc_pfS64;
 
+        timh_nr_moduleId_U32 = TimhCfg->nr_moduleId_U32;
         timh_s_moduleInit_tB = true;
     }
 }
@@ -59,7 +68,7 @@ int64_t timh_ti_us_readSystemTime(void)
     }
     else
     {
-        ti_us_sysTime = timh_x_initData_str.sysTimeFunc();
+        ti_us_sysTime = timh_ti_us_sysTimeFunc_pfS64();
     }
     return ti_us_sysTime;
 }

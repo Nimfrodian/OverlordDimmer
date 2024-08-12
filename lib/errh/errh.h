@@ -11,9 +11,19 @@
 
 #define ERRH_NR_ERROR_BUFFER_SIZE_U32 ((uint32_t) 64)   ///< number of spots for errors. First come first served. Should be large enough for all errors
 
+#define ERRH_API_INIT_U32                  ((uint32_t) 1)
+#define ERRH_API_READ_ERROR_U32            ((uint32_t) 2)
+
+#define ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32   ((uint32_t) 1)
+
+typedef struct
+{
+    uint32_t nr_moduleId_U32;       ///< ID of the module
+} tERRH_INITDATA_STR;
+
 typedef enum
 {
-    ERRH_ERROR_UNDEF,           ///< shall not be used
+    ERRH_ERRORTYPE_UNDEF,           ///< shall not be used
     ERRH_ERROR_CRITICAL,        ///< System will stop to prevent further damage
     ERRH_ERROR_HIGH,            ///< System will take corrective action and apply limitations to prevent damage
     ERRH_ERROR_LOW,             ///< System will apply limitations to prevent damage
@@ -22,6 +32,16 @@ typedef enum
 
     ERRH_COUNT
 } tERRH_ERRORTYPE_E;
+
+typedef enum
+{
+    ERRH_COMMONERRORTYPE_UNDEF = 0,
+    ERRH_MODULE_NOT_INIT,
+    ERRH_MODULE_ALREADY_INIT,
+    ERRH_POINTER_IS_NULL,
+
+
+} tERRH_COMMONERROR_E;
 
 typedef struct
 {
@@ -34,6 +54,20 @@ typedef struct
     int64_t ti_us_timestamp;            ///< timestamp of error in us from program start
     uint8_t count_U8;                   ///< number of times this error has been triggered. Caps at 255
 } tERRH_ERRORDATA_STR;
+
+/**
+ * @brief Function initializes error handling module
+ * @param void
+ * @return (void)
+ */
+void errh_init(tERRH_INITDATA_STR* ErrhCfg);
+
+/**
+ * @brief Function de-initializes error handling module
+ * @param void
+ * @return (void)
+ */
+void errh_deinit(void);
 
 /**
  * @brief Function for error reporting

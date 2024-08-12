@@ -7,6 +7,11 @@
 
 #include "driver/gpio.h"
 
+typedef struct
+{
+    uint32_t nr_moduleId_U32;       ///< ID of the module
+} tPINA_INITDATA_STR;
+
 typedef enum
 {
     // OUTPUTS
@@ -24,6 +29,13 @@ typedef enum
     // INPUTS
     PINA_IN_NUM_0 = GPIO_NUM_34,
 } PINA_nr_GPIO_NUM_E;
+
+/**
+ * @brief Function initializes pin abstraction handling module
+ * @param
+ * @return (void)
+ */
+void pina_init(tPINA_INITDATA_STR* PinaCfg);
 
 /**
  * @brief Function sets GPIO output to desired value

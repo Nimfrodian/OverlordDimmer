@@ -1,5 +1,8 @@
 #include "trgd.h"
 
+static bool trgd_s_moduleInit_tB = false;
+static uint32_t trgd_nr_moduleId_U32 = 0;
+
 static bool trgd_fl_updateTable_tB = true;                  ///< flags if a new duty cycle table needs to be calculated. Should occur about once very 10ms
 static int64_t trgd_ti_us_prevPeriodStart_S64 = 0;          ///< Time when previous period started in us
 static int64_t trgd_ti_us_currPeriodStart_S64 = 10000;      ///< Time when period started in us. Used to calculate period ratio (time deviation)
@@ -58,6 +61,10 @@ void trgd_initialTimerInterruptHandler_isr(void* arg)
 
 
     uint32_t err = tmra_stopTimer(&tmra_h_subsequentInterrupt_pstr);
+    if (err)
+    {
+        // TODO: report ERROR
+    }
 
     trgd_x_triggerCounter_U32 = 0;   ///< reset triggering to start from 0
     trgd_applyOutput_ev();
@@ -99,58 +106,72 @@ void IRAM_ATTR trgd_applyOutput_ev(void)
 }
 
 
-void trgd_init(void)
+void trgd_init(tTRGD_INITDATA_STR* TrgdCfg)
 {
-    ///< logic init
-    trgd_nr_numOfTriggeringPins_U32 = sizeof(trgd_x_triggerPins_aE) / sizeof(trgd_x_triggerPins_aE[0]);
-    tLGIC_INITDATA_STR logicCfg
+    if (true == trgd_s_moduleInit_tB)
     {
-        .nr_numOfPhysicalOutputs = trgd_nr_numOfTriggeringPins_U32,
-    };
-    lgic_init(&logicCfg);
-
-    ///< prepare triggering table
-    tLGIC_TRIGGERTABLEDATA_STR lgic_emptyTriggerData_str =
+        // TODO: report ERROR
+    }
+    else if (NULL == TrgdCfg)
     {
-        .ti_us_deltaToNext_U16 = 0,
-        .ti_us_triggerDelay_U16 = 0,
-        .ma_triggerMask_U32 = LGIC_MA_LAST_MASK_TO_BE_USED_FLAG_U32,
-    };
-    uint8_t numOfTables_U08 = sizeof(trgd_x_triggerTable_astr) / sizeof(trgd_x_triggerTable_astr[0]);
-    uint8_t numOfTableIndxs_U08 = sizeof(trgd_x_triggerTable_astr[0]) / sizeof(trgd_x_triggerTable_astr[0][0]);
-    for (uint8_t table = 0; table < numOfTables_U08; table++)
+        // TODO: report ERROR
+    }
+    else
     {
-        for (uint8_t tableIndx = 0; tableIndx < numOfTableIndxs_U08; tableIndx++)
+        ///< logic init
+        trgd_nr_numOfTriggeringPins_U32 = sizeof(trgd_x_triggerPins_aE) / sizeof(trgd_x_triggerPins_aE[0]);
+        tLGIC_INITDATA_STR logicCfg
         {
-            trgd_x_triggerTable_astr[table][tableIndx] = lgic_emptyTriggerData_str;
+            .nr_numOfPhysicalOutputs_32 = trgd_nr_numOfTriggeringPins_U32,
+        };
+        lgic_init(&logicCfg);
+
+        ///< prepare triggering table
+        tLGIC_TRIGGERTABLEDATA_STR lgic_emptyTriggerData_str =
+        {
+            .ti_us_deltaToNext_U16 = 0,
+            .ti_us_triggerDelay_U16 = 0,
+            .ma_triggerMask_U32 = LGIC_MA_LAST_MASK_TO_BE_USED_FLAG_U32,
+        };
+        uint8_t numOfTables_U08 = sizeof(trgd_x_triggerTable_astr) / sizeof(trgd_x_triggerTable_astr[0]);
+        uint8_t numOfTableIndxs_U08 = sizeof(trgd_x_triggerTable_astr[0]) / sizeof(trgd_x_triggerTable_astr[0][0]);
+        for (uint8_t table = 0; table < numOfTables_U08; table++)
+        {
+            for (uint8_t tableIndx = 0; tableIndx < numOfTableIndxs_U08; tableIndx++)
+            {
+                trgd_x_triggerTable_astr[table][tableIndx] = lgic_emptyTriggerData_str;
+            }
         }
-    }
-    ///< initialize interrupts
-    {
-        tmra_createTimer(&tmra_h_subsequentInterrupt_pstr, trgd_subsequentTimerInterruptHandler_isr);
-        tmra_createTimer(&tmra_h_initialInterrupt_pstr, trgd_initialTimerInterruptHandler_isr);
-    }
-
-    {
-        pina_setGpioLevel(trgd_x_triggerPins_aE[0], 0);
-        pina_setGpioLevel(trgd_x_triggerPins_aE[1], 0);
-        pina_setGpioLevel(trgd_x_triggerPins_aE[2], 0);
-        pina_setGpioLevel(trgd_x_triggerPins_aE[3], 0);
-        pina_setGpioLevel(trgd_x_triggerPins_aE[4], 0);
-        pina_setGpioLevel(trgd_x_triggerPins_aE[5], 0);
-        pina_setGpioLevel(trgd_x_triggerPins_aE[6], 0);
-        pina_setGpioLevel(trgd_x_triggerPins_aE[7], 0);
-        pina_setGpioLevel(trgd_x_triggerPins_aE[8], 0);
-        pina_setGpioLevel(trgd_x_triggerPins_aE[9], 0);
-
-        for (int i = 0; i < trgd_nr_numOfTriggeringPins_U32; i++)
+        ///< initialize interrupts
         {
-            pina_setGpioAsOutput(trgd_x_triggerPins_aE[i]);
+            tmra_createTimer(&tmra_h_subsequentInterrupt_pstr, trgd_subsequentTimerInterruptHandler_isr);
+            tmra_createTimer(&tmra_h_initialInterrupt_pstr, trgd_initialTimerInterruptHandler_isr);
         }
 
-        pina_setGpioAsInput(PINA_IN_NUM_0);
+        {
+            pina_setGpioLevel(trgd_x_triggerPins_aE[0], 0);
+            pina_setGpioLevel(trgd_x_triggerPins_aE[1], 0);
+            pina_setGpioLevel(trgd_x_triggerPins_aE[2], 0);
+            pina_setGpioLevel(trgd_x_triggerPins_aE[3], 0);
+            pina_setGpioLevel(trgd_x_triggerPins_aE[4], 0);
+            pina_setGpioLevel(trgd_x_triggerPins_aE[5], 0);
+            pina_setGpioLevel(trgd_x_triggerPins_aE[6], 0);
+            pina_setGpioLevel(trgd_x_triggerPins_aE[7], 0);
+            pina_setGpioLevel(trgd_x_triggerPins_aE[8], 0);
+            pina_setGpioLevel(trgd_x_triggerPins_aE[9], 0);
 
-        pina_setInterruptService(PINA_IN_NUM_0, trgd_gpioInterruptHandler_isr);
+            for (int i = 0; i < trgd_nr_numOfTriggeringPins_U32; i++)
+            {
+                pina_setGpioAsOutput(trgd_x_triggerPins_aE[i]);
+            }
+
+            pina_setGpioAsInput(PINA_IN_NUM_0);
+
+            pina_setInterruptService(PINA_IN_NUM_0, trgd_gpioInterruptHandler_isr);
+        }
+
+        trgd_nr_moduleId_U32 = TrgdCfg->nr_moduleId_U32;
+        trgd_s_moduleInit_tB = true;
     }
 }
 

@@ -27,7 +27,8 @@ typedef struct
 
 typedef struct
 {
-    uint32_t nr_numOfPhysicalOutputs;   ///< number of physical outputs
+    uint32_t nr_moduleId_U32;               ///< ID of the module
+    uint32_t nr_numOfPhysicalOutputs_32;   ///< number of physical outputs
 } tLGIC_INITDATA_STR;
 
 void lgic_init(tLGIC_INITDATA_STR* logicCfg);

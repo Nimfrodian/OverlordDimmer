@@ -1,6 +1,8 @@
 #include "canm.h"
 
-bool canm_f_moduleInit_tB = false;
+static bool canm_s_moduleInit_tB = false;
+static uint32_t canm_nr_moduleId_U32 = 0;
+
 const twai_general_config_t canm_x_genConfig_str =
 {
     .mode = TWAI_MODE_NORMAL,
@@ -26,9 +28,13 @@ const twai_filter_config_t canm_x_filter_str =
 
 tCANM_X_CANMSGDATA_STR canm_x_canMsgs_astr[NUM_OF_CAN_MSG];
 
-void canm_init()
+void canm_init(tCANM_INITDATA_STR* CanmCfg)
 {
-    if (true == canm_f_moduleInit_tB)
+    if (true == canm_s_moduleInit_tB)
+    {
+        // TODO: report ERROR
+    }
+    else if (NULL == CanmCfg)
     {
         // TODO: report ERROR
     }
@@ -59,7 +65,8 @@ void canm_init()
 
         twai_start();
 
-        canm_f_moduleInit_tB = true;    // only init once
+        canm_nr_moduleId_U32 = CanmCfg->nr_moduleId_U32;
+        canm_s_moduleInit_tB = true;    // only init once
     }
 }
 

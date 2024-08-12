@@ -7,7 +7,7 @@
 void setUp(void)
 {
     tLGIC_INITDATA_STR lgicCfg;
-    lgicCfg.nr_numOfPhysicalOutputs = NUM_OF_TRIGGERS;
+    lgicCfg.nr_numOfPhysicalOutputs_32 = NUM_OF_TRIGGERS;
     lgic_init(&lgicCfg);
 }
 

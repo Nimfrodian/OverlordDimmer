@@ -6,5 +6,8 @@
         "initializer_list": "cpp",
         "*.cpp2": "c",
         "logic.h": "c"
-    }
+    },
+    "gcovViewer.buildDirectories": [
+        "c:\\Users\\Laptop-3070\\Documents\\OverlordDimmer\\.pio\\build\\extra_unity_options"
+    ]
 }

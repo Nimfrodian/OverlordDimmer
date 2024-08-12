@@ -1,8 +1,33 @@
 #include "errh.h"
 
-static std::vector<tERRH_ERRORDATA_STR> errh_x_errors_vstr(ERRH_NR_ERROR_BUFFER_SIZE_U32);  // list of currently active errors
+static bool errh_s_moduleInit_tB = false;
+static uint32_t errh_nr_moduleId_U32 = 0;
 
-static uint32_t errh_nr_activeErrorCount_U32 = 0;
+static std::vector<tERRH_ERRORDATA_STR> errh_x_errors_vstr(ERRH_NR_ERROR_BUFFER_SIZE_U32);  // list of currently active errors
+static uint32_t errh_nr_activeErrorCount_U32 = 0;                                           // number of (unique) logged errors
+
+void errh_init(tERRH_INITDATA_STR* ErrhCfg)
+{
+    if (true == errh_s_moduleInit_tB)
+    {
+        errh_reportError(ERRH_NOTIF, errh_nr_moduleId_U32, 0, ERRH_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
+    }
+    else if (NULL == ErrhCfg)
+    {
+        errh_x_errors_vstr[0].moduleId = -1;
+        errh_x_errors_vstr[0].instanceId = -1;
+        errh_x_errors_vstr[0].apiId = -1;
+        errh_x_errors_vstr[0].errorId = -1;
+        errh_x_errors_vstr[0].errorLvl = ERRH_ERROR_CRITICAL;
+        errh_x_errors_vstr[0].count_U8 = (255 == errh_x_errors_vstr[0].count_U8) ? 255 : errh_x_errors_vstr[0].count_U8++;
+        errh_nr_activeErrorCount_U32 = 1;
+    }
+    else
+    {
+        errh_nr_moduleId_U32 = ErrhCfg->nr_moduleId_U32;
+        errh_s_moduleInit_tB = true;
+    }
+}
 
 void errh_reportError(tERRH_ERRORTYPE_E ErrorLvl, uint32_t ModuleId, uint32_t InstanceId, uint32_t ApiId, uint32_t ErrorId)
 {
@@ -19,23 +44,21 @@ void errh_reportError(tERRH_ERRORTYPE_E ErrorLvl, uint32_t ModuleId, uint32_t In
     {
         // find if error already exists in the database, and if so, update timestamp and count
         bool moduleAlreadyPresent_tB = false;
-        for (std::vector<tERRH_ERRORDATA_STR>::iterator it = errh_x_errors_vstr.begin();
-            it != errh_x_errors_vstr.end();
-            it++)
+        for (uint32_t i_U32 = 0; i_U32 < errh_nr_activeErrorCount_U32; i_U32++)
         {
-            if ((ErrorLvl == it->errorLvl) &&
-                (ModuleId == it->moduleId) &&
-                (InstanceId == it->instanceId) &&
-                (ApiId == it->apiId) &&
-                (ErrorId == it->errorId)
+            if ((ErrorLvl == errh_x_errors_vstr[i_U32].errorLvl) &&
+                (ModuleId == errh_x_errors_vstr[i_U32].moduleId) &&
+                (InstanceId == errh_x_errors_vstr[i_U32].instanceId) &&
+                (ApiId == errh_x_errors_vstr[i_U32].apiId) &&
+                (ErrorId == errh_x_errors_vstr[i_U32].errorId)
             )
             {
-                if (it->count_U8 < 255)
+                if (errh_x_errors_vstr[i_U32].count_U8 < 255)
                 {
-                    it->count_U8++;
+                    errh_x_errors_vstr[i_U32].count_U8++;
                 }
-                it->ti_globalTime = timh_ti_readCurrentTime();
-                it->ti_us_timestamp = timh_ti_us_readSystemTime();
+                errh_x_errors_vstr[i_U32].ti_globalTime = timh_ti_readCurrentTime();
+                errh_x_errors_vstr[i_U32].ti_us_timestamp = timh_ti_us_readSystemTime();
                 moduleAlreadyPresent_tB = true;
             }
         }
@@ -60,7 +83,7 @@ tERRH_ERRORDATA_STR errh_readError(uint32_t ErrorIndx)
     tERRH_ERRORDATA_STR errData_str = {0};
     if (errh_nr_activeErrorCount_U32 <= ErrorIndx)
     {
-        // TODO: report ERROR
+        errh_reportError(ERRH_WARNING, errh_nr_moduleId_U32, 0, ERRH_API_READ_ERROR_U32, ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32);
     }
     else
     {
@@ -77,4 +100,9 @@ uint32_t errh_readReportedErrorCount(void)
 void errh_clearErrorCount(void)
 {
     errh_nr_activeErrorCount_U32 = 0;
+}
+
+void errh_deinit(void)
+{
+    errh_s_moduleInit_tB = false;
 }

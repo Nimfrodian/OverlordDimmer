@@ -80,7 +80,25 @@ void errh_reportError(tERRH_ERRORTYPE_E ErrorLvl, uint32_t ModuleId, uint32_t In
 
 tERRH_ERRORDATA_STR errh_readError(uint32_t ErrorIndx)
 {
-    tERRH_ERRORDATA_STR errData_str = {0};
+    tERRH_ERRORDATA_STR errData_str =
+    {
+        .moduleId = 0,
+        .instanceId = 0,
+        .apiId = 0,
+        .errorId = 0,
+        .errorLvl = ERRH_ERRORTYPE_UNDEF,
+        .ti_globalTime =
+        {
+            .year_U16 = 0,
+            .month_U8 = 0,
+            .day_U8 = 0,
+            .hour_U8 = 0,
+            .minute_U8 = 0,
+            .second_U8 = 0,
+        },
+        .ti_us_timestamp = 0,
+        .count_U8 = 0,
+    };
     if (errh_nr_activeErrorCount_U32 <= ErrorIndx)
     {
         errh_reportError(ERRH_WARNING, errh_nr_moduleId_U32, 0, ERRH_API_READ_ERROR_U32, ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32);
@@ -106,7 +124,25 @@ void errh_deinit(void)
 {
     errh_s_moduleInit_tB = false;
 
-    tERRH_ERRORDATA_STR emptyData_str = {0};
+    tERRH_ERRORDATA_STR emptyData_str =
+    {
+        .moduleId = 0,
+        .instanceId = 0,
+        .apiId = 0,
+        .errorId = 0,
+        .errorLvl = ERRH_ERRORTYPE_UNDEF,
+        .ti_globalTime =
+        {
+            .year_U16 = 0,
+            .month_U8 = 0,
+            .day_U8 = 0,
+            .hour_U8 = 0,
+            .minute_U8 = 0,
+            .second_U8 = 0,
+        },
+        .ti_us_timestamp = 0,
+        .count_U8 = 0,
+    };
     for (uint32_t i_U32 = 0; i_U32 < ERRH_NR_ERROR_BUFFER_SIZE_U32; i_U32++)
     {
         errh_x_errors_vstr[i_U32] = emptyData_str;

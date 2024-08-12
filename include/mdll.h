@@ -3,17 +3,21 @@
 * Module list file
 *
 */
+#pragma once
 
-#define MODULE_MAIN     AUTOMATIC
+enum moduleList
+{
+    MODULE_MAIN = 0,
 
-// Lib
-#define MODULE_ERRH     AUTOMATIC
-#define MODULE_LGIC     AUTOMATIC
-#define MODULE_TIMH     AUTOMATIC
+    // Lib
+    MODULE_ERRH,
+    MODULE_LGIC,
+    MODULE_TIMH,
 
-// Src
-#define MODULE_CANM     AUTOMATIC
-#define MODULE_PINA     AUTOMATIC
-#define MODULE_SERA     AUTOMATIC
-#define MODULE_TMRA     AUTOMATIC
-#define MODULE_TRGD     AUTOMATIC
+    // Src
+    MODULE_CANM,
+    MODULE_PINA,
+    MODULE_SERA,
+    MODULE_TMRA,
+    MODULE_TRGD,
+};

@@ -9,6 +9,7 @@
 #include "tmra.h"
 #include "lgic.h"
 #include "errh.h"
+#include "mdll.h"
 
 #define TRGD_API_INIT_U32                   ((uint32_t) 1)
 #define TRGD_API_INITIAL_INTRPT_HANDLER_U32 ((uint32_t) 2)

@@ -29,11 +29,23 @@ void main_run(void)
 extern "C" void app_main()
 {
     {
-        sera_init();
+        tSERA_INITDATA_STR SeraCfg =
+        {
+            .nr_moduleId_U32 = MODULE_SERA,
+        };
+        sera_init(&SeraCfg);
 
-        trgd_init();
+        tTRGD_INITDATA_STR TrgdCfg =
+        {
+            .nr_moduleId_U32 = MODULE_TRGD,
+        };
+        trgd_init(&TrgdCfg);
 
-        canm_init();
+        tCANM_INITDATA_STR CanmCfg =
+        {
+            .nr_moduleId_U32 = MODULE_CANM,
+        };
+        canm_init(&CanmCfg);
     }
 
     while(true)

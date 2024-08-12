@@ -4,8 +4,15 @@
 static bool timh_s_moduleInit_tB = false;
 static uint32_t timh_nr_moduleId_U32 = 0;
 
-static tTIMH_INITDATA_STR timh_x_initData_str = {0};
-static tTIMH_TIMEDATA_STR timh_ti_timeData_str = {0};
+static tTIMH_TIMEDATA_STR timh_ti_timeData_str =
+    {
+        .year_U16 = 0,
+        .month_U8 = 0,
+        .day_U8 = 0,
+        .hour_U8 = 0,
+        .minute_U8 = 0,
+        .second_U8 = 0,
+    };
 
 int64_t (*timh_ti_us_sysTimeFunc_pfS64)(void);
 

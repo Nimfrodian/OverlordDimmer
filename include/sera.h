@@ -20,4 +20,4 @@ typedef struct
  * @param void
  * @return (void)
  */
-void sera_init(void);
+void sera_init(tSERA_INITDATA_STR* SeraCfg);

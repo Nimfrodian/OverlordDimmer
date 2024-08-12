@@ -122,9 +122,17 @@ void trgd_init(tTRGD_INITDATA_STR* TrgdCfg)
         trgd_nr_numOfTriggeringPins_U32 = sizeof(trgd_x_triggerPins_aE) / sizeof(trgd_x_triggerPins_aE[0]);
         tLGIC_INITDATA_STR logicCfg
         {
+            .nr_moduleId_U32 = MODULE_LGIC,
             .nr_numOfPhysicalOutputs_32 = trgd_nr_numOfTriggeringPins_U32,
         };
         lgic_init(&logicCfg);
+
+        tTIMH_INITDATA_STR timh_cfgData_str =
+        {
+            .nr_moduleId_U32 = MODULE_TIMH,
+            .timh_ti_us_sysTimeFunc_pfS64 = tmra_ti_us_getCurrentTime_S64,
+        };
+        timh_init(&timh_cfgData_str);
 
         ///< prepare triggering table
         tLGIC_TRIGGERTABLEDATA_STR lgic_emptyTriggerData_str =

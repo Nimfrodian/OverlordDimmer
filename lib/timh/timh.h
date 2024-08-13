@@ -56,4 +56,4 @@ tTIMH_TIMEDATA_STR timh_ti_readCurrentTime(void);
  * @param void
  * @return system time in us since reset
  */
-int64_t timh_ti_us_readSystemTime(void);
+int64_t timh_ti_us_readSystemTime_S64(void);

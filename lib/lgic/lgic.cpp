@@ -51,7 +51,7 @@ void lgic_init(tLGIC_INITDATA_STR* LgicCfg)
 
 void lgic_setDutyCycle_ev(uint32_t OutIndx, float EndPrcnt, uint64_t TimeToEndPrcnt_ms)
 {
-    if (!lgic_s_moduleInit_tB)
+    if (false == lgic_s_moduleInit_tB)
     {
         errh_reportError(ERRH_ERROR_CRITICAL, lgic_nr_moduleId_U32, 0, LGIC_API_SET_DUTY_CYCLE_U32, ERRH_MODULE_NOT_INIT);
     }
@@ -109,7 +109,7 @@ void lgic_calcDutyCycle_10ms(void)
 
 void lgic_canMsgCompose_100ms(uint8_t* DataPtr, uint32_t* MsgIdPtr)
 {
-    if (!lgic_s_moduleInit_tB)
+    if (false == lgic_s_moduleInit_tB)
     {
         errh_reportError(ERRH_ERROR_CRITICAL, lgic_nr_moduleId_U32, 0, LGIC_API_CAN_COMPOSE_U32, ERRH_MODULE_NOT_INIT);
     }
@@ -154,7 +154,7 @@ void lgic_canMsgCompose_100ms(uint8_t* DataPtr, uint32_t* MsgIdPtr)
 
 void lgic_canMsgParse_ev(uint8_t* DataPtr, uint32_t* MsgIdPtr)
 {
-    if (!lgic_s_moduleInit_tB)
+    if (false == lgic_s_moduleInit_tB)
     {
         errh_reportError(ERRH_ERROR_CRITICAL, lgic_nr_moduleId_U32, 0, LGIC_API_CAN_PARSE_U32, ERRH_MODULE_NOT_INIT);
     }

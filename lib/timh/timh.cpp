@@ -14,7 +14,7 @@ static tTIMH_TIMEDATA_STR timh_ti_timeData_str =
         .second_U8 = 0,
     };
 
-int64_t (*timh_ti_us_sysTimeFunc_pfS64)(void);
+int64_t (*timh_ti_us_sysTimeFunc_pfS64)(void) = NULL;
 
 void timh_init(tTIMH_INITDATA_STR* TimhCfg)
 {
@@ -68,16 +68,16 @@ tTIMH_TIMEDATA_STR timh_ti_readCurrentTime(void)
     return timh_ti_timeData_str;
 }
 
-int64_t timh_ti_us_readSystemTime(void)
+int64_t timh_ti_us_readSystemTime_S64(void)
 {
-    int64_t ti_us_sysTime = -1;
-    if (!timh_s_moduleInit_tB)
+    int64_t ti_us_sysTime_S64 = -1;
+    if (false == timh_s_moduleInit_tB)
     {
         errh_reportError(ERRH_ERROR_CRITICAL, timh_nr_moduleId_U32, 0, TIMH_API_READ_SYS_TI_U32, ERRH_MODULE_NOT_INIT);
     }
     else
     {
-        ti_us_sysTime = timh_ti_us_sysTimeFunc_pfS64();
+        ti_us_sysTime_S64 = timh_ti_us_sysTimeFunc_pfS64();
     }
-    return ti_us_sysTime;
+    return ti_us_sysTime_S64;
 }

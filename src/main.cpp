@@ -34,18 +34,23 @@ extern "C" void app_main()
             .nr_moduleId_U32 = MODULE_SERA,
         };
         sera_init(&SeraCfg);
+        sera_print("Sera module initialized\n");
 
         tTRGD_INITDATA_STR TrgdCfg =
         {
             .nr_moduleId_U32 = MODULE_TRGD,
         };
         trgd_init(&TrgdCfg);
+        sera_print("Trgd module initialized\n");
 
         tCANM_INITDATA_STR CanmCfg =
         {
             .nr_moduleId_U32 = MODULE_CANM,
         };
         canm_init(&CanmCfg);
+        sera_print("Canm module initialized\n");
+
+        sera_print("Initialization time: %lli us\n", timh_ti_us_readSystemTime_S64());
     }
 
     while(true)

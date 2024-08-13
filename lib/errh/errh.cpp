@@ -58,7 +58,7 @@ void errh_reportError(tERRH_ERRORTYPE_E ErrorLvl, uint32_t ModuleId, uint32_t In
                     errh_x_errors_vstr[i_U32].count_U8++;
                 }
                 errh_x_errors_vstr[i_U32].ti_globalTime = timh_ti_readCurrentTime();
-                errh_x_errors_vstr[i_U32].ti_us_timestamp = timh_ti_us_readSystemTime();
+                errh_x_errors_vstr[i_U32].ti_us_timestamp = timh_ti_us_readSystemTime_S64();
                 moduleAlreadyPresent_tB = true;
             }
         }
@@ -71,7 +71,7 @@ void errh_reportError(tERRH_ERRORTYPE_E ErrorLvl, uint32_t ModuleId, uint32_t In
             errh_x_errors_vstr[errh_nr_activeErrorCount_U32].errorId = ErrorId;
             errh_x_errors_vstr[errh_nr_activeErrorCount_U32].errorLvl = ErrorLvl;
             errh_x_errors_vstr[errh_nr_activeErrorCount_U32].ti_globalTime = timh_ti_readCurrentTime();
-            errh_x_errors_vstr[errh_nr_activeErrorCount_U32].ti_us_timestamp = timh_ti_us_readSystemTime();
+            errh_x_errors_vstr[errh_nr_activeErrorCount_U32].ti_us_timestamp = timh_ti_us_readSystemTime_S64();
             errh_x_errors_vstr[errh_nr_activeErrorCount_U32].count_U8 = 1;
             errh_nr_activeErrorCount_U32++;
         }

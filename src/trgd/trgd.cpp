@@ -52,7 +52,7 @@ void trgd_subsequentTimerInterruptHandler_isr(void* arg)
 void trgd_initialTimerInterruptHandler_isr(void* arg)
 {
     trgd_ti_us_prevPeriodStart_S64 = trgd_ti_us_currPeriodStart_S64;
-    trgd_ti_us_currPeriodStart_S64 = tmra_ti_us_getCurrentTime_S64();
+    trgd_ti_us_currPeriodStart_S64 = timh_ti_us_readSystemTime_S64();
 
     ///< swap tables used
     tLGIC_TRIGGERTABLEDATA_STR* temp_pstr = trgd_x_activeTable_pstr;
@@ -130,7 +130,7 @@ void trgd_init(tTRGD_INITDATA_STR* TrgdCfg)
         tTIMH_INITDATA_STR timh_cfgData_str =
         {
             .nr_moduleId_U32 = MODULE_TIMH,
-            .timh_ti_us_sysTimeFunc_pfS64 = tmra_ti_us_getCurrentTime_S64,
+            .timh_ti_us_sysTimeFunc_pfS64 = &tmra_ti_us_getCurrentTime_S64,
         };
         timh_init(&timh_cfgData_str);
 

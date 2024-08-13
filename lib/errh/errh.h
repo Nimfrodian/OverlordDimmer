@@ -11,8 +11,10 @@
 
 #define ERRH_API_INIT_U32                       ((uint32_t) 1)
 #define ERRH_API_READ_ERROR_U32                 ((uint32_t) 2)
+#define ERRH_API_CAN_COMPOSE_U32                ((uint32_t) 3)
 
 #define ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32   ((uint32_t) 1)
+
 
 
 #define ERRH_NR_ERROR_BUFFER_SIZE_U32 ((uint32_t) 64)   ///< number of spots for errors. First come first served. Should be large enough for all errors
@@ -49,9 +51,10 @@ typedef struct
     uint32_t instanceId;                ///< ID of the instance
     uint32_t apiId;                     ///< ID of the API (function) in which error is triggered
     uint32_t errorId;                   ///< ID of the error triggered
-    tERRH_ERRORTYPE_E errorLvl;         ///< Level of severity
+    tERRH_ERRORTYPE_E errorLvl : 8;     ///< Level of severity
     tTIMH_TIMEDATA_STR ti_globalTime;   ///< Actual world time at error event
     int64_t ti_us_timestamp;            ///< timestamp of error in us from program start
+    uint8_t s_sentOnCan_U8;             ///< true if error was already broadcasted on CAN since last change
     uint8_t count_U8;                   ///< number of times this error has been triggered. Caps at 255
 } tERRH_ERRORDATA_STR;
 
@@ -100,3 +103,10 @@ uint32_t errh_readReportedErrorCount(void);
  * @return (void)
  */
 void errh_clearErrorCount(void);
+
+/**
+ * @brief Function fills out 4 CAN messages with a single error data
+ * @param DataPtr_MpU8 a matrix of 4 pointers to 8 bytes of memory for 4 64bit CAN messages
+ * @return (void)
+ */
+bool errh_canMsgCompose_100ms(uint8_t** DataPtr_MpU8);

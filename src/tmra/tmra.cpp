@@ -38,7 +38,7 @@ uint32_t tmra_isTimerActive(tTMRA_TIMERHANDLE_STR* TimerHandlePtr)
 
 uint32_t tmra_stopTimer(tTMRA_TIMERHANDLE_STR* TimerHandlePtr)
 {
-    uint32_t err = 255;
+    uint32_t err = 0;
     if (tmra_isTimerActive(TimerHandlePtr))
     {
         err = (uint32_t) esp_timer_stop(*TimerHandlePtr);

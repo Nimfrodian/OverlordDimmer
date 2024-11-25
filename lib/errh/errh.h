@@ -7,7 +7,6 @@
 
 #include "stdint.h"
 #include "timh.h"
-#include <vector>
 
 #define ERRH_API_INIT_U32                       ((uint32_t) 1)
 #define ERRH_API_READ_ERROR_U32                 ((uint32_t) 2)

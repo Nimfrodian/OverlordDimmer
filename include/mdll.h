@@ -20,4 +20,5 @@ enum moduleList
     MODULE_SERA,
     MODULE_TMRA,
     MODULE_TRGD,
+    MODULE_RTDB,
 };

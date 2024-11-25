@@ -1,5 +1,21 @@
 #include"rtdb.h"
+#include "trgd_rtdb.h"
 
+static bool rtdb_s_moduleInit_tB = false;
+static uint32_t rtdb_nr_moduleId_U32 = 0;
+
+const char* rtdb_unitLookupTable[VAR_UNIT_MAX_NUM] =
+{
+    [VAR_UNIT_us] = "us",
+};
+
+tU32S* rtdb_arr_tU32S[NUM_OF_TU32S] = {0};
+
+tU32 rtdb_calcCrc32 (void* VarAddrs, tU32 VarSize )
+{
+    // TODO
+    return -1;
+}
 
 void rtdb_assign_tU32S( tU32S* VarAddrs,
                          tU32 Indx,
@@ -7,7 +23,7 @@ void rtdb_assign_tU32S( tU32S* VarAddrs,
                          tU32 Min,
                          tU32 Def,
                          tU32 Max,
-                         char* Comment )
+                         const char* Comment )
 {
     rtdb_arr_tU32S[Indx] = VarAddrs; // Copy address of variable to lookup table
     VarAddrs->tU32_val = Def;
@@ -111,4 +127,21 @@ tU32 rtdb_read_tU32S( tU32S* VarAddrs )
     }
 
     return toReturn;
+}
+
+void rtdb_init(tRTDB_INITDATA_STR* RtdbCfg)
+{
+    if (true == rtdb_s_moduleInit_tB)
+    {
+        errh_reportError(ERRH_NOTIF, rtdb_nr_moduleId_U32, 0, RTDB_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
+    }
+    else if (NULL == RtdbCfg)
+    {
+        errh_reportError(ERRH_ERROR_CRITICAL, rtdb_nr_moduleId_U32, 0, RTDB_API_INIT_U32, ERRH_POINTER_IS_NULL);
+    }
+    else
+    {
+        rtdb_s_moduleInit_tB = true;
+        trgd_rtdb_init();
+    }
 }

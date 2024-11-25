@@ -56,6 +56,14 @@ extern "C" void app_main()
         canm_init(&CanmCfg);
         sera_print("Canm module initialized\n");
 
+
+        tRTDB_INITDATA_STR RtdbCfg =
+        {
+            .nr_moduleId_U32 = MODULE_RTDB,
+        };
+        rtdb_init(&RtdbCfg);
+        sera_print("Rtdb module initialized\n");
+
         sera_print("Initialization time: %lli us\n", timh_ti_us_readSystemTime_S64());
     }
 

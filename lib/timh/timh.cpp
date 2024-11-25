@@ -14,7 +14,7 @@ static tTIMH_TIMEDATA_STR timh_ti_timeData_str =
         .second_U8 = 0,
     };
 
-int64_t (*timh_ti_us_sysTimeFunc_pfS64)(void) = NULL;
+int64_t (*timh_ti_us_sysTimeFunc_pfS64)(void) = nullptr;
 
 void timh_init(tTIMH_INITDATA_STR* TimhCfg)
 {
@@ -22,7 +22,7 @@ void timh_init(tTIMH_INITDATA_STR* TimhCfg)
     {
         errh_reportError(ERRH_NOTIF, timh_nr_moduleId_U32, 0, TIMH_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
-    else if (NULL == TimhCfg)
+    else if (nullptr == TimhCfg)
     {
         errh_reportError(ERRH_ERROR_CRITICAL, timh_nr_moduleId_U32, 0, TIMH_API_INIT_U32, ERRH_POINTER_IS_NULL);
     }

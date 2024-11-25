@@ -7,6 +7,7 @@
 #include "canm.h"
 #include "lgic.h"
 #include "trgd.h"
+#include "rtdb.h"
 
 #include "mdll.h"
 

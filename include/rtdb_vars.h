@@ -41,11 +41,6 @@ typedef enum
     VAR_UNIT_MAX_NUM
 } unitEnumT;
 
-char* rtdb_unitLookupTable[VAR_UNIT_MAX_NUM] =
-{
-    [VAR_UNIT_us] = "us",
-};
-
 // tU32S
 enum
 {
@@ -74,7 +69,7 @@ typedef struct
     signalStateT signalState : 8;       ///< state of the signal, i.e., its reliability
     objectStatusT objectStatus : 8;     ///< status of this object
     tU8 signalUnit;                     ///< unit of the signal, i.e., volt or RPM
-    char* signalCmnt;                   ///< Signal comment
+    const char* signalCmnt;             ///< Signal comment
 } rtdbT;
 
 typedef struct
@@ -158,5 +153,4 @@ typedef struct
     tU32 tE_max;
 } tES;
 
-tU32S* rtdb_arr_tU32S[NUM_OF_TU32S] = {0};
 #endif

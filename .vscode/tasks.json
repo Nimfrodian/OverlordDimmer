@@ -2,31 +2,27 @@
 	"version": "2.0.0",
 	"tasks": [
         {
+            "label": "Run RTDB Generator Script",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "rtdb_generator/gen_main.py"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            }
+        },
+        {
             "type": "PlatformIO",
             "task": "Build",
             "problemMatcher": [
                 "$platformio"
             ],
+            "dependsOn": ["Run RTDB Generator Script"], // Link pre-build task
             "group": "build",
             "label": "PlatformIO: Build"
-        },
-        {
-            "type": "PlatformIO",
-            "task": "Build (extra_unity_options)",
-            "problemMatcher": [
-                "$platformio"
-            ],
-            "group": "build",
-            "label": "PlatformIO: Build (extra_unity_options)"
-        },
-        {
-            "type": "PlatformIO",
-            "task": "Test (extra_unity_options)",
-            "problemMatcher": [
-                "$platformio"
-            ],
-            "group": "test",
-            "label": "PlatformIO: Test (extra_unity_options)"
         },
     ]
 }

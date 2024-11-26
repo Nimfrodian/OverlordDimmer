@@ -1,4 +1,5 @@
 #include "trgd.h"
+#include "rtdb.h"
 
 static bool trgd_s_moduleInit_tB = false;
 static uint32_t trgd_nr_moduleId_U32 = 0;
@@ -7,7 +8,7 @@ static bool trgd_fl_updateTable_tB = true;                  ///< flags if a new 
 static int64_t trgd_ti_us_prevPeriodStart_S64 = 0;          ///< Time when previous period started in us
 static int64_t trgd_ti_us_currPeriodStart_S64 = 10000;      ///< Time when period started in us. Used to calculate period ratio (time deviation)
 static uint32_t trgd_nr_numOfTriggeringPins_U32 = 0;        ///< number of physical triggering pins
-static uint32_t trgd_ti_us_zeroCrossTriggerDelay_U32 = 70;  ///< time delay after zero-cross is detected before activating mask
+static uint32_t trgd_ti_us_localZeroCrossTriggerDelay_U32 = 70;  ///< time delay after zero-cross is detected before activating mask
 
 static uint32_t                     trgd_x_triggerCounter_U32 = 0;    ///< variable counts which index of the active table should be applied
 static tLGIC_TRIGGERTABLEDATA_STR   trgd_x_triggerTable_astr [2][32]; ///< two trigger tables - one active, one in preparation. 1 initial state and 1 state for each output
@@ -41,7 +42,7 @@ static void IRAM_ATTR trgd_applyOutput_ev(void);
 void IRAM_ATTR trgd_gpioInterruptHandler_isr(void* arg)
 {
     ///< start countdown timer as the zero-cross trigger occurs some time before actual zero-cross
-    tmra_startTimer(&tmra_h_initialInterrupt_pstr, trgd_ti_us_zeroCrossTriggerDelay_U32);
+    tmra_startTimer(&tmra_h_initialInterrupt_pstr, trgd_ti_us_localZeroCrossTriggerDelay_U32);
 }
 
 void trgd_subsequentTimerInterruptHandler_isr(void* arg)
@@ -191,5 +192,6 @@ void trgd_run(void)
         float periodRatio_F32 = ((float) (trgd_ti_us_currPeriodStart_S64 - trgd_ti_us_prevPeriodStart_S64)) / 10000.0f;
         lgic_calcNewTable_ev(trgd_x_preparingTable_pstr, periodRatio_F32);
         trgd_fl_updateTable_tB = false;
+        trgd_ti_us_localZeroCrossTriggerDelay_U32 = rtdb_read_tU32S(TRGD_TI_US_ZEROCROSSTRIGGERDELAY_U32);
     }
 }

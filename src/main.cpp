@@ -8,6 +8,7 @@ void main_run(void)
         lgic_canMsgParse_ev( rxDataPtr->canMsg_str.data, &rxDataPtr->canMsg_str.identifier);
     }
 
+    // 100ms tasks
     static uint32_t counter = 0;
     if (counter > 100)
     {
@@ -22,6 +23,30 @@ void main_run(void)
         canm_x_flagCanMsgForTx(CAN_REPLY_MESSAGE0);
         canm_x_flagCanMsgForTx(CAN_REPLY_MESSAGE1);
         counter = 0;
+
+        tCANM_X_CANMSGDATA_STR* errh_canMsg0_pstr = canm_pstr_readCanMsgData(CAN_ERROR_MESSAGE0);
+        tCANM_X_CANMSGDATA_STR* errh_canMsg1_pstr = canm_pstr_readCanMsgData(CAN_ERROR_MESSAGE1);
+        tCANM_X_CANMSGDATA_STR* errh_canMsg2_pstr = canm_pstr_readCanMsgData(CAN_ERROR_MESSAGE2);
+        tCANM_X_CANMSGDATA_STR* errh_canMsg3_pstr = canm_pstr_readCanMsgData(CAN_ERROR_MESSAGE3);
+
+        errh_canMsg0_pstr->canMsg_str.identifier = 0x50;
+        errh_canMsg1_pstr->canMsg_str.identifier = 0x51;
+        errh_canMsg2_pstr->canMsg_str.identifier = 0x52;
+        errh_canMsg3_pstr->canMsg_str.identifier = 0x53;
+
+        uint8_t* canData_aU8[4] = {errh_canMsg0_pstr->canMsg_str.data,
+                                   errh_canMsg1_pstr->canMsg_str.data,
+                                   errh_canMsg2_pstr->canMsg_str.data,
+                                   errh_canMsg3_pstr->canMsg_str.data,
+                                   };
+
+        if (true == errh_canMsgCompose_100ms(canData_aU8))
+        {
+            canm_x_flagCanMsgForTx(CAN_ERROR_MESSAGE0);
+            canm_x_flagCanMsgForTx(CAN_ERROR_MESSAGE1);
+            canm_x_flagCanMsgForTx(CAN_ERROR_MESSAGE2);
+            canm_x_flagCanMsgForTx(CAN_ERROR_MESSAGE3);
+        }
     }
     counter += MAIN_TI_ms_TASK_DELAY_U32;
 }
@@ -76,38 +101,7 @@ extern "C" void app_main()
 
         trgd_run();
 
-
-        // 100ms tasks
-        static uint32_t ti_ms_counter_U32 = 0;
-        ti_ms_counter_U32 += MAIN_TI_ms_TASK_DELAY_U32;
-        if (100 <= ti_ms_counter_U32)
-        {
-            ti_ms_counter_U32 = 0;
-
-            tCANM_X_CANMSGDATA_STR* errh_canMsg0_pstr = canm_pstr_readCanMsgData(CAN_ERROR_MESSAGE0);
-            tCANM_X_CANMSGDATA_STR* errh_canMsg1_pstr = canm_pstr_readCanMsgData(CAN_ERROR_MESSAGE1);
-            tCANM_X_CANMSGDATA_STR* errh_canMsg2_pstr = canm_pstr_readCanMsgData(CAN_ERROR_MESSAGE2);
-            tCANM_X_CANMSGDATA_STR* errh_canMsg3_pstr = canm_pstr_readCanMsgData(CAN_ERROR_MESSAGE3);
-
-            errh_canMsg0_pstr->canMsg_str.identifier = 0x50;
-            errh_canMsg1_pstr->canMsg_str.identifier = 0x51;
-            errh_canMsg2_pstr->canMsg_str.identifier = 0x52;
-            errh_canMsg3_pstr->canMsg_str.identifier = 0x53;
-
-            uint8_t* canData_aU8[4] = {errh_canMsg0_pstr->canMsg_str.data,
-                                       errh_canMsg1_pstr->canMsg_str.data,
-                                       errh_canMsg2_pstr->canMsg_str.data,
-                                       errh_canMsg3_pstr->canMsg_str.data,
-                                       };
-
-            if (true == errh_canMsgCompose_100ms(canData_aU8))
-            {
-                canm_x_flagCanMsgForTx(CAN_ERROR_MESSAGE0);
-                canm_x_flagCanMsgForTx(CAN_ERROR_MESSAGE1);
-                canm_x_flagCanMsgForTx(CAN_ERROR_MESSAGE2);
-                canm_x_flagCanMsgForTx(CAN_ERROR_MESSAGE3);
-            }
-        }
+        dmas_run_5ms();
 
         vTaskDelay(MAIN_TI_ms_TASK_DELAY_U32 / portTICK_PERIOD_MS);
     }

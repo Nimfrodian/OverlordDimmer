@@ -179,6 +179,11 @@ void trgd_init(tTRGD_INITDATA_STR* TrgdCfg)
             pina_setInterruptService(PINA_IN_NUM_0, trgd_gpioInterruptHandler_isr);
         }
 
+        ///< initialize RTDB
+        {
+            trgd_rtdb_init();
+        }
+
         trgd_nr_moduleId_U32 = TrgdCfg->nr_moduleId_U32;
         trgd_s_moduleInit_tB = true;
     }

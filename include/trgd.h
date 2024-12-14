@@ -25,4 +25,4 @@ typedef struct
 } tTRGD_INITDATA_STR;
 
 void trgd_init(tTRGD_INITDATA_STR* TrgdCfg);
-void trgd_run(void);
+void trgd_run_5ms(void);

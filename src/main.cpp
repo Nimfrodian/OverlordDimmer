@@ -1,11 +1,48 @@
 #include "main.h"
 
-void main_run(void)
+void main_run_5ms(void)
 {
-    tCANM_X_CANMSGDATA_STR* rxDataPtr = canm_pstr_readCanMsgData(CAN_COMMAND_MESSAGE);
-    if (1 == rxDataPtr->canRdyForParse_tB)
     {
-        lgic_canMsgParse_ev( rxDataPtr->canMsg_str.data, &rxDataPtr->canMsg_str.identifier);
+        tCANM_X_CANMSGDATA_STR* rxDataPtr = canm_pstr_readCanMsgData(CAN_COMMAND_MESSAGE);
+        if (1 == rxDataPtr->canRdyForParse_tB)
+        {
+            lgic_canMsgParse_ev( rxDataPtr->canMsg_str.data, &rxDataPtr->canMsg_str.identifier);
+            canm_x_clearFlagForCanMsgParse(CAN_COMMAND_MESSAGE);
+        }
+    }
+    {
+        tCANM_X_CANMSGDATA_STR* rxDataPtr = canm_pstr_readCanMsgData(CAN_DMAS_COMMAND_MESSAGE);
+        if (1 == rxDataPtr->canRdyForParse_tB)
+        {
+            dmas_canMsgParse_ev( rxDataPtr->canMsg_str.data, &rxDataPtr->canMsg_str.identifier);
+            canm_x_clearFlagForCanMsgParse(CAN_DMAS_COMMAND_MESSAGE);
+        }
+    }
+
+    {
+        for (tU8 dmasMsgIndx = CAN_DMAS_SEND_MESSAGE0; dmasMsgIndx <= CAN_DMAS_SEND_MESSAGE15; dmasMsgIndx++)
+        {
+            tDMAS_MESSAGEDATA_STR preparedData = dmas_getReadyData();
+            if (true == preparedData.isReady_U8)
+            {
+                tCANM_X_CANMSGDATA_STR* msgPtr_pstr = canm_pstr_readCanMsgData((tCANM_CANMSGINDX_E) dmasMsgIndx);
+                msgPtr_pstr->canMsg_str.data[0] = preparedData.payload_U8[0];
+                msgPtr_pstr->canMsg_str.data[1] = preparedData.payload_U8[1];
+                msgPtr_pstr->canMsg_str.data[2] = preparedData.payload_U8[2];
+                msgPtr_pstr->canMsg_str.data[3] = preparedData.payload_U8[3];
+                msgPtr_pstr->canMsg_str.data[4] = preparedData.payload_U8[4];
+                msgPtr_pstr->canMsg_str.data[5] = preparedData.payload_U8[5];
+                msgPtr_pstr->canMsg_str.data[6] = preparedData.payload_U8[6];
+                msgPtr_pstr->canMsg_str.data[7] = preparedData.payload_U8[7];
+
+                msgPtr_pstr->canMsg_str.identifier = 0x20;
+                msgPtr_pstr->canRdyForTx_tB = true;
+            }
+            else
+            {
+                break;
+            }
+        }
     }
 
     // 100ms tasks
@@ -89,17 +126,25 @@ extern "C" void app_main()
         rtdb_init(&RtdbCfg);
         sera_print("Rtdb module initialized\n");
 
+
+        tDMAS_INITDATA_STR DmasCfg =
+        {
+            .nr_moduleId_U32 = MODULE_DMAS,
+        };
+        dmas_init(&DmasCfg);
+        sera_print("DMAS module initialized\n");
+
         sera_print("Initialization time: %lli us\n", timh_ti_us_readSystemTime_S64());
     }
 
     while(true)
     {
         // MAIN_TI_ms_TASK_DELAY_U32 tasks
-        main_run();
+        main_run_5ms();
 
-        canm_transceive_run();
+        canm_transceive_run_5ms();
 
-        trgd_run();
+        trgd_run_5ms();
 
         dmas_run_5ms();
 

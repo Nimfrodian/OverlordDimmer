@@ -7,7 +7,8 @@
 
 enum moduleList
 {
-    MODULE_MAIN = 0,
+    MODULE_INVALID = 0,
+    MODULE_MAIN,
 
     // Lib
     MODULE_ERRH,
@@ -21,4 +22,5 @@ enum moduleList
     MODULE_TMRA,
     MODULE_TRGD,
     MODULE_RTDB,
+    MODULE_DMAS,
 };

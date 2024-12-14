@@ -88,7 +88,7 @@ static void canm_saveMsg(tCANM_CANMSGINDX_E MsgIndx_E, twai_message_t* SourceMsg
     destMsg_pstr->canRdyForParse_tB = 1;
 }
 
-void canm_transceive_run(void)
+void canm_transceive_run_5ms(void)
 {
     // transmit
     {
@@ -123,6 +123,11 @@ void canm_transceive_run(void)
                 case 0x95:  // message CAN_COMMAND_MESSAGE
                 {
                     canm_saveMsg(CAN_COMMAND_MESSAGE, &rxMessage);
+                    break;
+                }
+                case 0x10:  // message CAN_DMAS_COMMAND_MESSAGE
+                {
+                    canm_saveMsg(CAN_DMAS_COMMAND_MESSAGE, &rxMessage);
                     break;
                 }
 

@@ -1,4 +1,5 @@
 #include "tmra.h"
+#include "rtdb_vars.h"
 
 static bool tmra_s_moduleInit_tB = false;
 static uint32_t tmra_nr_moduleId_U32 = 0;

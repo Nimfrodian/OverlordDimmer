@@ -125,7 +125,17 @@ void canm_transceive_run_5ms(void)
                     canm_saveMsg(CAN_COMMAND_MESSAGE, &rxMessage);
                     break;
                 }
-                case 0x10:  // message CAN_DMAS_COMMAND_MESSAGE
+                // message CAN_DMAS_COMMAND_MESSAGE
+                // fallthrough
+                case (0x10):    // DMAS_TU8
+                case (0x11):    // DMAS_TU16
+                case (0x12):    // DMAS_TU32
+                case (0x13):    // DMAS_TS8
+                case (0x14):    // DMAS_TS16
+                case (0x15):    // DMAS_TS32
+                case (0x16):    // DMAS_TF32S
+                case (0x17):    // DMAS_TBS
+                case (0x18):    // DMAS_TES
                 {
                     canm_saveMsg(CAN_DMAS_COMMAND_MESSAGE, &rxMessage);
                     break;

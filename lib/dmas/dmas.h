@@ -20,7 +20,7 @@
 #define DMAS_ERR_RTDB_OVERWRITE_ERR_U32         ((tU32) 4)
 #define DMAS_ERR_RTDB_RELEASEOVERWRITE_ERR_U32  ((tU32) 5)
 #define DMAS_ERR_ADD_EXISTING_STREAM_U32        ((tU32) 6)
-#define aDMAS_ERR_REMOVE_NONEXISTING_STREAM_U32 ((tU32) 7)
+#define DMAS_ERR_REMOVE_NONEXISTING_STREAM_U32  ((tU32) 7)
 #define DMAS_ERR_WRONG_CAN_ID_U32               ((tU32) 8)
 #define DMAS_ERR_DATA_OVERWRITE_U32             ((tU32) 9)
 #define DMAS_ERR_MODE_OUT_OF_BOUNDS_U32         ((tU32) 10)
@@ -106,11 +106,11 @@ typedef enum
 
 typedef struct tDMAS_STREAMING_STR
 {
-    tU32 varIndex_U32;                         ///< variable index to stream, as defined in rtdb_vars.h
-    tDMAS_VARTYPE_E varType_U32;               ///< variable type (tU8, tU16...)
-    tU32 ti_ms_varInterval_U32;                ///< Streaming interval
-    tU32 ti_ms_timeCounter_U32;                ///< increments time since last read
-    tDMAS_STREAMINGSTATETYPE_E streaming_U8;   ///< streaming state
+    tU32 varIndex_U32;                              ///< variable index to stream, as defined in rtdb_vars.h
+    tDMAS_VARTYPE_E varType_U32;                    ///< variable type (tU8, tU16...)
+    tDMAS_STREAMINGTIMETYPE_E ti_x_varInterval_U32; ///< Streaming interval
+    tU32 ti_ms_timeCounter_U32;                     ///< increments time since last read
+    tDMAS_STREAMINGSTATETYPE_E streaming_U8;        ///< streaming state
 
     // Equality operator to check if two streaming datas are the same
     bool operator==(const tDMAS_STREAMING_STR& other) const {

@@ -38,7 +38,7 @@ void pina_setGpioAsInput(PINA_nr_GPIO_NUM_E GpioNum)
 {
     gpio_pulldown_en((gpio_num_t) GpioNum);
     gpio_set_direction((gpio_num_t) GpioNum, GPIO_MODE_INPUT);
-    gpio_set_intr_type((gpio_num_t) GpioNum, GPIO_INTR_POSEDGE);
+    gpio_set_intr_type((gpio_num_t) GpioNum, GPIO_INTR_NEGEDGE);
     gpio_intr_enable((gpio_num_t) GpioNum);
 }
 

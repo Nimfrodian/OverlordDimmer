@@ -12,7 +12,7 @@ static vector<tDMAS_STREAMING_STR> dmas_x_streamingData_astr(DMAS_MAX_NUM_OF_STR
 tDMAS_STREAMING_STR dmas_x_nullData_str = {
                 .varIndex_U32 = 0,
                 .varType_U32 = DMAS_UNDEFINED,
-                .ti_ms_varInterval_U32 = 0,
+                .ti_x_varInterval_U32 = (tDMAS_STREAMINGTIMETYPE_E) 0,
                 .ti_ms_timeCounter_U32 = 0,
                 .streaming_U8= DMAS_DO_NOT_STREAM,
             };
@@ -87,8 +87,8 @@ void dmas_run_5ms(void)
                 tDMAS_STREAMING_STR newReq_str = {
                     .varIndex_U32 = dmas_x_inputData_str.payload_U8[DMAS_CMD_VAR_INDEX],
                     .varType_U32 = (tDMAS_VARTYPE_E) dmas_x_inputData_str.payload_U8[DMAS_CMD_READWRITE_VAR_TYPE],
-                    .ti_ms_varInterval_U32 = dmas_x_inputData_str.payload_U8[DMAS_CMD_STREAM_MS_INTERVAL_INDEX],
-                    .ti_ms_timeCounter_U32 = 0,
+                    .ti_x_varInterval_U32 = (tDMAS_STREAMINGTIMETYPE_E) dmas_x_inputData_str.payload_U8[DMAS_CMD_STREAM_MS_INTERVAL_INDEX],
+                    .ti_ms_timeCounter_U32 = 0,//dmas_U32_ms_getStreamingTime((tDMAS_STREAMINGTIMETYPE_E) dmas_x_inputData_str.payload_U8[DMAS_CMD_STREAM_MS_INTERVAL_INDEX]), // start immediately
                     .streaming_U8= DMAS_STREAM,
                 };
 
@@ -113,7 +113,7 @@ void dmas_run_5ms(void)
                 tDMAS_STREAMING_STR newReq_str = {
                     .varIndex_U32 = dmas_x_inputData_str.payload_U8[DMAS_CMD_VAR_INDEX],
                     .varType_U32 = (tDMAS_VARTYPE_E) dmas_x_inputData_str.payload_U8[DMAS_CMD_READWRITE_VAR_TYPE],
-                    .ti_ms_varInterval_U32 = dmas_x_inputData_str.payload_U8[DMAS_CMD_STREAM_MS_INTERVAL_INDEX],
+                    .ti_x_varInterval_U32 = (tDMAS_STREAMINGTIMETYPE_E) dmas_x_inputData_str.payload_U8[DMAS_CMD_STREAM_MS_INTERVAL_INDEX],
                     .ti_ms_timeCounter_U32 = 0,
                     .streaming_U8= DMAS_STREAM,
                 };
@@ -129,7 +129,7 @@ void dmas_run_5ms(void)
                 }
                 else
                 {
-                    errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, aDMAS_ERR_REMOVE_NONEXISTING_STREAM_U32);
+                    errh_reportError(ERRH_NOTIF, dmas_nr_moduleId_U32, 0, DMAS_API_RUN_U32, DMAS_ERR_REMOVE_NONEXISTING_STREAM_U32);
                 }
                 break;
             }
@@ -365,13 +365,13 @@ tDMAS_MESSAGEDATA_STR dmas_getReadyData(void)
     {
         if (DMAS_STREAM == it->streaming_U8)
         {
-            if (it->ti_ms_timeCounter_U32 >= dmas_U32_ms_getStreamingTime((tDMAS_STREAMINGTIMETYPE_E) it->ti_ms_varInterval_U32))
+            if (it->ti_ms_timeCounter_U32 >= dmas_U32_ms_getStreamingTime(it->ti_x_varInterval_U32))
             {
                 it->ti_ms_timeCounter_U32 = 0;
                 toReturn.payload_U8[DMAS_CMD_MODE_BYTE] = 0;
                 toReturn.payload_U8[DMAS_CMD_READWRITE_VAR_TYPE] = it->varType_U32;
                 toReturn.payload_U8[DMAS_CMD_VAR_INDEX] = it->varIndex_U32;
-                toReturn.payload_U8[DMAS_CMD_STREAM_MS_INTERVAL_INDEX] = it->ti_ms_varInterval_U32;
+                toReturn.payload_U8[DMAS_CMD_STREAM_MS_INTERVAL_INDEX] = it->ti_x_varInterval_U32;
 
 
                 switch (it->varType_U32)
@@ -467,52 +467,40 @@ void dmas_canMsgParse_ev(uint8_t* DataPtr, uint32_t* MsgIdPtr)
     }
     else
     {
-        switch (*MsgIdPtr)
+        tU32 modeType_U32 = DataPtr[DMAS_CMD_MODE_BYTE];
+        tU32 varType_U32 = *MsgIdPtr - 0x10;
+        tU32 streamIntervalIndex_U32 = DataPtr[DMAS_CMD_STREAM_MS_INTERVAL_INDEX];
+
+        if (true == dmas_x_inputData_str.dataReady_U8)
         {
-            case (0x10):
-            {
-                tU32 modeType_U32 = DataPtr[DMAS_CMD_MODE_BYTE];
-                tU32 varType_U32 = DataPtr[DMAS_CMD_READWRITE_VAR_TYPE];
-                tU32 streamIntervalIndex_U32 = DataPtr[DMAS_CMD_STREAM_MS_INTERVAL_INDEX];
-
-                if (true == dmas_x_inputData_str.dataReady_U8)
-                {
-                    errh_reportError(ERRH_WARNING, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_DATA_OVERWRITE_U32);
-                }
-
-                if (DMAS_NUM_OF_MODES <= modeType_U32)
-                {
-                    errh_reportError(ERRH_ERROR_LOW, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_MODE_OUT_OF_BOUNDS_U32);
-                }
-                else if (DMAS_UNDEFINED <= varType_U32)
-                {
-                    errh_reportError(ERRH_ERROR_LOW, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_VAR_TYPE_OUT_OF_BOUNDS_U32);
-                }
-                else if ((DMAS_NUM_OF_STREAMABLE_TIMES <= streamIntervalIndex_U32) && (DMAS_MODE_READ_REQ == modeType_U32))
-                {
-                    errh_reportError(ERRH_ERROR_LOW, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_TIME_INDEX);
-                }
-                else
-                {
-                    dmas_x_inputData_str.payload_U8[DMAS_CMD_MODE_BYTE] = DataPtr[DMAS_CMD_MODE_BYTE];
-                    dmas_x_inputData_str.payload_U8[DMAS_CMD_READWRITE_VAR_TYPE] = DataPtr[DMAS_CMD_READWRITE_VAR_TYPE];
-                    dmas_x_inputData_str.payload_U8[DMAS_CMD_VAR_INDEX] = DataPtr[DMAS_CMD_VAR_INDEX];
-                    dmas_x_inputData_str.payload_U8[DMAS_CMD_STREAM_MS_INTERVAL_INDEX] = DataPtr[DMAS_CMD_STREAM_MS_INTERVAL_INDEX];
-
-                    dmas_x_inputData_str.payload_U8[DMAS_PAYLOAD_0] = DataPtr[DMAS_PAYLOAD_0];
-                    dmas_x_inputData_str.payload_U8[DMAS_PAYLOAD_1] = DataPtr[DMAS_PAYLOAD_1];
-                    dmas_x_inputData_str.payload_U8[DMAS_PAYLOAD_2] = DataPtr[DMAS_PAYLOAD_2];
-                    dmas_x_inputData_str.payload_U8[DMAS_PAYLOAD_3] = DataPtr[DMAS_PAYLOAD_3];
-
-                    dmas_x_inputData_str.dataReady_U8 = true;
-                }
-                break;
-            }
-            default:
-            {
-                errh_reportError(ERRH_ERROR_CRITICAL, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_WRONG_CAN_ID_U32);
-            }
+            errh_reportError(ERRH_WARNING, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_DATA_OVERWRITE_U32);
         }
 
+        if (DMAS_NUM_OF_MODES <= modeType_U32)
+        {
+            errh_reportError(ERRH_ERROR_LOW, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_MODE_OUT_OF_BOUNDS_U32);
+        }
+        else if (DMAS_UNDEFINED <= varType_U32)
+        {
+            errh_reportError(ERRH_ERROR_LOW, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_VAR_TYPE_OUT_OF_BOUNDS_U32);
+        }
+        else if ((DMAS_NUM_OF_STREAMABLE_TIMES <= streamIntervalIndex_U32) && (DMAS_MODE_READ_REQ == modeType_U32))
+        {
+            errh_reportError(ERRH_ERROR_LOW, dmas_nr_moduleId_U32, 0, DMAS_API_CAN_PARSE_U32, DMAS_ERR_TIME_INDEX);
+        }
+        else
+        {
+            dmas_x_inputData_str.payload_U8[DMAS_CMD_MODE_BYTE] = modeType_U32;
+            dmas_x_inputData_str.payload_U8[DMAS_CMD_READWRITE_VAR_TYPE] = varType_U32;
+            dmas_x_inputData_str.payload_U8[DMAS_CMD_VAR_INDEX] = DataPtr[DMAS_CMD_VAR_INDEX];
+            dmas_x_inputData_str.payload_U8[DMAS_CMD_STREAM_MS_INTERVAL_INDEX] = streamIntervalIndex_U32;
+
+            dmas_x_inputData_str.payload_U8[DMAS_PAYLOAD_0] = DataPtr[DMAS_PAYLOAD_0];
+            dmas_x_inputData_str.payload_U8[DMAS_PAYLOAD_1] = DataPtr[DMAS_PAYLOAD_1];
+            dmas_x_inputData_str.payload_U8[DMAS_PAYLOAD_2] = DataPtr[DMAS_PAYLOAD_2];
+            dmas_x_inputData_str.payload_U8[DMAS_PAYLOAD_3] = DataPtr[DMAS_PAYLOAD_3];
+
+            dmas_x_inputData_str.dataReady_U8 = true;
+        }
     }
 }

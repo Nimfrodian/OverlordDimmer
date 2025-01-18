@@ -53,12 +53,13 @@ void IRAM_ATTR trgd_gpioInterruptHandler_isr(void* arg)
     }
 }
 
-void IRAM_ATTR trgd_subsequentTimerInterruptHandler_isr(void* arg)
+static bool IRAM_ATTR trgd_subsequentTimerInterruptHandler_isr(gptimer_handle_t timer, const gptimer_alarm_event_data_t *edata, void *user_data)
 {
     trgd_applyOutput_ev();
+    return 0;
 }
 
-void IRAM_ATTR trgd_initialTimerInterruptHandler_isr(void* arg)
+static bool IRAM_ATTR trgd_initialTimerInterruptHandler_isr(gptimer_handle_t timer, const gptimer_alarm_event_data_t *edata, void *user_data)
 {
     trgd_ti_us_prevPeriodStart_S64 = trgd_ti_us_currPeriodStart_S64;
     trgd_ti_us_currPeriodStart_S64 = timh_ti_us_readSystemTime_S64();
@@ -80,6 +81,8 @@ void IRAM_ATTR trgd_initialTimerInterruptHandler_isr(void* arg)
 
     ///< flag that a new table will be needed
     trgd_fl_updateTable_tB = true;
+
+    return 0;
 }
 
 void IRAM_ATTR trgd_applyOutput_ev(void)

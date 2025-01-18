@@ -13,7 +13,7 @@ void errh_init(tERRH_INITDATA_STR* ErrhCfg)
     {
         errh_reportError(ERRH_NOTIF, errh_nr_moduleId_U32, 0, ERRH_API_INIT_U32, ERRH_MODULE_ALREADY_INIT);
     }
-    else if (NULL == ErrhCfg)
+    else if (nullptr == ErrhCfg)
     {
         errh_x_errors_vstr[0].moduleId = -1;
         errh_x_errors_vstr[0].instanceId = -1;

@@ -20,7 +20,7 @@
             "problemMatcher": [
                 "$platformio"
             ],
-            "dependsOn": ["Run RTDB Generator Script"], // Link pre-build task
+            "dependsOn": ["Run RTDB Generator Script"],
             "group": "build",
             "label": "PlatformIO: Build"
         },

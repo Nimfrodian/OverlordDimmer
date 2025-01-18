@@ -17,7 +17,7 @@ void sera_init(tSERA_INITDATA_STR* SeraCfg)
     {
         ///< Initialize UART0
         uart_config_t uart_config = {
-            .baud_rate = 115200,
+            .baud_rate = 460800,
             .data_bits = UART_DATA_8_BITS,
             .parity = UART_PARITY_DISABLE,
             .stop_bits = UART_STOP_BITS_1,
@@ -59,6 +59,7 @@ uint32_t sera_print(const char* Text, ...)
         // Clean up the variable argument list
         va_end(args);
 
+        #if 0
         // Calculate the length of the formatted string
         uint32_t i_U32 = 0;
         while (textBuffer[i_U32] != '\0' && i_U32 < 1024)
@@ -68,6 +69,8 @@ uint32_t sera_print(const char* Text, ...)
 
         // Write the formatted text to the UART
         bytesWritten = uart_write_bytes(UART_NUM_0, textBuffer, i_U32);
+        #endif
+        bytesWritten = printf(textBuffer);
     }
 
     return bytesWritten;

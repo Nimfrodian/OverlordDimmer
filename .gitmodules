@@ -1,3 +1,6 @@
 [submodule "rtdb_generator"]
 	path = rtdb_generator
 	url = https://github.com/Nimfrodian/OverlordRTDB
+[submodule "other/KiCad/OverlordDimmer/ESP32-S3_files"]
+	path = other/KiCad/OverlordDimmer/ESP32-S3_files
+	url = https://github.com/ccadic/ESP32S3-wroom-kicadfp

@@ -1,5 +1,6 @@
 #include "timh.h"
 #include "errh.h"
+#include "esp_attr.h"
 
 static bool timh_s_moduleInit_tB = false;
 static uint32_t timh_nr_moduleId_U32 = 0;

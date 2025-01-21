@@ -17,8 +17,8 @@ static tLGIC_TRIGGERTABLEDATA_STR   trgd_x_triggerTable_astr [2][32]; ///< two t
 static tLGIC_TRIGGERTABLEDATA_STR*  trgd_x_activeTable_pstr    = &trgd_x_triggerTable_astr[1][0]; ///< active table currently being applied
 static tLGIC_TRIGGERTABLEDATA_STR*  trgd_x_preparingTable_pstr = &trgd_x_triggerTable_astr[0][0]; ///< table being prepared and will be used in the next cycle
 
-static tTMRA_TIMERHANDLE_STR tmra_h_initialInterrupt_pstr;   ///< initial interrupt triggered by GPIO
-static tTMRA_TIMERHANDLE_STR tmra_h_subsequentInterrupt_pstr;   ///< subsequent interrupts triggered by timer. Sets the actual output values
+static tTMRA_TIMERDATA_STR tmra_h_initialInterrupt_str = tmra_emptyTimerData_str;       ///< initial interrupt triggered by GPIO
+static tTMRA_TIMERDATA_STR tmra_h_subsequentInterrupt_str = tmra_emptyTimerData_str;    ///< subsequent interrupts triggered by timer. Sets the actual output values
 
 static PINA_nr_GPIO_NUM_E trgd_x_triggerPins_aE[] =
 {
@@ -49,7 +49,8 @@ void IRAM_ATTR trgd_gpioInterruptHandler_isr(void* arg)
     if (trgd_ti_us_currentTime_S64 - trgd_ti_us_lastTriggerTime_S64 > ((int64_t) trgd_ti_us_retriggerGuardTime_U32))
     {
         trgd_ti_us_lastTriggerTime_S64 = trgd_ti_us_currentTime_S64;
-        tmra_startTimer(&tmra_h_initialInterrupt_pstr, trgd_ti_us_localZeroCrossTriggerDelay_U32);
+        tmra_h_initialInterrupt_str.alarmConfig_str.alarm_count = trgd_ti_us_localZeroCrossTriggerDelay_U32;
+        tmra_startTimer(&tmra_h_initialInterrupt_str);
     }
 }
 
@@ -70,7 +71,7 @@ static bool IRAM_ATTR trgd_initialTimerInterruptHandler_isr(gptimer_handle_t tim
     trgd_x_preparingTable_pstr = temp_pstr;
 
 
-    uint32_t err = tmra_stopTimer(&tmra_h_subsequentInterrupt_pstr);
+    uint32_t err = tmra_stopTimer(&tmra_h_subsequentInterrupt_str);
     if (err)
     {
         errh_reportError(ERRH_WARNING, trgd_nr_moduleId_U32, 0, TRGD_API_INITIAL_INTRPT_HANDLER_U32, TRGD_ERR_CANNOT_STOP_TIMER_U32);
@@ -85,7 +86,7 @@ static bool IRAM_ATTR trgd_initialTimerInterruptHandler_isr(gptimer_handle_t tim
     return 0;
 }
 
-void IRAM_ATTR trgd_applyOutput_ev(void)
+void trgd_applyOutput_ev(void)
 {
     uint32_t mask_U32 = trgd_x_activeTable_pstr[trgd_x_triggerCounter_U32].ma_triggerMask_U32;
     pina_setGpioLevel(trgd_x_triggerPins_aE[0], (mask_U32 >> 0) & 0x01);
@@ -108,7 +109,8 @@ void IRAM_ATTR trgd_applyOutput_ev(void)
     else
     {
         uint32_t ti_us_delta_U32 = trgd_x_activeTable_pstr[trgd_x_triggerCounter_U32].ti_us_deltaToNext_U16;
-        uint32_t err = tmra_startTimer(&tmra_h_subsequentInterrupt_pstr, ti_us_delta_U32);
+        tmra_h_subsequentInterrupt_str.alarmConfig_str.alarm_count = ti_us_delta_U32;
+        uint32_t err = tmra_startTimer(&tmra_h_subsequentInterrupt_str);
         if (0 != err)
         {
             errh_reportError(ERRH_WARNING, trgd_nr_moduleId_U32, err, TRGD_API_APPLY_OUTPUT_U32, TRGD_ERR_CANNOT_START_TIMER);
@@ -164,8 +166,30 @@ void trgd_init(tTRGD_INITDATA_STR* TrgdCfg)
         }
         ///< initialize interrupts
         {
-            tmra_createTimer(&tmra_h_subsequentInterrupt_pstr, trgd_subsequentTimerInterruptHandler_isr);
-            tmra_createTimer(&tmra_h_initialInterrupt_pstr, trgd_initialTimerInterruptHandler_isr);
+            static gptimer_config_t timer_config = {
+                .clk_src = GPTIMER_CLK_SRC_DEFAULT,
+                .direction = GPTIMER_COUNT_UP,
+                .resolution_hz = 1000000, // 1MHz, 1 tick=1us
+                .intr_priority = 0,
+                .flags = {
+                    .intr_shared = 0,
+                    .backup_before_sleep = 0,
+                }
+            };
+            static gptimer_event_callbacks_t cbsInitial = {
+                .on_alarm = trgd_initialTimerInterruptHandler_isr,
+            };
+            static gptimer_event_callbacks_t cbsSubsequent = {
+                .on_alarm = trgd_subsequentTimerInterruptHandler_isr,
+            };
+            tmra_h_initialInterrupt_str.cbs = cbsInitial;
+            tmra_h_initialInterrupt_str.timerConfig_str = timer_config;
+
+            tmra_h_subsequentInterrupt_str.cbs = cbsSubsequent;
+            tmra_h_subsequentInterrupt_str.timerConfig_str = timer_config;
+
+            tmra_createTimer(&tmra_h_initialInterrupt_str);
+            tmra_createTimer(&tmra_h_subsequentInterrupt_str);
         }
 
         {

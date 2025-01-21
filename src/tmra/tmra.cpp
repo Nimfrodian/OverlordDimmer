@@ -3,6 +3,43 @@
 
 static bool tmra_s_moduleInit_tB = false;
 static uint32_t tmra_nr_moduleId_U32 = 0;
+static tTMRA_TIMERHANDLE_STR tmra_x_internalTimer_strc;
+
+static const gptimer_config_t tmra_x_internalTimerConfig_strc = {
+        .clk_src = GPTIMER_CLK_SRC_DEFAULT,
+        .direction = GPTIMER_COUNT_UP,
+        .resolution_hz = 1000000, // 1MHz, 1 tick=1us
+        .intr_priority = 0,
+        .flags = {
+            .intr_shared = 0,
+            .backup_before_sleep = 0,
+        }
+    };
+
+tTMRA_TIMERDATA_STR tmra_emptyTimerData_str =
+{
+    .timerHandle_str = nullptr,
+    .alarmConfig_str = {
+        .alarm_count = 0,
+        .reload_count = 0,
+        .flags = {
+            .auto_reload_on_alarm = 0,
+        }
+    },
+    .timerConfig_str = {
+        .clk_src = GPTIMER_CLK_SRC_DEFAULT,
+        .direction = GPTIMER_COUNT_UP,
+        .resolution_hz = 1000000, // 1MHz, 1 tick=1us
+        .intr_priority = 0,
+        .flags = {
+            .intr_shared = 0,
+            .backup_before_sleep = 0,
+        }
+    },
+    .cbs = {
+        .on_alarm = nullptr,
+    }
+};
 
 void tmra_init(tTMRA_INITDATA_STR* TmraCfg)
 {
@@ -16,7 +53,9 @@ void tmra_init(tTMRA_INITDATA_STR* TmraCfg)
     }
     else
     {
-
+        gptimer_new_timer(&tmra_x_internalTimerConfig_strc, &tmra_x_internalTimer_strc);
+        gptimer_enable(tmra_x_internalTimer_strc);
+        gptimer_start(tmra_x_internalTimer_strc);
         tmra_nr_moduleId_U32 = TmraCfg->nr_moduleId_U32;
         tmra_s_moduleInit_tB = true;
     }
@@ -24,56 +63,74 @@ void tmra_init(tTMRA_INITDATA_STR* TmraCfg)
 
 int64_t tmra_ti_us_getCurrentTime_S64(void)
 {
-    return (int64_t) 0;//esp_timer_get_time();
+    uint64_t tmra_ti_us_rawSysTi_U64 = 0;
+    if (true == tmra_s_moduleInit_tB)
+    {
+        gptimer_get_raw_count(tmra_x_internalTimer_strc, &tmra_ti_us_rawSysTi_U64);
+    }
+    return (int64_t) tmra_ti_us_rawSysTi_U64;
 }
 
-uint32_t tmra_startTimer(tTMRA_TIMERHANDLE_STR* TimerHandlePtr, uint32_t Ti_us_delay)
-{
-    uint32_t err = gptimer_enable(*TimerHandlePtr);
-    if (err) {errh_reportError(ERRH_ERROR_CRITICAL, tmra_nr_moduleId_U32, 0, TMRA_API_START_TIMER_U32, TMRA_ERR_CANNOT_ENABLE_TIMER_U32);};
-
-    gptimer_alarm_config_t alarm_config = {
-        .alarm_count = Ti_us_delay,
-    };
-
-    err = gptimer_set_alarm_action(*TimerHandlePtr, &alarm_config);
-    if (err) {errh_reportError(ERRH_NOTIF, tmra_nr_moduleId_U32, 0, TMRA_API_START_TIMER_U32, TMRA_ERR_CANNOT_SET_ALARM_U32);};
-    err = gptimer_start(*TimerHandlePtr);
-    if (err) {errh_reportError(ERRH_NOTIF, tmra_nr_moduleId_U32, 0, TMRA_API_START_TIMER_U32, TMRA_ERR_CANNOT_START_TIMER_U32);};
-    return err;
-}
-
-uint32_t tmra_stopTimer(tTMRA_TIMERHANDLE_STR* TimerHandlePtr)
+uint32_t tmra_stopTimer(tTMRA_TIMERDATA_STR* TmraTimerHandle)
 {
     uint32_t err = 0;
-    err = gptimer_disable(*TimerHandlePtr);
-    if (err) {errh_reportError(ERRH_NOTIF, tmra_nr_moduleId_U32, 0, TMRA_API_STOP_TIMER_U32, TMRA_ERR_CANNOT_DISABLE_TIMER_U32);};
+    uint64_t tmra_ti_us_rawSysTi_U64 = 0;
+    gptimer_handle_t* TimerHandle = &TmraTimerHandle->timerHandle_str;
 
-    err = gptimer_stop(*TimerHandlePtr);
-    if (err) {errh_reportError(ERRH_NOTIF, tmra_nr_moduleId_U32, 0, TMRA_API_STOP_TIMER_U32, TMRA_ERR_CANNOT_STOP_TIMER_U32);};
+    gptimer_get_raw_count(*TimerHandle, &tmra_ti_us_rawSysTi_U64);
 
+    if (0 < tmra_ti_us_rawSysTi_U64)
+    {
+        err = gptimer_stop(TmraTimerHandle->timerHandle_str);
+        if (err) {errh_reportError(ERRH_NOTIF, tmra_nr_moduleId_U32, 0, TMRA_API_STOP_TIMER_U32, TMRA_ERR_CANNOT_STOP_TIMER_U32);};
+        gptimer_set_raw_count(*TimerHandle, 0);
+        err = gptimer_disable(TmraTimerHandle->timerHandle_str);
+        if (err) {errh_reportError(ERRH_NOTIF, tmra_nr_moduleId_U32, 0, TMRA_API_STOP_TIMER_U32, TMRA_ERR_CANNOT_DISABLE_TIMER_U32);};
+    }
     return err;
 }
 
-uint32_t tmra_createTimer(tTMRA_TIMERHANDLE_STR* TimerHandlePtr, bool (*timerFunc)(gptimer_handle_t timer, const gptimer_alarm_event_data_t *edata, void *user_data))
+uint32_t tmra_startTimer(tTMRA_TIMERDATA_STR* TmraTimerHandle)
 {
-    uint32_t err = -1;
+    uint32_t err = 0;
 
-    gptimer_config_t timer_config = {
-        .clk_src = GPTIMER_CLK_SRC_DEFAULT,
-        .direction = GPTIMER_COUNT_UP,
-        .resolution_hz = 1000000, // 1MHz, 1 tick=1us
-    };
-    gptimer_event_callbacks_t cbs = {
-        .on_alarm = timerFunc,
-    };
+    if (nullptr == TmraTimerHandle)
+    {
+        err = 1;
+        errh_reportError(ERRH_ERROR_CRITICAL, tmra_nr_moduleId_U32, 0, TMRA_API_START_TIMER_U32, ERRH_POINTER_IS_NULL);
+    }
+    else
+    {
+        gptimer_handle_t* TimerHandle = &TmraTimerHandle->timerHandle_str;
+        gptimer_alarm_config_t* alarm_config = &TmraTimerHandle->alarmConfig_str;
 
-    gptimer_new_timer(&timer_config, TimerHandlePtr);
-    gptimer_register_event_callbacks(*TimerHandlePtr, &cbs, nullptr);
+        tmra_stopTimer(TmraTimerHandle);
 
+        err = gptimer_enable(*TimerHandle);
+        if (err) {errh_reportError(ERRH_ERROR_CRITICAL, tmra_nr_moduleId_U32, 0, TMRA_API_START_TIMER_U32, TMRA_ERR_CANNOT_ENABLE_TIMER_U32);};
+
+        err = gptimer_set_alarm_action(*TimerHandle, alarm_config);
+        if (err) {errh_reportError(ERRH_NOTIF, tmra_nr_moduleId_U32, 0, TMRA_API_START_TIMER_U32, TMRA_ERR_CANNOT_SET_ALARM_U32);};
+
+        err = gptimer_start(*TimerHandle);
+        if (err) {errh_reportError(ERRH_NOTIF, tmra_nr_moduleId_U32, 0, TMRA_API_START_TIMER_U32, TMRA_ERR_CANNOT_START_TIMER_U32);};
+    }
+    return err;
+}
+
+uint32_t tmra_createTimer(tTMRA_TIMERDATA_STR* TmraTimerHandle)
+{
+    uint32_t err = 0;
+    err = gptimer_new_timer(&TmraTimerHandle->timerConfig_str, &TmraTimerHandle->timerHandle_str);
     if (err)
     {
         errh_reportError(ERRH_ERROR_CRITICAL, tmra_nr_moduleId_U32, err, TMRA_API_CREATE_TIMER_U32, TMRA_ERR_CANNOT_CREATE_TIMER_U32);
+    }
+
+    err = gptimer_register_event_callbacks(TmraTimerHandle->timerHandle_str, &TmraTimerHandle->cbs, nullptr);
+    if (err)
+    {
+        errh_reportError(ERRH_ERROR_CRITICAL, tmra_nr_moduleId_U32, err, TMRA_API_CREATE_TIMER_U32, TMRA_ERR_CANNOT_ADD_CB_TIMER_U32);
     }
 
     return err;

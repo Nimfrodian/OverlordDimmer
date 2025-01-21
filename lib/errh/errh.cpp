@@ -1,5 +1,6 @@
 #include "errh.h"
 #include <vector>
+#include "esp_attr.h"
 
 static bool errh_s_moduleInit_tB = false;
 static uint32_t errh_nr_moduleId_U32 = 0;

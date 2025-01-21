@@ -91,6 +91,12 @@ void main_run_5ms(void)
 extern "C" void app_main()
 {
     {
+        tTMRA_INITDATA_STR TmraCfg =
+        {
+            .nr_moduleId_U32 = MODULE_TMRA,
+        };
+        tmra_init(&TmraCfg);
+
         tERRH_INITDATA_STR ErrhCfg =
         {
             .nr_moduleId_U32 = MODULE_ERRH,

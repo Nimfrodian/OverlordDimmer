@@ -29,6 +29,11 @@ typedef enum
     PINA_OUT_NUM_8 = GPIO_NUM_21,
     PINA_OUT_NUM_9 = GPIO_NUM_45,
 
+
+    PINA_OUT_NUM_10 = GPIO_NUM_15,  ///< LED R
+    PINA_OUT_NUM_11 = GPIO_NUM_16,  ///< LED G
+    PINA_OUT_NUM_12 = GPIO_NUM_17,  ///< LED B
+
     // INPUTS
     PINA_IN_NUM_0 = GPIO_NUM_38,
 } PINA_nr_GPIO_NUM_E;

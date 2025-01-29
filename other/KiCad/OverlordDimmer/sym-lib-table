@@ -1,4 +1,12 @@
 (sym_lib_table
   (version 7)
-  (lib (name "ESP32S3-wroom")(type "Legacy")(uri "${KIPRJMOD}/ESP32-S3_files/ESP32S3-wroom.lib")(options "")(descr ""))
+  (lib (name "1757310")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/1757310.kicad_sym")(options "")(descr ""))
+  (lib (name "5747844-4")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/5747844-4.kicad_sym")(options "")(descr ""))
+  (lib (name "5788792-2")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/5788792-2.kicad_sym")(options "")(descr ""))
+  (lib (name "FTSH-103-01-S-DV-TR")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/FTSH-103-01-S-DV-TR.kicad_sym")(options "")(descr ""))
+  (lib (name "FTSH-105-01-S-DV-K")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/FTSH-105-01-S-DV-K.kicad_sym")(options "")(descr ""))
+  (lib (name "PTS810SJK250SMTR_LFS")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/PTS810SJK250SMTR_LFS.kicad_sym")(options "")(descr ""))
+  (lib (name "TPD2E001DZDR")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/TPD2E001DZDR.kicad_sym")(options "")(descr ""))
+  (lib (name "TRS3232EIPWR")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/TRS3232EIPWR.kicad_sym")(options "")(descr ""))
+  (lib (name "ESP32-S3-WROOM-1U-N16")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/ESP32-S3-WROOM-1U-N16.kicad_sym")(options "")(descr ""))
 )

@@ -90,6 +90,10 @@ void main_run_5ms(void)
 
 extern "C" void app_main()
 {
+    pina_setGpioAsOutput(PINA_OUT_NUM_10);
+    pina_setGpioAsOutput(PINA_OUT_NUM_11);
+    pina_setGpioAsOutput(PINA_OUT_NUM_12);
+
     {
         tTMRA_INITDATA_STR TmraCfg =
         {
@@ -153,6 +157,13 @@ extern "C" void app_main()
         trgd_run_5ms();
 
         dmas_run_5ms();
+
+        static tU8 main_st_led_U8 = 0;
+        pina_setGpioLevel(PINA_OUT_NUM_10, (main_st_led_U8 >> 0) & 0x01);
+        pina_setGpioLevel(PINA_OUT_NUM_11, (main_st_led_U8 >> 1) & 0x02);
+        pina_setGpioLevel(PINA_OUT_NUM_12, (main_st_led_U8 >> 2) & 0x04);
+        main_st_led_U8++;
+
 
         vTaskDelay(MAIN_TI_ms_TASK_DELAY_U32 / portTICK_PERIOD_MS);
     }

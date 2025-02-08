@@ -59,9 +59,15 @@
         }
       ],
       "drc_exclusions": [
+        "silk_edge_clearance|127400000|25560000|e238dd67-6d24-46ce-8c9b-f2211f8a8f07|b580fdaa-c5a5-41cb-9291-54532178051e",
+        "silk_edge_clearance|132554999|25550000|e238dd67-6d24-46ce-8c9b-f2211f8a8f07|55f0e7db-0abf-4bf9-a392-45268e4c2ab7",
+        "silk_edge_clearance|132554999|25560000|e238dd67-6d24-46ce-8c9b-f2211f8a8f07|e9a17218-9f5f-4378-95fd-63d4b5ca2ee3",
+        "silk_edge_clearance|180194999|25560000|e238dd67-6d24-46ce-8c9b-f2211f8a8f07|c9764bcd-aef3-40c6-b747-92b9b4bbc404",
         "silk_edge_clearance|39990000|111660000|d83be4a6-bb26-43df-bd84-820699f3587c|9e5c20dc-5945-45df-89dc-000ef692320b",
         "silk_edge_clearance|39990000|111682500|d83be4a6-bb26-43df-bd84-820699f3587c|825f340d-c402-4b77-9d9f-d702b4c334fa",
-        "silk_edge_clearance|52210000|111660000|d83be4a6-bb26-43df-bd84-820699f3587c|aab20594-beb6-49a1-96cf-4823828940c5"
+        "silk_edge_clearance|52210000|111660000|d83be4a6-bb26-43df-bd84-820699f3587c|aab20594-beb6-49a1-96cf-4823828940c5",
+        "silk_edge_clearance|79760000|25550000|e238dd67-6d24-46ce-8c9b-f2211f8a8f07|674f5aee-0510-43bb-a635-1c6205c4bad7",
+        "silk_edge_clearance|79760000|25560000|e238dd67-6d24-46ce-8c9b-f2211f8a8f07|d683a18b-f315-4bd9-9117-714326d96871"
       ],
       "meta": {
         "version": 2
@@ -665,7 +671,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "",
+      "plot": "PCB_dimmer_gerber_v1.0_revA/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",

@@ -2372,15 +2372,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 44.45 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "3"
 			(uuid "4e33bbc4-736b-4ba2-9fbf-c25fb3cb8a0d")
 		)
@@ -2499,15 +2490,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 55.88 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "12aae9ab-8451-4897-b70e-a70d659dc12f")
 		)
@@ -2604,15 +2586,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 30.48 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 30.48 60.96 0)
 			(effects
 				(font
@@ -2730,15 +2703,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 138.43 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "a96d01d4-bc40-487b-aae3-c13b93bfa3a7")
 		)
@@ -2838,15 +2802,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 63.5 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 63.5 66.04 0)
 			(effects
 				(font
@@ -2964,15 +2919,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 102.87 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "94d6c5ec-0399-42bf-9158-a632a1fb2669")
 		)
@@ -3082,15 +3028,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 83.82 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "86ce62be-29ba-4984-aabe-006621229ddd")
 		)
@@ -3179,7 +3116,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://eu.mouser.com/ProductDetail/Murata-Electronics/GRM32DL8EL475KE07K?qs=By6Nw2ByBD3eoGXPfofc5w%3D%3D&countryCode=SE&currencyCode=SEK"
+		(property "Datasheet" "https://www.mouser.se/ProductDetail/KEMET/C1210C475K3RAC?qs=sGAEpiMZZMvsSlwiRhF8qkuulpLGDsHR2stZ%252B%2FLWgVc%3D"
 			(at 68.58 80.01 0)
 			(effects
 				(font
@@ -3189,15 +3126,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 68.58 80.01 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 68.58 80.01 0)
 			(effects
 				(font
@@ -3328,15 +3256,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 45.72 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "9b750a5d-e6bd-4c99-9671-639d68ba2e82")
 		)
@@ -3438,15 +3357,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 102.87 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 102.87 71.12 0)
 			(effects
 				(font
@@ -3666,15 +3576,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 120.65 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "2d42708a-540a-4b52-b892-ebfa3e3684dc")
 		)
@@ -3776,15 +3677,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 138.43 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 138.43 71.12 0)
 			(effects
 				(font

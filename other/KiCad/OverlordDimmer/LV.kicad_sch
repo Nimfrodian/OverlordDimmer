@@ -1822,6 +1822,175 @@
 				)
 			)
 		)
+		(symbol "Device:LED"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "Device:R"
 			(pin_numbers hide)
 			(pin_names
@@ -5238,10 +5407,16 @@
 		(uuid "08523e88-0026-4b64-865e-585fe7a5d37d")
 	)
 	(junction
-		(at 148.59 44.45)
+		(at 144.78 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0cae2edf-a96c-47af-8e9a-99051b610910")
+	)
+	(junction
+		(at 118.11 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1b51e01c-e7bb-434e-88d9-c8164eac9ce8")
 	)
 	(junction
 		(at 200.66 46.99)
@@ -5250,7 +5425,7 @@
 		(uuid "2351389a-f7e2-457a-a4a7-86ded9ddc574")
 	)
 	(junction
-		(at 134.62 69.85)
+		(at 130.81 69.85)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2e4cc376-5015-45fd-9965-fb37d2ca427d")
@@ -5304,10 +5479,16 @@
 		(uuid "746bf026-b860-491f-9ea2-eb7bce20427f")
 	)
 	(junction
-		(at 134.62 57.15)
+		(at 130.81 57.15)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "807d0542-0740-45d7-bc1c-62a26f58f251")
+	)
+	(junction
+		(at 152.4 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "90c2c26e-60f1-4b5d-a192-e8761a20a7cd")
 	)
 	(junction
 		(at 88.9 138.43)
@@ -5340,13 +5521,13 @@
 		(uuid "a209bc17-b301-4b4e-8810-b12b7984f315")
 	)
 	(junction
-		(at 121.92 44.45)
+		(at 118.11 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ac7e2fbb-b37f-4644-8517-30ed6f87f34b")
 	)
 	(junction
-		(at 116.84 44.45)
+		(at 113.03 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b81fb94e-b628-414f-9668-d6cdae5e89ca")
@@ -5394,7 +5575,13 @@
 		(uuid "dbe3665d-1e35-4ce9-8a92-2323a6eef5d7")
 	)
 	(junction
-		(at 156.21 44.45)
+		(at 105.41 34.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e49e1c6a-cb6d-48bd-8f48-cb9a9bc6b3b0")
+	)
+	(junction
+		(at 152.4 44.45)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f7789b8c-6baa-45f4-bc29-3fa995ebe398")
@@ -5529,7 +5716,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 34.29) (xy 116.84 35.56)
+			(xy 113.03 33.02) (xy 113.03 35.56)
 		)
 		(stroke
 			(width 0)
@@ -5559,7 +5746,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 57.15) (xy 148.59 57.15)
+			(xy 130.81 57.15) (xy 144.78 57.15)
 		)
 		(stroke
 			(width 0)
@@ -5599,7 +5786,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 44.45) (xy 127 44.45)
+			(xy 118.11 44.45) (xy 123.19 44.45)
 		)
 		(stroke
 			(width 0)
@@ -5729,6 +5916,16 @@
 	)
 	(wire
 		(pts
+			(xy 163.83 66.04) (xy 163.83 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e280a4d-9573-474e-aec9-46388cdcbfc3")
+	)
+	(wire
+		(pts
 			(xy 30.48 185.42) (xy 30.48 187.96)
 		)
 		(stroke
@@ -5739,13 +5936,23 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 43.18) (xy 109.22 44.45)
+			(xy 105.41 43.18) (xy 105.41 44.45)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "1f468292-1181-4e1e-89df-da656d728b59")
+	)
+	(wire
+		(pts
+			(xy 100.33 34.29) (xy 105.41 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f46ee22-1e30-46c0-bcb9-e7758c574cb4")
 	)
 	(wire
 		(pts
@@ -5759,7 +5966,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 44.45) (xy 116.84 44.45)
+			(xy 105.41 44.45) (xy 113.03 44.45)
 		)
 		(stroke
 			(width 0)
@@ -5809,7 +6016,7 @@
 	)
 	(wire
 		(pts
-			(xy 148.59 54.61) (xy 148.59 57.15)
+			(xy 144.78 54.61) (xy 144.78 57.15)
 		)
 		(stroke
 			(width 0)
@@ -5839,7 +6046,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 69.85) (xy 134.62 67.31)
+			(xy 130.81 69.85) (xy 130.81 67.31)
 		)
 		(stroke
 			(width 0)
@@ -5849,7 +6056,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 60.96) (xy 121.92 69.85)
+			(xy 118.11 60.96) (xy 118.11 69.85)
 		)
 		(stroke
 			(width 0)
@@ -5929,7 +6136,7 @@
 	)
 	(wire
 		(pts
-			(xy 148.59 44.45) (xy 142.24 44.45)
+			(xy 144.78 44.45) (xy 138.43 44.45)
 		)
 		(stroke
 			(width 0)
@@ -5989,7 +6196,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 69.85) (xy 134.62 69.85)
+			(xy 118.11 69.85) (xy 130.81 69.85)
 		)
 		(stroke
 			(width 0)
@@ -6139,7 +6346,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 69.85) (xy 134.62 71.12)
+			(xy 130.81 69.85) (xy 130.81 71.12)
 		)
 		(stroke
 			(width 0)
@@ -6249,7 +6456,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 44.45) (xy 156.21 53.34)
+			(xy 152.4 44.45) (xy 152.4 53.34)
 		)
 		(stroke
 			(width 0)
@@ -6319,7 +6526,7 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 34.29) (xy 109.22 35.56)
+			(xy 105.41 34.29) (xy 105.41 35.56)
 		)
 		(stroke
 			(width 0)
@@ -6389,7 +6596,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 33.02) (xy 148.59 33.02)
+			(xy 134.62 33.02) (xy 144.78 33.02)
 		)
 		(stroke
 			(width 0)
@@ -6399,7 +6606,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 57.15) (xy 134.62 59.69)
+			(xy 130.81 57.15) (xy 130.81 59.69)
 		)
 		(stroke
 			(width 0)
@@ -6439,7 +6646,17 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 60.96) (xy 156.21 69.85)
+			(xy 163.83 69.85) (xy 152.4 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75a2e692-c613-46a3-88d4-da6832989f0b")
+	)
+	(wire
+		(pts
+			(xy 152.4 60.96) (xy 152.4 69.85)
 		)
 		(stroke
 			(width 0)
@@ -6549,7 +6766,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 44.45) (xy 121.92 53.34)
+			(xy 118.11 44.45) (xy 118.11 53.34)
 		)
 		(stroke
 			(width 0)
@@ -6629,6 +6846,16 @@
 	)
 	(wire
 		(pts
+			(xy 163.83 46.99) (xy 163.83 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9586c5a9-6ef6-4285-9785-97e495085926")
+	)
+	(wire
+		(pts
 			(xy 52.07 59.69) (xy 52.07 60.96)
 		)
 		(stroke
@@ -6669,13 +6896,23 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 69.85) (xy 156.21 69.85)
+			(xy 130.81 69.85) (xy 152.4 69.85)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "9d06309a-e903-4f4e-8ca4-d7c20bb57eec")
+	)
+	(wire
+		(pts
+			(xy 163.83 44.45) (xy 152.4 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e1a933b-982a-4879-9c8e-68bfd069ad48")
 	)
 	(wire
 		(pts
@@ -6736,6 +6973,16 @@
 			(type default)
 		)
 		(uuid "a36a69d9-ff4e-4571-ac26-a6c342733368")
+	)
+	(wire
+		(pts
+			(xy 160.02 26.67) (xy 160.02 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a375db08-e427-4af8-a126-ca5043921acd")
 	)
 	(wire
 		(pts
@@ -6839,7 +7086,7 @@
 	)
 	(wire
 		(pts
-			(xy 148.59 44.45) (xy 148.59 46.99)
+			(xy 144.78 44.45) (xy 144.78 46.99)
 		)
 		(stroke
 			(width 0)
@@ -6899,7 +7146,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 43.18) (xy 116.84 44.45)
+			(xy 113.03 43.18) (xy 113.03 44.45)
 		)
 		(stroke
 			(width 0)
@@ -6909,7 +7156,7 @@
 	)
 	(wire
 		(pts
-			(xy 148.59 44.45) (xy 156.21 44.45)
+			(xy 144.78 44.45) (xy 152.4 44.45)
 		)
 		(stroke
 			(width 0)
@@ -6929,6 +7176,16 @@
 	)
 	(wire
 		(pts
+			(xy 100.33 53.34) (xy 100.33 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bd1dd355-f9a5-4500-a6c8-e0d3b2140e16")
+	)
+	(wire
+		(pts
 			(xy 185.42 46.99) (xy 189.23 46.99)
 		)
 		(stroke
@@ -6936,6 +7193,16 @@
 			(type default)
 		)
 		(uuid "bd21e313-0813-4241-a692-9e719dfd3c19")
+	)
+	(wire
+		(pts
+			(xy 163.83 54.61) (xy 163.83 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf1b8f78-029a-4fd1-a01e-a83fb6e0675a")
 	)
 	(wire
 		(pts
@@ -7029,6 +7296,16 @@
 	)
 	(wire
 		(pts
+			(xy 100.33 45.72) (xy 100.33 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c6addcef-fea4-4549-81f4-2e61b6761f12")
+	)
+	(wire
+		(pts
 			(xy 265.43 63.5) (xy 264.16 63.5)
 		)
 		(stroke
@@ -7046,6 +7323,16 @@
 			(type default)
 		)
 		(uuid "c8ef2505-8057-4205-88d8-4bfa4758e2d2")
+	)
+	(wire
+		(pts
+			(xy 100.33 64.77) (xy 100.33 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8f18490-1825-4836-9d0e-000d2d60c291")
 	)
 	(wire
 		(pts
@@ -7159,13 +7446,33 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 33.02) (xy 130.81 33.02)
+			(xy 118.11 33.02) (xy 127 33.02)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "d3acba61-99c9-4d73-a801-1f6587aff26f")
+	)
+	(wire
+		(pts
+			(xy 100.33 69.85) (xy 118.11 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3e41e44-f52d-4a8d-88f2-c5e2dca260ec")
+	)
+	(wire
+		(pts
+			(xy 160.02 38.1) (xy 160.02 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d436d12b-dcc9-43bc-ab2c-c7ded27fba23")
 	)
 	(wire
 		(pts
@@ -7299,7 +7606,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 44.45) (xy 121.92 33.02)
+			(xy 118.11 44.45) (xy 118.11 33.02)
 		)
 		(stroke
 			(width 0)
@@ -7369,7 +7676,7 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 44.45) (xy 121.92 44.45)
+			(xy 113.03 44.45) (xy 118.11 44.45)
 		)
 		(stroke
 			(width 0)
@@ -7387,6 +7694,16 @@
 		)
 		(uuid "ea307953-01c0-4886-b776-101c8c84868b")
 	)
+	(wire
+		(pts
+			(xy 105.41 33.02) (xy 105.41 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed195aec-bcc9-4ddf-a9cf-853a0e3d89ff")
+	)
 	(polyline
 		(pts
 			(xy 96.52 13.97) (xy 96.52 85.09)
@@ -7399,7 +7716,7 @@
 	)
 	(wire
 		(pts
-			(xy 134.62 52.07) (xy 134.62 57.15)
+			(xy 130.81 52.07) (xy 130.81 57.15)
 		)
 		(stroke
 			(width 0)
@@ -7529,7 +7846,7 @@
 	)
 	(wire
 		(pts
-			(xy 148.59 33.02) (xy 148.59 44.45)
+			(xy 144.78 33.02) (xy 144.78 44.45)
 		)
 		(stroke
 			(width 0)
@@ -7591,7 +7908,7 @@
 	)
 	(text "390 Ohm - 3.3V\n680 Ohm - 5V"
 		(exclude_from_sim no)
-		(at 137.16 66.04 0)
+		(at 133.35 66.04 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9016,13 +9333,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 128.27 129.54 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0075b941-370c-42ae-a7bd-599a444ab49b")
-		(property "Reference" "JP53"
+		(property "Reference" "JP50"
 			(at 128.27 123.19 0)
 			(effects
 				(font
@@ -9067,15 +9384,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 128.27 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "3f60e538-96d1-4977-bcd4-446a2b77256c")
 		)
@@ -9085,7 +9393,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP53")
+					(reference "JP50")
 					(unit 1)
 				)
 			)
@@ -9101,7 +9409,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "037822f7-e0d5-4b6a-ad44-7e1a26541d05")
-		(property "Reference" "#PWR057"
+		(property "Reference" "#PWR055"
 			(at 251.46 148.59 0)
 			(effects
 				(font
@@ -9151,7 +9459,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR057")
+					(reference "#PWR055")
 					(unit 1)
 				)
 			)
@@ -9161,13 +9469,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 237.49 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "054574d3-fc5f-437a-9ba6-1b1c52f30ea1")
-		(property "Reference" "JP36"
+		(property "Reference" "JP33"
 			(at 243.84 93.98 0)
 			(effects
 				(font
@@ -9212,15 +9520,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 237.49 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "c7ff8876-e667-4f17-b09b-0730970025c7")
 		)
@@ -9230,7 +9529,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP36")
+					(reference "JP33")
 					(unit 1)
 				)
 			)
@@ -9245,7 +9544,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "06217be5-348e-48ce-9981-a32c48274a44")
-		(property "Reference" "C21"
+		(property "Reference" "C22"
 			(at 96.774 168.402 90)
 			(effects
 				(font
@@ -9290,15 +9589,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 100.33 166.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "bc8090bb-83ca-4c17-b871-87d73b13e288")
 		)
@@ -9308,7 +9598,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "C21")
+					(reference "C22")
 					(unit 1)
 				)
 			)
@@ -9323,7 +9613,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0870ffe2-05e5-448f-b057-4bebcf798d20")
-		(property "Reference" "#PWR063"
+		(property "Reference" "#PWR065"
 			(at 43.18 180.34 0)
 			(effects
 				(font
@@ -9373,7 +9663,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR063")
+					(reference "#PWR065")
 					(unit 1)
 				)
 			)
@@ -9389,7 +9679,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0910269e-6e91-45a9-8d3a-216ec1b4267d")
-		(property "Reference" "C20"
+		(property "Reference" "C21"
 			(at 168.91 163.8299 0)
 			(effects
 				(font
@@ -9434,15 +9724,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 165.1 165.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "302136ca-a5b4-407f-ba91-c2561a08a77b")
 		)
@@ -9452,7 +9733,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "C20")
+					(reference "C21")
 					(unit 1)
 				)
 			)
@@ -9467,7 +9748,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "09c7c4f6-61a4-4303-b8d7-e21052b537e7")
-		(property "Reference" "#PWR035"
+		(property "Reference" "#PWR034"
 			(at 52.07 41.91 0)
 			(effects
 				(font
@@ -9518,7 +9799,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR035")
+					(reference "#PWR034")
 					(unit 1)
 				)
 			)
@@ -9528,13 +9809,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 81.28 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0a78f467-0ae4-49cd-b30b-9a52dcb54cab")
-		(property "Reference" "JP26"
+		(property "Reference" "JP23"
 			(at 260.35 74.93 0)
 			(effects
 				(font
@@ -9579,15 +9860,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "361603e9-c56e-4d04-a48b-8094cec1cabd")
 		)
@@ -9597,7 +9869,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP26")
+					(reference "JP23")
 					(unit 1)
 				)
 			)
@@ -9605,7 +9877,7 @@
 	)
 	(symbol
 		(lib_id "Regulator_Linear:LM317_SOT-223")
-		(at 134.62 44.45 0)
+		(at 130.81 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9614,7 +9886,7 @@
 		(fields_autoplaced yes)
 		(uuid "0b103b64-2055-4c31-93fe-47c5763c434d")
 		(property "Reference" "U_LM317_1"
-			(at 134.62 38.1 0)
+			(at 130.81 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9622,7 +9894,7 @@
 			)
 		)
 		(property "Value" "LM317_SOT-223"
-			(at 134.62 40.64 0)
+			(at 130.81 40.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9630,7 +9902,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2"
-			(at 134.62 38.1 0)
+			(at 130.81 38.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9640,7 +9912,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.se/ProductDetail/Texas-Instruments/LM317DCY?qs=5BZzbFV4k2uyLTpaIDoA2Q%3D%3D"
-			(at 134.62 44.45 0)
+			(at 130.81 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9649,16 +9921,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 134.62 44.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
-			(at 134.62 44.45 0)
+			(at 130.81 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9688,13 +9951,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 73.66 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0e00bfee-6c94-4b41-8a6f-ab548c99d6ad")
-		(property "Reference" "JP19"
+		(property "Reference" "JP16"
 			(at 205.74 80.01 0)
 			(effects
 				(font
@@ -9739,15 +10002,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "236e34ec-f5e7-4828-9db7-ea923a6a5417")
 		)
@@ -9757,7 +10011,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP19")
+					(reference "JP16")
 					(unit 1)
 				)
 			)
@@ -9767,13 +10021,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 58.42 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0ea41b1a-5da1-4664-9690-c9b246febcac")
-		(property "Reference" "JP7"
+		(property "Reference" "JP4"
 			(at 205.74 64.77 0)
 			(effects
 				(font
@@ -9818,15 +10072,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "b3ba6f56-4738-43b5-8606-1c844fd9e58a")
 		)
@@ -9836,7 +10081,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP7")
+					(reference "JP4")
 					(unit 1)
 				)
 			)
@@ -9851,7 +10096,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0f3a24ff-ced0-43fb-85c7-428a7a1e2dc4")
-		(property "Reference" "#PWR037"
+		(property "Reference" "#PWR036"
 			(at 185.42 43.18 0)
 			(effects
 				(font
@@ -9902,7 +10147,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR037")
+					(reference "#PWR036")
 					(unit 1)
 				)
 			)
@@ -9962,15 +10207,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 26.67 49.53 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "6ce5bf9d-5053-4fc5-8ef7-6059be917aae")
 		)
@@ -9990,13 +10226,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 66.04 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "15b4f1fa-b163-4f68-9f67-4343ea1c13dd")
-		(property "Reference" "JP14"
+		(property "Reference" "JP11"
 			(at 260.35 59.69 0)
 			(effects
 				(font
@@ -10041,15 +10277,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "c5d3bab7-a36e-4a82-8899-fba78a86c528")
 		)
@@ -10059,7 +10286,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP14")
+					(reference "JP11")
 					(unit 1)
 				)
 			)
@@ -10067,15 +10294,15 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 109.22 34.29 0)
+		(at 105.41 33.02 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "1930054c-0476-4262-93ea-64f33ce9c388")
-		(property "Reference" "#PWR033"
-			(at 109.22 38.1 0)
+		(property "Reference" "#PWR032"
+			(at 105.41 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10084,7 +10311,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 103.378 32.512 0)
+			(at 99.568 31.242 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10093,7 +10320,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 109.22 34.29 0)
+			(at 105.41 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10102,7 +10329,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 109.22 34.29 0)
+			(at 105.41 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10111,7 +10338,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 109.22 34.29 0)
+			(at 105.41 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10125,7 +10352,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR033")
+					(reference "#PWR032")
 					(unit 1)
 				)
 			)
@@ -10140,7 +10367,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1a10638c-3ba1-4c8f-a47c-390aa09095d4")
-		(property "Reference" "#PWR050"
+		(property "Reference" "#PWR049"
 			(at 165.1 130.81 0)
 			(effects
 				(font
@@ -10191,7 +10418,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR050")
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -10201,13 +10428,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 227.33 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2470bf6e-3697-4f22-bfbe-1e8f8f393f5d")
-		(property "Reference" "JP32"
+		(property "Reference" "JP29"
 			(at 233.68 93.98 0)
 			(effects
 				(font
@@ -10252,15 +10479,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 227.33 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "c7241aa8-86b4-4f5d-be6a-b1872aaa1628")
 		)
@@ -10270,7 +10488,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP32")
+					(reference "JP29")
 					(unit 1)
 				)
 			)
@@ -10280,13 +10498,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 151.13 111.76 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "24edcafe-bd11-4edc-87a4-ee1f0a8fd6f1")
-		(property "Reference" "JP50"
+		(property "Reference" "JP47"
 			(at 151.13 105.41 0)
 			(effects
 				(font
@@ -10331,15 +10549,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 151.13 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "2e3ac514-75ab-4c28-83c2-78100707226b")
 		)
@@ -10349,7 +10558,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP50")
+					(reference "JP47")
 					(unit 1)
 				)
 			)
@@ -10359,13 +10568,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 151.13 101.6 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "261e6f70-e8c5-4d18-8460-9975c0d14cba")
-		(property "Reference" "JP42"
+		(property "Reference" "JP39"
 			(at 151.13 95.25 0)
 			(effects
 				(font
@@ -10410,15 +10619,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 151.13 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "bf81d62d-9c27-4439-9ab3-3b37656ae1ec")
 		)
@@ -10428,7 +10628,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP42")
+					(reference "JP39")
 					(unit 1)
 				)
 			)
@@ -10438,13 +10638,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 55.88 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "28cd30ab-9b76-4cb7-89d4-6b29a0144e40")
-		(property "Reference" "JP5"
+		(property "Reference" "JP2"
 			(at 205.74 62.23 0)
 			(effects
 				(font
@@ -10489,15 +10689,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "227b6b86-6ab2-4541-8c3c-260a9a759b6c")
 		)
@@ -10507,7 +10698,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP5")
+					(reference "JP2")
 					(unit 1)
 				)
 			)
@@ -10517,13 +10708,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 151.13 106.68 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "290b178f-cf28-49b7-9c5a-8e4cec89a374")
-		(property "Reference" "JP46"
+		(property "Reference" "JP43"
 			(at 151.13 100.33 0)
 			(effects
 				(font
@@ -10568,15 +10759,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 151.13 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "8bc124c5-b8ba-4243-8179-b95732cb9a33")
 		)
@@ -10586,7 +10768,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP46")
+					(reference "JP43")
 					(unit 1)
 				)
 			)
@@ -10596,13 +10778,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 156.21 129.54 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "295c7fd6-290c-4439-91bd-18acd88c1314")
-		(property "Reference" "JP54"
+		(property "Reference" "JP51"
 			(at 156.21 123.19 0)
 			(effects
 				(font
@@ -10647,15 +10829,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 156.21 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "8c0f4813-f582-41e6-bbc7-ebaf2b7cf86f")
 		)
@@ -10665,7 +10838,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP54")
+					(reference "JP51")
 					(unit 1)
 				)
 			)
@@ -10680,7 +10853,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2a67f53a-1bb5-4f8f-a82d-70cebd5c0557")
-		(property "Reference" "#PWR036"
+		(property "Reference" "#PWR035"
 			(at 52.07 41.91 0)
 			(effects
 				(font
@@ -10731,7 +10904,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR036")
+					(reference "#PWR035")
 					(unit 1)
 				)
 			)
@@ -10741,13 +10914,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 219.71 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2bd5135e-4f35-4048-97cb-6b5de64a3563")
-		(property "Reference" "JP29"
+		(property "Reference" "JP26"
 			(at 226.06 93.98 0)
 			(effects
 				(font
@@ -10792,15 +10965,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 219.71 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "bef53338-597c-43e6-92b6-487920a1e483")
 		)
@@ -10810,7 +10974,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP29")
+					(reference "JP26")
 					(unit 1)
 				)
 			)
@@ -10826,7 +10990,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2bd9a917-ba2f-46ce-807e-26e0c26fff50")
-		(property "Reference" "#PWR040"
+		(property "Reference" "#PWR039"
 			(at 267.97 44.45 0)
 			(effects
 				(font
@@ -10876,7 +11040,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR040")
+					(reference "#PWR039")
 					(unit 1)
 				)
 			)
@@ -10886,13 +11050,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 78.74 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3157040e-bce0-4f89-b2de-cb588ce46eb3")
-		(property "Reference" "JP24"
+		(property "Reference" "JP21"
 			(at 260.35 72.39 0)
 			(effects
 				(font
@@ -10937,15 +11101,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "889f3538-2bdc-4c5f-bef0-7c95bfc21e4a")
 		)
@@ -10955,7 +11110,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP24")
+					(reference "JP21")
 					(unit 1)
 				)
 			)
@@ -10963,7 +11118,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 156.21 57.15 0)
+		(at 152.4 57.15 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10972,7 +11127,7 @@
 		(fields_autoplaced yes)
 		(uuid "31ced56a-5b6f-4c17-ac3c-ef157ad5b77b")
 		(property "Reference" "C17"
-			(at 160.02 55.88 0)
+			(at 156.21 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10981,7 +11136,7 @@
 			)
 		)
 		(property "Value" "1uF"
-			(at 160.02 58.42 0)
+			(at 156.21 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10990,7 +11145,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 157.1752 60.96 0)
+			(at 153.3652 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10999,7 +11154,7 @@
 			)
 		)
 		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/KGM21AR71E105KL?qs=Jm2GQyTW%2FbgOspZKgNqh%2Fg%3D%3D"
-			(at 156.21 57.15 0)
+			(at 152.4 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11008,16 +11163,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 156.21 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
-			(at 156.21 57.15 0)
+			(at 152.4 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11092,15 +11238,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 193.04 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "aa2d7d51-0f34-4438-accf-48c4ab6c5d19")
 		)
@@ -11117,16 +11254,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:LED")
+		(at 160.02 22.86 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "38c355d3-6615-482c-a6c8-33e9d5286c89")
+		(property "Reference" "5VLED1"
+			(at 162.052 23.114 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED"
+			(at 163.83 25.7174 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 160.02 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 160.02 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 160.02 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b31697df-b73e-4698-9ee1-8615fb284d11")
+		)
+		(pin "2"
+			(uuid "db76c577-2c6a-4cc1-914f-5813ac7ecaec")
+		)
+		(instances
+			(project "OverlordDimmer"
+				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
+					(reference "5VLED1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 229.87 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3b146f62-7b72-4b6f-b6eb-7048567b5d85")
-		(property "Reference" "JP33"
+		(property "Reference" "JP30"
 			(at 236.22 93.98 0)
 			(effects
 				(font
@@ -11171,15 +11377,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 229.87 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "ec570bc9-9443-48f9-87ba-93c921f60043")
 		)
@@ -11189,7 +11386,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP33")
+					(reference "JP30")
 					(unit 1)
 				)
 			)
@@ -11199,13 +11396,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 73.66 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3d2c089b-d721-4b7a-b0a0-7b0d71f09f85")
-		(property "Reference" "JP20"
+		(property "Reference" "JP17"
 			(at 260.35 67.31 0)
 			(effects
 				(font
@@ -11250,15 +11447,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "e67030e2-11ae-4608-80c3-77c1376ec860")
 		)
@@ -11268,7 +11456,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP20")
+					(reference "JP17")
 					(unit 1)
 				)
 			)
@@ -11278,13 +11466,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 71.12 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3d9d3331-2abd-4013-a4b9-facdcfc21aea")
-		(property "Reference" "JP17"
+		(property "Reference" "JP14"
 			(at 205.74 77.47 0)
 			(effects
 				(font
@@ -11329,15 +11517,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "880446d4-92d0-4c63-b4a2-1d2c3ede76e2")
 		)
@@ -11347,7 +11526,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP17")
+					(reference "JP14")
 					(unit 1)
 				)
 			)
@@ -11357,13 +11536,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 76.2 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4688ade3-f569-4b97-86cf-35539fc53051")
-		(property "Reference" "JP21"
+		(property "Reference" "JP18"
 			(at 205.74 82.55 0)
 			(effects
 				(font
@@ -11408,15 +11587,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "9ada2ea0-cf9a-4da7-8714-5616d7adc386")
 		)
@@ -11426,7 +11596,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP21")
+					(reference "JP18")
 					(unit 1)
 				)
 			)
@@ -11436,13 +11606,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 60.96 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "46d0a47b-edd1-4729-82b1-bd3cbabf0f72")
-		(property "Reference" "JP9"
+		(property "Reference" "JP6"
 			(at 205.74 67.31 0)
 			(effects
 				(font
@@ -11487,15 +11657,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "ebc60c91-95ae-4f7b-b1fe-3912e58db2ce")
 		)
@@ -11505,7 +11666,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP9")
+					(reference "JP6")
 					(unit 1)
 				)
 			)
@@ -11520,7 +11681,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "48f93c88-e0ec-4531-829b-88e9b5344450")
-		(property "Reference" "C24"
+		(property "Reference" "C25"
 			(at 110.236 180.848 0)
 			(effects
 				(font
@@ -11563,15 +11724,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 107.95 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "b63fc83b-261e-43db-ad79-8ba9d8c105be")
 		)
@@ -11581,7 +11733,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "C24")
+					(reference "C25")
 					(unit 1)
 				)
 			)
@@ -11591,13 +11743,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 222.25 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "49a7298b-5367-43a4-845f-e7c45c478560")
-		(property "Reference" "JP30"
+		(property "Reference" "JP27"
 			(at 228.6 93.98 0)
 			(effects
 				(font
@@ -11642,15 +11794,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 222.25 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "91956860-630b-49d6-b7af-e092f8336a18")
 		)
@@ -11660,7 +11803,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP30")
+					(reference "JP27")
 					(unit 1)
 				)
 			)
@@ -11670,13 +11813,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 81.28 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "4b01301d-6873-4303-84c9-0656c9719fbc")
-		(property "Reference" "JP25"
+		(property "Reference" "JP22"
 			(at 205.74 87.63 0)
 			(effects
 				(font
@@ -11721,15 +11864,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 81.28 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "60b0d6b7-e4e0-4946-8c15-e866e1abf6b2")
 		)
@@ -11739,7 +11873,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP25")
+					(reference "JP22")
 					(unit 1)
 				)
 			)
@@ -11749,13 +11883,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 76.2 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "50545b6e-6d82-4821-b53c-4efd3bb089f7")
-		(property "Reference" "JP22"
+		(property "Reference" "JP19"
 			(at 260.35 69.85 0)
 			(effects
 				(font
@@ -11800,15 +11934,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "031c9375-9b48-441f-b7db-e85f72df3390")
 		)
@@ -11818,7 +11943,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP22")
+					(reference "JP19")
 					(unit 1)
 				)
 			)
@@ -11828,13 +11953,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 156.21 132.08 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "51cb68cc-a82f-4581-b8a7-2b25e5e701f7")
-		(property "Reference" "JP56"
+		(property "Reference" "JP53"
 			(at 156.21 125.73 0)
 			(effects
 				(font
@@ -11879,15 +12004,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 156.21 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "f05595b9-86c9-4c04-91d3-eed824f95aa0")
 		)
@@ -11897,7 +12013,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP56")
+					(reference "JP53")
 					(unit 1)
 				)
 			)
@@ -11912,7 +12028,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "54f92410-b8ce-4cac-8733-a67ed3c1aec1")
-		(property "Reference" "#PWR048"
+		(property "Reference" "#PWR047"
 			(at 17.78 129.54 0)
 			(effects
 				(font
@@ -11962,7 +12078,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR048")
+					(reference "#PWR047")
 					(unit 1)
 				)
 			)
@@ -12023,15 +12139,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 251.46 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "afbc1e1c-80f9-4a8e-8d7e-8e0612a82247")
 		)
@@ -12057,7 +12164,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "575dcda3-7acd-4fb5-9776-948435cb3b7d")
-		(property "Reference" "#PWR056"
+		(property "Reference" "#PWR054"
 			(at 210.82 148.59 0)
 			(effects
 				(font
@@ -12107,7 +12214,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR056")
+					(reference "#PWR054")
 					(unit 1)
 				)
 			)
@@ -12117,13 +12224,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 71.12 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5788ceff-0f9f-4962-b916-d38cd408cea8")
-		(property "Reference" "JP18"
+		(property "Reference" "JP15"
 			(at 260.35 64.77 0)
 			(effects
 				(font
@@ -12168,15 +12275,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 71.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "4e128988-6129-4910-85c1-6d750dbfcf5f")
 		)
@@ -12186,7 +12284,73 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP18")
+					(reference "JP15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 160.02 19.05 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5e9d5366-ee30-4d40-80bc-ae4930870aaa")
+		(property "Reference" "#PWR069"
+			(at 160.02 22.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 154.94 17.272 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 160.02 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 160.02 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 160.02 19.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2847e8fa-ff38-4d55-828f-fb2d08d6afef")
+		)
+		(instances
+			(project "OverlordDimmer"
+				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
+					(reference "#PWR069")
 					(unit 1)
 				)
 			)
@@ -12247,15 +12411,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 73.66 162.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "f1d0aa16-edec-4297-ac79-54d344bf6678")
 		)
@@ -12284,13 +12439,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 83.82 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6169dfef-86d8-4f32-bc19-4ee36f26d743")
-		(property "Reference" "JP27"
+		(property "Reference" "JP24"
 			(at 205.74 90.17 0)
 			(effects
 				(font
@@ -12335,15 +12490,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "25fa8f80-671a-406e-9358-84d4140e9e12")
 		)
@@ -12353,7 +12499,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP27")
+					(reference "JP24")
 					(unit 1)
 				)
 			)
@@ -12363,13 +12509,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 66.04 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "62858585-022f-406a-9ddf-a1bc35aae4e0")
-		(property "Reference" "JP13"
+		(property "Reference" "JP10"
 			(at 205.74 72.39 0)
 			(effects
 				(font
@@ -12414,15 +12560,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "1bcc49cc-91d9-4c69-b3eb-a87c64a3a802")
 		)
@@ -12432,7 +12569,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP13")
+					(reference "JP10")
 					(unit 1)
 				)
 			)
@@ -12447,7 +12584,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6372a492-b871-4099-be38-2c8d0aca9510")
-		(property "Reference" "#PWR041"
+		(property "Reference" "#PWR040"
 			(at 52.07 67.31 0)
 			(effects
 				(font
@@ -12497,7 +12634,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR041")
+					(reference "#PWR040")
 					(unit 1)
 				)
 			)
@@ -12512,7 +12649,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "640d5e21-2aa7-4fd4-9551-6ba887dcc048")
-		(property "Reference" "#PWR038"
+		(property "Reference" "#PWR037"
 			(at 200.66 34.29 0)
 			(effects
 				(font
@@ -12562,7 +12699,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR038")
+					(reference "#PWR037")
 					(unit 1)
 				)
 			)
@@ -12572,13 +12709,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 232.41 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "64f71b17-d646-4d10-a11e-dfd56ed69a55")
-		(property "Reference" "JP34"
+		(property "Reference" "JP31"
 			(at 238.76 93.98 0)
 			(effects
 				(font
@@ -12623,15 +12760,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 232.41 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "8c064f0a-f5d6-4c47-b06a-726084b0202b")
 		)
@@ -12641,7 +12769,77 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP34")
+					(reference "JP31")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 100.33 49.53 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "65b38075-54a8-4fb9-af5f-86abce172147")
+		(property "Reference" "12VLED1"
+			(at 104.14 49.8474 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED"
+			(at 104.14 52.3874 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 100.33 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 100.33 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 100.33 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2c8010e8-2985-476a-8501-d7f90133f628")
+		)
+		(pin "2"
+			(uuid "260cfad6-5d15-4b6f-adda-c73837fdcc96")
+		)
+		(instances
+			(project "OverlordDimmer"
+				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
+					(reference "12VLED1")
 					(unit 1)
 				)
 			)
@@ -12651,13 +12849,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 63.5 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6c992aaa-4a00-4dfa-8c00-ab128d92ebe3")
-		(property "Reference" "JP12"
+		(property "Reference" "JP9"
 			(at 260.35 57.15 0)
 			(effects
 				(font
@@ -12702,15 +12900,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "8b5ee5a3-ab0d-4649-af23-f4a2eee3249f")
 		)
@@ -12720,7 +12909,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP12")
+					(reference "JP9")
 					(unit 1)
 				)
 			)
@@ -12730,13 +12919,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 245.11 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6db7678d-e151-4308-ab4c-8283b3228491")
-		(property "Reference" "JP39"
+		(property "Reference" "JP36"
 			(at 251.46 93.98 0)
 			(effects
 				(font
@@ -12781,15 +12970,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 245.11 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "eadda941-5df6-49ec-b0d9-0a758be6aa9f")
 		)
@@ -12799,7 +12979,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP39")
+					(reference "JP36")
 					(unit 1)
 				)
 			)
@@ -12815,7 +12995,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "710c371f-7f79-4399-85f8-d0441972afd4")
-		(property "Reference" "#PWR061"
+		(property "Reference" "#PWR063"
 			(at 165.1 175.26 0)
 			(effects
 				(font
@@ -12865,7 +13045,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR061")
+					(reference "#PWR063")
 					(unit 1)
 				)
 			)
@@ -12880,7 +13060,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7211f1d9-dd15-4068-83f4-0deb0bd78d0f")
-		(property "Reference" "C25"
+		(property "Reference" "C20"
 			(at 99.314 144.272 90)
 			(effects
 				(font
@@ -12925,15 +13105,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 102.87 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "13aea7a0-c8ce-4b05-bb1e-249d9b2253b1")
 		)
@@ -12943,7 +13114,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "C25")
+					(reference "C20")
 					(unit 1)
 				)
 			)
@@ -12958,7 +13129,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "795d6b4c-bb87-4568-b7be-06c0f557f304")
-		(property "Reference" "#PWR045"
+		(property "Reference" "#PWR044"
 			(at 33.02 110.49 0)
 			(effects
 				(font
@@ -13009,7 +13180,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR045")
+					(reference "#PWR044")
 					(unit 1)
 				)
 			)
@@ -13024,7 +13195,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7b71d684-ffb0-4cc9-83e3-69dcd5dc5c31")
-		(property "Reference" "#PWR065"
+		(property "Reference" "#PWR066"
 			(at 25.4 191.77 0)
 			(effects
 				(font
@@ -13074,7 +13245,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR065")
+					(reference "#PWR066")
 					(unit 1)
 				)
 			)
@@ -13082,7 +13253,7 @@
 	)
 	(symbol
 		(lib_id "Diode:1N4148")
-		(at 109.22 39.37 90)
+		(at 105.41 39.37 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13090,7 +13261,7 @@
 		(dnp no)
 		(uuid "808969fd-d953-45f4-a7bb-172b191110a5")
 		(property "Reference" "D20"
-			(at 111.506 39.116 0)
+			(at 107.696 39.116 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13099,7 +13270,7 @@
 			)
 		)
 		(property "Value" "1N4148"
-			(at 106.934 34.798 0)
+			(at 103.124 34.798 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13108,7 +13279,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 109.22 39.37 0)
+			(at 105.41 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13117,7 +13288,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.se/ProductDetail/Taiwan-Semiconductor/TS4148-RBG?qs=5aG0NVq1C4zjFQ%2F0tPTeiA%3D%3D"
-			(at 109.22 39.37 0)
+			(at 105.41 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13126,7 +13297,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 109.22 39.37 0)
+			(at 105.41 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13135,7 +13306,7 @@
 			)
 		)
 		(property "Sim.Device" "D"
-			(at 109.22 39.37 0)
+			(at 105.41 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13144,16 +13315,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 109.22 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
-			(at 109.22 39.37 0)
+			(at 105.41 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13180,13 +13342,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 55.88 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8178b2d8-f56e-4e94-a0da-321af22dd107")
-		(property "Reference" "JP6"
+		(property "Reference" "JP3"
 			(at 260.35 49.53 0)
 			(effects
 				(font
@@ -13231,15 +13393,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "5c2032d9-076a-4507-a0ef-abb8cda52cf5")
 		)
@@ -13249,7 +13402,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP6")
+					(reference "JP3")
 					(unit 1)
 				)
 			)
@@ -13264,7 +13417,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "82496d9d-bea1-4fb1-85ad-f19efe563191")
-		(property "Reference" "#PWR032"
+		(property "Reference" "#PWR053"
 			(at 54.61 138.43 0)
 			(effects
 				(font
@@ -13314,7 +13467,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR032")
+					(reference "#PWR053")
 					(unit 1)
 				)
 			)
@@ -13324,13 +13477,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 156.21 127 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8427baa1-0943-4c25-b725-99edcf743520")
-		(property "Reference" "JP52"
+		(property "Reference" "JP49"
 			(at 156.21 120.65 0)
 			(effects
 				(font
@@ -13375,15 +13528,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 156.21 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "cc122ff7-ae3f-4c61-876b-cebb582053f2")
 		)
@@ -13393,7 +13537,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP52")
+					(reference "JP49")
 					(unit 1)
 				)
 			)
@@ -13401,15 +13545,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 134.62 71.12 0)
+		(at 130.81 71.12 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "8469cc2e-b1ef-44c9-bb1a-a3b57eb732ee")
-		(property "Reference" "#PWR042"
-			(at 134.62 77.47 0)
+		(property "Reference" "#PWR041"
+			(at 130.81 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13418,7 +13562,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 130.048 72.644 0)
+			(at 126.238 72.644 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13426,7 +13570,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 134.62 71.12 0)
+			(at 130.81 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13435,7 +13579,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 134.62 71.12 0)
+			(at 130.81 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13444,7 +13588,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 134.62 71.12 0)
+			(at 130.81 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13458,7 +13602,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR042")
+					(reference "#PWR041")
 					(unit 1)
 				)
 			)
@@ -13519,15 +13663,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 162.56 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "c81aeb0b-5e20-40ea-9788-22c6294f642a")
 		)
@@ -13538,6 +13673,75 @@
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
 					(reference "J_PROG3V3_1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 163.83 50.8 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "851df66d-f0df-4348-a93a-8e33f2de1e1f")
+		(property "Reference" "3V3LED1"
+			(at 167.64 48.006 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED"
+			(at 160.02 53.34 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 163.83 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 163.83 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 163.83 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4eacd663-c6d6-490b-b5c8-e204b2418cbd")
+		)
+		(pin "2"
+			(uuid "7678b832-d065-4e53-806d-0d2d9dc32c8c")
+		)
+		(instances
+			(project "OverlordDimmer"
+				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
+					(reference "3V3LED1")
 					(unit 1)
 				)
 			)
@@ -13597,15 +13801,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 72.39 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "e1b66b16-76f3-4787-9046-0757fa62b5df")
 		)
@@ -13625,13 +13820,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 151.13 109.22 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8615feea-51b5-41ed-beef-c172a631a0ee")
-		(property "Reference" "JP48"
+		(property "Reference" "JP45"
 			(at 151.13 102.87 0)
 			(effects
 				(font
@@ -13676,15 +13871,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 151.13 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "092333a2-2bb7-428b-90b4-c1bd83fa9295")
 		)
@@ -13694,7 +13880,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP48")
+					(reference "JP45")
 					(unit 1)
 				)
 			)
@@ -13704,13 +13890,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 58.42 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8724b6fa-8a7b-47a9-9e9a-89ca3835cedf")
-		(property "Reference" "JP8"
+		(property "Reference" "JP5"
 			(at 260.35 52.07 0)
 			(effects
 				(font
@@ -13755,15 +13941,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "127758f2-0b35-4452-9522-13c06aefd0b2")
 		)
@@ -13773,7 +13950,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP8")
+					(reference "JP5")
 					(unit 1)
 				)
 			)
@@ -13783,13 +13960,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 68.58 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "880e32ca-e711-42f6-a4a1-5744ce0564ba")
-		(property "Reference" "JP15"
+		(property "Reference" "JP12"
 			(at 205.74 74.93 0)
 			(effects
 				(font
@@ -13834,15 +14011,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "2b0f33f4-52ea-438b-a9f0-d773d1239306")
 		)
@@ -13852,7 +14020,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP15")
+					(reference "JP12")
 					(unit 1)
 				)
 			)
@@ -13962,15 +14130,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 132.08 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "5"
 			(uuid "7826c451-afc7-4368-a300-0e40fc3f95ed")
 		)
@@ -14000,15 +14159,15 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 156.21 44.45 0)
+		(at 152.4 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "89a739e8-484d-422c-8478-8abd7fbf0e51")
-		(property "Reference" "#PWR039"
-			(at 156.21 48.26 0)
+		(property "Reference" "#PWR038"
+			(at 152.4 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14017,7 +14176,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 156.591 40.0558 0)
+			(at 152.781 40.0558 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14025,7 +14184,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 156.21 44.45 0)
+			(at 152.4 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14034,7 +14193,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 156.21 44.45 0)
+			(at 152.4 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14043,7 +14202,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 156.21 44.45 0)
+			(at 152.4 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14057,7 +14216,77 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR039")
+					(reference "#PWR038")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 100.33 60.96 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "8ab29473-752d-44f9-807f-5a8276fb9df0")
+		(property "Reference" "R67"
+			(at 102.87 59.6899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "499"
+			(at 102.87 62.2299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 98.552 60.96 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 100.33 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 100.33 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "2c3df4a5-ec9e-4fd6-927d-a5f86ce196a5")
+		)
+		(pin "1"
+			(uuid "0cfed01d-706c-455f-bbe6-6db835a5d6d9")
+		)
+		(instances
+			(project "OverlordDimmer"
+				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
+					(reference "R67")
 					(unit 1)
 				)
 			)
@@ -14065,7 +14294,7 @@
 	)
 	(symbol
 		(lib_id "Diode:1N4148")
-		(at 134.62 33.02 0)
+		(at 130.81 33.02 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -14073,7 +14302,7 @@
 		(dnp no)
 		(uuid "8ed90f4a-be00-4f67-982a-2fdfed8bb22c")
 		(property "Reference" "D19"
-			(at 134.874 35.306 0)
+			(at 131.064 35.306 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14082,7 +14311,7 @@
 			)
 		)
 		(property "Value" "1N4148"
-			(at 139.192 30.734 0)
+			(at 135.382 30.734 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14091,7 +14320,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 134.62 33.02 0)
+			(at 130.81 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14100,7 +14329,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.se/ProductDetail/Taiwan-Semiconductor/TS4148-RBG?qs=5aG0NVq1C4zjFQ%2F0tPTeiA%3D%3D"
-			(at 134.62 33.02 0)
+			(at 130.81 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14109,7 +14338,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 134.62 33.02 0)
+			(at 130.81 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14118,7 +14347,7 @@
 			)
 		)
 		(property "Sim.Device" "D"
-			(at 134.62 33.02 0)
+			(at 130.81 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14127,16 +14356,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 134.62 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
-			(at 134.62 33.02 0)
+			(at 130.81 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14168,7 +14388,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8fb93644-3026-44a6-8dd4-91c30b2bdbcd")
-		(property "Reference" "#PWR062"
+		(property "Reference" "#PWR064"
 			(at 17.78 180.34 0)
 			(effects
 				(font
@@ -14218,7 +14438,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR062")
+					(reference "#PWR064")
 					(unit 1)
 				)
 			)
@@ -14228,13 +14448,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 240.03 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "90100b2e-4205-4c7e-a5a6-2200b83f13ee")
-		(property "Reference" "JP37"
+		(property "Reference" "JP34"
 			(at 246.38 93.98 0)
 			(effects
 				(font
@@ -14279,15 +14499,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 240.03 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "fe599332-cb91-484b-b01b-c45ea6fc6032")
 		)
@@ -14297,7 +14508,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP37")
+					(reference "JP34")
 					(unit 1)
 				)
 			)
@@ -14307,13 +14518,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 128.27 127 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "90bad5fd-0d48-4335-ad13-672497484f02")
-		(property "Reference" "JP51"
+		(property "Reference" "JP48"
 			(at 128.27 120.65 0)
 			(effects
 				(font
@@ -14358,15 +14569,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 128.27 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "beecea89-2566-4d39-bff8-eb43c9012110")
 		)
@@ -14376,7 +14578,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP51")
+					(reference "JP48")
 					(unit 1)
 				)
 			)
@@ -14386,13 +14588,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 63.5 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "913e198f-f1bc-471d-9da1-42ef676dba2e")
-		(property "Reference" "JP11"
+		(property "Reference" "JP8"
 			(at 205.74 69.85 0)
 			(effects
 				(font
@@ -14437,15 +14639,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "f29c955f-80fa-4691-bd6b-c4378c4c3cf8")
 		)
@@ -14455,7 +14648,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP11")
+					(reference "JP8")
 					(unit 1)
 				)
 			)
@@ -14506,15 +14699,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 78.74 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 78.74 92.71 0)
 			(effects
 				(font
@@ -14577,7 +14761,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9715a797-1dfe-45b1-806d-e77b56df0984")
-		(property "Reference" "#PWR067"
+		(property "Reference" "#PWR052"
 			(at 88.9 140.97 0)
 			(effects
 				(font
@@ -14628,7 +14812,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR067")
+					(reference "#PWR052")
 					(unit 1)
 				)
 			)
@@ -14644,7 +14828,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9739cb56-c1bc-471e-ae8d-80862af76d5e")
-		(property "Reference" "#PWR060"
+		(property "Reference" "#PWR062"
 			(at 105.41 173.99 0)
 			(effects
 				(font
@@ -14694,7 +14878,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR060")
+					(reference "#PWR062")
 					(unit 1)
 				)
 			)
@@ -14746,15 +14930,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 44.45 59.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 44.45 59.69 0)
 			(effects
 				(font
@@ -14830,15 +15005,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 199.39 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "79b1e979-ca56-4048-a4fa-1252fdf2397d")
 		)
@@ -14864,13 +15030,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 60.96 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "9cde7029-b6aa-42e8-bfdc-7dc6a21843ff")
-		(property "Reference" "JP10"
+		(property "Reference" "JP7"
 			(at 260.35 54.61 0)
 			(effects
 				(font
@@ -14915,15 +15081,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "26642e3c-88c8-4a5d-ba1f-232aeb13cc05")
 		)
@@ -14933,7 +15090,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP10")
+					(reference "JP7")
 					(unit 1)
 				)
 			)
@@ -14941,15 +15098,15 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 134.62 63.5 0)
+		(at 130.81 63.5 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "9fa46f88-5036-46ed-a6c7-f3c894e8731c")
-		(property "Reference" "R61"
-			(at 129.54 63.5 0)
+		(property "Reference" "R62"
+			(at 125.73 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14958,7 +15115,7 @@
 			)
 		)
 		(property "Value" "390"
-			(at 129.54 66.04 0)
+			(at 125.73 66.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14967,7 +15124,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 132.842 63.5 90)
+			(at 129.032 63.5 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14976,7 +15133,7 @@
 			)
 		)
 		(property "Datasheet" "https://eu.mouser.com/ProductDetail/Panasonic/ERJ-P06F3900V?qs=sGAEpiMZZMvdGkrng054t2zaCLvyUXZJqk8Bx6mV9sI%3D"
-			(at 134.62 63.5 0)
+			(at 130.81 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14985,16 +15142,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 134.62 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
-			(at 134.62 63.5 0)
+			(at 130.81 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15011,7 +15159,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "R61")
+					(reference "R62")
 					(unit 1)
 				)
 			)
@@ -15027,7 +15175,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a0c17d63-dcf5-46ed-8ae6-d00f375f2d00")
-		(property "Reference" "R65"
+		(property "Reference" "R66"
 			(at 213.36 125.73 0)
 			(effects
 				(font
@@ -15072,15 +15220,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 210.82 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "b6ac999f-1770-477a-8cb5-b48d46a7e29f")
 		)
@@ -15090,7 +15229,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "R65")
+					(reference "R66")
 					(unit 1)
 				)
 			)
@@ -15105,7 +15244,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a22da230-0b93-4f01-b4a9-7093eaa85402")
-		(property "Reference" "#PWR052"
+		(property "Reference" "#PWR050"
 			(at 171.45 129.54 0)
 			(effects
 				(font
@@ -15155,7 +15294,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR052")
+					(reference "#PWR050")
 					(unit 1)
 				)
 			)
@@ -15207,15 +15346,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 67.31 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 67.31 52.07 0)
 			(effects
 				(font
@@ -15343,15 +15473,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 124.46 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "4"
 			(uuid "336ee70d-e03f-4ba3-9447-4baf862e79c5")
 		)
@@ -15435,15 +15556,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 212.09 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 212.09 87.63 0)
 			(effects
 				(font
@@ -15593,7 +15705,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "aa1dfe0a-76ae-48e7-8d2c-afbac1bfd6e0")
-		(property "Reference" "#PWR049"
+		(property "Reference" "#PWR048"
 			(at 43.18 129.54 0)
 			(effects
 				(font
@@ -15643,7 +15755,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR049")
+					(reference "#PWR048")
 					(unit 1)
 				)
 			)
@@ -15651,7 +15763,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 148.59 50.8 0)
+		(at 144.78 50.8 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -15659,7 +15771,7 @@
 		(dnp no)
 		(uuid "aac404fd-556b-4057-8803-8f44e23a94a2")
 		(property "Reference" "R58"
-			(at 143.51 49.53 0)
+			(at 139.7 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15668,7 +15780,7 @@
 			)
 		)
 		(property "Value" "240"
-			(at 143.51 52.07 0)
+			(at 139.7 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15677,7 +15789,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 146.812 50.8 90)
+			(at 143.002 50.8 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15686,7 +15798,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.se/ProductDetail/Vishay-Dale/CRCW0805240RFKEA?qs=sGAEpiMZZMtlubZbdhIBIOd3pDSrK5GRzqc4kEgVCoU%3D"
-			(at 148.59 50.8 0)
+			(at 144.78 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15695,16 +15807,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 148.59 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
-			(at 148.59 50.8 0)
+			(at 144.78 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15782,15 +15885,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 121.92 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "c30dc1e8-5621-4ae2-9735-26071d1ef9a5")
 		)
@@ -15807,6 +15901,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 163.83 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ac2bca14-a93e-404e-8fce-f8c9530badc1")
+		(property "Reference" "R61"
+			(at 166.37 60.9599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "60"
+			(at 166.37 63.4999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 162.052 62.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 163.83 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 163.83 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "fa18ab43-52cb-479a-a36f-15e5a170c3d8")
+		)
+		(pin "1"
+			(uuid "fcd49408-8ff5-434a-846a-f8b70151f644")
+		)
+		(instances
+			(project "OverlordDimmer"
+				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
+					(reference "R61")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 116.84 111.76 0)
 		(unit 1)
@@ -15815,7 +15979,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ac8f3e83-357c-40d3-929c-e4c06149cce7")
-		(property "Reference" "#PWR046"
+		(property "Reference" "#PWR045"
 			(at 116.84 118.11 0)
 			(effects
 				(font
@@ -15866,7 +16030,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR046")
+					(reference "#PWR045")
 					(unit 1)
 				)
 			)
@@ -15876,13 +16040,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 53.34 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "af0e6616-5183-45ce-bb13-1bbfad5cad08")
-		(property "Reference" "JP4"
+		(property "Reference" "JP1"
 			(at 260.35 46.99 0)
 			(effects
 				(font
@@ -15927,15 +16091,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "e8b119e3-a464-4546-88ba-686d870b4e68")
 		)
@@ -15945,7 +16100,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP4")
+					(reference "JP1")
 					(unit 1)
 				)
 			)
@@ -15962,7 +16117,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "afe1737a-6b91-4242-9f75-d433fbf34019")
-		(property "Reference" "#PWR066"
+		(property "Reference" "#PWR068"
 			(at 147.32 195.58 0)
 			(effects
 				(font
@@ -16012,7 +16167,7 @@
 		(instances
 			(project ""
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR066")
+					(reference "#PWR068")
 					(unit 1)
 				)
 			)
@@ -16070,15 +16225,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 193.04 41.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "935e439c-5218-4091-a320-c01c5c3f9c63")
 		)
@@ -16096,15 +16242,15 @@
 	)
 	(symbol
 		(lib_id "power:+12V")
-		(at 116.84 34.29 0)
+		(at 113.03 33.02 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "b6a8bb08-00f1-4ff0-998f-53b410fc7f1e")
-		(property "Reference" "#PWR034"
-			(at 116.84 38.1 0)
+		(property "Reference" "#PWR033"
+			(at 113.03 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16113,7 +16259,7 @@
 			)
 		)
 		(property "Value" "+5V"
-			(at 111.76 32.512 0)
+			(at 107.95 31.242 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16122,7 +16268,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 116.84 34.29 0)
+			(at 113.03 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16131,7 +16277,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 116.84 34.29 0)
+			(at 113.03 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16140,7 +16286,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 116.84 34.29 0)
+			(at 113.03 33.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16154,7 +16300,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR034")
+					(reference "#PWR033")
 					(unit 1)
 				)
 			)
@@ -16262,15 +16408,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
-			(at 17.78 121.92 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 				(hide yes)
 			)
 		)
@@ -16419,15 +16556,6 @@
 					(size 1.27 1.27)
 				)
 				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
-			(at 116.84 166.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
 				(hide yes)
 			)
 		)
@@ -16593,15 +16721,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 17.78 172.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "6"
 			(uuid "cfef1e15-a482-4963-956c-69f98ba0869c")
 		)
@@ -16653,7 +16772,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c132c381-99f8-48a5-886f-a64504142d1d")
-		(property "Reference" "R62"
+		(property "Reference" "R63"
 			(at 66.04 100.33 0)
 			(effects
 				(font
@@ -16699,15 +16818,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 63.5 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "8897276f-9185-4301-b453-8a002d2443d6")
 		)
@@ -16717,7 +16827,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "R62")
+					(reference "R63")
 					(unit 1)
 				)
 			)
@@ -16732,7 +16842,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c2665d18-787c-498f-beb8-40990f2d3d4e")
-		(property "Reference" "#PWR068"
+		(property "Reference" "#PWR056"
 			(at 102.87 153.67 0)
 			(effects
 				(font
@@ -16782,7 +16892,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR068")
+					(reference "#PWR056")
 					(unit 1)
 				)
 			)
@@ -16797,7 +16907,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c3b917bd-f7fd-481f-ba28-6f9e928d51a6")
-		(property "Reference" "R63"
+		(property "Reference" "R64"
 			(at 68.58 100.33 0)
 			(effects
 				(font
@@ -16843,15 +16953,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 66.04 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "6be19f30-3ed7-4350-aa30-c8d3636ca9ba")
 		)
@@ -16861,7 +16962,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "R63")
+					(reference "R64")
 					(unit 1)
 				)
 			)
@@ -16876,7 +16977,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c3e605d7-2a08-460f-9bff-38089a8b08c2")
-		(property "Reference" "#PWR051"
+		(property "Reference" "#PWR057"
 			(at 68.58 157.48 0)
 			(effects
 				(font
@@ -16927,7 +17028,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR051")
+					(reference "#PWR057")
 					(unit 1)
 				)
 			)
@@ -16937,13 +17038,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 83.82 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c440fd70-9e32-46a8-87df-c4edf1832cb9")
-		(property "Reference" "JP28"
+		(property "Reference" "JP25"
 			(at 260.35 77.47 0)
 			(effects
 				(font
@@ -16988,15 +17089,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "0c5417d6-27c6-419e-a67e-88f6f87b47a5")
 		)
@@ -17006,7 +17098,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP28")
+					(reference "JP25")
 					(unit 1)
 				)
 			)
@@ -17016,13 +17108,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 242.57 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c50a2094-38c2-4612-b1b3-fc86ade7af7a")
-		(property "Reference" "JP38"
+		(property "Reference" "JP35"
 			(at 248.92 93.98 0)
 			(effects
 				(font
@@ -17067,15 +17159,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 242.57 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "9bb6e0ec-d7f6-40eb-b8e6-acb080fe2bf0")
 		)
@@ -17085,7 +17168,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP38")
+					(reference "JP35")
 					(unit 1)
 				)
 			)
@@ -17143,15 +17226,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 242.57 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "1acb568b-bd9e-43cb-88f5-91259651df76")
 		)
@@ -17182,7 +17256,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c73382c2-51df-4625-a92e-f6a7f8915cf1")
-		(property "Reference" "C22"
+		(property "Reference" "C23"
 			(at 108.204 164.592 90)
 			(effects
 				(font
@@ -17225,15 +17299,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 111.76 167.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "c3ae2ddb-de1c-49f1-9bed-6710ac17e39e")
 		)
@@ -17243,7 +17308,72 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "C22")
+					(reference "C23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 160.02 39.37 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c8cdc627-6cf5-4969-af8a-3de12bfc555c")
+		(property "Reference" "#PWR070"
+			(at 160.02 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 162.814 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 160.02 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 160.02 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 160.02 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f225176f-d4da-4ad2-ac1e-2670e9d3c0d9")
+		)
+		(instances
+			(project "OverlordDimmer"
+				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
+					(reference "#PWR070")
 					(unit 1)
 				)
 			)
@@ -17258,7 +17388,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c95b8145-7da2-4056-871b-99c998c235af")
-		(property "Reference" "#PWR053"
+		(property "Reference" "#PWR051"
 			(at 25.4 140.97 0)
 			(effects
 				(font
@@ -17308,7 +17438,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR053")
+					(reference "#PWR051")
 					(unit 1)
 				)
 			)
@@ -17323,7 +17453,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c9afd007-506b-4091-9ea8-1a9323b8b475")
-		(property "Reference" "#PWR054"
+		(property "Reference" "#PWR060"
 			(at 92.71 162.56 0)
 			(effects
 				(font
@@ -17373,7 +17503,77 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR054")
+					(reference "#PWR060")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 160.02 34.29 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c9c1f484-a34b-4763-ac72-f99b6b378f2d")
+		(property "Reference" "R68"
+			(at 162.56 33.0199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "147"
+			(at 162.56 35.5599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 158.242 34.29 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 160.02 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 160.02 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "a73f2133-6fca-4771-a6bd-523adb439726")
+		)
+		(pin "1"
+			(uuid "a9ec3ebc-4825-4881-a8ec-d4e1c18ee07a")
+		)
+		(instances
+			(project "OverlordDimmer"
+				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
+					(reference "R68")
 					(unit 1)
 				)
 			)
@@ -17383,13 +17583,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 234.95 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ca23774d-a270-4779-a29f-a3277f150b06")
-		(property "Reference" "JP35"
+		(property "Reference" "JP32"
 			(at 241.3 93.98 0)
 			(effects
 				(font
@@ -17434,15 +17634,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 234.95 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "610faa71-5beb-49b3-af62-514da81ba5a4")
 		)
@@ -17452,7 +17643,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP35")
+					(reference "JP32")
 					(unit 1)
 				)
 			)
@@ -17462,13 +17653,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 247.65 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cc3fb952-3a03-4866-bf25-6d5cd052163f")
-		(property "Reference" "JP40"
+		(property "Reference" "JP37"
 			(at 254 93.98 0)
 			(effects
 				(font
@@ -17513,15 +17704,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 247.65 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "b37fc773-8ff3-4cc6-983b-692e3dc91a68")
 		)
@@ -17531,7 +17713,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP40")
+					(reference "JP37")
 					(unit 1)
 				)
 			)
@@ -17546,7 +17728,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ccb88641-8422-4970-98f7-ebc92fe2ad79")
-		(property "Reference" "#PWR047"
+		(property "Reference" "#PWR046"
 			(at 210.82 125.73 0)
 			(effects
 				(font
@@ -17597,7 +17779,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR047")
+					(reference "#PWR046")
 					(unit 1)
 				)
 			)
@@ -17607,13 +17789,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 120.65 106.68 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d3c8e3f6-da11-4b7b-8fe4-1a7d8a323076")
-		(property "Reference" "JP45"
+		(property "Reference" "JP42"
 			(at 120.65 100.33 0)
 			(effects
 				(font
@@ -17658,15 +17840,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 120.65 106.68 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "a811fb4e-6313-498e-81ab-83c479fb2d73")
 		)
@@ -17676,7 +17849,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP45")
+					(reference "JP42")
 					(unit 1)
 				)
 			)
@@ -17729,15 +17902,6 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 210.82 137.16 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 210.82 137.16 0)
 			(effects
 				(font
@@ -17866,15 +18030,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 62.23 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "81a62cd7-ce5a-4d1b-b82b-2b9b280c26ca")
 		)
@@ -17900,13 +18055,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 120.65 101.6 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ddfce763-d05f-408e-af38-34a686dae341")
-		(property "Reference" "JP41"
+		(property "Reference" "JP38"
 			(at 120.65 95.25 0)
 			(effects
 				(font
@@ -17951,15 +18106,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 120.65 101.6 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "7440d0b2-afa4-44cc-91fc-e78af7e9fd5a")
 		)
@@ -17969,7 +18115,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP41")
+					(reference "JP38")
 					(unit 1)
 				)
 			)
@@ -17984,7 +18130,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e45a27cd-d62b-4a24-8525-acd0b4e1d97e")
-		(property "Reference" "#PWR044"
+		(property "Reference" "#PWR043"
 			(at 76.2 106.68 0)
 			(effects
 				(font
@@ -18034,7 +18180,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR044")
+					(reference "#PWR043")
 					(unit 1)
 				)
 			)
@@ -18049,7 +18195,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e4e62702-6554-474a-a958-b18a7ad2b60d")
-		(property "Reference" "C23"
+		(property "Reference" "C24"
 			(at 97.282 180.594 90)
 			(effects
 				(font
@@ -18092,15 +18238,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 100.33 177.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "3de8b2f8-8168-4c55-840d-bb2abf1179a4")
 		)
@@ -18110,7 +18247,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "C23")
+					(reference "C24")
 					(unit 1)
 				)
 			)
@@ -18120,13 +18257,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 205.74 78.74 180)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e4ed8180-1050-4ea8-b61d-2678e7837038")
-		(property "Reference" "JP23"
+		(property "Reference" "JP20"
 			(at 205.74 85.09 0)
 			(effects
 				(font
@@ -18171,15 +18308,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 205.74 78.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "97dc2250-43cd-455f-bee7-df4ec8f70b06")
 		)
@@ -18189,7 +18317,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP23")
+					(reference "JP20")
 					(unit 1)
 				)
 			)
@@ -18199,13 +18327,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 120.65 109.22 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e5ccaba6-f8ee-4ce7-a1ce-0263bb3abb6d")
-		(property "Reference" "JP47"
+		(property "Reference" "JP44"
 			(at 120.65 102.87 0)
 			(effects
 				(font
@@ -18250,15 +18378,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 120.65 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "9536f235-c8ce-456e-825d-b2d94b13b80f")
 		)
@@ -18268,7 +18387,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP47")
+					(reference "JP44")
 					(unit 1)
 				)
 			)
@@ -18278,13 +18397,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 128.27 132.08 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e60bc95b-2239-404e-8c41-2320bc520a93")
-		(property "Reference" "JP55"
+		(property "Reference" "JP52"
 			(at 128.27 125.73 0)
 			(effects
 				(font
@@ -18329,15 +18448,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 128.27 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "78a57384-1616-46e4-b292-636cc65648b1")
 		)
@@ -18347,7 +18457,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP55")
+					(reference "JP52")
 					(unit 1)
 				)
 			)
@@ -18355,7 +18465,7 @@
 	)
 	(symbol
 		(lib_id "Diode:1N4148")
-		(at 116.84 39.37 90)
+		(at 113.03 39.37 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -18363,7 +18473,7 @@
 		(dnp no)
 		(uuid "e8020fa8-cf43-4c7e-8dc3-6da3dc677196")
 		(property "Reference" "D21"
-			(at 119.126 39.116 0)
+			(at 115.316 39.116 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18372,7 +18482,7 @@
 			)
 		)
 		(property "Value" "1N4148"
-			(at 114.554 34.798 0)
+			(at 110.744 34.798 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18381,7 +18491,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 116.84 39.37 0)
+			(at 113.03 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18390,7 +18500,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.se/ProductDetail/Taiwan-Semiconductor/TS4148-RBG?qs=5aG0NVq1C4zjFQ%2F0tPTeiA%3D%3D"
-			(at 116.84 39.37 0)
+			(at 113.03 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18399,7 +18509,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 116.84 39.37 0)
+			(at 113.03 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18408,7 +18518,7 @@
 			)
 		)
 		(property "Sim.Device" "D"
-			(at 116.84 39.37 0)
+			(at 113.03 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18417,16 +18527,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 116.84 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
-			(at 116.84 39.37 0)
+			(at 113.03 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18460,7 +18561,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e810b5df-c95b-457a-8fb9-f841722bcc46")
-		(property "Reference" "#PWR064"
+		(property "Reference" "#PWR067"
 			(at 107.95 193.04 0)
 			(effects
 				(font
@@ -18510,7 +18611,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR064")
+					(reference "#PWR067")
 					(unit 1)
 				)
 			)
@@ -18525,7 +18626,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e8e7928a-5209-4e12-943d-3f84a934413c")
-		(property "Reference" "#PWR055"
+		(property "Reference" "#PWR061"
 			(at 92.71 165.1 0)
 			(effects
 				(font
@@ -18575,7 +18676,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR055")
+					(reference "#PWR061")
 					(unit 1)
 				)
 			)
@@ -18585,13 +18686,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 151.13 104.14 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e946a8d9-2f9a-41ae-9280-959347e6b6ef")
-		(property "Reference" "JP44"
+		(property "Reference" "JP41"
 			(at 151.13 97.79 0)
 			(effects
 				(font
@@ -18636,15 +18737,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 151.13 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "0fdaad86-25ad-4cdf-a05f-981f8665a3fe")
 		)
@@ -18654,7 +18746,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP44")
+					(reference "JP41")
 					(unit 1)
 				)
 			)
@@ -18664,13 +18756,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 120.65 104.14 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ea53331f-0195-4af8-b370-943bfddb783e")
-		(property "Reference" "JP43"
+		(property "Reference" "JP40"
 			(at 120.65 97.79 0)
 			(effects
 				(font
@@ -18715,15 +18807,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 120.65 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "a3bc705e-c40a-43fb-a9ea-0fe59faa57ad")
 		)
@@ -18733,7 +18816,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP43")
+					(reference "JP40")
 					(unit 1)
 				)
 			)
@@ -18743,13 +18826,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 120.65 111.76 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "eb7ee98c-bf83-46bf-b4c0-ad64bb536b97")
-		(property "Reference" "JP49"
+		(property "Reference" "JP46"
 			(at 120.65 105.41 0)
 			(effects
 				(font
@@ -18794,15 +18877,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 120.65 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "e922115c-dd80-44a5-af80-5db041dedcd8")
 		)
@@ -18812,7 +18886,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP49")
+					(reference "JP46")
 					(unit 1)
 				)
 			)
@@ -18827,7 +18901,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ec8baa8c-e367-4e40-b1c3-3240aa863f01")
-		(property "Reference" "R64"
+		(property "Reference" "R65"
 			(at 71.12 100.33 0)
 			(effects
 				(font
@@ -18873,15 +18947,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 68.58 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "2"
 			(uuid "57d1b6b3-5f1a-462f-9f2b-8cc0ac459d01")
 		)
@@ -18891,7 +18956,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "R64")
+					(reference "R65")
 					(unit 1)
 				)
 			)
@@ -18899,7 +18964,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 121.92 57.15 0)
+		(at 118.11 57.15 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -18908,7 +18973,7 @@
 		(fields_autoplaced yes)
 		(uuid "ecc8c8de-8350-4ce1-90d5-e2a4604c7582")
 		(property "Reference" "C16"
-			(at 125.73 55.88 0)
+			(at 121.92 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18917,7 +18982,7 @@
 			)
 		)
 		(property "Value" "1uF"
-			(at 125.73 58.42 0)
+			(at 121.92 58.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18926,7 +18991,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 122.8852 60.96 0)
+			(at 119.0752 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18935,7 +19000,7 @@
 			)
 		)
 		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/KGM21AR71E105KL?qs=Jm2GQyTW%2FbgOspZKgNqh%2Fg%3D%3D"
-			(at 121.92 57.15 0)
+			(at 118.11 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18944,16 +19009,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 121.92 57.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
-			(at 121.92 57.15 0)
+			(at 118.11 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18980,13 +19036,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 224.79 93.98 270)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f00b0fcc-168d-4fe1-abf1-e2e318015c53")
-		(property "Reference" "JP31"
+		(property "Reference" "JP28"
 			(at 231.14 93.98 0)
 			(effects
 				(font
@@ -19031,15 +19087,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 224.79 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "c2b2e85b-4d49-4d8b-b9c4-bad323f85bf3")
 		)
@@ -19049,7 +19096,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP31")
+					(reference "JP28")
 					(unit 1)
 				)
 			)
@@ -19130,7 +19177,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f556f43b-2d0a-42a9-800a-b08aecab4f98")
-		(property "Reference" "#PWR043"
+		(property "Reference" "#PWR042"
 			(at 116.84 97.79 0)
 			(effects
 				(font
@@ -19181,7 +19228,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "#PWR043")
+					(reference "#PWR042")
 					(unit 1)
 				)
 			)
@@ -19239,15 +19286,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 52.07 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "6"
 			(uuid "f011ceea-0e1c-45a7-acf4-18a4cbebeafd")
 		)
@@ -19285,13 +19323,13 @@
 		(lib_id "Jumper:SolderJumper_2_Open")
 		(at 260.35 68.58 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fc8a1b62-b03e-462e-9bf8-38262e297dfe")
-		(property "Reference" "JP16"
+		(property "Reference" "JP13"
 			(at 260.35 62.23 0)
 			(effects
 				(font
@@ -19336,15 +19374,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 260.35 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "22069663-1df5-46bb-9c3e-ae9a4176947b")
 		)
@@ -19354,7 +19383,7 @@
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b"
-					(reference "JP16")
+					(reference "JP13")
 					(unit 1)
 				)
 			)

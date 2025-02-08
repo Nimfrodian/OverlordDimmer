@@ -1332,15 +1332,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 274.32 143.51 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "72981357-e114-4e8c-8a90-83df13c8296e")
 		)
@@ -1400,15 +1391,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 247.65 129.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 247.65 129.54 0)
 			(effects
 				(font
@@ -1484,15 +1466,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 274.32 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "3c8c9173-a0ff-41c1-b002-0527109d103a")
 		)
@@ -1552,15 +1525,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 247.65 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 247.65 104.14 0)
 			(effects
 				(font
@@ -1651,12 +1615,12 @@
 		(lib_id "Graphic:Logo_Open_Hardware_Small")
 		(at 231.14 21.59 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "1bf6f855-e869-4c7c-870d-1300aa10fd0e")
-		(property "Reference" "SYM6"
+		(property "Reference" "SYM1"
 			(at 228.6 14.732 0)
 			(effects
 				(font
@@ -1701,19 +1665,10 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 231.14 21.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876"
-					(reference "SYM6")
+					(reference "SYM1")
 					(unit 1)
 				)
 			)
@@ -1766,15 +1721,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 247.65 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 247.65 154.94 0)
 			(effects
 				(font
@@ -1865,12 +1811,12 @@
 		(lib_id "Graphic:Logo_Open_Hardware_Small")
 		(at 231.14 38.1 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "456d5fee-b3f9-44bb-879b-88c583909c74")
-		(property "Reference" "SYM1"
+		(property "Reference" "SYM5"
 			(at 228.6 31.242 0)
 			(effects
 				(font
@@ -1915,19 +1861,10 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 231.14 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876"
-					(reference "SYM1")
+					(reference "SYM5")
 					(unit 1)
 				)
 			)
@@ -2002,7 +1939,7 @@
 		(lib_id "Mechanical:MountingHole")
 		(at 229.87 127 90)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
@@ -2044,15 +1981,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 229.87 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 229.87 127 0)
 			(effects
 				(font
@@ -2139,13 +2067,13 @@
 		(lib_id "Graphic:Logo_Open_Hardware_Small")
 		(at 261.62 21.59 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "604a2592-090a-4f6f-acd0-b5fad9c753c7")
-		(property "Reference" "SYM4"
+		(property "Reference" "SYM3"
 			(at 261.62 14.605 0)
 			(effects
 				(font
@@ -2188,19 +2116,10 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 261.62 21.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876"
-					(reference "SYM4")
+					(reference "SYM3")
 					(unit 1)
 				)
 			)
@@ -2261,15 +2180,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 274.32 134.62 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "8851d20a-1073-40fd-ab98-2bc50880f8ec")
 		)
@@ -2286,7 +2196,7 @@
 		(lib_id "Mechanical:MountingHole")
 		(at 229.87 109.22 90)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
@@ -2328,15 +2238,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 229.87 109.22 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 229.87 109.22 0)
 			(effects
 				(font
@@ -2401,15 +2302,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 247.65 148.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 247.65 148.59 0)
 			(effects
 				(font
@@ -2485,15 +2377,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 274.32 96.52 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "101bee39-50dc-4d34-8d41-fbad17cfaa8c")
 		)
@@ -2561,15 +2444,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 247.65 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "993518e6-e361-4bd9-afec-926a0b75fbf9")
 		)
@@ -2586,12 +2460,12 @@
 		(lib_id "Graphic:Logo_Open_Hardware_Small")
 		(at 247.65 21.59 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "9c443601-f893-48b1-aac6-b00e75ccb20c")
-		(property "Reference" "SYM5"
+		(property "Reference" "SYM2"
 			(at 245.11 14.732 0)
 			(effects
 				(font
@@ -2636,19 +2510,10 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 247.65 21.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(instances
 			(project ""
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876"
-					(reference "SYM5")
+					(reference "SYM2")
 					(unit 1)
 				)
 			)
@@ -2701,15 +2566,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 274.32 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 274.32 87.63 0)
 			(effects
 				(font
@@ -2851,15 +2707,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 247.65 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "597dac11-d4d4-472a-b90c-42586fa3ea78")
 		)
@@ -2919,15 +2766,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 247.65 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 247.65 135.89 0)
 			(effects
 				(font
@@ -3017,12 +2855,12 @@
 		(lib_id "Graphic:Logo_Open_Hardware_Small")
 		(at 247.65 38.1 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "cbc66b86-d215-4c66-83b3-fda9a1cee62c")
-		(property "Reference" "SYM2"
+		(property "Reference" "SYM6"
 			(at 245.11 31.242 0)
 			(effects
 				(font
@@ -3067,19 +2905,10 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 247.65 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876"
-					(reference "SYM2")
+					(reference "SYM6")
 					(unit 1)
 				)
 			)
@@ -3205,15 +3034,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 247.65 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "9d5a2de1-1f9b-4223-b8f1-adcfef0f395d")
 		)
@@ -3273,15 +3093,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 247.65 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 247.65 97.79 0)
 			(effects
 				(font
@@ -3357,15 +3168,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 274.32 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "438ed835-c580-4ae1-93ae-453711e8c73c")
 		)
@@ -3425,15 +3227,6 @@
 			)
 		)
 		(property "Description" ""
-			(at 247.65 142.24 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Enable" ""
 			(at 247.65 142.24 0)
 			(effects
 				(font
@@ -3640,15 +3433,6 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 274.32 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(pin "1"
 			(uuid "2b02566f-0059-41c8-97f8-86a832476e53")
 		)
@@ -3665,13 +3449,13 @@
 		(lib_id "Graphic:Logo_Open_Hardware_Small")
 		(at 275.59 21.59 0)
 		(unit 1)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f69c36ca-6244-4fac-a175-76c04d188bed")
-		(property "Reference" "SYM3"
+		(property "Reference" "SYM4"
 			(at 275.59 14.605 0)
 			(effects
 				(font
@@ -3714,19 +3498,10 @@
 				(hide yes)
 			)
 		)
-		(property "Sim.Enable" ""
-			(at 275.59 21.59 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(instances
 			(project ""
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876"
-					(reference "SYM3")
+					(reference "SYM4")
 					(unit 1)
 				)
 			)

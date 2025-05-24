@@ -1,6 +1,7 @@
 #include "trgd.h"
 #include "rtdb.h"
 #include "trgd_rtdb.h"
+#include "mdll.h"
 
 static bool trgd_s_moduleInit_tB = false;
 static uint32_t trgd_nr_moduleId_U32 = 0;
@@ -219,7 +220,7 @@ void trgd_init(tTRGD_INITDATA_STR* TrgdCfg)
             trgd_rtdb_init();
         }
 
-        trgd_nr_moduleId_U32 = TrgdCfg->nr_moduleId_U32;
+        trgd_nr_moduleId_U32 = MODULE_TRGD;
         trgd_s_moduleInit_tB = true;
     }
 }

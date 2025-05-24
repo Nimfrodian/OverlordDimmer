@@ -13,6 +13,7 @@
 #define ERRH_API_CAN_COMPOSE_U32                ((uint32_t) 3)
 
 #define ERRH_ERR_READ_INDEX_OUT_OF_BOUNDS_U32   ((uint32_t) 1)
+#define ERRH_ERR_ACCESS_NULL_PTR_U32            ((uint32_t) 2)
 
 
 
@@ -21,7 +22,6 @@
 
 typedef struct
 {
-    uint32_t nr_moduleId_U32;       ///< ID of the module
 } tERRH_INITDATA_STR;
 
 typedef enum

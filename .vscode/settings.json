@@ -5,7 +5,9 @@
         "array": "cpp",
         "initializer_list": "cpp",
         "*.cpp2": "c",
-        "logic.h": "c"
+        "logic.h": "c",
+        "stdint-gcc.h": "c",
+        "vector": "cpp"
     },
     "gcovViewer.buildDirectories": [
         "c:\\Users\\Laptop-3070\\Documents\\OverlordDimmer\\.pio\\build\\extra_unity_options"

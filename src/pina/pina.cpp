@@ -16,7 +16,6 @@ void pina_init(tPINA_INITDATA_STR* PinaCfg)
     }
     else
     {
-        pina_nr_moduleId_U32 = PinaCfg->nr_moduleId_U32;
         pina_s_moduleInit_tB = true;
     }
 }

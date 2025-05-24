@@ -232,6 +232,7 @@ void lgic_calcNewTable_ev(tLGIC_TRIGGERTABLEDATA_STR* PreparingTablePtr, float P
                     for (uint8_t i = 0; i < lgic_nr_numOfTriggeringPins_U32; i++)
                     {
                         uint16_t dutyCyclIndx = (uint16_t) (1000.0 * lgic_dc_config_astr[i].dc_pr_currVal_F32);
+                        // TODO: add duty cycl remapping
                         float ti_us_triggerTime_F32 = ((float) lgic_ti_us_triggerDelayLookupTable_U16[dutyCyclIndx]);
 
                         // limit minimum triggering time

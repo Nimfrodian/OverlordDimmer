@@ -1,4 +1,5 @@
 #include "canm.h"
+#include "mdll.h"
 
 static bool canm_s_moduleInit_tB = false;
 static uint32_t canm_nr_moduleId_U32 = 0;
@@ -65,7 +66,7 @@ void canm_init(tCANM_INITDATA_STR* CanmCfg)
 
         twai_start();
 
-        canm_nr_moduleId_U32 = CanmCfg->nr_moduleId_U32;
+        canm_nr_moduleId_U32 = MODULE_CANM;
         canm_s_moduleInit_tB = true;    // only init once
     }
 }

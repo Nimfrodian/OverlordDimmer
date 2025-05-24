@@ -1,5 +1,6 @@
 #include "tmra.h"
 #include "rtdb_vars.h"
+#include "mdll.h"
 
 static bool tmra_s_moduleInit_tB = false;
 static uint32_t tmra_nr_moduleId_U32 = 0;
@@ -56,7 +57,7 @@ void tmra_init(tTMRA_INITDATA_STR* TmraCfg)
         gptimer_new_timer(&tmra_x_internalTimerConfig_strc, &tmra_x_internalTimer_strc);
         gptimer_enable(tmra_x_internalTimer_strc);
         gptimer_start(tmra_x_internalTimer_strc);
-        tmra_nr_moduleId_U32 = TmraCfg->nr_moduleId_U32;
+        tmra_nr_moduleId_U32 = MODULE_TMRA;
         tmra_s_moduleInit_tB = true;
     }
 }

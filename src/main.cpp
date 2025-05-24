@@ -96,51 +96,37 @@ extern "C" void app_main()
 
     {
         tTMRA_INITDATA_STR TmraCfg =
-        {
-            .nr_moduleId_U32 = MODULE_TMRA,
-        };
+        {};
         tmra_init(&TmraCfg);
 
         tERRH_INITDATA_STR ErrhCfg =
-        {
-            .nr_moduleId_U32 = MODULE_ERRH,
-        };
+        {};
         errh_init(&ErrhCfg);
 
         tSERA_INITDATA_STR SeraCfg =
-        {
-            .nr_moduleId_U32 = MODULE_SERA,
-        };
+        {};
         sera_init(&SeraCfg);
         sera_print("Sera module initialized\n");
 
         tTRGD_INITDATA_STR TrgdCfg =
-        {
-            .nr_moduleId_U32 = MODULE_TRGD,
-        };
+        {};
         trgd_init(&TrgdCfg);
         sera_print("Trgd module initialized\n");
 
         tCANM_INITDATA_STR CanmCfg =
-        {
-            .nr_moduleId_U32 = MODULE_CANM,
-        };
+        {};
         canm_init(&CanmCfg);
         sera_print("Canm module initialized\n");
 
 
         tRTDB_INITDATA_STR RtdbCfg =
-        {
-            .nr_moduleId_U32 = MODULE_RTDB,
-        };
+        {};
         rtdb_init(&RtdbCfg);
         sera_print("Rtdb module initialized\n");
 
 
         tDMAS_INITDATA_STR DmasCfg =
-        {
-            .nr_moduleId_U32 = MODULE_DMAS,
-        };
+        {};
         dmas_init(&DmasCfg);
         sera_print("DMAS module initialized\n");
 

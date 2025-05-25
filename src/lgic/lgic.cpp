@@ -1,5 +1,6 @@
 #include "lgic.h"
 #include "errh.h"
+#include "rmap.h"
 
 #define LGIC_NR_TRIGGER_DELAY_TABLE_SIZE_U16 ((uint16_t) 1001)  ///< size of the triggering delay lookup table
 #define LGIC_TI_us_MIN_TRIGGER_DELAY_U16 ((uint16_t) 100)      ///< maximum trigger delay to avoid delaying it into the next half-period
@@ -232,8 +233,8 @@ void lgic_calcNewTable_ev(tLGIC_TRIGGERTABLEDATA_STR* PreparingTablePtr, float P
                     for (uint8_t i = 0; i < lgic_nr_numOfTriggeringPins_U32; i++)
                     {
                         uint16_t dutyCyclIndx = (uint16_t) (1000.0 * lgic_dc_config_astr[i].dc_pr_currVal_F32);
-                        // TODO: add duty cycl remapping
-                        float ti_us_triggerTime_F32 = ((float) lgic_ti_us_triggerDelayLookupTable_U16[dutyCyclIndx]);
+                        tU16 remappedDutyCycl_U16 = rmap_lookup(RMAP_REMAP_TABLE_0, dutyCyclIndx); // TODO: use remapping table 0 for now
+                        float ti_us_triggerTime_F32 = ((float) lgic_ti_us_triggerDelayLookupTable_U16[remappedDutyCycl_U16]);
 
                         // limit minimum triggering time
                         if (ti_us_triggerTime_F32 < LGIC_TI_us_MIN_TRIGGER_DELAY_U16)

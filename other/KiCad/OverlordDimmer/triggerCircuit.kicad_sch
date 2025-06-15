@@ -2170,7 +2170,7 @@
 		)
 		(uuid "fbb7cda0-a518-492a-9a3a-c59417d96757")
 	)
-	(global_label "L"
+	(global_label "L_OUT"
 		(shape input)
 		(at 143.51 48.26 0)
 		(fields_autoplaced yes)
@@ -2182,7 +2182,7 @@
 		)
 		(uuid "26173b18-e394-4388-8813-8d73fb12c0eb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 147.5233 48.26 0)
+			(at 152.1195 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)

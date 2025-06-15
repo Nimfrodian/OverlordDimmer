@@ -1,4 +1,4 @@
-24656451511951989
+24658201316931087
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -69586,6 +69586,13 @@ Switch
 0
 4
 4
+OverlordCommon
+SOIC127P1030X265-16N
+MA 16-Pin SOICW
+Integrated Circuit
+0
+16
+16
 OverlordCommon
 SOP65P640X120-16N
 PW (R-PDSO-G16)

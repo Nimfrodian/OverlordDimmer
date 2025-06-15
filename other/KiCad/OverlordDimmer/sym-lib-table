@@ -9,4 +9,5 @@
   (lib (name "TPD2E001DZDR")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/TPD2E001DZDR.kicad_sym")(options "")(descr ""))
   (lib (name "TRS3232EIPWR")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/TRS3232EIPWR.kicad_sym")(options "")(descr ""))
   (lib (name "ESP32-S3-WROOM-1U-N16")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/ESP32-S3-WROOM-1U-N16.kicad_sym")(options "")(descr ""))
+  (lib (name "ACS37800KMACTR-090B3-I2C")(type "KiCad")(uri "${KIPRJMOD}/OverlordCommon.pretty/symbols/ACS37800KMACTR-090B3-I2C.kicad_sym")(options "")(descr ""))
 )

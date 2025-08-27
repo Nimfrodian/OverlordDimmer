@@ -1,12 +1,14 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "acb8dfde-7d38-400d-a1d0-b35a008c6bc2")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Device:C"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0.254)
 			)
@@ -79,7 +81,7 @@
 			(symbol "C_0_1"
 				(polyline
 					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
+						(xy -2.032 0.762) (xy 2.032 0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -91,7 +93,7 @@
 				)
 				(polyline
 					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -140,11 +142,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:L"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -211,32 +218,8 @@
 			)
 			(symbol "L_0_1"
 				(arc
-					(start 0 -2.54)
-					(mid 0.6323 -1.905)
-					(end 0 -1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 -1.27)
-					(mid 0.6323 -0.635)
-					(end 0 0)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 0)
-					(mid 0.6323 0.635)
+					(start 0 2.54)
+					(mid 0.6323 1.905)
 					(end 0 1.27)
 					(stroke
 						(width 0)
@@ -248,8 +231,32 @@
 				)
 				(arc
 					(start 0 1.27)
-					(mid 0.6323 1.905)
-					(end 0 2.54)
+					(mid 0.6323 0.635)
+					(end 0 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid 0.6323 -0.635)
+					(end 0 -1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -1.27)
+					(mid 0.6323 -1.905)
+					(end 0 -2.54)
 					(stroke
 						(width 0)
 						(type default)
@@ -297,11 +304,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:LED"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -369,10 +381,22 @@
 			(symbol "LED_0_1"
 				(polyline
 					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27)
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -393,7 +417,7 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+						(xy -1.27 -1.27) (xy -1.27 1.27)
 					)
 					(stroke
 						(width 0.254)
@@ -405,22 +429,10 @@
 				)
 				(polyline
 					(pts
-						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
 					)
 					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
-					)
-					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -466,9 +478,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:R"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
 			)
@@ -587,10 +602,15 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Diode:1N4148"
-			(pin_numbers hide)
-			(pin_names hide)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -688,10 +708,10 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 0) (xy -1.27 0)
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
 					)
 					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -700,10 +720,10 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+						(xy 1.27 0) (xy -1.27 0)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -749,146 +769,7 @@
 					)
 				)
 			)
-		)
-		(symbol "Regulator_Linear:LM317_SOT-223"
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at -3.81 3.175 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "LM317_SOT-223"
-				(at 0 3.175 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2"
-				(at 0 6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-						(italic yes)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://www.ti.com/lit/ds/symlink/lm317.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "1.5A 35V Adjustable Linear Regulator, SOT-223"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "Adjustable Voltage Regulator 1A Positive"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SOT?223*TabPin2*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "LM317_SOT-223_0_1"
-				(rectangle
-					(start -5.08 1.905)
-					(end 5.08 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "LM317_SOT-223_1_1"
-				(pin input line
-					(at 0 -7.62 90)
-					(length 2.54)
-					(name "ADJ"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_out line
-					(at 7.62 0 180)
-					(length 2.54)
-					(name "VO"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -7.62 0 0)
-					(length 2.54)
-					(name "VI"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
+			(embedded_fonts no)
 		)
 		(symbol "Regulator_Switching:AP63203WU"
 			(exclude_from_sim no)
@@ -969,17 +850,17 @@
 				)
 			)
 			(symbol "AP63203WU_1_1"
-				(pin input line
-					(at 10.16 -2.54 180)
+				(pin power_in line
+					(at -10.16 2.54 0)
 					(length 2.54)
-					(name "FB"
+					(name "IN"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "1"
+					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -998,24 +879,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -10.16 2.54 0)
-					(length 2.54)
-					(name "IN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1077,87 +940,6 @@
 						)
 					)
 				)
-			)
-		)
-		(symbol "Regulator_Switching:AP63205WU"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at -7.62 6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "AP63205WU"
-				(at 2.54 6.35 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" "Package_TO_SOT_SMD:TSOT-23-6"
-				(at 0 -22.86 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP63200-AP63201-AP63203-AP63205.pdf"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "2A, 1.1MHz Buck DC/DC Converter, fixed 5.0V output voltage, TSOT-23-6"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "2A Buck DC/DC"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "TSOT?23*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "AP63205WU_0_1"
-				(rectangle
-					(start -7.62 5.08)
-					(end 7.62 -5.08)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "AP63205WU_1_1"
 				(pin input line
 					(at 10.16 -2.54 180)
 					(length 2.54)
@@ -1176,97 +958,8 @@
 						)
 					)
 				)
-				(pin input line
-					(at -10.16 -2.54 0)
-					(length 2.54)
-					(name "EN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -10.16 2.54 0)
-					(length 2.54)
-					(name "IN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -7.62 90)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 10.16 2.54 180)
-					(length 2.54)
-					(name "SW"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 10.16 0 180)
-					(length 2.54)
-					(name "BST"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:+12V"
 			(power)
@@ -1344,7 +1037,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -1356,7 +1049,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -1370,7 +1063,8 @@
 			(symbol "+12V_1_1"
 				(pin power_in line
 					(at 0 0 90)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "+12V"
 						(effects
 							(font
@@ -1387,6 +1081,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:+3.3V"
 			(power)
@@ -1464,7 +1159,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -1476,7 +1171,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -1490,7 +1185,8 @@
 			(symbol "+3.3V_1_1"
 				(pin power_in line
 					(at 0 0 90)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "+3.3V"
 						(effects
 							(font
@@ -1507,6 +1203,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
@@ -1586,7 +1283,8 @@
 			(symbol "GND_1_1"
 				(pin power_in line
 					(at 0 0 270)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "GND"
 						(effects
 							(font
@@ -1603,185 +1301,77 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 	)
-	(junction
-		(at 163.83 99.06)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "02ac9606-bb31-4ffc-bd2a-75ca0c6c18c3")
+	(text "12V/5V->3V3 Power supply"
+		(exclude_from_sim no)
+		(at 137.922 27.686 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b4152af3-c904-4ba6-8821-96a67fbecbd8")
 	)
 	(junction
-		(at 105.41 52.07)
+		(at 99.06 62.23)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "22b8aede-0c76-4089-834a-d51f77ab0c77")
 	)
 	(junction
-		(at 45.72 100.33)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3d1e3446-a253-48e2-b938-e26a3f635492")
-	)
-	(junction
-		(at 50.8 64.77)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "40bb551a-79af-48fc-86f8-1c610f6835b3")
-	)
-	(junction
-		(at 154.94 36.83)
+		(at 148.59 46.99)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "459cffb8-4f78-4297-b841-d25a362f9b4c")
 	)
 	(junction
-		(at 64.77 39.37)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "460532b9-1e89-4b6d-9202-cd13fd8f2cef")
-	)
-	(junction
-		(at 128.27 66.04)
+		(at 121.92 76.2)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "510e2451-7962-4a3c-92af-56f4216b86e0")
 	)
 	(junction
-		(at 128.27 124.46)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "527e115e-1a17-428d-be4f-615333dc2271")
-	)
-	(junction
-		(at 116.84 52.07)
+		(at 110.49 62.23)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "530f0317-1782-4380-87d8-0d3ca32a5cd8")
 	)
 	(junction
-		(at 54.61 52.07)
+		(at 99.06 55.88)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "570e1ea5-9481-46d8-8348-8d2381835d30")
+		(uuid "584a2f59-b4ed-4fcc-b8c0-276a5a719671")
 	)
 	(junction
-		(at 72.39 100.33)
+		(at 224.79 92.71)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "5fdefca1-1aeb-4375-a635-91b579d8c258")
+		(uuid "63d2b623-eba0-4f9e-9c15-6661f79e8b64")
 	)
 	(junction
-		(at 163.83 109.22)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6b4f5937-4ec8-43e4-9e4b-d79df2e0e325")
-	)
-	(junction
-		(at 72.39 39.37)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6b9f3c17-708b-4e6c-81c7-bca08870c970")
-	)
-	(junction
-		(at 116.84 110.49)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6bedf750-a538-490a-baff-c67523ff6865")
-	)
-	(junction
-		(at 227.33 92.71)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "753573dd-c32d-4748-aeb7-6a6f6cdb37ed")
-	)
-	(junction
-		(at 163.83 40.64)
+		(at 157.48 50.8)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "77dce38e-9a01-4c6d-be26-433c50bba858")
 	)
 	(junction
-		(at 163.83 50.8)
+		(at 157.48 60.96)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7c9480b5-77f6-4c02-90fb-fc7a49ed6738")
 	)
 	(junction
-		(at 105.41 110.49)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "880aa1f3-a854-4bf1-acf5-e7fa5c02c3d0")
-	)
-	(junction
-		(at 154.94 95.25)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8cf9eafa-9764-4888-a06a-164e3ba8ff9c")
-	)
-	(junction
-		(at 139.7 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "99e6580e-0460-4d33-80ba-663130e94c3e")
-	)
-	(junction
-		(at 38.1 39.37)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a3be082b-ec66-432d-a4b2-cffc671f797f")
-	)
-	(junction
-		(at 139.7 49.53)
+		(at 133.35 59.69)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b5bd94fe-db49-470f-96ff-63332fe89801")
 	)
-	(junction
-		(at 105.41 45.72)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e0f5691e-f47b-4f7b-872a-db349c078a67")
-	)
-	(junction
-		(at 50.8 52.07)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "e8cf044a-ffb1-43d4-8f38-34c403d69380")
-	)
-	(polyline
-		(pts
-			(xy 92.71 133.35) (xy 13.97 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0708d354-a8d3-491d-82e4-7a8b1879972c")
-	)
 	(wire
 		(pts
-			(xy 105.41 102.87) (xy 105.41 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0b51c6c7-2c94-4a68-aaa1-e4e9a87553c6")
-	)
-	(wire
-		(pts
-			(xy 167.64 109.22) (xy 167.64 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0b5f0c25-6ba9-4377-9020-75c8de6cc1be")
-	)
-	(wire
-		(pts
-			(xy 116.84 52.07) (xy 118.11 52.07)
+			(xy 110.49 62.23) (xy 111.76 62.23)
 		)
 		(stroke
 			(width 0)
@@ -1791,7 +1381,7 @@
 	)
 	(wire
 		(pts
-			(xy 158.75 49.53) (xy 158.75 50.8)
+			(xy 152.4 59.69) (xy 152.4 60.96)
 		)
 		(stroke
 			(width 0)
@@ -1801,47 +1391,7 @@
 	)
 	(wire
 		(pts
-			(xy 227.33 92.71) (xy 237.49 92.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0ed75091-6be8-4bbc-bab9-0f8eb2ea405f")
-	)
-	(wire
-		(pts
-			(xy 116.84 110.49) (xy 105.41 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "15983fd7-efb5-4a9c-98e9-49784a223c05")
-	)
-	(wire
-		(pts
-			(xy 139.7 95.25) (xy 154.94 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "17423fb4-bc5f-4443-a050-a536e25fc5be")
-	)
-	(wire
-		(pts
-			(xy 62.23 88.9) (xy 72.39 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "185c61ba-3237-4830-8b35-0079b66745f2")
-	)
-	(wire
-		(pts
-			(xy 128.27 66.04) (xy 128.27 62.23)
+			(xy 121.92 76.2) (xy 121.92 72.39)
 		)
 		(stroke
 			(width 0)
@@ -1851,7 +1401,7 @@
 	)
 	(wire
 		(pts
-			(xy 138.43 57.15) (xy 154.94 57.15)
+			(xy 132.08 67.31) (xy 148.59 67.31)
 		)
 		(stroke
 			(width 0)
@@ -1859,19 +1409,19 @@
 		)
 		(uuid "1ac1600d-2e77-489e-b3ff-474ec7e81226")
 	)
-	(polyline
+	(wire
 		(pts
-			(xy 93.98 86.36) (xy 93.98 133.35)
+			(xy 106.68 55.88) (xy 99.06 55.88)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "21487c7e-8f32-4efc-8d36-5346d0c34648")
+		(uuid "1bc7344a-8dc0-409d-8c64-04a2ac41a768")
 	)
 	(wire
 		(pts
-			(xy 118.11 57.15) (xy 116.84 57.15)
+			(xy 111.76 67.31) (xy 110.49 67.31)
 		)
 		(stroke
 			(width 0)
@@ -1881,7 +1431,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 40.64) (xy 167.64 40.64)
+			(xy 157.48 50.8) (xy 161.29 50.8)
 		)
 		(stroke
 			(width 0)
@@ -1891,27 +1441,27 @@
 	)
 	(wire
 		(pts
-			(xy 158.75 107.95) (xy 158.75 109.22)
+			(xy 106.68 46.99) (xy 106.68 41.91)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "30d0aaa7-f275-41fb-a049-6d8986cb263e")
+		(uuid "2dab4d7c-8a42-4b81-b5ce-efd62eb75b9a")
 	)
 	(wire
 		(pts
-			(xy 38.1 27.94) (xy 46.99 27.94)
+			(xy 224.79 69.85) (xy 224.79 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "321376ff-f813-4679-95ba-f7112eccc697")
+		(uuid "30426260-6cf9-4815-99fd-09ce1d9f1c37")
 	)
 	(wire
 		(pts
-			(xy 158.75 41.91) (xy 158.75 40.64)
+			(xy 152.4 52.07) (xy 152.4 50.8)
 		)
 		(stroke
 			(width 0)
@@ -1921,87 +1471,17 @@
 	)
 	(wire
 		(pts
-			(xy 105.41 92.71) (xy 105.41 95.25)
+			(xy 99.06 55.88) (xy 99.06 62.23)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3bee3583-6982-4c1a-a5ee-6a4db2db406e")
+		(uuid "45f7fcd0-d1c6-4742-b124-149116ab31b4")
 	)
 	(wire
 		(pts
-			(xy 158.75 109.22) (xy 163.83 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3c602f14-8783-4feb-aba5-71e957a0506e")
-	)
-	(wire
-		(pts
-			(xy 139.7 107.95) (xy 139.7 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3e2b80f7-661f-4b73-9a22-1727b30d944a")
-	)
-	(wire
-		(pts
-			(xy 163.83 95.25) (xy 154.94 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3fabc5d4-490f-4dc1-a808-6d99e2c20e2b")
-	)
-	(polyline
-		(pts
-			(xy 93.98 133.35) (xy 172.72 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3fc36dc7-7f0d-4eab-b78e-43f5d938ed94")
-	)
-	(wire
-		(pts
-			(xy 158.75 99.06) (xy 163.83 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "40a587fc-71f3-4e8c-8bf1-104af573b78f")
-	)
-	(wire
-		(pts
-			(xy 72.39 100.33) (xy 80.01 100.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "43b238c3-d69a-4eee-8083-dc4d1412c4e6")
-	)
-	(wire
-		(pts
-			(xy 139.7 104.14) (xy 139.7 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "44fa94e4-83b7-4ec3-8e42-0744e00b02d1")
-	)
-	(wire
-		(pts
-			(xy 158.75 50.8) (xy 163.83 50.8)
+			(xy 152.4 60.96) (xy 157.48 60.96)
 		)
 		(stroke
 			(width 0)
@@ -2011,57 +1491,17 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 49.53) (xy 64.77 52.07)
+			(xy 224.79 90.17) (xy 224.79 92.71)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "48a489fe-8cd6-466d-b045-9d5f5db01ee0")
+		(uuid "4bd040bc-d274-40b9-abe1-dd3cb5868f33")
 	)
 	(wire
 		(pts
-			(xy 54.61 27.94) (xy 64.77 27.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4ff127ba-ad3e-4f27-87bc-869c70d2e6a2")
-	)
-	(wire
-		(pts
-			(xy 50.8 52.07) (xy 50.8 54.61)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5177788f-8f7d-4950-9458-54f47873ebb8")
-	)
-	(wire
-		(pts
-			(xy 217.17 69.85) (xy 217.17 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "52510abd-6705-45b4-bdfa-e4280545b67f")
-	)
-	(wire
-		(pts
-			(xy 50.8 52.07) (xy 54.61 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5363f707-f622-4562-81e8-f4fb8c196b84")
-	)
-	(wire
-		(pts
-			(xy 167.64 50.8) (xy 167.64 49.53)
+			(xy 161.29 60.96) (xy 161.29 59.69)
 		)
 		(stroke
 			(width 0)
@@ -2071,7 +1511,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 36.83) (xy 163.83 40.64)
+			(xy 157.48 46.99) (xy 157.48 50.8)
 		)
 		(stroke
 			(width 0)
@@ -2081,7 +1521,7 @@
 	)
 	(polyline
 		(pts
-			(xy 93.98 85.09) (xy 172.72 85.09)
+			(xy 87.63 95.25) (xy 166.37 95.25)
 		)
 		(stroke
 			(width 0)
@@ -2091,47 +1531,7 @@
 	)
 	(wire
 		(pts
-			(xy 237.49 69.85) (xy 237.49 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5ad4ba7b-06ab-4076-933d-0d6d2e63f97c")
-	)
-	(wire
-		(pts
-			(xy 45.72 100.33) (xy 45.72 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5b3c196f-2144-488a-9226-71a5f6545455")
-	)
-	(wire
-		(pts
-			(xy 217.17 78.74) (xy 217.17 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5b9bf3da-b498-4b19-b159-ee7951ad9c33")
-	)
-	(wire
-		(pts
-			(xy 72.39 55.88) (xy 72.39 64.77)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5cc5a956-8499-4842-9b38-5bff63d815a2")
-	)
-	(wire
-		(pts
-			(xy 105.41 52.07) (xy 105.41 53.34)
+			(xy 99.06 62.23) (xy 99.06 63.5)
 		)
 		(stroke
 			(width 0)
@@ -2141,7 +1541,7 @@
 	)
 	(wire
 		(pts
-			(xy 105.41 60.96) (xy 105.41 66.04)
+			(xy 99.06 71.12) (xy 99.06 76.2)
 		)
 		(stroke
 			(width 0)
@@ -2151,7 +1551,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 50.8) (xy 163.83 66.04)
+			(xy 157.48 60.96) (xy 157.48 76.2)
 		)
 		(stroke
 			(width 0)
@@ -2159,39 +1559,9 @@
 		)
 		(uuid "607d2e5a-c474-4b96-aa3c-1ed1987f6fbc")
 	)
-	(wire
-		(pts
-			(xy 64.77 39.37) (xy 72.39 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "618a20cc-636d-4b5e-acb3-6a062326c55b")
-	)
-	(wire
-		(pts
-			(xy 116.84 115.57) (xy 116.84 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "62e4cdc7-988e-4162-bb6d-5fb95e7e0087")
-	)
-	(wire
-		(pts
-			(xy 64.77 39.37) (xy 64.77 41.91)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "68e6c8f3-7640-4f3d-bc98-08bd41346083")
-	)
 	(polyline
 		(pts
-			(xy 93.98 13.97) (xy 93.98 85.09)
+			(xy 87.63 24.13) (xy 87.63 95.25)
 		)
 		(stroke
 			(width 0)
@@ -2201,27 +1571,17 @@
 	)
 	(wire
 		(pts
-			(xy 72.39 88.9) (xy 72.39 100.33)
+			(xy 214.63 90.17) (xy 214.63 92.71)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "6b961115-ec65-48a8-ac73-748b4d70a736")
+		(uuid "70fd6bce-976b-45a0-8bd1-27d1dc2f15b3")
 	)
 	(wire
 		(pts
-			(xy 163.83 109.22) (xy 163.83 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7109d49e-6f5b-4dc6-8307-56aad45258d5")
-	)
-	(wire
-		(pts
-			(xy 139.7 36.83) (xy 154.94 36.83)
+			(xy 133.35 46.99) (xy 148.59 46.99)
 		)
 		(stroke
 			(width 0)
@@ -2231,167 +1591,27 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 54.61) (xy 54.61 54.61)
+			(xy 214.63 78.74) (xy 214.63 82.55)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7530f195-2a07-4cf6-9cbc-7b98f9e01e76")
+		(uuid "78b56a5d-a173-4d5e-af1e-b4f7eb4209d2")
 	)
 	(wire
 		(pts
-			(xy 45.72 116.84) (xy 45.72 127)
+			(xy 214.63 92.71) (xy 224.79 92.71)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7866f528-b7ab-402f-9cc3-d4d47fb5782e")
+		(uuid "7e123419-df3b-4c45-938d-0d868ad6413e")
 	)
 	(wire
 		(pts
-			(xy 25.4 39.37) (xy 38.1 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7ae660e9-0204-4824-877e-5769da2a32a4")
-	)
-	(wire
-		(pts
-			(xy 147.32 113.03) (xy 138.43 113.03)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7c8d2059-a92a-4eed-a69c-6f5aed98784b")
-	)
-	(wire
-		(pts
-			(xy 45.72 100.33) (xy 50.8 100.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7d86e086-e0e3-4ab2-865e-c3b43a45f3fd")
-	)
-	(wire
-		(pts
-			(xy 38.1 39.37) (xy 43.18 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7ec75032-b6b1-48f2-be45-f8ddd6c17364")
-	)
-	(wire
-		(pts
-			(xy 163.83 109.22) (xy 167.64 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "80587df3-c819-420d-bc9e-029188a38fda")
-	)
-	(wire
-		(pts
-			(xy 139.7 110.49) (xy 138.43 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "82191c59-e90b-43b4-8413-c32cfa4a1cee")
-	)
-	(wire
-		(pts
-			(xy 147.32 107.95) (xy 147.32 113.03)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "83c5f0fb-f41d-4d79-b843-121c3651a01d")
-	)
-	(wire
-		(pts
-			(xy 105.41 119.38) (xy 105.41 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "86207b66-9f82-4a21-a55a-bd4d1a16805c")
-	)
-	(wire
-		(pts
-			(xy 72.39 39.37) (xy 72.39 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "873821d6-8e4a-4166-8a07-398b6a582107")
-	)
-	(wire
-		(pts
-			(xy 158.75 100.33) (xy 158.75 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "87c0c354-39c0-4984-83e0-fbe94ba8b0c2")
-	)
-	(wire
-		(pts
-			(xy 50.8 64.77) (xy 50.8 62.23)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "89153f19-ae99-4f84-a3f2-e75d5d4707e9")
-	)
-	(wire
-		(pts
-			(xy 154.94 115.57) (xy 154.94 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8a1968c2-3778-426d-9f50-d9be9b8880ae")
-	)
-	(wire
-		(pts
-			(xy 50.8 64.77) (xy 72.39 64.77)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8a3dc703-a78c-4128-8d28-69cf81bf5706")
-	)
-	(polyline
-		(pts
-			(xy 172.72 133.35) (xy 172.72 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8a5fc72b-3710-4655-9daf-503dd8664589")
-	)
-	(wire
-		(pts
-			(xy 139.7 45.72) (xy 139.7 49.53)
+			(xy 133.35 55.88) (xy 133.35 59.69)
 		)
 		(stroke
 			(width 0)
@@ -2401,17 +1621,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 99.06) (xy 167.64 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "90cba4d8-4cb8-4c24-9767-d6120a2bae88")
-	)
-	(wire
-		(pts
-			(xy 167.64 40.64) (xy 167.64 41.91)
+			(xy 161.29 50.8) (xy 161.29 52.07)
 		)
 		(stroke
 			(width 0)
@@ -2421,7 +1631,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 49.53) (xy 139.7 52.07)
+			(xy 133.35 59.69) (xy 133.35 62.23)
 		)
 		(stroke
 			(width 0)
@@ -2431,47 +1641,17 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 39.37) (xy 58.42 39.37)
+			(xy 224.79 92.71) (xy 224.79 93.98)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9463f85a-57cc-4813-ae56-662e9148396a")
+		(uuid "9885d5e6-e915-4d13-86f0-c4a82d5b494b")
 	)
 	(wire
 		(pts
-			(xy 128.27 124.46) (xy 128.27 125.73)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "964efacb-6e05-4eb6-8538-efd99a89dc08")
-	)
-	(wire
-		(pts
-			(xy 116.84 110.49) (xy 118.11 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "96de41a9-1f0a-47a6-bfc2-6358fedc5a3b")
-	)
-	(polyline
-		(pts
-			(xy 92.71 13.97) (xy 92.71 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9dd75fbd-b784-4d6f-8602-e55dc67716a2")
-	)
-	(wire
-		(pts
-			(xy 163.83 66.04) (xy 128.27 66.04)
+			(xy 157.48 76.2) (xy 121.92 76.2)
 		)
 		(stroke
 			(width 0)
@@ -2481,47 +1661,17 @@
 	)
 	(wire
 		(pts
-			(xy 25.4 27.94) (xy 25.4 39.37)
+			(xy 214.63 69.85) (xy 214.63 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a27d4a27-f89d-41f6-9169-dbd5e3fb3e0b")
-	)
-	(polyline
-		(pts
-			(xy 13.97 13.97) (xy 13.97 133.35)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a30bfc74-a8a4-4228-94a6-535a003d5a6a")
+		(uuid "a26a4eaf-23d9-4a06-8aac-f430f452e85c")
 	)
 	(wire
 		(pts
-			(xy 237.49 78.74) (xy 237.49 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a3650c9a-20f2-44c8-a49a-62122decdeac")
-	)
-	(wire
-		(pts
-			(xy 138.43 115.57) (xy 154.94 115.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a3acc7f8-5c68-4042-884b-34e861e45598")
-	)
-	(wire
-		(pts
-			(xy 147.32 49.53) (xy 147.32 54.61)
+			(xy 140.97 59.69) (xy 140.97 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2531,47 +1681,17 @@
 	)
 	(wire
 		(pts
-			(xy 227.33 92.71) (xy 227.33 93.98)
+			(xy 234.95 69.85) (xy 234.95 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a7342142-6d56-4788-bb96-0a85175fc993")
+		(uuid "aa9e7d9d-c6ca-4a43-bffc-006cc44cd170")
 	)
 	(wire
 		(pts
-			(xy 50.8 64.77) (xy 50.8 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a82827b3-0517-42b6-87ab-cf1beb0a5d42")
-	)
-	(wire
-		(pts
-			(xy 217.17 90.17) (xy 217.17 92.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "abcd9a57-0746-4cf6-9f90-daa725b9ea76")
-	)
-	(wire
-		(pts
-			(xy 45.72 100.33) (xy 45.72 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "abda8488-1c2d-4a66-bd3a-fef038f7b3b3")
-	)
-	(wire
-		(pts
-			(xy 116.84 57.15) (xy 116.84 52.07)
+			(xy 110.49 67.31) (xy 110.49 62.23)
 		)
 		(stroke
 			(width 0)
@@ -2581,57 +1701,17 @@
 	)
 	(wire
 		(pts
-			(xy 99.06 44.45) (xy 99.06 45.72)
+			(xy 224.79 92.71) (xy 234.95 92.71)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "af081876-6ddc-4ebe-99b7-d697da494b8e")
+		(uuid "b9f6997e-92df-427a-b47d-e82e0f3831d0")
 	)
 	(wire
 		(pts
-			(xy 163.83 95.25) (xy 163.83 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b0a87cd4-b47a-449e-ad82-5874327e1a06")
-	)
-	(wire
-		(pts
-			(xy 105.41 44.45) (xy 105.41 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b4a0f9c8-1b46-4937-93af-927d4c0d60a9")
-	)
-	(wire
-		(pts
-			(xy 38.1 39.37) (xy 38.1 27.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b6c4174f-f4a1-422a-a606-c16ea5d4960d")
-	)
-	(wire
-		(pts
-			(xy 128.27 124.46) (xy 128.27 120.65)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b780ba56-2e38-488a-9500-d2753ea6d6cc")
-	)
-	(wire
-		(pts
-			(xy 147.32 54.61) (xy 138.43 54.61)
+			(xy 140.97 64.77) (xy 132.08 64.77)
 		)
 		(stroke
 			(width 0)
@@ -2641,17 +1721,7 @@
 	)
 	(wire
 		(pts
-			(xy 217.17 92.71) (xy 227.33 92.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ba803e45-ff3d-4430-b9ec-4c86f9f2f67c")
-	)
-	(wire
-		(pts
-			(xy 105.41 34.29) (xy 105.41 36.83)
+			(xy 99.06 44.45) (xy 99.06 46.99)
 		)
 		(stroke
 			(width 0)
@@ -2659,59 +1729,9 @@
 		)
 		(uuid "bc915eef-4abc-40c8-a6f3-241d784e97ba")
 	)
-	(wire
-		(pts
-			(xy 227.33 69.85) (xy 227.33 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bdaf6fa2-96aa-4a06-85d3-054fc4e909fe")
-	)
 	(polyline
 		(pts
-			(xy 13.97 13.97) (xy 92.71 13.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c1a77a53-8f85-4944-a12a-83700e0ba256")
-	)
-	(wire
-		(pts
-			(xy 54.61 54.61) (xy 54.61 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c47e7f11-ba1d-4e20-8b4e-d2fcbb85d48c")
-	)
-	(wire
-		(pts
-			(xy 237.49 92.71) (xy 237.49 90.17)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c594fe00-79f6-45a1-8bae-5a7bd5246cd1")
-	)
-	(wire
-		(pts
-			(xy 64.77 27.94) (xy 64.77 39.37)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c5b5afa2-a37e-4cec-a2da-d37f0ae20ab6")
-	)
-	(polyline
-		(pts
-			(xy 172.72 85.09) (xy 172.72 13.97)
+			(xy 166.37 95.25) (xy 166.37 24.13)
 		)
 		(stroke
 			(width 0)
@@ -2721,7 +1741,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 50.8) (xy 167.64 50.8)
+			(xy 157.48 60.96) (xy 161.29 60.96)
 		)
 		(stroke
 			(width 0)
@@ -2731,47 +1751,7 @@
 	)
 	(wire
 		(pts
-			(xy 227.33 78.74) (xy 227.33 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c778a108-b07b-47c7-9fec-de483be4e232")
-	)
-	(wire
-		(pts
-			(xy 227.33 90.17) (xy 227.33 92.71)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c8412403-c8dc-4855-b81d-aee15128e158")
-	)
-	(wire
-		(pts
-			(xy 72.39 100.33) (xy 66.04 100.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c942574d-372b-45ac-a282-e104e7dcb6de")
-	)
-	(wire
-		(pts
-			(xy 38.1 55.88) (xy 38.1 64.77)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cb1f6510-c70d-4765-a086-43c7b5e4773a")
-	)
-	(wire
-		(pts
-			(xy 139.7 52.07) (xy 138.43 52.07)
+			(xy 133.35 62.23) (xy 132.08 62.23)
 		)
 		(stroke
 			(width 0)
@@ -2781,7 +1761,7 @@
 	)
 	(wire
 		(pts
-			(xy 105.41 52.07) (xy 105.41 45.72)
+			(xy 99.06 54.61) (xy 99.06 55.88)
 		)
 		(stroke
 			(width 0)
@@ -2791,7 +1771,17 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 66.04) (xy 128.27 67.31)
+			(xy 234.95 92.71) (xy 234.95 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5283bfa-984a-4f2e-9654-e59ea2f71fae")
+	)
+	(wire
+		(pts
+			(xy 121.92 76.2) (xy 121.92 77.47)
 		)
 		(stroke
 			(width 0)
@@ -2799,19 +1789,9 @@
 		)
 		(uuid "d56602b7-dde9-4643-a647-860759627229")
 	)
-	(wire
-		(pts
-			(xy 99.06 45.72) (xy 105.41 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d606b1e0-8c46-4d28-a03b-853825e5d1c2")
-	)
 	(polyline
 		(pts
-			(xy 93.98 13.97) (xy 172.72 13.97)
+			(xy 87.63 24.13) (xy 166.37 24.13)
 		)
 		(stroke
 			(width 0)
@@ -2821,7 +1801,7 @@
 	)
 	(wire
 		(pts
-			(xy 154.94 57.15) (xy 154.94 36.83)
+			(xy 148.59 67.31) (xy 148.59 46.99)
 		)
 		(stroke
 			(width 0)
@@ -2831,27 +1811,17 @@
 	)
 	(wire
 		(pts
-			(xy 167.64 99.06) (xy 167.64 100.33)
+			(xy 234.95 78.74) (xy 234.95 82.55)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d7586867-522b-4a76-9673-9b7f7dd5e68c")
+		(uuid "db852f43-292f-4a5f-9f52-37aafa721be3")
 	)
 	(wire
 		(pts
-			(xy 50.8 46.99) (xy 50.8 52.07)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "de9f5802-1bf5-44b5-bec3-0e7fc99388fd")
-	)
-	(wire
-		(pts
-			(xy 116.84 52.07) (xy 105.41 52.07)
+			(xy 110.49 62.23) (xy 99.06 62.23)
 		)
 		(stroke
 			(width 0)
@@ -2861,7 +1831,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 36.83) (xy 154.94 36.83)
+			(xy 157.48 46.99) (xy 148.59 46.99)
 		)
 		(stroke
 			(width 0)
@@ -2871,27 +1841,7 @@
 	)
 	(wire
 		(pts
-			(xy 33.02 100.33) (xy 45.72 100.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e0dacd63-3863-4779-a05f-53148108c440")
-	)
-	(wire
-		(pts
-			(xy 58.42 109.22) (xy 58.42 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e1122bf2-ca97-476a-96fd-c6f315eb4750")
-	)
-	(wire
-		(pts
-			(xy 105.41 66.04) (xy 128.27 66.04)
+			(xy 99.06 76.2) (xy 121.92 76.2)
 		)
 		(stroke
 			(width 0)
@@ -2901,7 +1851,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 36.83) (xy 139.7 38.1)
+			(xy 133.35 46.99) (xy 133.35 48.26)
 		)
 		(stroke
 			(width 0)
@@ -2911,37 +1861,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 88.9) (xy 54.61 88.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e443f8ed-5d52-45d8-aabd-f7312861de37")
-	)
-	(wire
-		(pts
-			(xy 105.41 124.46) (xy 128.27 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e5ff9055-6b99-4487-82fe-18375bde5af8")
-	)
-	(wire
-		(pts
-			(xy 33.02 88.9) (xy 33.02 100.33)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e659fa62-de03-440a-a00e-4002a27aff37")
-	)
-	(wire
-		(pts
-			(xy 158.75 40.64) (xy 163.83 40.64)
+			(xy 152.4 50.8) (xy 157.48 50.8)
 		)
 		(stroke
 			(width 0)
@@ -2951,226 +1871,96 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 95.25) (xy 139.7 96.52)
+			(xy 106.68 54.61) (xy 106.68 55.88)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e82130ff-0204-4639-b38d-9cf33c3d8153")
-	)
-	(polyline
-		(pts
-			(xy 13.97 76.2) (xy 92.71 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e903503f-c1e8-49f3-b4d3-90a78d4dc550")
+		(uuid "f1461c0c-9198-4c6f-826d-5f115df962ae")
 	)
 	(wire
 		(pts
-			(xy 54.61 52.07) (xy 64.77 52.07)
+			(xy 224.79 78.74) (xy 224.79 82.55)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e997f398-a3bd-4993-857c-d76c23068440")
+		(uuid "f7334c0c-13c4-47fa-afaf-4864409e55f2")
 	)
-	(wire
-		(pts
-			(xy 38.1 64.77) (xy 50.8 64.77)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ea98ca9a-db22-41da-9e7d-06f4eb17acc6")
-	)
-	(wire
-		(pts
-			(xy 154.94 93.98) (xy 154.94 95.25)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ee21eeda-1843-45c7-8c7b-3cb5eec1b3c1")
-	)
-	(wire
-		(pts
-			(xy 118.11 115.57) (xy 116.84 115.57)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ef2fbb8f-0859-48ea-9541-42eb04aa393e")
-	)
-	(wire
-		(pts
-			(xy 59.69 109.22) (xy 58.42 109.22)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ef8a9e88-0db2-43f3-a7e9-290b0149e288")
-	)
-	(wire
-		(pts
-			(xy 105.41 110.49) (xy 105.41 111.76)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f09a33bc-4d20-4fe1-9cd1-5580fd511ad2")
-	)
-	(polyline
-		(pts
-			(xy 93.98 86.36) (xy 172.72 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f269ec04-9f3d-4b6d-97d8-68b7d262967f")
-	)
-	(wire
-		(pts
-			(xy 38.1 39.37) (xy 38.1 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f77ea940-8ff4-4986-89c2-88fa998e953b")
-	)
-	(wire
-		(pts
-			(xy 163.83 124.46) (xy 128.27 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f9e1f3f3-d11a-47a9-9842-df9d5333bf66")
-	)
-	(wire
-		(pts
-			(xy 99.06 36.83) (xy 99.06 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ff6e2e66-1b69-4c44-ad3d-962b4f0fbd98")
-	)
-	(text "390 Ohm - 3.3V\n680 Ohm - 5V"
+	(symbol
+		(lib_id "Device:LED")
+		(at 214.63 86.36 90)
+		(unit 1)
 		(exclude_from_sim no)
-		(at 52.324 63.246 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "59e2a7a6-85f7-484c-a020-07863c50794e")
-	)
-	(text "12V->5V Power supply"
-		(exclude_from_sim no)
-		(at 144.272 89.916 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a9457dfc-39b0-42e5-b83d-9acd24f43971")
-	)
-	(text "12V/5V->3V3 Power supply"
-		(exclude_from_sim no)
-		(at 144.272 17.526 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b4152af3-c904-4ba6-8821-96a67fbecbd8")
-	)
-	(text "Power conversion 5V -> 3V3"
-		(exclude_from_sim no)
-		(at 15.494 81.026 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "bc3a3fc3-f906-402e-874e-640c0c21c662")
-	)
-	(text "Power conversion 12V -> 3V3"
-		(exclude_from_sim no)
-		(at 21.844 20.066 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "f28e690d-0eef-4367-8b21-9a60ab9108aa")
-	)
-	(global_label "V_ADJ"
-		(shape input)
-		(at 57.15 54.61 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "603ff8b8-afa6-4471-948b-88efa909809e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 65.5176 54.61 0)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "07056a66-3bef-4b53-8316-c8a429018a2a")
+		(property "Reference" "3V3LED1"
+			(at 218.44 83.566 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
-				(hide yes)
+				(justify right)
 			)
 		)
-	)
-	(global_label "V_ADJ"
-		(shape input)
-		(at 59.69 109.22 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "eb5f13b4-5111-41ea-b573-cc7128ac2468")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 68.0576 109.22 0)
+		(property "Value" "LED"
+			(at 213.36 88.138 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 214.63 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 214.63 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 214.63 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e5d3bc18-af8e-4a03-8f42-b5b8508d502c")
+		)
+		(pin "2"
+			(uuid "77a0c326-33cc-4cd9-aa34-1d71dfeab4df")
+		)
+		(instances
+			(project "OverlordDimmer"
+				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
+					(reference "3V3LED1")
+					(unit 1)
+				)
 			)
 		)
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 167.64 45.72 0)
+		(at 161.29 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3178,7 +1968,7 @@
 		(dnp no)
 		(uuid "074eeace-c526-4502-b2f2-1fd1bfd5bdd9")
 		(property "Reference" "C28"
-			(at 169.164 50.8 90)
+			(at 162.814 60.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3187,7 +1977,7 @@
 			)
 		)
 		(property "Value" "22uF"
-			(at 171.704 50.8 90)
+			(at 165.354 60.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3196,7 +1986,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 168.6052 49.53 0)
+			(at 162.2552 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3205,7 +1995,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.se/ProductDetail/Samsung-Electro-Mechanics/CL21A226MAYNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj9e2R%2FOkAO5o4FNiyGuFzx8%3D"
-			(at 167.64 45.72 0)
+			(at 161.29 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3214,7 +2004,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 167.64 45.72 0)
+			(at 161.29 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3238,91 +2028,16 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 227.33 93.98 0)
+		(lib_id "Device:R")
+		(at 234.95 74.93 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "17677918-37de-4781-8055-2434730db351")
-		(property "Reference" "#PWR077"
-			(at 227.33 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 227.33 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 227.33 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 227.33 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 227.33 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ffc2e14b-697e-4c8d-8edf-d562f649d5b9")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR077")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 217.17 69.85 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "184615c6-2b88-4ae9-9568-8a0d796d709d")
-		(property "Reference" "#PWR078"
-			(at 217.17 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 217.551 66.5988 0)
+		(uuid "1c5bfb0c-aa97-490a-986b-7e0c9eed0ae9")
+		(property "Reference" "R69"
+			(at 236.474 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3330,8 +2045,17 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
-			(at 217.17 69.85 0)
+		(property "Value" "10K"
+			(at 236.474 75.692 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 233.172 74.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3339,8 +2063,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
-			(at 217.17 69.85 0)
+		(property "Datasheet" "~"
+			(at 234.95 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3349,7 +2073,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 217.17 69.85 0)
+			(at 234.95 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3358,81 +2082,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "6801091f-daf9-4c4d-8da9-41f99cd2a85d")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR078")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:L")
-		(at 139.7 100.33 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "1ac3f8ce-dabe-4ca7-884f-5b615ceda685")
-		(property "Reference" "L2"
-			(at 137.668 101.6 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "4.7uH"
-			(at 141.224 103.124 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Inductor_SMD:L_Bourns_SDR0604"
-			(at 139.7 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.se/ProductDetail/652-SDE0604A-4R7M"
-			(at 139.7 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Inductor"
-			(at 139.7 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
+			(uuid "f108040a-a47c-484f-8cd7-985c0a4b0ec9")
 		)
 		(pin "2"
-			(uuid "468f9fda-7e94-448a-9f32-1f2d85400139")
-		)
-		(pin "1"
-			(uuid "9765d769-0955-4db1-bbfb-a8d2f31f803b")
+			(uuid "df7b088c-0ca1-42fb-8448-ae2e8cf07b5c")
 		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "L2")
+					(reference "R69")
 					(unit 1)
 				)
 			)
@@ -3440,7 +2098,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 128.27 67.31 0)
+		(at 121.92 77.47 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3449,7 +2107,7 @@
 		(fields_autoplaced yes)
 		(uuid "1c78fe02-06ed-450d-933d-b37f3f07ce1f")
 		(property "Reference" "#PWR074"
-			(at 128.27 73.66 0)
+			(at 121.92 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3458,7 +2116,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 128.27 72.39 0)
+			(at 121.92 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3466,7 +2124,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 128.27 67.31 0)
+			(at 121.92 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3475,7 +2133,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 128.27 67.31 0)
+			(at 121.92 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3484,7 +2142,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 128.27 67.31 0)
+			(at 121.92 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3505,204 +2163,8 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3.3V")
-		(at 237.49 69.85 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "1e4a8be2-1f82-4281-b832-9e9a797b84b0")
-		(property "Reference" "#PWR075"
-			(at 237.49 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 237.871 66.5988 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 237.49 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 237.49 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 237.49 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4598bcbf-0514-4ba4-80f5-e2a084b8f70e")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR075")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 50.8 66.04 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "217a0288-f215-47d3-b79d-60d514a56139")
-		(property "Reference" "#PWR038"
-			(at 50.8 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 46.228 67.564 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 50.8 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 50.8 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 50.8 66.04 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "8b5e4d47-89da-477d-a91e-1d86bf4f7fec")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR038")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 45.72 127 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "2230b0ca-fbfa-4793-a0d2-269e28a88829")
-		(property "Reference" "#PWR045"
-			(at 45.72 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 41.148 128.524 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 45.72 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 45.72 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 45.72 127 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4ffb7805-d02c-44c9-95ad-e39ac0af6c94")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR045")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Diode:1N4148")
-		(at 105.41 40.64 90)
+		(at 99.06 50.8 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -3710,7 +2172,7 @@
 		(dnp no)
 		(uuid "24cf8af5-e1e7-40f7-8a52-f08855679822")
 		(property "Reference" "D23"
-			(at 107.696 40.386 0)
+			(at 101.346 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3719,7 +2181,7 @@
 			)
 		)
 		(property "Value" "1N4148"
-			(at 109.474 36.83 0)
+			(at 103.124 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3728,7 +2190,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 105.41 40.64 0)
+			(at 99.06 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3737,7 +2199,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.se/ProductDetail/Taiwan-Semiconductor/TS4148-RBG?qs=5aG0NVq1C4zjFQ%2F0tPTeiA%3D%3D"
-			(at 105.41 40.64 0)
+			(at 99.06 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3746,7 +2208,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 105.41 40.64 0)
+			(at 99.06 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3755,7 +2217,7 @@
 			)
 		)
 		(property "Sim.Device" "D"
-			(at 105.41 40.64 0)
+			(at 99.06 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3764,7 +2226,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 105.41 40.64 0)
+			(at 99.06 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3788,289 +2250,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 50.8 58.42 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "26ba0d23-3380-4a48-b777-eb93afa9cbbc")
-		(property "Reference" "R67"
-			(at 45.72 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "390"
-			(at 45.72 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 49.022 58.42 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://eu.mouser.com/ProductDetail/Panasonic/ERJ-P06F3900V?qs=sGAEpiMZZMvdGkrng054t2zaCLvyUXZJqk8Bx6mV9sI%3D"
-			(at 50.8 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 50.8 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "ff497209-5be5-4b5c-a789-12a28a7824f2")
-		)
-		(pin "1"
-			(uuid "41b5b737-5d67-472c-b304-88e0ab28a55e")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "R67")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 154.94 93.98 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "29431dfb-a10c-4c96-b2ee-ca4da73de6b5")
-		(property "Reference" "#PWR079"
-			(at 154.94 97.79 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 149.86 92.202 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 154.94 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 154.94 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 154.94 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "90220d70-7e01-4e11-8308-22e391f93999")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR079")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 33.02 88.9 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "35183d13-5828-4e06-9c16-1f68c72402f5")
-		(property "Reference" "#PWR041"
-			(at 33.02 92.71 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 27.94 87.122 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 33.02 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 33.02 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 33.02 88.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "53d7d683-755f-41c1-9216-67a6556fa86f")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR041")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Regulator_Switching:AP63205WU")
-		(at 128.27 113.03 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "367d1e36-e8ee-4238-a7da-5372a2f895fd")
-		(property "Reference" "U13"
-			(at 128.27 102.87 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "AP63205WU"
-			(at 128.27 105.41 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:TSOT-23-6"
-			(at 128.27 135.89 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP63200-AP63201-AP63203-AP63205.pdf"
-			(at 128.27 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "2A, 1.1MHz Buck DC/DC Converter, fixed 5.0V output voltage, TSOT-23-6"
-			(at 128.27 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "5"
-			(uuid "b30dbc93-8a28-40aa-b412-05cb53e92b28")
-		)
-		(pin "3"
-			(uuid "8c0c732b-58aa-48c6-a9a3-ef310b21d49d")
-		)
-		(pin "1"
-			(uuid "127bee55-b143-4670-8a4d-8b18b9946505")
-		)
-		(pin "2"
-			(uuid "e45ac316-0086-4399-8df9-c559e28acf65")
-		)
-		(pin "4"
-			(uuid "b5289d7a-eecf-48e1-9ee4-a70e6c57b761")
-		)
-		(pin "6"
-			(uuid "6cb28e29-587b-41be-8082-485abd710f06")
-		)
-		(instances
-			(project ""
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "U13")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3.3V")
-		(at 154.94 36.83 0)
+		(at 148.59 46.99 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4078,7 +2259,7 @@
 		(dnp no)
 		(uuid "395e8fc8-6f22-449e-a418-0742203065fb")
 		(property "Reference" "#PWR073"
-			(at 154.94 40.64 0)
+			(at 148.59 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4087,7 +2268,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 149.098 33.02 0)
+			(at 142.748 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4096,7 +2277,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 154.94 36.83 0)
+			(at 148.59 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4105,7 +2286,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 154.94 36.83 0)
+			(at 148.59 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4114,7 +2295,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 154.94 36.83 0)
+			(at 148.59 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4135,148 +2316,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 72.39 52.07 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3ac020a1-7b52-4116-b3ea-d7138caef51c")
-		(property "Reference" "C17"
-			(at 76.2 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1uF"
-			(at 76.2 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 73.3552 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/KGM21AR71E105KL?qs=Jm2GQyTW%2FbgOspZKgNqh%2Fg%3D%3D"
-			(at 72.39 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 72.39 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "aeacc6eb-81c3-460f-88e2-242649c87a9c")
-		)
-		(pin "2"
-			(uuid "3603d45c-6ceb-4815-a69a-1464f20073d3")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "C17")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 38.1 52.07 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "3b99b750-7a44-44e1-8446-cb2eff71c562")
-		(property "Reference" "C16"
-			(at 41.91 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1uF"
-			(at 41.91 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 39.0652 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/KGM21AR71E105KL?qs=Jm2GQyTW%2FbgOspZKgNqh%2Fg%3D%3D"
-			(at 38.1 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 38.1 52.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "b1c6f9eb-87d4-4e50-a925-c6d3b218e6be")
-		)
-		(pin "2"
-			(uuid "96c1cdfd-8407-4179-a3de-88622e66f1c4")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "C16")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Regulator_Switching:AP63203WU")
-		(at 128.27 54.61 0)
+		(at 121.92 64.77 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4285,7 +2326,7 @@
 		(fields_autoplaced yes)
 		(uuid "45510bd1-4d03-497b-b06e-594096207fb6")
 		(property "Reference" "U12"
-			(at 128.27 44.45 0)
+			(at 121.92 54.61 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4293,7 +2334,7 @@
 			)
 		)
 		(property "Value" "AP63203WU"
-			(at 128.27 46.99 0)
+			(at 121.92 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4301,7 +2342,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:TSOT-23-6"
-			(at 128.27 77.47 0)
+			(at 121.92 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4310,7 +2351,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/AP63200-AP63201-AP63203-AP63205.pdf"
-			(at 128.27 54.61 0)
+			(at 121.92 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4319,7 +2360,7 @@
 			)
 		)
 		(property "Description" "2A, 1.1MHz Buck DC/DC Converter, fixed 3.3V output voltage, TSOT-23-6"
-			(at 128.27 54.61 0)
+			(at 121.92 64.77 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4355,17 +2396,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Regulator_Linear:LM317_SOT-223")
-		(at 50.8 39.37 0)
+		(lib_id "power:+12V")
+		(at 106.68 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5195b0ce-b692-4800-ae74-ddee3f77c842")
-		(property "Reference" "U_LM317_1"
-			(at 50.8 33.02 0)
+		(uuid "6fbf9c51-fd33-4f57-bf0a-6d082286a1ae")
+		(property "Reference" "#PWR041"
+			(at 106.68 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4373,80 +2413,8 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "LM317_SOT-223"
-			(at 50.8 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2"
-			(at 50.8 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.se/ProductDetail/Texas-Instruments/LM317DCY?qs=5BZzbFV4k2uyLTpaIDoA2Q%3D%3D"
-			(at 50.8 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 50.8 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "fa45051c-581d-40ae-833f-1b6d4f0f9ce4")
-		)
-		(pin "3"
-			(uuid "42ba8bca-b258-4b1e-91b6-c409c713459b")
-		)
-		(pin "1"
-			(uuid "cb57f059-e4b2-428b-ad01-a6b7d3fd6aa5")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "U_LM317_1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 105.41 92.71 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "557d97fa-e37f-455f-b4d8-f1fbdd78fd83")
-		(property "Reference" "#PWR080"
-			(at 105.41 96.52 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 106.68 89.916 0)
+		(property "Value" "USB+5V"
+			(at 106.68 38.862 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4455,7 +2423,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 105.41 92.71 0)
+			(at 106.68 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4464,7 +2432,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 105.41 92.71 0)
+			(at 106.68 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4473,7 +2441,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 105.41 92.71 0)
+			(at 106.68 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4482,12 +2450,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "e6cd0810-f522-4aca-ab14-aac66a6c91ef")
+			(uuid "8f17ea1c-1084-4f40-afb8-fc1f5bddcb8b")
 		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR080")
+					(reference "#PWR041")
 					(unit 1)
 				)
 			)
@@ -4495,15 +2463,15 @@
 	)
 	(symbol
 		(lib_id "Diode:1N4148")
-		(at 58.42 88.9 0)
+		(at 106.68 50.8 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "55e50587-d5c0-4acd-b43d-ed7d0aacef0d")
-		(property "Reference" "D20"
-			(at 58.674 91.186 0)
+		(uuid "76e5c5f8-89b9-4910-a3c9-1c0f30320024")
+		(property "Reference" "D14"
+			(at 108.966 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4511,8 +2479,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "1N4148"
-			(at 62.992 86.614 0)
+		(property "Value" "SD0805S020S0R5"
+			(at 110.744 36.068 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4521,7 +2489,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 58.42 88.9 0)
+			(at 106.68 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4529,8 +2497,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.se/ProductDetail/Taiwan-Semiconductor/TS4148-RBG?qs=5aG0NVq1C4zjFQ%2F0tPTeiA%3D%3D"
-			(at 58.42 88.9 0)
+		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/SD0805S020S0R5?qs=jCA%252BPfw4LHZ%252BeTNuLGlRmA%3D%3D"
+			(at 106.68 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4539,7 +2507,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 58.42 88.9 0)
+			(at 106.68 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4548,7 +2516,7 @@
 			)
 		)
 		(property "Sim.Device" "D"
-			(at 58.42 88.9 0)
+			(at 106.68 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4557,7 +2525,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 58.42 88.9 0)
+			(at 106.68 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4566,118 +2534,49 @@
 			)
 		)
 		(pin "2"
-			(uuid "dd57d367-9cbb-4f08-9378-188f3fea353c")
+			(uuid "f803167d-c1db-412b-b8b5-87d6bba3cc56")
 		)
 		(pin "1"
-			(uuid "55a7e12e-308f-4f2c-8847-7108dceb1026")
+			(uuid "c6ddc16f-247b-4194-9516-1b0efb9b9eed")
 		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "D20")
+					(reference "D14")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 64.77 45.72 0)
+		(lib_id "Device:LED")
+		(at 234.95 86.36 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "5a080009-0cc5-49b4-a22c-69f60fab5e91")
-		(property "Reference" "R58"
-			(at 59.69 44.45 0)
+		(uuid "7e64447e-9fd1-41a8-b670-9548f9a979ef")
+		(property "Reference" "12VLED1"
+			(at 239.268 83.312 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Value" "240"
-			(at 59.69 46.99 0)
+		(property "Value" "LED"
+			(at 233.426 88.138 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 62.992 45.72 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.se/ProductDetail/Vishay-Dale/CRCW0805240RFKEA?qs=sGAEpiMZZMtlubZbdhIBIOd3pDSrK5GRzqc4kEgVCoU%3D"
-			(at 64.77 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 64.77 45.72 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "e489003a-f2cd-4e54-a462-40ae79010f95")
-		)
-		(pin "1"
-			(uuid "87d2cd5d-c9c4-49bf-be81-eefe53590bc7")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "R58")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 237.49 74.93 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "603c07bf-1860-4abc-902f-669eff7bc1b2")
-		(property "Reference" "R71"
-			(at 242.316 76.962 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "499"
-			(at 239.776 76.962 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 235.712 74.93 90)
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
+			(at 234.95 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4686,7 +2585,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 237.49 74.93 0)
+			(at 234.95 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4694,311 +2593,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
-			(at 237.49 74.93 0)
+		(property "Description" "Light emitting diode"
+			(at 234.95 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
+		)
+		(pin "1"
+			(uuid "0fb2cb09-28e0-4578-a3c6-4d0b5b68f9c2")
 		)
 		(pin "2"
-			(uuid "7a719370-4696-4995-a8f7-682908035899")
-		)
-		(pin "1"
-			(uuid "7a5de08b-f925-4ec2-aab2-c1cfd4760de0")
+			(uuid "10372896-4a46-4b03-972c-b1f22162c187")
 		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "R71")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Diode:1N4148")
-		(at 50.8 27.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "696ac6cd-afc8-462d-9300-5dc77805f109")
-		(property "Reference" "D19"
-			(at 51.054 30.226 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 55.372 25.654 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 50.8 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.se/ProductDetail/Taiwan-Semiconductor/TS4148-RBG?qs=5aG0NVq1C4zjFQ%2F0tPTeiA%3D%3D"
-			(at 50.8 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 50.8 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 50.8 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 50.8 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "b06baea6-c480-4ccd-8b1b-a0709237a791")
-		)
-		(pin "1"
-			(uuid "b95c3fb0-671e-4dd9-81db-895bf18b9ceb")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "D19")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 80.01 100.33 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "712cfacc-4a09-4fb6-a5a8-773cae7febe0")
-		(property "Reference" "#PWR042"
-			(at 80.01 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 80.391 95.9358 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 80.01 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 80.01 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 80.01 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "15b6e068-4214-4eaf-8df5-a7505ff3bfb3")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR042")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 217.17 74.93 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "7cf5de9e-6dc6-4967-9224-9f86a2085c3a")
-		(property "Reference" "R69"
-			(at 221.234 76.708 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "60"
-			(at 219.456 76.454 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 215.392 74.93 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 217.17 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 217.17 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "362e16b2-bf34-4361-a39d-0317eebffbe0")
-		)
-		(pin "1"
-			(uuid "9fe897d4-753d-4dca-b6bb-ed4ea1ab446c")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "R69")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+3.3V")
-		(at 72.39 39.37 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8019782d-6e46-438c-8f94-dd34c8d107b3")
-		(property "Reference" "#PWR033"
-			(at 72.39 43.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 72.771 34.9758 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 72.39 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 72.39 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 72.39 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e660d267-6c28-462a-aa3e-5be30e930bf7")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR033")
+					(reference "12VLED1")
 					(unit 1)
 				)
 			)
@@ -5006,7 +2619,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 143.51 49.53 90)
+		(at 137.16 59.69 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5014,7 +2627,7 @@
 		(dnp no)
 		(uuid "82ce1181-2df3-44e0-99f3-cbbefc24e5c8")
 		(property "Reference" "C29"
-			(at 149.098 45.974 90)
+			(at 142.748 56.134 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5023,7 +2636,7 @@
 			)
 		)
 		(property "Value" "0.1uF"
-			(at 150.368 48.006 90)
+			(at 144.018 58.166 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5032,7 +2645,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 147.32 48.5648 0)
+			(at 140.97 58.7248 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5041,7 +2654,7 @@
 			)
 		)
 		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/08053C104KAT4A?qs=sGAEpiMZZMvsSlwiRhF8qtBfdvAGmZnkw6WJoeO38Ao%3D"
-			(at 143.51 49.53 0)
+			(at 137.16 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5050,7 +2663,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 143.51 49.53 0)
+			(at 137.16 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5074,16 +2687,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Diode:1N4148")
-		(at 99.06 40.64 90)
+		(lib_id "Device:R")
+		(at 224.79 74.93 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "87f50ec1-8b8f-486f-81c5-f217fa3ed80b")
-		(property "Reference" "D21"
-			(at 101.346 40.386 0)
+		(uuid "85b3d88f-da76-470d-8a08-2a044182293e")
+		(property "Reference" "R67"
+			(at 230.378 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5091,8 +2704,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "1N4148"
-			(at 103.124 36.83 0)
+		(property "Value" "3K3"
+			(at 230.378 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5100,8 +2713,8 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 99.06 40.64 0)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 223.012 74.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5109,8 +2722,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.mouser.se/ProductDetail/Taiwan-Semiconductor/TS4148-RBG?qs=5aG0NVq1C4zjFQ%2F0tPTeiA%3D%3D"
-			(at 99.06 40.64 0)
+		(property "Datasheet" "~"
+			(at 224.79 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5119,25 +2732,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 99.06 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "D"
-			(at 99.06 40.64 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 99.06 40.64 0)
+			(at 224.79 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5146,85 +2741,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "eeb71ebd-532e-408b-b60a-f7a714b7b3fd")
+			(uuid "f3e8c32f-386e-44a2-b160-f5c7f0940fdc")
 		)
 		(pin "1"
-			(uuid "02837807-bd67-47c2-9994-10aaf02c49fb")
+			(uuid "6a2c937f-4e54-4881-8d89-437d28e5995c")
 		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "D21")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 45.72 113.03 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "8a29508f-02cc-4aaa-ba8a-7dfcafb883c9")
-		(property "Reference" "C26"
-			(at 49.53 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "1uF"
-			(at 49.53 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 46.6852 116.84 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/KGM21AR71E105KL?qs=Jm2GQyTW%2FbgOspZKgNqh%2Fg%3D%3D"
-			(at 45.72 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 45.72 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2142ff2f-2812-40aa-b8d7-183630581857")
-		)
-		(pin "2"
-			(uuid "7ca57c0e-a206-4098-b9b6-c4068da700bc")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "C26")
+					(reference "R67")
 					(unit 1)
 				)
 			)
@@ -5232,7 +2757,7 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
-		(at 105.41 34.29 0)
+		(at 99.06 44.45 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5240,7 +2765,7 @@
 		(dnp no)
 		(uuid "8cfb2809-1962-4708-81aa-62814243e454")
 		(property "Reference" "#PWR072"
-			(at 105.41 38.1 0)
+			(at 99.06 48.26 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5249,7 +2774,7 @@
 			)
 		)
 		(property "Value" "+12V"
-			(at 106.68 31.496 0)
+			(at 99.06 41.656 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5258,7 +2783,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 105.41 34.29 0)
+			(at 99.06 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5267,7 +2792,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 105.41 34.29 0)
+			(at 99.06 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5276,7 +2801,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 105.41 34.29 0)
+			(at 99.06 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5297,16 +2822,25 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 143.51 107.95 90)
+		(lib_id "power:+3.3V")
+		(at 234.95 69.85 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "924fab2e-f1ad-4fc2-882f-55f71e0fe975")
-		(property "Reference" "C33"
-			(at 148.59 104.648 90)
+		(uuid "96a1bebd-65b6-4ef1-a60c-bc103200d584")
+		(property "Reference" "#PWR0142"
+			(at 234.95 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12V"
+			(at 235.331 66.5988 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5314,17 +2848,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "0.1uF"
-			(at 150.368 106.426 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 147.32 106.9848 0)
+		(property "Footprint" ""
+			(at 234.95 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5332,8 +2857,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://eu.mouser.com/ProductDetail/KYOCERA-AVX/08053C104KAT4A?qs=sGAEpiMZZMvsSlwiRhF8qtBfdvAGmZnkw6WJoeO38Ao%3D"
-			(at 143.51 107.95 0)
+		(property "Datasheet" ""
+			(at 234.95 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5341,42 +2866,39 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
-			(at 143.51 107.95 0)
+		(property "Description" ""
+			(at 234.95 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(pin "2"
-			(uuid "5ad240cf-684b-48ff-846b-0ee36816a67d")
 		)
 		(pin "1"
-			(uuid "8a938784-3f7d-45e5-b65f-ade1953be34c")
+			(uuid "4b7b2253-389c-4c49-adfc-e7f60c1e01c5")
 		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "C33")
+					(reference "#PWR0142")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Regulator_Linear:LM317_SOT-223")
-		(at 58.42 100.33 0)
+		(lib_id "power:GND")
+		(at 224.79 93.98 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "a85c5ec2-e11f-46a9-bdd0-eb197bdb4c5a")
-		(property "Reference" "U_LM317_2"
-			(at 58.42 93.98 0)
+		(uuid "9ff39849-c024-435b-b74d-b1d78c588091")
+		(property "Reference" "#PWR0144"
+			(at 224.79 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5384,89 +2906,16 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "LM317_SOT-223"
-			(at 58.42 96.52 0)
+		(property "Value" "GND"
+			(at 224.79 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2"
-			(at 58.42 93.98 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-					(italic yes)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.se/ProductDetail/Texas-Instruments/LM317DCY?qs=5BZzbFV4k2uyLTpaIDoA2Q%3D%3D"
-			(at 58.42 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 58.42 100.33 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "014b96b0-9800-4196-980e-b6260e58a09f")
-		)
-		(pin "3"
-			(uuid "2c69fa47-b5bb-4dd2-b2de-f0a8e9e3e68a")
-		)
-		(pin "1"
-			(uuid "8285c5f9-dd14-4332-963d-ef85c2de0cf9")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "U_LM317_2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 99.06 34.29 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b3efa5c5-dbcc-4eaa-a885-c56fa7123b5a")
-		(property "Reference" "#PWR071"
-			(at 99.06 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 94.234 32.004 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 		(property "Footprint" ""
-			(at 99.06 34.29 0)
+			(at 224.79 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5475,7 +2924,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 99.06 34.29 0)
+			(at 224.79 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5484,7 +2933,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 99.06 34.29 0)
+			(at 224.79 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5493,147 +2942,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "242f1503-e806-45c0-8631-341d54cc21f4")
+			(uuid "17f93cc0-ffb4-48b4-96fc-68e9314b590b")
 		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR071")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 167.64 104.14 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b5f98dba-185e-496e-ad55-176b78e08fe1")
-		(property "Reference" "C32"
-			(at 169.164 109.22 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "22uF"
-			(at 171.704 109.22 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 168.6052 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.se/ProductDetail/Samsung-Electro-Mechanics/CL21A226MAYNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj9e2R%2FOkAO5o4FNiyGuFzx8%3D"
-			(at 167.64 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 167.64 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "5f39c276-4782-4458-b481-e686c2ae15c1")
-		)
-		(pin "1"
-			(uuid "d8f56b1b-cda9-4e77-b69c-948edf4748a1")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "C32")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 227.33 69.85 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b71291f0-c143-4f61-95e6-7fcadd4a3136")
-		(property "Reference" "#PWR076"
-			(at 227.33 73.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 227.33 66.548 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 227.33 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 227.33 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 227.33 69.85 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6af86700-834a-4306-9233-fc7f0e598353")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR076")
+					(reference "#PWR0144")
 					(unit 1)
 				)
 			)
@@ -5641,15 +2955,15 @@
 	)
 	(symbol
 		(lib_id "Device:LED")
-		(at 217.17 86.36 90)
+		(at 224.79 86.36 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "baba70ca-3c06-48c1-a865-a4de160bd724")
-		(property "Reference" "3V3LED1"
-			(at 220.98 83.566 0)
+		(uuid "afcb4752-08bf-40e5-be44-8c11f1fe4041")
+		(property "Reference" "5VLED1"
+			(at 228.6 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5658,7 +2972,7 @@
 			)
 		)
 		(property "Value" "LED"
-			(at 215.9 88.138 0)
+			(at 223.266 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5667,7 +2981,7 @@
 			)
 		)
 		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 217.17 86.36 0)
+			(at 224.79 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5676,7 +2990,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 217.17 86.36 0)
+			(at 224.79 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5685,7 +2999,7 @@
 			)
 		)
 		(property "Description" "Light emitting diode"
-			(at 217.17 86.36 0)
+			(at 224.79 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5694,56 +3008,50 @@
 			)
 		)
 		(pin "1"
-			(uuid "e071d1a8-0451-4512-aa62-fc6fa2d48728")
+			(uuid "f3bc23c5-5bc8-46d7-9ee5-4fb7d83b71d0")
 		)
 		(pin "2"
-			(uuid "8abec7b8-b8c9-43c6-b43a-06ae8be7bd35")
+			(uuid "8295739b-9a62-47ed-a821-8c59542b4687")
 		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "3V3LED1")
+					(reference "5VLED1")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
-		(at 105.41 115.57 180)
+		(lib_id "Device:R")
+		(at 214.63 74.93 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "bf53e9a4-96dc-40b4-8883-3cb5ab763e13")
-		(property "Reference" "C34"
-			(at 101.346 117.602 0)
+		(fields_autoplaced yes)
+		(uuid "cac88685-783d-46e9-b11d-9930496b22c1")
+		(property "Reference" "R58"
+			(at 217.17 73.6599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "10uF"
-			(at 99.822 115.824 0)
+		(property "Value" "499"
+			(at 217.17 76.1999 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 104.4448 111.76 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://eu.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KQFNNNF?qs=sGAEpiMZZMvsSlwiRhF8qvCY8MbTG5UF4nG6SP2xVXs%3D"
-			(at 105.41 115.57 0)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 212.852 74.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5751,8 +3059,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
-			(at 105.41 115.57 0)
+		(property "Datasheet" "https://www.mouser.se/ProductDetail/YAGEO/RT0805FRE07499RL?qs=4CyHz7GXqSjuutcg7ZiM%252Bg%3D%3D"
+			(at 214.63 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 214.63 74.93 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5761,15 +3078,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "4ab3ad6e-a00f-47d4-a7fd-6a5efac4720e")
+			(uuid "77b5fd5b-a83b-4285-a1fc-09aadd661b98")
 		)
 		(pin "1"
-			(uuid "91da3a72-0ece-435c-b4bc-19c8ac9ea09d")
+			(uuid "41712849-6734-46a3-b5c9-5032716e81b9")
 		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "C34")
+					(reference "R58")
 					(unit 1)
 				)
 			)
@@ -5777,7 +3094,7 @@
 	)
 	(symbol
 		(lib_id "Device:L")
-		(at 139.7 41.91 180)
+		(at 133.35 52.07 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5785,7 +3102,7 @@
 		(dnp no)
 		(uuid "d09adc00-1774-4e0d-898e-0dbb5fbfab9c")
 		(property "Reference" "L1"
-			(at 137.668 43.18 90)
+			(at 131.318 53.34 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5794,7 +3111,7 @@
 			)
 		)
 		(property "Value" "3.9uH"
-			(at 141.224 44.704 90)
+			(at 134.874 54.864 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5803,7 +3120,7 @@
 			)
 		)
 		(property "Footprint" "Inductor_SMD:L_Bourns_SDR0604"
-			(at 139.7 41.91 0)
+			(at 133.35 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5812,7 +3129,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.se/ProductDetail/652-SDE0604A-3R9M"
-			(at 139.7 41.91 0)
+			(at 133.35 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5821,7 +3138,7 @@
 			)
 		)
 		(property "Description" "Inductor"
-			(at 139.7 41.91 0)
+			(at 133.35 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5845,143 +3162,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:LED")
-		(at 227.33 86.36 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "df37a980-5fde-4464-bfcc-c326e4336597")
-		(property "Reference" "5VLED1"
-			(at 231.14 83.82 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "LED"
-			(at 225.806 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 227.33 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 227.33 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Light emitting diode"
-			(at 227.33 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "cbfd5511-94e7-4384-910e-ac2103019e4f")
-		)
-		(pin "2"
-			(uuid "43335957-0fe3-4fad-9670-65388e48be17")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "5VLED1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:+12V")
-		(at 25.4 27.94 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "dfa2855d-459d-48b3-bde3-63edf2dd544e")
-		(property "Reference" "#PWR032"
-			(at 25.4 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+12V"
-			(at 19.558 26.162 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 25.4 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 25.4 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 25.4 27.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "27330435-626d-4e55-952b-a55287efb769")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR032")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
-		(at 158.75 45.72 0)
+		(at 152.4 55.88 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5989,7 +3171,7 @@
 		(dnp no)
 		(uuid "e0d8af32-1b9a-4288-862b-0b826985d56f")
 		(property "Reference" "C27"
-			(at 160.02 50.8 90)
+			(at 153.67 60.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5998,7 +3180,7 @@
 			)
 		)
 		(property "Value" "22uF"
-			(at 162.56 50.8 90)
+			(at 156.21 60.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6007,7 +3189,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 159.7152 49.53 0)
+			(at 153.3652 59.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6016,7 +3198,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.mouser.se/ProductDetail/Samsung-Electro-Mechanics/CL21A226MAYNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj9e2R%2FOkAO5o4FNiyGuFzx8%3D"
-			(at 158.75 45.72 0)
+			(at 152.4 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6025,7 +3207,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 158.75 45.72 0)
+			(at 152.4 55.88 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6049,143 +3231,8 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 128.27 125.73 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e206fc04-4ea3-4a14-b522-d1695a9ce80a")
-		(property "Reference" "#PWR082"
-			(at 128.27 132.08 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 128.27 130.81 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 128.27 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 128.27 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 128.27 125.73 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "238fdb5d-cda3-4c82-ac0a-3ace6ecdd6bf")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "#PWR082")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:LED")
-		(at 237.49 86.36 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "eda54210-c0ab-43fb-8944-ecc5353b34ad")
-		(property "Reference" "12VLED1"
-			(at 241.808 83.312 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "LED"
-			(at 235.966 88.138 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 237.49 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 237.49 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Light emitting diode"
-			(at 237.49 86.36 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "481baaef-443f-4015-9c8b-3334f6af840d")
-		)
-		(pin "2"
-			(uuid "fd9a202b-301b-457c-8c3d-6241e96c45d8")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "12VLED1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C")
-		(at 105.41 57.15 180)
+		(at 99.06 67.31 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -6193,7 +3240,7 @@
 		(dnp no)
 		(uuid "eea11203-79a0-4a84-bb20-6dfbca9f8cc3")
 		(property "Reference" "C30"
-			(at 101.346 59.182 0)
+			(at 94.996 69.342 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6201,7 +3248,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 99.822 57.404 0)
+			(at 93.472 67.564 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6209,7 +3256,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 104.4448 53.34 0)
+			(at 98.0948 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6218,7 +3265,7 @@
 			)
 		)
 		(property "Datasheet" "https://eu.mouser.com/ProductDetail/Samsung-Electro-Mechanics/CL21A106KQFNNNF?qs=sGAEpiMZZMvsSlwiRhF8qvCY8MbTG5UF4nG6SP2xVXs%3D"
-			(at 105.41 57.15 0)
+			(at 99.06 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6227,7 +3274,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 105.41 57.15 0)
+			(at 99.06 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6251,16 +3298,25 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
-		(at 227.33 74.93 0)
+		(lib_id "power:+3.3V")
+		(at 214.63 69.85 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "f1ff2e45-b9e8-454b-b296-920dd1aaccf5")
-		(property "Reference" "R70"
-			(at 231.648 76.962 90)
+		(uuid "ef9e3b1f-e36f-49ca-9d2b-423f7d0baedd")
+		(property "Reference" "#PWR042"
+			(at 214.63 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 215.011 66.5988 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6268,17 +3324,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "147"
-			(at 229.616 76.708 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 225.552 74.93 90)
+		(property "Footprint" ""
+			(at 214.63 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6286,146 +3333,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
-			(at 227.33 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 227.33 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "c18eba83-19a9-41f4-a4ba-57fcdb8235f7")
-		)
-		(pin "1"
-			(uuid "3691bb94-7080-47fa-839f-449040606966")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "R70")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C")
-		(at 158.75 104.14 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f8bb6d2a-8fad-43ff-94c1-2e761f697b48")
-		(property "Reference" "C31"
-			(at 160.02 108.966 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "22uF"
-			(at 162.306 108.966 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
-			(at 159.7152 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.se/ProductDetail/Samsung-Electro-Mechanics/CL21A226MAYNNNE?qs=sGAEpiMZZMsh%252B1woXyUXj9e2R%2FOkAO5o4FNiyGuFzx8%3D"
-			(at 158.75 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor"
-			(at 158.75 104.14 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "1cf819ea-a01f-4ec9-8504-ab77e1f14e92")
-		)
-		(pin "1"
-			(uuid "82f189d5-ad1d-4242-8ebb-7575bcb90589")
-		)
-		(instances
-			(project "OverlordDimmer"
-				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "C31")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Diode:1N4148")
-		(at 105.41 99.06 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f8d4e0fd-1789-4b76-81fc-44d87f1b3b43")
-		(property "Reference" "D25"
-			(at 107.696 98.806 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "1N4148"
-			(at 109.474 95.25 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
-			(at 105.41 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.se/ProductDetail/Taiwan-Semiconductor/TS4148-RBG?qs=5aG0NVq1C4zjFQ%2F0tPTeiA%3D%3D"
-			(at 105.41 99.06 0)
+		(property "Datasheet" ""
+			(at 214.63 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6434,42 +3343,87 @@
 			)
 		)
 		(property "Description" ""
-			(at 105.41 99.06 0)
+			(at 214.63 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
 			)
-		)
-		(property "Sim.Device" "D"
-			(at 105.41 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=K 2=A"
-			(at 105.41 99.06 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "d2321c8f-369d-45b6-8851-cc2a8f59d806")
 		)
 		(pin "1"
-			(uuid "ebf47f7a-3924-4227-a3d5-acb07ab827c4")
+			(uuid "2916ed8f-4154-400e-9e27-92e66bd5baf1")
 		)
 		(instances
 			(project "OverlordDimmer"
 				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
-					(reference "D25")
+					(reference "#PWR042")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12V")
+		(at 224.79 69.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f2ae3abb-1fad-4011-9337-16060c55fbdb")
+		(property "Reference" "#PWR0141"
+			(at 224.79 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "USB+5V"
+			(at 224.79 66.548 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 224.79 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 224.79 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 224.79 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "570b078d-710f-4e99-9a13-71289cdd448a")
+		)
+		(instances
+			(project "OverlordDimmer"
+				(path "/61f84ae7-a90a-49d4-ad4c-9c4f7abf6876/1999b2f3-c135-4e2b-81b7-cc4e1321536b/449b9d9d-c719-4358-a9b3-569c48e40e2d"
+					(reference "#PWR0141")
 					(unit 1)
 				)
 			)
